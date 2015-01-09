@@ -1,0 +1,24 @@
+commit 07f24216c328a23131a53baf592cbbd6b61194da
+Author: Juan <juan2ramos@gmail.com>
+Date:   Fri Jan 9 18:05:11 2015 -0500
+
+    Update readme.md
+
+commit b1aff984d19d24525565a618b2fe5b1ba7813f34
+Merge: 656af9f 8419c0d
+Author: juan2ramos <juan2ramos@gmail.com>
+Date:   Wed Dec 10 08:18:43 2014 -0500
+
+    Merge branch 'master' of https://bitbucket.org/juan2ramos-admin/creditos-lilipink
+
+commit 656af9fd65da810924865bcc297a10badaf4c95b
+Author: juan2ramos <juan2ramos@gmail.com>
+Date:   Wed Dec 10 08:16:52 2014 -0500
+
+    + laravel
+
+commit 8419c0dce0d5293d792f671c0aaf5545a4453bf7
+Author: chiricos <edwarddiaz92@gmail.com>
+Date:   Tue Dec 9 11:35:40 2014 -0500
+
+    primer comentario con contirbutors

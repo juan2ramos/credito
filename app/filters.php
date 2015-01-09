@@ -66,7 +66,9 @@ Route::filter('guest', function()
 {
 	if (Auth::check()) return Redirect::to('/');
 });
-
+Route::filter('permissions',function($route, $request, $namePermissions , $route = '/'){
+	if ( ! ACL::check($namePermissions,3)){return Redirect::to($route);}
+});
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter

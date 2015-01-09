@@ -15,3 +15,6 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+Route::get('juan', ['before' => 'permissions:updateUser','as' => 'homeTwo', function () {
+	ddj(ACL::getPermissions(3));
+}]);
