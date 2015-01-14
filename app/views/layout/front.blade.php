@@ -40,10 +40,9 @@
                 <span class="Header-line1 u-line"></span>
                 <span class="Header-line2 u-line"></span>
                 <span class="Header-line3 u-line"></span>
-                {{Menus::create('principal',[ 'class'=>'Header-nav'])}}
             </div>
         </div>
-
+        {{Menus::create('principal',[ 'class'=>'Header-nav'])}}
     </div>
 </header>
 <div class="wrap">

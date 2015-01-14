@@ -1,16 +1,17 @@
-/**
- * Created by juan2ramos on 12/01/15.
- */
+
 $(function () {
 
 });
 
 $('#buttonMenu').on('click',function(){
-    var $headerNav = $('.Header-nav');
+    var $headerNav = $('.Header-nav'),
+        $el = $(this);
     if($headerNav.hasClass('show--element')){
+        $el.removeClass('is-show');
         $headerNav.removeClass('show--element');
 
     }else{
+        $el.addClass('is-show');
         $headerNav.addClass('show--element');
     }
 });
@@ -31,4 +32,5 @@ function expand(e){
     setTimeout(function() {
         circle.remove();
     }, 500);
+
 }

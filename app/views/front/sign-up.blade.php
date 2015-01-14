@@ -2,7 +2,7 @@
 @section('title') login @stop
 @section('content')
 <section class="Login u-shadow-5">
-    {{ Form::open(['route' => 'sign-up', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form',]) }}
+    {{ Form::open(['route' => 'login', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form',]) }}
 
     <div class="material-input">
         {{Form::text('email','',['id' => 'email','required'])}}

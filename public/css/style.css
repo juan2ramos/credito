@@ -36,10 +36,11 @@ img{
     width: 100%;
 }
 .wrap{
-    height: 100px;
+    height: 100%;
     max-width: 1280px;
     margin: auto;
     padding: 20px;
+    position: relative;
     width: 100%;
 }
 .u-shadow-1{
@@ -60,13 +61,18 @@ img{
 .u-button{
     -webkit-transform: translate3d(0,0,0);
     position: relative;
-    padding: 1rem 2rem;
-    background-color: #3498db;
+    padding: 15px;
+    background-color: #e80e8a;
     color: #fff;
     cursor: pointer;
     overflow: hidden;
-    box-shadow: 0 2px 0 #2980b9;
-    border:none
+    box-shadow: 0 2px 0 #c40c74;
+    border:none;
+    width: 100%
+}
+
+.u-button:hover{
+    background: #ff0f98;
 }
 .u-circle {
     position: absolute;
@@ -127,6 +133,18 @@ img{
     padding:  8px;
 }
 .u-line{
+    transition: all 0.2s cubic-bezier(0.2, 0, 0.03, 1)
+}
+.Header-buttonNav.is-show .Header-line1{
+    transform: rotate(135deg) translate(5px,-5px);
+}
+.Header-buttonNav.is-show .Header-line2{
+    opacity: 0;
+}
+.Header-buttonNav.is-show .Header-line3{
+    transform: rotate(-135deg) translate(5px,5px);
+}
+.u-line{
     display: block;
     background: #dedede;
     height: 4px;
@@ -148,12 +166,14 @@ img{
     outline: 0;
 }
 .material-input{
-    margin:20px 0;
+    margin:50px 0;
     position: relative;
-    width:200px;
 }
 .material-input input:focus ~ span{
     width:100%
+}
+.material-input input:focus {
+    height: 40px;
 }
 .material-input input:focus {
     outline: 0;
@@ -180,17 +200,23 @@ img{
 .material-input input:focus ~ label, .material-input input:valid ~ label{
     top: -10px
 }
-.material-input input:focus,.material-input input:valid {
-    padding-top:10px
+.material-input input:valid ~ span{
+    width:100%
 }
-
+.material-input input:focus,.material-input input:valid {
+    height: 40px;
+    padding-top: 20px;
+}
 /* Login */
-
+.Login{
+    transform: translateY(20%);
+}
 .Login-form{
     margin: auto;
-    padding: 20px;
+    padding: 20px 20px 50px;
     width: 80%;
 }
+
 
 
 
