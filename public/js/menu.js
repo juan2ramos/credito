@@ -1,6 +1,5 @@
 
 $(function () {
-
 });
 
 $('#buttonMenu').on('click',function(){
