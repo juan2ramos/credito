@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: juan2ramos
- * Date: 12/01/15
- * Time: 17:18
- */
+
+Route::get('/', function () {});
+
+
+Route::get('permisos', ['before' => 'permissions:getPermission', 'as' => 'permissions',
+    function () {
+        ddj(ACL::getPermissions(3));
+    }]);

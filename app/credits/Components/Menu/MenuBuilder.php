@@ -9,7 +9,7 @@ class MenuBuilder
     private $data;
     private $permissions;
 
-    public function getMenu($nameMenu, $data = array())
+    public function create($nameMenu, $data = array())
     {
         $this->nameMenu = $nameMenu;
         $this->data = $data;

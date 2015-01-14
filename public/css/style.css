@@ -1,0 +1,199 @@
+/*
+   Author: Juan2Ramos & Drawde
+   Description: Template créditos
+   Author URI: juan2ramos.com - mi-martinez.com
+   Version: 0.1
+*/
+
+/* Format Elements */
+*:focus {
+    outline: 0;
+}
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+body {
+    background-color: #eeeeee;
+    color: #949494;
+    font-family: 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+    font-size: 14px;
+}
+li {
+    list-style: none;
+}
+h1, h2, h3, ul,figure {
+    margin: 0;
+    padding: 0;
+}
+img{
+    width: 100%;
+}
+.wrap{
+    height: 100px;
+    max-width: 1280px;
+    margin: auto;
+    padding: 20px;
+    width: 100%;
+}
+.u-shadow-1{
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.u-shadow-2{
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+}
+.u-shadow-3{
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
+.u-shadow-4{
+    box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.u-shadow-5{
+    box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+.u-button{
+    -webkit-transform: translate3d(0,0,0);
+    position: relative;
+    padding: 1rem 2rem;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 2px 0 #2980b9;
+    border:none
+}
+.u-circle {
+    position: absolute;
+    z-index: 0;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 1;
+    width: 100px;
+    height: 100px;
+}
+.u-circle.is-animate {
+    -webkit-animation: grow .3s linear;
+    animation: grow .3s linear;
+}
+
+@keyframes grow {
+    to {
+        -webkit-transform: scale(2.5);
+        opacity: 0;
+    }
+}
+/* Header */
+
+.Header{
+    background: #dedede;
+    text-align: center;
+    width: 100%;
+}
+.Header-content{
+    display: flex;
+    margin: 0 2rem;
+}
+.Header-logoLilipink{
+    background: #e80e8a;
+    padding: 10px 10px 8px;
+    width: 100px;
+}
+.Header-logoIntima{
+    padding: 10px 10px 8px;
+    width: 170px;
+
+}
+.Header-nav {
+    display: none;
+    position: absolute;
+}
+.Header-contentNav{
+    flex:2;
+    text-align: right;
+}
+.Header-buttonNav{
+    background: #9d9d9d;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: -3px;
+    position: relative;
+    padding:  8px;
+}
+.u-line{
+    display: block;
+    background: #dedede;
+    height: 4px;
+    margin: 3px;
+    width: 25px;
+}
+.show--element{
+    display: block;
+}
+/* Input */
+.material-input input{
+    width:100%;
+    position:relative;
+    background:transparent;
+    border:none;
+    box-shadow: 0 2px 0px 0px rgba(102, 102, 102, 0.08);
+}
+.material-input input:focus{
+    outline: 0;
+}
+.material-input{
+    margin:20px 0;
+    position: relative;
+    width:200px;
+}
+.material-input input:focus ~ span{
+    width:100%
+}
+.material-input input:focus {
+    outline: 0;
+}
+.material-input span{
+
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #e80e8a ;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0.03, 1)
+}
+.material-input label{
+    color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0.03, 1);
+    pointer-events: none;
+}
+.material-input input:focus ~ label, .material-input input:valid ~ label{
+    top: -10px
+}
+.material-input input:focus,.material-input input:valid {
+    padding-top:10px
+}
+
+/* Login */
+
+.Login-form{
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+}
+
+
+
+
+
+
