@@ -20,11 +20,13 @@
         {{Form::checkbox('remember', 1, null, ['class' => 'checkbox'])}}
         Recuerdame
     </label>
-
     <button class="u-button">
         Ingresar
     </button>
     {{ Form::close() }}
+    <div class="remember">
+        Olvidaste la contraseña?
+    </div>
 </section>
 
 @stop

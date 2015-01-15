@@ -326,8 +326,6 @@ img{
     padding-top:30px;
 }
 
-/*FORMULARIO SOLICITUD DE CREDITO*/
-
 .Credito{
     margin: 10% auto 0;
     max-width: 600px;
@@ -367,6 +365,7 @@ img{
     border:1px dashed #ff0f98;
 }
 
+<<<<<<< HEAD
  input[type=file] {
 
      border: 1px solid #ff0f98;
@@ -378,6 +377,17 @@ img{
      cursor:pointer;
      width: 439px;
      z-index: 4;
+=======
+input[type=file] {
+    width: 439px;
+    border: 1px solid #ff0f98;
+    height: 200px;
+    z-index: 4;
+    opacity: 0;
+    margin-top: -145px;
+    position: absolute;
+    cursor:pointer;
+>>>>>>> d74404c2fc3826c857d6cebb9ed985585306fef8
 }
 
 input[type=file]:hover{
@@ -409,10 +419,6 @@ input[type=file]:hover{
     vertical-align: middle;
     width: 25%;
 }
-
-
-
-
 
 
 
