@@ -36,6 +36,9 @@
             <img src="{{asset('img/intima.svg')}}" alt=""/>
         </figure>
         <div class="Header-contentNav">
+            @if(Auth::check())
+                <li><a href="{{ route('logout') }}">Salir</a></li>
+            @endif
             <div id="buttonMenu" class="Header-buttonNav">
                 <span class="Header-line1 u-line"></span>
                 <span class="Header-line2 u-line"></span>
