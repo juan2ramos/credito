@@ -1,4 +1,4 @@
-@extends('layout.front')
+@extends('layout/front')
 @section('title') login @stop
 @section('content')
 <section class="Login u-shadow-5">

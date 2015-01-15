@@ -207,7 +207,7 @@ img{
     position:relative;
     background:transparent;
     border:none;
-    box-shadow: 0 2px 0 0 rgba(102, 102, 102, 0.08);
+    box-shadow: 0 2px 0px 0px rgba(102, 102, 102, 0.08);
 }
 .material-input input:focus{
     outline: 0;
@@ -326,8 +326,6 @@ img{
     padding-top:30px;
 }
 
-/*FORMULARIO SOLICITUD DE CREDITO*/
-
 .Credito{
     margin: 10% auto 0;
     max-width: 600px;
@@ -348,7 +346,7 @@ img{
 }
 
 .pop-up{
-    border: 1px solid #ff0f98;
+    border: 1.5px solid #ff0f98;
     font-size: 16px;
     height: 200px;
     width: 100%;
@@ -370,15 +368,15 @@ img{
 
 }
 
- input[type=file] {
-     width: 439px;
-     border: 1px solid #ff0f98;
-     height: 200px;
-     z-index: 4;
-     opacity: 0;
-     margin-top: -145px;
-     position: absolute;
-     cursor:pointer;
+input[type=file] {
+    width: 439px;
+    border: 1px solid #ff0f98;
+    height: 200px;
+    z-index: 4;
+    opacity: 0;
+    margin-top: -145px;
+    position: absolute;
+    cursor:pointer;
 }
 
 input[type=file]:hover{
@@ -409,10 +407,6 @@ input[type=file]:hover{
     max-height: 100px;
     vertical-align: middle;
 }
-
-
-
-
 
 
 
