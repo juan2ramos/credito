@@ -39,9 +39,10 @@ function uploadImage(file){
     reader.onload = function(e) {
         var data = e.target.result,
             $img = $('<img />').attr('src', data).fadeIn();
-
+        var $name="</p>hola</p>";
 
         $('.imagen').append($img);
+        $('.imagen').append($name);
     };
 }
 function ajax(file){

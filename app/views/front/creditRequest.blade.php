@@ -81,7 +81,7 @@
             {{Form::label('valor_mensual','Valor mensual')}}
             <span></span>
         </div>
-        <div class="pop-up ">
+        <div class="pop-up">
             <p>Arrastra tus documentos</p>
             {{Form::file('archivo',array('id'=>'files','class'=>' '))}}
         </div>
