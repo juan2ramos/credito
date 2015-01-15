@@ -1,4 +1,4 @@
-@extends('layout/front')
+@extends('layout.front')
 @section('title') login @stop
 @section('content')
 <section class="Login u-shadow-5">
@@ -20,12 +20,13 @@
         {{Form::checkbox('remember', 1, null, ['class' => 'checkbox'])}}
         Recuerdame
     </label>
-
-
     <button class="u-button">
         Ingresar
     </button>
     {{ Form::close() }}
+    <div class="remember">
+        Olvidaste la contraseña?
+    </div>
 </section>
 
 @stop

@@ -12,4 +12,6 @@ Route::group(['before' => 'guest'], function () {
 
 });
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::post('passwordRestart', ['as' => 'passwordRestart', 'uses' => 'AuthController@password']);
+
 
