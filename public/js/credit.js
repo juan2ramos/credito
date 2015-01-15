@@ -3,27 +3,31 @@ $(function  () {
     $('#files').on('change',function(){
 
         for (var i = 0; i < this.files.length; i++) {
-            if ((/^image\/(gif|png|jpeg)$/i).test(this.files[i].type)) {
+            uploadImage(this.files[i]);
+            /*if ((/^image\/(gif|png|jpeg|pdf|docx|doc)$/i).test(this.files[i].type)) {
                 if(this.files[i].size < 2400000){
-                    uploadImage(this.files[i]);
+
                 }else{
                     alert("El tamaño de la imagen debe ser inferior a 2MB");
                 }
 
             } else {
                 alert("tipo de archivo no soportado");
-            }
+            }*/
         }
     });
     $('#files').on('dragover', function() {
 
-        $('.imagen').addClass('hover-file');
+        $('.pop-up').addClass('hover-file');
+        $('#files').addClass('hover-file1');
     });
     $('#files').on('dragleave', function() {
-        $('.imagen').removeClass('hover-file');
+        $('.pop-up').removeClass('hover-file');
+        $('#files').removeClass('hover-file1');
     });
     $('#files').on('drop', function() {
-        $('.imagen').removeClass('hover-file');
+        $('.pop-up').removeClass('hover-file');
+        $('#files').removeClass('hover-file1');
     });
 });
 

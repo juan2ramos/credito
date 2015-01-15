@@ -326,6 +326,92 @@ img{
     padding-top:30px;
 }
 
+/*FORMULARIO SOLICITUD DE CREDITO*/
+
+.Credito{
+    margin: 10% auto 0;
+    max-width: 600px;
+}
+
+.Credito-form{
+    margin: auto;
+    padding: 20px 20px 50px;
+    width: 80%;
+}
+
+.imagen{
+    margin-bottom: 30px;
+}
+
+#files{
+    margin-bottom: 10px;
+}
+
+.pop-up{
+    border: 1.5px solid #ff0f98;
+    font-size: 16px;
+    height: 200px;
+    width: 100%;
+    padding: 0;
+    z-index: 3;
+    margin-bottom: 20px;
+
+}
+
+.pop-up p{
+
+    text-align: center;
+    margin-top: 80px;
+    font-size: 30px;
+}
+
+.pop-up:hover{
+    border:1px dashed #ff0f98;
+
+}
+
+ input[type=file] {
+     width: 439px;
+     border: 1px solid #ff0f98;
+     height: 200px;
+     z-index: 4;
+     opacity: 0;
+     margin-top: -145px;
+     position: absolute;
+     cursor:pointer;
+}
+
+input[type=file]:hover{
+    margin-top: -166px;
+}
+.hover-file{
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.46);
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+.hover-file1{
+    height: 100% !important;
+    width: 100% !important;
+    background: rgba(0, 0, 0, 0.46);
+    position: fixed !important;
+    z-index: 3 !important;
+    top: 166px;
+    left: 0;
+}
+
+.imagen img{
+    width: 25%;
+    padding: 5px;
+    max-height: 100px;
+    vertical-align: middle;
+}
+
+
+
 
 
 
