@@ -12,5 +12,5 @@ Route::group(['before' => 'guest'], function () {
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 //solicitud de credito
-Route::get('credito', ['as' => 'credito', 'uses' => 'CreditController@index']);
-Route::post('credito', ['as' => 'credito', 'uses' => 'CreditController@index']);
+Route::get('credito', ['as' => 'credit', 'uses' => 'CreditController@index']);
+Route::post('credito', ['as' => 'credit', 'uses' => 'CreditController@index']);

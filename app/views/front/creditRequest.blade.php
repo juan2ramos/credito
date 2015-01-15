@@ -20,7 +20,8 @@
         {{ Form::select('tipo_documento', $tipo) }}
         {{Form::text('referencia','',array('placeholder'=>'Referenccia'))}}
         {{Form::text('valor_mensual','',array('placeholder'=>'Valor mensual'))}}
-        {{Form::file('archivo')}}
+        {{Form::file('archivo',array('id'=>'files'))}}
+        <div class="imagen"></div>
         <button class="u-button">
             Enviar Solicitud
         </button>
@@ -28,4 +29,8 @@
         {{Form::close()}}
     </section>
 
+@stop
+
+@section('javascript')
+    {{ HTML::script('js/credit.js'); }}
 @stop

@@ -90,7 +90,7 @@ class MenuBuilder
     private function template($li)
     {
         $a = (!empty($li['route'])) ? $li['route'] : '#';
-        return "<a href='$a' >" . $li['nameLink'] . '</a>';
+        return "<a href= '".route($a)."' >" . $li['nameLink'] . '</a>';
 
 
     }
