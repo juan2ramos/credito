@@ -408,6 +408,23 @@ input[type=file]:hover{
     vertical-align: middle;
 }
 
+.Remember{
+    margin: auto;
+    padding: 0 20px 30px;
+    text-align: center;
+    width: 80%;
+}
+.Remember a{
+    color: #ff0f98;
+}
+.Remember a:hover{
+    color: #ff53bd;
+}
+
+@media (min-width: 600px) {
+    .Remember{ text-align: right; }
+}
+
 
 
 

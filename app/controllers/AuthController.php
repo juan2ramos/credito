@@ -1,4 +1,5 @@
 <?php
+use credits\Repositories\UserRepo;
 class AuthController extends BaseController {
 
     public function login(){
@@ -19,24 +20,12 @@ class AuthController extends BaseController {
     }
     public function password()
     {
-        dd(str_random(30));
-        if ($user = User::where('email', '=', Input::get('email'))->first()) {
-            $pass = '';
-            $a_z = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+*[]{}";
-            for ($i = 0; $i < 20; $i++) {
-                $int = rand(0, 51);
-                $pass .= $a_z[$int];
-            }
-            $data = ['pass' => $pass];
-            $user->fill(['password' => $pass]);
-            $user->save();
-            Mail::send('emails.password', $data, function ($message) {
-                $message->subject('Restart password');
-                $message->to(Input::get('email'));
-            });
+        $userRepo = new UserRepo();
+
+        if ($userRepo->passwordRestart(Input::get('email')->first()))
             return Response::json(['success' => 1]);
-        } else {
+
             return Response::json(['success' => 0]);
-        }
+
     }
 }

@@ -24,8 +24,8 @@
         Ingresar
     </button>
     {{ Form::close() }}
-    <div class="remember">
-        Olvidaste la contraseña?
+    <div class="Remember">
+        <a id="Remember" href="#" >Olvidaste la contraseña?</a>
     </div>
 </section>
 
