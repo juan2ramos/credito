@@ -1,17 +1,24 @@
 <?php
 
+use credits\Managers\CreditManager;
+use credits\Entities\CreditRequest;
+
 class CreditController extends BaseController
 {
     public function index()
     {
+        $valid= new CreditManager(new CreditRequest(),$this->getInputs());
+        print_r($valid);
         $tipo= [ "tipo de documento" => "Tipo de documento"]+[ 0 => "Cedula 0"]+[ 1 => "Cedula 1"];
 
         return View::make('front.creditRequest',compact('tipo'));
     }
 
+
+
    /* private function validateForms($inputs = array())
     {
-        $rules=array(
+        $rules=[
             'cedula'
             'ciudad_residencia'
             'fecha_expedicion'
@@ -24,7 +31,7 @@ class CreditController extends BaseController
             'tipo_documento'
             'referencia'
             'valor_mensual'
-        )
+        ]
     }*/
 
     private function getInputs($inputs = array())
