@@ -2,11 +2,16 @@
 @section('title') login @stop
 @section('content')
     @include('layout.notify')
+    @if(Session::has('login_error'))
+        <script>
+            var notify = document.getElementById('notify');
+            notify.classList.add('is-show');
+            notify.classList.add('error');
+            notify.querySelector('.text-notify').innerText = 'Datos incorrectos';
+        </script>
+    @endif
     <section class="Login u-shadow-5">
         {{ Form::open(['route' => 'login', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
-        @if(Session::has('login_error'))
-            <span class="label label-danger">Datos erroneos</span>
-        @endif
         <div class="material-input">
             {{Form::text('email','',['id' => 'email','required'])}}
             {{Form::label('email','E-Mail')}}

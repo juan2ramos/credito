@@ -22,13 +22,9 @@
     font-style: normal;
     font-weight: normal;
     display: inline-block;
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: .2em;
     text-align: center;
     font-variant: normal;
     text-transform: none;
-    font-size: 120%;
 }
 
 .icon-user-1:before {
@@ -269,8 +265,8 @@
 .icon-arrows-cw:before {
     content: '\e82f';
 }
-
-/* '' */
+.icon-logout:before { content: '\e830'; }
+.icon-login:before { content: '\e831'; }
 *:focus {
     outline: 0;
 }
@@ -368,7 +364,6 @@ img {
 }
 
 .u-circle.is-animate {
-    -webkit-animation: grow .3s linear;
     animation: grow .3s linear;
 }
 
@@ -461,7 +456,6 @@ img {
 .Header-contentNav {
     flex: 2;
     text-align: right;
-    z-index: 30;
 }
 
 .Header-buttonNav {
@@ -472,7 +466,7 @@ img {
     position: relative;
     padding: 8px;
     user-select: none;
-    z-index: 2;
+    z-index: 2000;
 }
 
 .show--element {
@@ -848,11 +842,7 @@ input[type=file] {
     color: #ff53bd;
 }
 
-@media (min-width: 600px) {
-    .Remember {
-        text-align: right;
-    }
-}
+
 
 .justMail #password, .justMail #password + label, .justMail .label--checkbox, .justMail .label-danger {
     display: none;
@@ -913,7 +903,7 @@ input[type=file] {
 
 .error {
     background: #df7e7e;
-    color: #9c4c4c;
+    color: #fff;
     border: 1px solid #c16d6d;
 }
 
@@ -943,7 +933,7 @@ input[type=file] {
 
 .is-show {
     animation: show-animation 2s forwards;
-    z-index: 5;
+    z-index: 100
 }
 
 @keyframes show-animation {
@@ -976,5 +966,60 @@ input[type=file] {
     padding: 20px 10px
 }
 .Header-contentNav a{
+    color: #9d9d9d;
+    display: inline-block;
+    font-size: 2em;
+    line-height: 0;
     vertical-align: top;
+}
+a.icon-child-1{
+    background: rgb(96, 97, 104);
+    display: none;
+    padding: 10px 12px 20px;
+}
+a.icon-bell{
+    color: rgb(219, 85, 61);
+    font-size: 1.5rem ;
+    padding: 15px 12px 5px 5px;
+    position: relative;
+}
+a.icon-bell span{
+    background: rgb(219, 85, 61);
+    border-radius: 50%;
+    color: white;
+    display: block;
+    font-size: .7rem;
+    left: 15px;
+    padding: 10px 6px 9px;
+    position: absolute;
+    top: 4px;
+}
+a.login-button{
+    background: #e80e8a;
+    padding: 8px 12px;
+    color: #fff;
+    display: inline-block;
+    font-size: .8em;
+    line-height: inherit;
+    margin: 6px 5px 0 0;
+    vertical-align: top;
+}
+a.icon-logout{
+    color: rgb(96, 97, 104);
+    font-size: 1.1rem;
+    line-height: inherit;
+    margin: 11px 3px 0
+}
+@media (min-width: 600px) {
+    .Remember {
+        text-align: right;
+    }
+    a.login-button{
+        padding:8px 16px;
+        font-size: .8em;
+        margin: 6px 15px 0 0;
+    }
+    a.icon-child-1{
+        display: inline-block;
+    }
 }

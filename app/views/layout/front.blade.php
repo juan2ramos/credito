@@ -37,10 +37,11 @@
         </figure>
         <div class="Header-contentNav">
             @if(Auth::check())
-                <a href="{{ route('logout') }}">Salir</a>
-                <a class="icon-bell" href="{{ route('logout') }}"></a>
-                <a class="icon-child-1" href="{{ route('logout') }}"></a>
-
+                <a class="icon-logout" href="{{route('logout')}}"></a>
+                <a class="icon-bell" href="#"><span>2</span></a>
+                <a class="icon-child-1" href="#"></a>
+            @else
+                <a class="login-button" href="{{route('sign-up')}}">Iniciar sesión</a>
             @endif
             <div id="buttonMenu" class="Header-buttonNav">
                 <span class="Header-line1 u-line"></span>
@@ -59,5 +60,5 @@
 
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/menu.js')}}"></script>
-    @yield('javascript')
+@yield('javascript')
 </html>
