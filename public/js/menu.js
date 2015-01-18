@@ -33,11 +33,42 @@ function expand(e){
     }, 500);
 
 }
+$('#loginForm').on('submit',function(e){
+    if($(this).hasClass('justMail')){
+        e.preventDefault();
+        var fields = {'email' : $("input[name='email']").val()};
+        $('.u-loader').addClass('show');
+        $.post($('#Remember').attr('href'), fields, resetPassword, 'json')
+    }
+
+});
 $('#Remember').on('click',function(e){
     e.preventDefault();
-    var fields = {'email' : $("input[name='email']").val()};
-    $.post($(this).attr('href'), fields, resetPassword, 'json')
+    var $form = $('#loginForm'),$signUp = $('#signUpButton');
+    if($form.hasClass('justMail')){
+        $form.removeClass('justMail');
+        $signUp.text('Ingresar');
+        $(this).text('Olvidaste la contraseña?')
+    }else{
+        $form.addClass('justMail');
+        $signUp.text('Restaurar  contraseña');
+        $(this).text('Volver a iniciar sesión')
+    }
+
 });
 function resetPassword(e){
-    console.log(e)
+    var $noty = $('#notify');
+    $('#notify').removeClass('success error is-show');
+    $('.u-loader').removeClass('is-show');
+    if(e.success){
+        $noty.addClass('success is-show');
+        $noty.find('.text-notify').text('Se envío correctamenta la contraseña al E-mail');
+
+    }else{
+        $('#notify').addClass('error is-show');
+        $noty.find('.text-notify').text('Email no valido');
+    }
 }
+$('.close-notify').on('click',function(){
+    $('#notify').removeClass('success is-show');
+})

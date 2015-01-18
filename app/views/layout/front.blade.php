@@ -37,7 +37,10 @@
         </figure>
         <div class="Header-contentNav">
             @if(Auth::check())
-                <li><a href="{{ route('logout') }}">Salir</a></li>
+                <a href="{{ route('logout') }}">Salir</a>
+                <a class="icon-bell" href="{{ route('logout') }}"></a>
+                <a class="icon-child-1" href="{{ route('logout') }}"></a>
+
             @endif
             <div id="buttonMenu" class="Header-buttonNav">
                 <span class="Header-line1 u-line"></span>

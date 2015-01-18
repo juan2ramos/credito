@@ -6,7 +6,6 @@ $(function () {
         for (var i = 0; i < this.files.length; i++) {
             if (this.files[i].size < 2400000 ) {
                 countImage++;
-                console.log(countImage)
                 if (countImage > 4){alert('Solo puedes subir hasta 4 archivos') ; return}
                 uploadImage(this.files[i]);
 

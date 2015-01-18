@@ -13,12 +13,13 @@ class UserRepo extends BaseRepo{
     }
     public function passwordRestart($email){
         $user = $this->model;
-        if( ! $user::where('email', '=', $email)->first())
+        $user = $user::where('email', '=', $email)->first();
+        if( ! $user)
             return false;
 
         $password = str_random(30);
         $data = ['password' => $password];
-        $user->fill(['password' => $password]);
+        $user->password = $password;
         $user->save();
         /*
          * Send Mail uncomment in debug
