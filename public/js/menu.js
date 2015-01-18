@@ -33,4 +33,11 @@ function expand(e){
     }, 500);
 
 }
-
+$('#Remember').on('click',function(e){
+    e.preventDefault();
+    var fields = {'email' : $("input[name='email']").val()};
+    $.post($(this).attr('href'), fields, resetPassword, 'json')
+});
+function resetPassword(e){
+    console.log(e)
+}

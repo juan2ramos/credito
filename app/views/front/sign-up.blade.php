@@ -25,7 +25,7 @@
     </button>
     {{ Form::close() }}
     <div class="Remember">
-        <a id="Remember" href="#" >Olvidaste la contraseña?</a>
+        <a id="Remember" href="{{route('passwordRestart')}}" >Olvidaste la contraseña?</a>
     </div>
 </section>
 
