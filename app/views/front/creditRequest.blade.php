@@ -96,7 +96,7 @@
         <div class="pop-up ">
             <p>Arrastra tus documentos requeridos</p>
             {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
-            {{Form::file('archivo',array('id'=>'files','class'=>''))}}
+            {{Form::file('archivo',array('id'=>'files','class'=>'','multiple'))}}
         </div>
 
 

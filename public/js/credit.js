@@ -1,59 +1,46 @@
-var i=0;
-$(function  () {
-    $('#files').on('change',function(){
 
+var countImage = 0;
+$(function () {
+    var $files = $('#files');
+    $files.on('change', function () {
         for (var i = 0; i < this.files.length; i++) {
-            if(this.files[i].size<2400000){
+            if (this.files[i].size < 2400000 ) {
+                countImage++;
+                console.log(countImage)
+                if (countImage > 4){alert('Solo puedes subir hasta 4 archivos') ; return}
                 uploadImage(this.files[i]);
-            }else{
-                alert("El tamaño de la imagen debe ser inferior a 2MB");
-            }
-
-            /*if ((/^image\/(gif|png|jpeg|pdf|docx|doc)$/i).test(this.files[i].type)) {
-                if(this.files[i].size < 2400000){
-
-                }else{
-                    alert("El tamaño de la imagen debe ser inferior a 2MB");
-                }
 
             } else {
-                alert("tipo de archivo no soportado");
-            }*/
+                alert("El tamaño de la imagen debe ser inferior a 2MB");
+            }
         }
     });
-    $('#files').on('dragover', function() {
+    $files.on('dragover', function () {
 
         $('.pop-up').addClass('hover-file');
         $('#files').addClass('hover-file1');
         $('#image-file').addClass('hover-file2');
     });
-    $('#files').on('dragleave', function() {
-        $('.pop-up').removeClass('hover-file');
-        $('#files').removeClass('hover-file1');
-        $('#image-file').removeClass('hover-file2');
-    });
-    $('#files').on('drop', function() {
-        $('.pop-up').removeClass('hover-file');
-        $('#files').removeClass('hover-file1');
-        $('#image-file').removeClass('hover-file2');
-    });
+    $files.on('dragleave', removeElement);
+    $files.on('drop', removeElement);
 });
 
-function uploadImage(file){
-    i++;
-    if(i<5)
-    {
+function removeElement() {
+    $('.pop-up').removeClass('hover-file');
+    $('#files').removeClass('hover-file1');
+    $('#image-file').removeClass('hover-file2');
+}
+function uploadImage(file) {
+
         var reader = new FileReader(file);
 
         reader.readAsDataURL(file);
         //ajax(file);
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             var data = e.target.result;
-            //$img = $('<img />').attr('src', data).fadeIn();
+            var nombre = "<p class='p-image'>" + file.name + "</p>";
 
-            var nombre="<p class='p-image'>"+file.name+"</p>";
-
-            switch(file.type) {
+            switch (file.type) {
 
                 case "image/png":
                     var img = "<img src='img/jpg.png' />";
@@ -77,18 +64,15 @@ function uploadImage(file){
 
             }
 
-            $('.request-image').append("<div class='img-content'>"+img+nombre+"</div>");
+            $('.request-image').append("<div class='img-content'>" + img + nombre + "</div>");
         };
-    }else{
-        alert("solo se pueden subir 4 archivos");
-    }
 
 }
-function ajax(file){
+function ajax(file) {
 
     var data = new FormData(),
         dataImage = '';
-    data.append('file',file);
+    data.append('file', file);
     $.ajax({
         url: 'uploadImage',
         type: 'POST',
@@ -98,12 +82,12 @@ function ajax(file){
         contentType: false,
         processData: false,
         //mientras enviamos el archivo
-        beforeSend: function(){
+        beforeSend: function () {
             message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
             $('#facebookG').addClass('show');
         },
         //una vez finalizado correctamente
-        success: function(data){
+        success: function (data) {
             message = $("<span class='success'>La imagen ha subido correctamente.</span>");
             dataImage += $('#imagesUpload').val() + ';' + data;
             $('#facebookG').removeClass('show');
@@ -111,7 +95,7 @@ function ajax(file){
 
         },
         //si ha ocurrido un error
-        error: function(){
+        error: function () {
             message = $("<span class='error'>Ha ocurrido un error.</span>");
             console.log('test');
         }
