@@ -9,7 +9,7 @@ class CreditController extends BaseController
     {
         $valid= new CreditManager(new CreditRequest(),$this->getInputs());
         print_r($valid);
-        $tipo= [ "tipo de documento" => "Tipo de documento"]+[ 0 => "Cedula 0"]+[ 1 => "Cedula 1"];
+        $tipo= [ "tipo de documento" => "Tipo de documento"]+[ 0 => "Cedula"]+[ 1 => "Cedula de extranjeria"];
 
         return View::make('front.creditRequest',compact('tipo'));
     }
