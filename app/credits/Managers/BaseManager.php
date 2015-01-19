@@ -23,8 +23,10 @@ abstract class BaseManager
         $validation = \Validator::make($this->data, $rules);
 
         if($validation->fails()){
-            throw new ValidationException ('Error en los datos', $validation->messages());
+            return $validation->errors();
+            //throw new ValidationException ('Error en los datos', $validation->messages());
         }
+        return false;
 
     }
 

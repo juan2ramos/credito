@@ -7,8 +7,9 @@ class CreditController extends BaseController
 {
     public function index()
     {
-        $valid= new CreditManager(new CreditRequest(),$this->getInputs());
-        print_r($valid);
+        $creditManager = new CreditManager(new CreditRequest(),Input::all());
+        $user = $creditManager->isValid();
+        ddj($user);
         $tipo= [ "tipo de documento" => "Tipo de documento"]+[ 0 => "Cedula"]+[ 1 => "Cedula de extranjeria"];
 
         return View::make('front.creditRequest',compact('tipo'));
@@ -34,13 +35,5 @@ class CreditController extends BaseController
         ]
     }*/
 
-    private function getInputs($inputs = array())
-    {
 
-        foreach($inputs as $key => $val)
-        {
-            $inputs[$key] = $val;
-        }
-        return $inputs;
-    }
 }

@@ -1,4 +1,4 @@
-<?php namespace hireMe\Managers;
+<?php namespace credits\Managers;
 
 
 class ValidationException extends \Exception
