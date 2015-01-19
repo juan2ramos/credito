@@ -9,7 +9,6 @@ class CreditController extends BaseController
     {
         $creditManager = new CreditManager(new CreditRequest(),Input::all());
         $user = $creditManager->isValid();
-        ddj($user);
         $tipo= [ "tipo de documento" => "Tipo de documento"]+[ 0 => "Cedula"]+[ 1 => "Cedula de extranjeria"];
 
         return View::make('front.creditRequest',compact('tipo'));
