@@ -11,6 +11,9 @@ abstract class BaseRepo {
     public function find($id){
         return $this->model->find($id);
     }
+    public function all($paginate = 10){
+        return $this->model->paginate($paginate);
 
+    }
     abstract protected function getModel();
 }

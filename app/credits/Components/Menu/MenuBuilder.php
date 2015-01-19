@@ -13,11 +13,14 @@ class MenuBuilder
     {
         $this->nameMenu = $nameMenu;
         $this->data = $data;
-        $this->permissions = \ACL::getPermissions(3);
+        $this->permissions = $this->checkAuth();
 
         return $this->styleMenu($this->createMenu());
     }
 
+    private function checkAuth(){
+        return (\Auth::check())?\ACL::getPermissions():array();
+    }
     private function styleMenu($menu)
     {
         $data = ' ';

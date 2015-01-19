@@ -28,7 +28,6 @@ class UserRepo extends BaseRepo{
             $message->to(\Input::get('email'));
         });*/
         return true;
-
-
     }
+
 }
