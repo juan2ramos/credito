@@ -22,12 +22,17 @@ class CreditManager extends BaseManager
         return  $rules;
     }
 
-    public function saveCredit()
+    public function saveCredit($file,$name)
     {
+
+        $this->entity->files=$name;
+
         $data=$this->prepareData($this->data);
         $user = new User($data);
         $user->save();
         $this->entity->fill($this->prepareData($this->data));
         $user->CreditRequest()->save($this->entity);
+
+        $file->move("img",$name);
     }
 }

@@ -18,6 +18,8 @@ class CreditController extends BaseController
 
     public function updateCredit(){
         $type= [ "tipo de documento" => "Tipo de documento"]+[ 0 => "Cedula"]+[ 1 => "Cedula de extranjeria"];
+        $file=Input::file('files');
+        $fileName=$file->getClientOriginalName();
 
         $userManager= new UserManager(new User(),Input::all());
         $user=$userManager->isValid();
@@ -25,11 +27,16 @@ class CreditController extends BaseController
         $creditManager = new CreditManager(new CreditRequest(),Input::all());
         $Credit = $creditManager->isValid();
 
+
+
         if(Input::get()){
             if($Credit===true || $user===true){
 
-                $creditManager->saveCredit();
+
+
+                $creditManager->saveCredit($file,$fileName);
                 $userManager->saveUser();
+
                 return Redirect::to('credito')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
             }else{
                 return Redirect::to('credito')->withErrors($Credit)->withInput();
