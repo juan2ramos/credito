@@ -11,7 +11,8 @@ abstract class BaseManager
     {
 
         $this->entity = $entity;
-        $this->data = array_only($data, array_keys($this->getRules()));
+        $this->data = $data;
+        //$this->data = array_only($data, array_keys($this->getRules()));
 
     }
 
@@ -22,17 +23,19 @@ abstract class BaseManager
         $rules = $this->getRules();
         $validation = \Validator::make($this->data, $rules);
 
-        if($validation->fails()){
+        if ($validation->fails()) {
             return $validation->errors();
             //throw new ValidationException ('Error en los datos', $validation->messages());
         }
-        return false;
+        return true;
 
     }
 
-    public function prepareData($data){
+    public function prepareData($data)
+    {
         return $data;
     }
+
     public function save()
     {
         !$this->isValid();
@@ -42,4 +45,5 @@ abstract class BaseManager
         return true;
 
     }
+
 }

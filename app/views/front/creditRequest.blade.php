@@ -3,6 +3,7 @@
 @section('content')
 
     <section class="Credito u-shadow-5">
+        @extends('layout/notify')
 
         <h1>Solicitud de credito</h1>
 
@@ -12,13 +13,13 @@
         <section class="Credit-section u-CreditSection">
 
             <div class="material-input">
-                {{ Form::select('type_document', $tipo,'',array('class'=>'Credit-select')) }}
+                {{ Form::select('type_document', $type,'',array('class'=>'Credit-select')) }}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('identificacion_card','',['id' => 'identificacion_card','required'])}}
-                {{Form::label('identificacion_card','Cedula')}}
+                {{Form::text('identification_card','',['id' => 'identification_card','required'])}}
+                {{Form::label('identification_card','Cedula')}}
                 <span></span>
             </div>
 

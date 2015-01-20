@@ -1,5 +1,6 @@
 
 var countImage = 0;
+var name="";
 $(function () {
     var $files = $('#files');
     $files.on('change', function () {
