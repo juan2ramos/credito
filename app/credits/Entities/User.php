@@ -8,6 +8,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends \Eloquent implements UserInterface, RemindableInterface
 {
 
+
     use UserTrait, RemindableTrait;
 
     /**
@@ -15,7 +16,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
      *
      * @var string
      */
-    protected $fillable = ['name','email','password'];
+    protected $fillable = ['name','email','password','last_name','second_name','second_last_name','address','residency_city','birth_city','mobile_phone','phone','document_type','identification_card','date_birth'];
 
     protected $perPage = 2;
     /**
@@ -31,6 +32,12 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
             $this->attributes['password'] = \Hash::make($value);
 
         }
+    }
+
+    public function CreditRequest()
+    {
+
+        return $this->hasOne('credits\Entities\CreditRequest');
     }
 
 }

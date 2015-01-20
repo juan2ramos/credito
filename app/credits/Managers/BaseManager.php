@@ -11,28 +11,45 @@ abstract class BaseManager
     {
 
         $this->entity = $entity;
-        $this->data = array_only($data, array_keys($this->getRules()));
+        $this->data = $data;
+        //$this->data = array_only($data, array_keys($this->getRules()));
 
     }
 
     abstract public function getRules();
 
+    public function getMessage()
+    {
+        $messages=[
+            'required'  => 'El campo :attribute es obligatorio.',
+            'min'       => 'El campo :attribute no puede tener menos de :min carácteres.',
+            'max'       => 'El campo :attribute no puede tener más de :max carácteres.',
+            'email'     => 'El correo esta mal escrito',
+            'same'      => 'Las contraseñas deben ser iguales',
+            'unique'    => 'El :attribute ya se encuentra registrado',
+            'numeric'   => 'El :attribute va en numeros'
+        ];
+        return $messages;
+    }
+
     public function isValid()
     {
         $rules = $this->getRules();
-        $validation = \Validator::make($this->data, $rules);
-
-        if($validation->fails()){
+        $message=$this->getMessage();
+        $validation = \Validator::make($this->data, $rules,$message);
+        if ($validation->fails()) {
             return $validation->errors();
             //throw new ValidationException ('Error en los datos', $validation->messages());
         }
-        return false;
+        return true;
 
     }
 
-    public function prepareData($data){
+    public function prepareData($data)
+    {
         return $data;
     }
+
     public function save()
     {
         !$this->isValid();
@@ -42,4 +59,8 @@ abstract class BaseManager
         return true;
 
     }
+
+
+
+
 }
