@@ -177,12 +177,10 @@
         <div class="pop-up ">
             <p>Sube <tus></tus> documentos</p>
             {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
-            {{Form::file('files',array('id'=>'files','class'=>'','multiple'))}}
+            {{Form::file('files[]',array('id'=>'files','class'=>'','multiple'))}}
         </div>
 
-
-        <div class="request-image">
-        </div>
+        <div class="request-image"> </div>
 
 
         <label class="label--checkbox">
