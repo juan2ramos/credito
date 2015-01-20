@@ -32,20 +32,37 @@ class CreditManager extends BaseManager
             'date_birth'            => 'required',
 
         ];
+
+        $files = $this->data['files'];
+        foreach($files as $file) {
+            $rules += array('files' => 'required'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+
+            //$validator = \Validator::make(array('files'=> $file), $rules);
+
+        }
+
+
         return  $rules;
     }
 
-    public function saveCredit($file,$name)
-    {
 
-        $this->entity->files=$name;
-        $this->entity->state=0;
+
+    public function saveCredit()
+    {
+        $file = $this->data->file('files');
+
+        if(empty ($file)){
+            return Redirect::to('credito')->with([''])->withInput();
+        }
+
+
         $data=$this->prepareData($this->data);
         $user = new User($data);
         $user->save();
         $this->entity->fill($this->prepareData($this->data));
         $user->CreditRequest()->save($this->entity);
 
-        $file->move("img",$name);
+        $fileName = $file->getClientOriginalName();
+        $file->move("img",$fileName);
     }
 }

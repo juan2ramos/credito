@@ -20,28 +20,30 @@ abstract class BaseManager
 
     public function getMessage()
     {
-        $messages=[
-            'required'  => 'El campo :attribute es obligatorio.',
-            'min'       => 'El campo :attribute no puede tener menos de :min carácteres.',
-            'max'       => 'El campo :attribute no puede tener más de :max carácteres.',
-            'email'     => 'El correo esta mal escrito',
-            'same'      => 'Las contraseñas deben ser iguales',
-            'unique'    => 'El :attribute ya se encuentra registrado',
-            'numeric'   => 'El :attribute va en numeros'
+        $messages = [
+            'required' => 'El campo :attribute es obligatorio.',
+            'min' => 'El campo :attribute no puede tener menos de :min carácteres.',
+            'max' => 'El campo :attribute no puede tener más de :max carácteres.',
+            'email' => 'El correo esta mal escrito',
+            'same' => 'Las contraseñas deben ser iguales',
+            'unique' => 'El :attribute ya se encuentra registrado',
+            'numeric' => 'El :attribute va en numeros'
         ];
         return $messages;
     }
 
-    public function isValid()
+    public function isValid($validFiles = false)
     {
         $rules = $this->getRules();
-        $message=$this->getMessage();
-        $validation = \Validator::make($this->data, $rules,$message);
+        $message = $this->getMessage();
+        $validation = \Validator::make($this->data, $rules, $message);
+
         if ($validation->fails()) {
             return $validation->errors();
             //throw new ValidationException ('Error en los datos', $validation->messages());
         }
-        return true;
+
+        return false;
 
     }
 
@@ -59,8 +61,6 @@ abstract class BaseManager
         return true;
 
     }
-
-
 
 
 }
