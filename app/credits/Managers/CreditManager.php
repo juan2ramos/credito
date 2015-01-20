@@ -39,7 +39,7 @@ class CreditManager extends BaseManager
     {
 
         $this->entity->files=$name;
-
+        $this->entity->state=0;
         $data=$this->prepareData($this->data);
         $user = new User($data);
         $user->save();

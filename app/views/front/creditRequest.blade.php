@@ -78,8 +78,8 @@
             </div>
 
             <div class="material-input">
-                {{Form::text('city_residency','',['id' => 'city_residency','required'])}}
-                {{Form::label('city_residency','Ciudad de residencia')}}
+                {{Form::text('residency_city','',['id' => 'residency_city','required'])}}
+                {{Form::label('residency_city','Ciudad de residencia')}}
                 <span></span>
             </div>
 
