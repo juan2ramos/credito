@@ -18,11 +18,25 @@ abstract class BaseManager
 
     abstract public function getRules();
 
+    public function getMessage()
+    {
+        $messages=[
+            'required'  => 'El campo :attribute es obligatorio.',
+            'min'       => 'El campo :attribute no puede tener menos de :min carácteres.',
+            'max'       => 'El campo :attribute no puede tener más de :max carácteres.',
+            'email'     => 'El correo esta mal escrito',
+            'same'      => 'Las contraseñas deben ser iguales',
+            'unique'    => 'El :attribute ya se encuentra registrado',
+            'numeric'   => 'El :attribute va en numeros'
+        ];
+        return $messages;
+    }
+
     public function isValid()
     {
         $rules = $this->getRules();
-        $validation = \Validator::make($this->data, $rules);
-
+        $message=$this->getMessage();
+        $validation = \Validator::make($this->data, $rules,$message);
         if ($validation->fails()) {
             return $validation->errors();
             //throw new ValidationException ('Error en los datos', $validation->messages());
@@ -45,5 +59,8 @@ abstract class BaseManager
         return true;
 
     }
+
+
+
 
 }

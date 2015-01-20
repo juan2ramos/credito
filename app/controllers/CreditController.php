@@ -18,8 +18,15 @@ class CreditController extends BaseController
 
     public function updateCredit(){
         $type= [ "tipo de documento" => "Tipo de documento"]+[ 0 => "Cedula"]+[ 1 => "Cedula de extranjeria"];
-        $file=Input::file('files');
-        $fileName=$file->getClientOriginalName();
+
+        if(Input::file('files')){
+            $file=Input::file('files');
+            $fileName=$file->getClientOriginalName();
+        }else{
+            $file="";
+            $fileName="";
+        }
+
 
         $userManager= new UserManager(new User(),Input::all());
         $user=$userManager->isValid();

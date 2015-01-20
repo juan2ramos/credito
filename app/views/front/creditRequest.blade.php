@@ -1,6 +1,30 @@
 @extends('layout/front')
 @section('title') Solicitud de Credito @stop
 @section('content')
+    {{$errors->first('document_type')}}
+    {{$errors->first('identification_card')}}
+    {{$errors->first('name')}}
+    {{$errors->first('second_name')}}
+    {{$errors->first('last_name')}}
+    {{$errors->first('second_last_name')}}
+    {{$errors->first('address')}}
+    {{$errors->first('residency_city')}}
+    {{$errors->first('birth_city')}}
+    {{$errors->first('date_birth')}}
+    {{$errors->first('phone')}}
+    {{$errors->first('mobile_phone')}}
+    {{$errors->first('birth_city')}}
+    {{$errors->first('instead_expedition')}}
+    {{$errors->first('office_address')}}
+    {{$errors->first('monthly_income')}}
+    {{$errors->first('monthly_expenses')}}
+    {{$errors->first('name_reference')}}
+    {{$errors->first('phone_reference')}}
+    {{$errors->first('phone_reference2')}}
+    {{$errors->first('phone_reference2')}}
+    {{$errors->first('name_reference2')}}
+
+    {{$errors->first('files')}}
 
     <section class="Credito u-shadow-5">
         @extends('layout/notify')
@@ -13,7 +37,7 @@
         <section class="Credit-section u-CreditSection">
 
             <div class="material-input">
-                {{ Form::select('type_document', $type,'',array('class'=>'Credit-select')) }}
+                {{ Form::select('document_type', $type,'',array('class'=>'Credit-select')) }}
                 <span></span>
             </div>
 

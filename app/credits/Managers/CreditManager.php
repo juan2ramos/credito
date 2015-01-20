@@ -16,7 +16,20 @@ class CreditManager extends BaseManager
             'phone_reference'         => 'required|numeric',
             'name_reference2'         => 'required',
             'phone_reference2'         => 'required',
-            'files'         => 'required'
+            'files'         => 'required',
+
+            'name'                  => 'required',
+            'second_name'           => 'required',
+            'last_name'             => 'required',
+            'second_last_name'      => 'required',
+            'address'               => 'required',
+            'residency_city'        => 'required',
+            'birth_city'            => 'required',
+            'mobile_phone'          => 'required|numeric',
+            'phone'                 => 'required|numeric',
+            'document_type'         => 'required|numeric',
+            'identification_card'   => 'required|numeric|unique:users',
+            'date_birth'            => 'required',
 
         ];
         return  $rules;

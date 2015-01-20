@@ -1,6 +1,7 @@
 
 var countImage = 0;
 var name="";
+var validator=false;
 $(function () {
     var $files = $('#files');
     $files.on('change', function () {
@@ -42,23 +43,23 @@ function uploadImage(file) {
 
                 case "image/png":
                     var img = "<img src='img/jpg.png' />";
-                    name=name+file.name+",";
+                    validator=true;
                     break;
                 case "image/jpeg":
                     var img = "<img src='img/jpg.png' />";
-                    name=name+file.name+",";
+                    validator=true;
                     break;
                 case "application/pdf":
                     var img = "<img src='img/pdf.png' />";
-                    name=name+file.name+",";
+                    validator=true;
                     break;
                 case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
                     var img = "<img src='img/doc.png' />";
-                    name=name+file.name+",";
+                    validator=true;
                     break;
                 case "application/msword":
                     var img = "<img src='img/doc.png' />";
-                    name=name+file.name+",";
+
                     break;
                 default:
                     alert("invalit");
@@ -66,8 +67,10 @@ function uploadImage(file) {
                     break;
 
             }
+            if(validator==true){
+                name=name+file.name+",";
 
-            alert(name);
+            }
             $('.request-image').append("<div class='img-content'>" + img + nombre + "</div>");
         };
 
