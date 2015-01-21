@@ -16,7 +16,7 @@ class CreditManager extends BaseManager
             'phone_reference'         => 'required|numeric',
             'name_reference2'         => 'required',
             'phone_reference2'         => 'required',
-            'files'         => 'required',
+            'files'                 => 'required',
 
             'name'                  => 'required',
             'second_name'           => 'required',
@@ -33,27 +33,24 @@ class CreditManager extends BaseManager
 
         ];
 
-        $files = $this->data['files'];
-        foreach($files as $file) {
-            $rules += array('files' => 'required'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
-
-            //$validator = \Validator::make(array('files'=> $file), $rules);
-
-        }
-
-        ddj($rules);exit;
         return  $rules;
     }
 
-
-
+    public function getMessage()
+    {
+        $messages = [
+            'required' => 'El campo :attribute es obligatorio.',
+            'min' => 'El campo :attribute no puede tener menos de :min carácteres.',
+            'max' => 'El campo :attribute no puede tener más de :max carácteres.',
+            'email' => 'El correo esta mal escrito',
+            'same' => 'Las contraseñas deben ser iguales',
+            'unique' => 'El :attribute ya se encuentra registrado',
+            'numeric' => 'El :attribute va en numeros'
+        ];
+        return $messages;
+    }
     public function saveCredit()
     {
-        $file = $this->data->file('files');
-
-        if(empty ($file)){
-            return Redirect::to('credito')->with([''])->withInput();
-        }
 
 
         $data=$this->prepareData($this->data);
@@ -62,7 +59,5 @@ class CreditManager extends BaseManager
         $this->entity->fill($this->prepareData($this->data));
         $user->CreditRequest()->save($this->entity);
 
-        $fileName = $file->getClientOriginalName();
-        $file->move("img",$fileName);
     }
 }

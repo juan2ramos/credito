@@ -18,9 +18,11 @@ class CreditController extends BaseController
     public function updateCredit()
     {
         $creditManager = new CreditManager(new CreditRequest(), Input::all());
-        $creditValidation = $creditManager->isValid();
-        if (!$creditValidation)
-            return Redirect::to('credito')->withErrors($creditValidation)->withInput();
+        $valid = !$creditManager->isValid();
+        $validFile = !$creditManager->isValidFile();
+        if ($valid  && $validFile)
+            return Redirect::to('credito')->withErrors($creditManager->getErrors())->withInput();
+
         $creditManager->saveCredit();
         return Redirect::to('credito')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
 
