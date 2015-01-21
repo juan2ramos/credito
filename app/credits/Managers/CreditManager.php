@@ -16,7 +16,7 @@ class CreditManager extends BaseManager
             'phone_reference'         => 'required|numeric',
             'name_reference2'         => 'required',
             'phone_reference2'         => 'required',
-            'files'                 => 'required',
+            'files'         => 'required',
 
             'name'                  => 'required',
             'second_name'           => 'required',
