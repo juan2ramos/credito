@@ -1,4 +1,6 @@
 
+
+
 var countImage = 0;
 var name="";
 var validator=false;
@@ -35,7 +37,7 @@ function uploadImage(file) {
         var reader = new FileReader(file);
 
         reader.readAsDataURL(file);
-        //ajax(file);
+        ajax(file);
         reader.onload = function (e) {
             var data = e.target.result;
             var nombre = "<p class='p-image'>" + file.name + "</p>";
@@ -71,40 +73,20 @@ function uploadImage(file) {
                 name=name+file.name+",";
 
             }
+            document.getElementById("form-files").value=name;
             $('.request-image').append("<div class='img-content'>" + img + nombre + "</div>");
         };
 
 }
 function ajax(file) {
+    var form = document.querySelector('form');
+    var request= new XMLHttpRequest();
 
-    var data = new FormData(),
-        dataImage = '';
-    data.append('file', file);
-    $.ajax({
-        url: 'uploadImage',
-        type: 'POST',
-        data: data,
-        //necesario para subir archivos via ajax
-        cache: false,
-        contentType: false,
-        processData: false,
-        //mientras enviamos el archivo
-        beforeSend: function () {
-            message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
-            $('#facebookG').addClass('show');
-        },
-        //una vez finalizado correctamente
-        success: function (data) {
-            message = $("<span class='success'>La imagen ha subido correctamente.</span>");
-            dataImage += $('#imagesUpload').val() + ';' + data;
-            $('#facebookG').removeClass('show');
-            $('#imagesUpload').val(dataImage);
+        //e.preventDefault();
+        //multiple files will be in the form parameter
+        var formdata= new FormData(form);
+        request.open('post','credito');//route
+        request.send(formdata);
 
-        },
-        //si ha ocurrido un error
-        error: function () {
-            message = $("<span class='error'>Ha ocurrido un error.</span>");
-            console.log('test');
-        }
-    });
+
 }
