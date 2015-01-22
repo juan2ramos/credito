@@ -1096,3 +1096,14 @@ table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .
 #hidden{
     display: none;
 }
+
+#form-errors{
+    background: #df7e7e;
+    color: #fff;
+    border: 1px solid #c16d6d;
+    text-align: center;
+}
+
+#form-errors p{
+
+}
