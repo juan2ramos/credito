@@ -43,7 +43,7 @@ abstract class BaseManager
             //throw new ValidationException ('Error en los datos', $validation->messages());
         }
 
-        return false;
+        return ;
 
     }
 
