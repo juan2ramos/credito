@@ -26,12 +26,13 @@
 
     {{$errors->first('files')}}
 
+
     <section class="Credito u-shadow-5">
         @extends('layout/notify')
 
         <h1>Solicitud de credito</h1>
 
-        {{Form::open(array('url'=>'credito','method'=>'POST','files'=>true,'class'=>"Credito-form"))}}
+        {{Form::open(array('url'=>'credito','method'=>'POST','files'=>true,'class'=>"Credito-form",'enctype'=>'multipar/form-data'))}}
 
 
         <section class="Credit-section u-CreditSection">
@@ -173,11 +174,14 @@
             {{Form::label('phone_reference2','Telefono')}}
             <span></span>
         </div>
-
+        <div id="hidden">
+            {{Form::text('files','',['id'=>'form-files'])}}
+            {{Form::label('files','Telefono')}}
+        </div>
         <div class="pop-up ">
             <p>Sube <tus></tus> documentos</p>
             {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
-            {{Form::file('files[]',array('id'=>'files','class'=>'','multiple'))}}
+            {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
         </div>
 
         <div class="request-image"> </div>

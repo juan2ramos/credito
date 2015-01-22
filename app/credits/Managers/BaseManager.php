@@ -26,15 +26,16 @@ abstract class BaseManager
 
         $rules = $this->getRules();
         $message = $this->getMessage();
-        $validation = \Validator::make($this->data, $rules);
+        $validation = \Validator::make($this->data, $rules,$message);
 
         if ($validation->fails()) {
             $this->errors = $validation->errors();
-            return false;
+            return $this->errors;
             //throw new ValidationException ('Error en los datos', $validation->messages());
         }
 
-        return true;
+
+        return ;
 
     }
     public function isValidFile(){
@@ -58,7 +59,7 @@ abstract class BaseManager
         }
         $this->errors = $messages;
 
-        dd($this->errors);
+
         return $return;
     }
 

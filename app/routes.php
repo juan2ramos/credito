@@ -18,3 +18,12 @@ Route::post('passwordRestart', ['as' => 'passwordRestart', 'uses' => 'AuthContro
 //solicitud de credito
 Route::get('credito', ['as' => 'credit', 'uses' => 'CreditController@index']);
 Route::post('credito', ['as' => 'credit', 'uses' => 'CreditController@updateCredit']);
+
+Route::post('creditoDrawde',function()
+{
+
+
+
+
+
+});
