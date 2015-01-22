@@ -1,11 +1,14 @@
 <?php namespace credits\Managers;
 
 
+use Illuminate\Support\Facades\Validator;
+
 abstract class BaseManager
 {
 
     protected $entity;
     protected $data;
+    protected $errors;
 
     public function __construct($entity, $data)
     {
@@ -18,38 +21,54 @@ abstract class BaseManager
 
     abstract public function getRules();
 
-    public function getMessage()
+    public function isValid()
     {
-        $messages = [
-            'required' => 'El campo :attribute es obligatorio.',
-            'min' => 'El campo :attribute no puede tener menos de :min carácteres.',
-            'max' => 'El campo :attribute no puede tener más de :max carácteres.',
-            'email' => 'El correo esta mal escrito',
-            'same' => 'Las contraseñas deben ser iguales',
-            'unique' => 'El :attribute ya se encuentra registrado',
-            'numeric' => 'El :attribute va en numeros'
-        ];
-        return $messages;
-    }
 
-    public function isValid($validFiles = false)
-    {
         $rules = $this->getRules();
         $message = $this->getMessage();
-        $validation = \Validator::make($this->data, $rules, $message);
+        $validation = \Validator::make($this->data, $rules,$message);
 
         if ($validation->fails()) {
-            return $validation->errors();
+            $this->errors = $validation->errors();
+            return $this->errors;
             //throw new ValidationException ('Error en los datos', $validation->messages());
         }
 
+
         return ;
 
+    }
+    public function isValidFile(){
+
+        $return = true;
+        $files = $this->data['files'];
+        $messages = $this->errors->getMessageBag();
+        $i=0;
+        foreach($files as $file) {
+
+            $rules = array('files' => 'mimes:png,gif,jpeg,pdf,doc|max:20');
+            $validatorFile = \Validator::make(array('files'=> $file), $rules);
+
+            if($validatorFile->fails()){
+                !$return;
+                $errorsFile =  $validatorFile->getMessageBag()->getMessages();
+                $errorsFile['files'];
+                $messages->add('file'.$i,$errorsFile);
+            }
+            $i++;
+        }
+        $this->errors = $messages;
+
+
+        return $return;
     }
 
     public function prepareData($data)
     {
         return $data;
+    }
+    public function getErrors(){
+        return $this->errors;
     }
 
     public function save()

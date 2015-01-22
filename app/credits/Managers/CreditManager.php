@@ -36,18 +36,29 @@ class CreditManager extends BaseManager
 
 
 
+
         return  $rules;
     }
 
 
 
+
+    public function getMessage()
+    {
+        $messages = [
+            'required' => 'El campo :attribute es obligatorio.',
+            'min' => 'El campo :attribute no puede tener menos de :min carácteres.',
+            'max' => 'El campo :attribute no puede tener más de :max carácteres.',
+            'email' => 'El correo esta mal escrito',
+            'same' => 'Las contraseñas deben ser iguales',
+            'unique' => 'El :attribute ya se encuentra registrado',
+            'numeric' => 'El :attribute va en numeros'
+        ];
+        return $messages;
+    }
     public function saveCredit($files)
     {
-       /* $file = $this->data->file('files');
 
-        if(empty ($file)){
-            return Redirect::to('credito')->with([''])->withInput();
-        }*/
 
 
         $data=$this->prepareData($this->data);
@@ -68,7 +79,7 @@ class CreditManager extends BaseManager
                 $imagename= $image->getClientOriginalName();
 
                 //upload
-                $uploadflag=$image->move('imgs',$imagename);//dest,name
+                $uploadflag=$image->move('upload',$imagename);//dest,name
 
                 if($uploadflag)
                 {
@@ -77,5 +88,6 @@ class CreditManager extends BaseManager
             }
 
         }
+
     }
 }

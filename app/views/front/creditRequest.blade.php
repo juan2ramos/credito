@@ -25,15 +25,7 @@
     {{$errors->first('name_reference2')}}
 
     {{$errors->first('files')}}
-    <script>alert({{$errors->first('document_type')}})</script>
-    @if($errors)
-        <script>
-            var notify = document.getElementById('notify');
-            notify.classList.add('is-show');
-            notify.classList.add('error');
-            notify.querySelector('.text-notify').innerText = 'Datos incorrectos';
-        </script>
-    @endif
+
 
     <section class="Credito u-shadow-5">
         @extends('layout/notify')

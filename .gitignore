@@ -9,5 +9,6 @@ composer.lock
 app/config/mail.php
 Thumbs.db
 .htaccess
+/public/upload/
 
 app/config/database.php
