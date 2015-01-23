@@ -2,7 +2,14 @@
 @section('title') Usuarios @stop
 @section('content')
 
-    <h1>Admnistración de usuarios</h1>
+    <h1 xmlns="http://www.w3.org/1999/html">Admnistración de usuarios</h1>
+    <div class="search">
+        <form action="">
+        <button  class="icon-search"></button>
+        {{Form::input('text','search','',['class' => 'search-input'])}}
+        </form>
+    </div>
+
     <div class="Table-content">
         <table class="table table-striped table-hover ">
             <thead>
