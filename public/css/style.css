@@ -1157,3 +1157,14 @@ button.icon-search{
 #hidden{
     display: none;
 }
+
+#form-errors{
+    background: #df7e7e;
+    color: #fff;
+    border: 1px solid #c16d6d;
+    text-align: center;
+}
+
+#form-errors p{
+
+}
