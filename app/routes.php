@@ -19,11 +19,19 @@ Route::post('passwordRestart', ['as' => 'passwordRestart', 'uses' => 'AuthContro
 Route::get('credito', ['as' => 'credit', 'uses' => 'CreditController@index']);
 Route::post('credito', ['as' => 'credit', 'uses' => 'CreditController@updateCredit']);
 
-Route::post('creditoDrawde',function()
+Route::post('submit',function()
 {
-
-
-
-
-
+	$file = $_FILES;
+	$prefijo = sha1(time());
+	$archivo = ($file['file']['name']);
+	$destino =  "upload/".$prefijo.$archivo;
+	if(move_uploaded_file($_FILES['file']['tmp_name'], $destino))
+	{
+		return Response::json(array($prefijo.$archivo));
+	}else{
+		return Response::json(array("error"."no envio nada"));
+	}
+	return Redirect::to('credito')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
 });
+
+

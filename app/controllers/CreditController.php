@@ -19,16 +19,14 @@ class CreditController extends BaseController
     {
 
 
-        $creditManager = new CreditManager(new CreditRequest(), Input::all());
 
+        $creditManager = new CreditManager(new CreditRequest(), Input::all());
         $creditValidation = $creditManager->isValid();
 
         $creditManager->saveImages(Input::file('file'));
         if ($creditValidation)
         {
-
             return Redirect::to('credito')->withErrors($creditValidation)->withInput();
-
         }
 
             $creditManager->saveCredit(Input::get('files'));
@@ -36,7 +34,9 @@ class CreditController extends BaseController
 
 
 
+
     }
+
 
 
 }

@@ -29,13 +29,12 @@ abstract class BaseManager
         $validation = \Validator::make($this->data, $rules,$message);
 
         if ($validation->fails()) {
-            $this->errors = $validation->errors();
-            return $this->errors;
+           return $validation->errors();
             //throw new ValidationException ('Error en los datos', $validation->messages());
         }
 
 
-        return ;
+        return false;
 
     }
     public function isValidFile(){

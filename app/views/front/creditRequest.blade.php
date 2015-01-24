@@ -1,30 +1,16 @@
 @extends('layout/front')
 @section('title') Solicitud de Credito @stop
 @section('content')
-    {{$errors->first('document_type')}}
-    {{$errors->first('identification_card')}}
-    {{$errors->first('name')}}
-    {{$errors->first('second_name')}}
-    {{$errors->first('last_name')}}
-    {{$errors->first('second_last_name')}}
-    {{$errors->first('address')}}
-    {{$errors->first('residency_city')}}
-    {{$errors->first('birth_city')}}
-    {{$errors->first('date_birth')}}
-    {{$errors->first('phone')}}
-    {{$errors->first('mobile_phone')}}
-    {{$errors->first('birth_city')}}
-    {{$errors->first('instead_expedition')}}
-    {{$errors->first('office_address')}}
-    {{$errors->first('monthly_income')}}
-    {{$errors->first('monthly_expenses')}}
-    {{$errors->first('name_reference')}}
-    {{$errors->first('phone_reference')}}
-    {{$errors->first('phone_reference2')}}
-    {{$errors->first('phone_reference2')}}
-    {{$errors->first('name_reference2')}}
 
-    {{$errors->first('files')}}
+    @if($errors)
+
+        <div id="form-errors">
+
+            @foreach($errors as $error)
+                {{drawde($error);exit;}}
+            @endforeach
+        </div>
+    @endif
 
 
     <section class="Credito u-shadow-5">
@@ -174,7 +160,7 @@
             {{Form::label('phone_reference2','Telefono')}}
             <span></span>
         </div>
-        <div id="hidden">
+        <div class="hidden">
             {{Form::text('files','',['id'=>'form-files'])}}
             {{Form::label('files','Telefono')}}
         </div>
@@ -184,7 +170,7 @@
             {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
         </div>
 
-        <div class="request-image"> </div>
+        <div class="request-image" > </div>
 
 
         <label class="label--checkbox">
