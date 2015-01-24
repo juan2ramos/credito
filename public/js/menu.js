@@ -72,3 +72,10 @@ function resetPassword(e){
 $('.close-notify').on('click',function(){
     $('#notify').removeClass('success is-show');
 })
+var $inputSearch = $( ".search-input");
+$inputSearch.focus(function() { $('.search').addClass('is-open')});
+$inputSearch.blur(function() {
+    if($inputSearch.val() == ''){
+        $('.search').removeClass('is-open');
+    }
+});
