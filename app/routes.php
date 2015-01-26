@@ -28,10 +28,8 @@ Route::post('submit',function()
 	if(move_uploaded_file($_FILES['file']['tmp_name'], $destino))
 	{
 		return Response::json(array($prefijo.$archivo));
-	}else{
-		return Response::json(array("error"."no envio nada"));
 	}
-	return Redirect::to('credito')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
+		return Response::json(array("error"."no envio nada"));
 });
 
 
