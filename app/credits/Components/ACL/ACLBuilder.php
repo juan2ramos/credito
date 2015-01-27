@@ -57,9 +57,9 @@ class ACLBuilder
     private function permissionsRole()
     {
         $data = array();
-        $permissions = Role::join('permissions_roles', 'roles.id', '=', 'permissions_roles.rol_id')
-            ->join('permissions', 'permissions_roles.permission_id', '=', 'permissions.id')
-            ->whereRaw('roles.id = ? AND permissions_roles.available = ?', [$this->idRole, 1])
+        $permissions = Role::join('permission_role', 'roles.id', '=', 'permission_role.role_id')
+            ->join('permissions', 'permission_role.permission_id', '=', 'permissions.id')
+            ->whereRaw('roles.id = ? AND permission_role.available = ?', [$this->idRole, 1])
             ->get();
 
         foreach($permissions as $permission){
