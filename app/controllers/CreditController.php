@@ -17,18 +17,6 @@ class CreditController extends BaseController
 
     public function updateCredit()
     {
-        $files = explode(",", Input::get('files'));
-        foreach($files as $file)
-        {
-            $destino =  "upload/".$file;
-           if( move_uploaded_file ( $file , $destino  ))
-           {
-
-           }else{
-               drawde("no entro" .$file);exit;
-           }
-
-        }
 
         $creditManager = new CreditManager(new CreditRequest(), Input::all());
         $creditValidation = $creditManager->isValid();

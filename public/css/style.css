@@ -1168,3 +1168,40 @@ button.icon-search{
 #form-errors p{
 
 }
+
+/*button close*/
+.img-content:hover .close-button{
+    background: #ff0f98;
+    border-radius: 15px;
+    cursor: pointer;
+    display: block;
+    height: 16px;
+    margin: -1px 10px -15px 44px;
+    position: relative;
+    width: 16px;
+    z-index: 5;
+
+
+}
+
+.img-content:hover .close-line{
+    background: white;
+    display: block;
+    height: 3px;
+    margin: 6px 3px;
+    position: absolute;
+    transform: rotate(47deg);
+    width: 10px;
+    z-index: 5;
+
+}
+
+.img-content:hover .close-line1{
+    background: white;
+    display: block;
+    height: 3px;
+    margin: 6px 3px;
+    transform: rotate(-47deg);
+    position: absolute;
+    width: 10px;
+}

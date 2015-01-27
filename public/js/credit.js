@@ -49,24 +49,27 @@ function uploadImage(file) {
 
         reader.onload = function (e) {
             var data = e.target.result;
-            var nombre = "<p class='p-image'>" + file.name + "</p>";
             switch (file.type) {
 
                 case "image/png":
                     var img = "<img src='img/jpg.png' />";
                     countImage++;
+                    saveImage(file,img);
                     break;
                 case "image/jpeg":
                     var img = "<img src='img/jpg.png' />";
                     countImage++;
+                    saveImage(file,img);
                     break;
                 case "application/pdf":
                     var img = "<img src='img/pdf.png' />";
                     countImage++;
+                    saveImage(file,img);
                     break;
                 case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
                     var img = "<img src='img/doc.png' />";
                     countImage++;
+                    saveImage(file,img);
                     break;
                 default:
                     alert("el archivo no es soportado");
@@ -74,9 +77,6 @@ function uploadImage(file) {
                     break;
 
             }
-            name=name+file.name+",";
-            document.getElementById("form-files").value=name;
-            $('.request-image').append("<div class='img-content' >" + img + nombre + "</div>");
         };
 
 }
@@ -87,6 +87,54 @@ $('body').on('click','.img-content',function(){
     document.getElementById("form-files").value=name;
     countImage--;
 });
+
+function saveImage(file,img) {
+    var form = document.querySelector('form');
+    var request= new XMLHttpRequest();
+    var x;
+            //e.preventDefault();
+            //multiple files will be in the form parameter
+        var formdata= new FormData(form);
+        formdata.append('file',file)
+        request.open('post','submit');//route
+        request.send(formdata);
+        x=request.onreadystatechange = function() {
+       if (request.readyState == 4 && request.status == 200) {
+               var myArr = JSON.parse(request.responseText);
+                myFunction(myArr,img);
+                return x;
+                }
+            }
+}
+
+function myFunction(arr,img) {
+    $(function(){
+        name=name+arr+",";
+        document.getElementById("form-files").value=name;
+        var nombre = "<p class='p-image'>" + arr + "</p>";
+        $('.request-image').append("<div class='img-content' ><span class='close-button'><span class='close-line'></span><span class='close-line1'></span></span>" +img+  nombre + "</div>");
+    });
+}
+/*
+$('.material-input').on('change',function(){
+    var inputValue=$(this).find('input').val();
+    if(inputValue)
+    {
+        //$(this).find("span").css({"width":"100%"});
+        //$(this).find('input').css({"height":"40px !important","padding-top":"20px"});
+    }else
+    {
+        //$(this).find("span").css({"width":"0%"});
+      //  $(this).find('input').css({"height":"20px !important","padding-top":"0px"});
+    }
+});
+
+$('.material-input').on('focus',function(){
+    //$(this).find('input').css({"height":"40px !important"});
+});
+*/
+
+
 
 
 

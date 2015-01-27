@@ -15,7 +15,7 @@ class CreditManager extends BaseManager
             'name_reference'        => 'required',
             'phone_reference'       => 'required|numeric',
             'name_reference2'       => 'required',
-            'phone_reference2'      => 'required',
+            'phone_reference2'      => 'required|numeric',
             'files'                 => 'required',
 
             'name'                  => 'required',
@@ -26,7 +26,7 @@ class CreditManager extends BaseManager
             'residency_city'        => 'required',
             'birth_city'            => 'required',
             'mobile_phone'          => 'required|numeric',
-            'phone'                 => 'required|numeric',
+            'phone'                 => 'numeric',
             'document_type'         => 'required|numeric',
             'identification_card'   => 'required|numeric|unique:users',
             'date_birth'            => 'required',
@@ -46,13 +46,13 @@ class CreditManager extends BaseManager
     public function getMessage()
     {
         $messages = [
-            'required' => 'El campo :attribute es obligatorio.',
-            'min' => 'El campo :attribute no puede tener menos de :min carácteres.',
-            'max' => 'El campo :attribute no puede tener más de :max carácteres.',
-            'email' => 'El correo esta mal escrito',
-            'same' => 'Las contraseñas deben ser iguales',
-            'unique' => 'El :attribute ya se encuentra registrado',
-            'numeric' => 'El :attribute va en numeros'
+            'required'      => 'El campo :attribute es obligatorio.',
+            'min'           => 'El campo :attribute no puede tener menos de :min carácteres.',
+            'max'           => 'El campo :attribute no puede tener más de :max carácteres.',
+            'email'         => 'El correo esta mal escrito',
+            'same'          => 'Las contraseñas deben ser iguales',
+            'unique'        => 'El :attribute ya se encuentra registrado',
+            'numeric'       => 'El :attribute va en numeros'
         ];
         return $messages;
     }
