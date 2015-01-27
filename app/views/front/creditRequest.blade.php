@@ -1,30 +1,47 @@
 @extends('layout/front')
 @section('title') Solicitud de Credito @stop
 @section('content')
-    {{$errors->first('document_type')}}
-    {{$errors->first('identification_card')}}
-    {{$errors->first('name')}}
-    {{$errors->first('second_name')}}
-    {{$errors->first('last_name')}}
-    {{$errors->first('second_last_name')}}
-    {{$errors->first('address')}}
-    {{$errors->first('residency_city')}}
-    {{$errors->first('birth_city')}}
-    {{$errors->first('date_birth')}}
-    {{$errors->first('phone')}}
-    {{$errors->first('mobile_phone')}}
-    {{$errors->first('birth_city')}}
-    {{$errors->first('instead_expedition')}}
-    {{$errors->first('office_address')}}
-    {{$errors->first('monthly_income')}}
-    {{$errors->first('monthly_expenses')}}
-    {{$errors->first('name_reference')}}
-    {{$errors->first('phone_reference')}}
-    {{$errors->first('phone_reference2')}}
-    {{$errors->first('phone_reference2')}}
-    {{$errors->first('name_reference2')}}
+    @if($errors->first())
+        <div id="form-errors">
+            @if($errors->first('document_type'))
+                <p>Seleccione un tipo de documento</p>
+            @endif
+            @if($errors->first('identification_card'))
+                <p>La cedula ya se en encuentra registrada o tiene letras </p>
+            @endif
+                <p>{{$errors->first('name')}}</p>
+                <p>{{$errors->first('second_name')}}</p>
+                <p>{{$errors->first('last_name')}}</p>
+                <p>{{$errors->first('second_last_name')}}</p>
+                <p>{{$errors->first('birth_city')}}</p>
+                <p>{{$errors->first('residency_city')}}</p>
+                <p>{{$errors->first('date_expedition')}}</p>
+                <p>{{$errors->first('instead_expedition')}}</p>
+                <p>{{$errors->first('date_birth')}}</p>
+            @if($errors->first('mobile_phone'))
+                <p>Ingrese el celular en numeros</p>
+            @endif
+            @if($errors->first('phone'))
+                <p>Ingrese el telefono en numeros</p>
+            @endif
+                <p>{{$errors->first('address')}}</p>
+                <p>{{$errors->first('office_address')}}</p>
+                <p>{{$errors->first('monthly_income')}}</p>
+                <p>{{$errors->first('monthly_expenses')}}</p>
+                <p>{{$errors->first('name_reference')}}</p>
+            @if($errors->first('phone_reference'))
+                <p>Ingrese el telefono en numeros</p>
+            @endif
+                <p>{{$errors->first('name_reference2')}}</p>
+            @if($errors->first('phone_reference2'))
+                <p>Ingrese el telefono en numeros</p>
+            @endif
+                @if($errors->first('files'))
+                    <p>Ingrese los archivos requeridos</p>
+                @endif
+        </div>
 
-    {{$errors->first('files')}}
+    @endif
 
 
     <section class="Credito u-shadow-5">
@@ -39,6 +56,7 @@
 
             <div class="material-input">
                 {{ Form::select('document_type', $type,'',array('class'=>'Credit-select')) }}
+
                 <span></span>
             </div>
 
@@ -74,7 +92,7 @@
 
             <div class="material-input">
                 {{Form::text('birth_city','',['id' => 'birth_city','required'])}}
-                {{Form::label('birt_city','Ciudad de nacimiento')}}
+                {{Form::label('birth_city','Ciudad de nacimiento')}}
                 <span></span>
             </div>
 
@@ -98,13 +116,13 @@
 
             <div class="material-input">
                 {{Form::text('instead_expedition','',['id' => 'instead_expedition','required'])}}
-                {{Form::label('instead_texpedition','Lugar de expedicion')}}
+                {{Form::label('instead_expedition','Lugar de expedicion')}}
                 <span></span>
             </div>
 
             <div class="material-input">
                 {{Form::text('date_birth','',['id' => 'date_birth','required'])}}
-                {{Form::label('date_birt','Fecha de nacimiento')}}
+                {{Form::label('date_birth','Fecha de nacimiento')}}
                 <span></span>
             </div>
 
@@ -174,9 +192,8 @@
             {{Form::label('phone_reference2','Telefono')}}
             <span></span>
         </div>
-        <div id="hidden">
+        <div class="hidden">
             {{Form::text('files','',['id'=>'form-files'])}}
-            {{Form::label('files','Telefono')}}
         </div>
         <div class="pop-up ">
             <p>Sube <tus></tus> documentos</p>
@@ -184,11 +201,11 @@
             {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
         </div>
 
-        <div class="request-image"> </div>
+        <div class="request-image" > </div>
 
 
         <label class="label--checkbox">
-            {{Form::checkbox('remember', 1, null, ['class' => 'checkbox'])}}
+            {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
             Acepto las condiciones de lilipink
         </label>
 
