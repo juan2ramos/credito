@@ -18,6 +18,7 @@ class CreditController extends BaseController
     public function updateCredit()
     {
 
+
         $creditManager = new CreditManager(new CreditRequest(), Input::all());
         $creditValidation = $creditManager->isValid();
 

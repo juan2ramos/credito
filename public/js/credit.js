@@ -81,7 +81,7 @@ function uploadImage(file) {
 
 }
 $('body').on('click','.img-content',function(){
-    var nombre=$(this).find('p').text();
+    var nombre=$(this).find('.p-image').text();
     $(this).remove();
     name=name.replace(nombre+",","");
     document.getElementById("form-files").value=name;
@@ -101,18 +101,19 @@ function saveImage(file,img) {
         x=request.onreadystatechange = function() {
        if (request.readyState == 4 && request.status == 200) {
                var myArr = JSON.parse(request.responseText);
-                myFunction(myArr,img);
-                return x;
+                myFunction(myArr,img,file);
                 }
             }
 }
 
-function myFunction(arr,img) {
+function myFunction(arr,img,file) {
     $(function(){
+
         name=name+arr+",";
         document.getElementById("form-files").value=name;
         var nombre = "<p class='p-image'>" + arr + "</p>";
-        $('.request-image').append("<div class='img-content' ><span class='close-button'><span class='close-line'></span><span class='close-line1'></span></span>" +img+  nombre + "</div>");
+        var nombreOculto = "<p class='p-image1'>" + file.name + "</p>";
+        $('.request-image').append("<div class='img-content' ><span class='close-button'><span class='close-line'></span><span class='close-line1'></span></span>" +img+nombreOculto+  nombre + "</div>");
     });
 }
 /*

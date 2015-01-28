@@ -822,7 +822,11 @@ input[type=file] {
     width: 50px;
 }
 
-.p-image {
+.p-image{
+    display: none ;
+}
+
+.p-image1 {
     word-break: break-all;
     width: 80px;
     font-size: 10px;
