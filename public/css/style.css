@@ -535,11 +535,11 @@ img {
 }
 
 .material-input input:focus ~ span {
-    width: 100%
+    width: 100%;
 }
 
 .material-input input:focus {
-    height: 40px;
+    height: 40px !important;
 }
 
 .material-input input:focus {
@@ -567,17 +567,17 @@ img {
     pointer-events: none;
 }
 
-.material-input input:focus ~ label, .material-input input:valid ~ label {
-    top: -10px
+.material-input input:focus ~ label/*, .material-input input:valid ~ label*/ {
+    top: -10px!important
 }
 
-.material-input input:valid ~ span {
+/*.material-input input:valid ~ span {
     width: 100%
-}
+}*/
 
-.material-input input:focus, .material-input input:valid {
-    height: 40px;
-    padding-top: 20px;
+.material-input input:focus, /*.material-input input:valid*/ {
+    height: 40px !important;
+    padding-top: 20px !important;
 }
 
 /* Login */

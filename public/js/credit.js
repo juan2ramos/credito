@@ -116,24 +116,55 @@ function myFunction(arr,img,file) {
         $('.request-image').append("<div class='img-content' ><span class='close-button'><span class='close-line'></span><span class='close-line1'></span></span>" +img+nombreOculto+  nombre + "</div>");
     });
 }
-/*
+
 $('.material-input').on('change',function(){
+    console.log("change");
     var inputValue=$(this).find('input').val();
+    var mobilePhone=$('#mobile_phone');
+    var phone=$('#phone');
     if(inputValue)
     {
-        //$(this).find("span").css({"width":"100%"});
-        //$(this).find('input').css({"height":"40px !important","padding-top":"20px"});
+        $(this).find("span").css({"width":"100% " });
+        $(this).find("label").css({"top":"-10px"});
+        $(this).find("input").css({"height": "40px","padding-top":" 20px"});
     }else
     {
-        //$(this).find("span").css({"width":"0%"});
-      //  $(this).find('input').css({"height":"20px !important","padding-top":"0px"});
+        $(this).find("span").css({"width":"0%"});
+        $(this).find("label").css({"top":"0px"});
+        $(this).find("input").css({"height": "20px","padding-top":" 10px"});
+    }
+
+    if(mobilePhone.val())
+    {
+        phone.removeAttr("required","required");
+    }else{
+        phone.attr("required","required");
+    }
+    if(phone.val())
+    {
+        mobilePhone.removeAttr("required","required");
+    }else{
+        mobilePhone.attr("required","required");
     }
 });
-
-$('.material-input').on('focus',function(){
-    //$(this).find('input').css({"height":"40px !important"});
+$(function()
+{
+    $(".material-input" ).each(function() {
+        var $el=$(this);
+        if($el.find("input").val() )
+        {
+            $el.find("span").css({"width":"100% " });
+            $el.find("label").css({"top":"-10px"});
+            $el.find("input").css({"height": "40px","padding-top":" 20px"});
+        }
+    });
 });
-*/
+
+
+
+
+
+
 
 
 

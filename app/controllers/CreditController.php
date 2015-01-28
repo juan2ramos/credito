@@ -4,6 +4,7 @@ use credits\Managers\CreditManager;
 use credits\Managers\UserManager;
 use credits\Entities\CreditRequest;
 use credits\Entities\User;
+use credits\Repositories\ImageRepo;
 
 class CreditController extends BaseController
 {
@@ -17,12 +18,9 @@ class CreditController extends BaseController
 
     public function updateCredit()
     {
-
-
         $creditManager = new CreditManager(new CreditRequest(), Input::all());
         $creditValidation = $creditManager->isValid();
 
-        $creditManager->saveImages(Input::file('file'));
         if ($creditValidation)
         {
             return Redirect::to('credito')->withErrors($creditValidation)->withInput();
@@ -31,9 +29,13 @@ class CreditController extends BaseController
             $creditManager->saveCredit(Input::get('files'));
             return Redirect::to('credito')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
 
+    }
 
-
-
+    public function saveImage()
+    {
+        $saveImages= new ImageRepo();
+        $message=$saveImages->saveImages($_FILES);
+        return Response::json(array($message));
     }
 
 

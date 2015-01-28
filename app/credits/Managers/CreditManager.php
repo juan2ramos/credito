@@ -25,7 +25,7 @@ class CreditManager extends BaseManager
             'address'               => 'required',
             'residency_city'        => 'required',
             'birth_city'            => 'required',
-            'mobile_phone'          => 'required|numeric',
+            'mobile_phone'          => 'numeric',
             'phone'                 => 'numeric',
             'document_type'         => 'required|numeric',
             'identification_card'   => 'required|numeric|unique:users',
@@ -70,24 +70,4 @@ class CreditManager extends BaseManager
 
     }
 
-    public function saveImages($images)
-    {
-
-        foreach ($images as $image) {
-            if($image)
-            {
-                $imagename= $image->getClientOriginalName();
-
-                //upload
-                $uploadflag=$image->move('upload',$imagename);//dest,name
-
-                if($uploadflag)
-                {
-                    $uploadedimages[]=$imagename;
-                }
-            }
-
-        }
-
-    }
 }

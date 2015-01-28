@@ -61,49 +61,49 @@
             </div>
 
             <div class="material-input">
-                {{Form::text('identification_card','',['id' => 'identification_card','required'])}}
+                {{Form::text('identification_card','',['id' => 'identification_card'])}}
                 {{Form::label('identification_card','Cedula')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('name','',['id' => 'name','required'])}}
+                {{Form::text('name','',['id' => 'name'])}}
                 {{Form::label('name','Nombre')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('second_name','',['id' => 'second_name','required'])}}
+                {{Form::text('second_name','',['id' => 'second_name'])}}
                 {{Form::label('second_name','Segundo nombre')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('last_name','',['id' => 'last_name','required'])}}
+                {{Form::text('last_name','',['id' => 'last_name'])}}
                 {{Form::label('last_name','Apellido')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('second_last_name','',['id' => 'second_last_name','required'])}}
+                {{Form::text('second_last_name','',['id' => 'second_last_name'])}}
                 {{Form::label('second_last_name','Segundo apellido')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('birth_city','',['id' => 'birth_city','required'])}}
+                {{Form::text('birth_city','',['id' => 'birth_city'])}}
                 {{Form::label('birth_city','Ciudad de nacimiento')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('residency_city','',['id' => 'residency_city','required'])}}
+                {{Form::text('residency_city','',['id' => 'residency_city'])}}
                 {{Form::label('residency_city','Ciudad de residencia')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('date_expedition','',['id' => 'date_expedition','required'])}}
+                {{Form::text('date_expedition','',['id' => 'date_expedition'])}}
                 {{Form::label('date_expedition','Fecha de expedicion')}}
                 <span></span>
             </div>
@@ -115,13 +115,13 @@
         <section class="Credit-section">
 
             <div class="material-input">
-                {{Form::text('instead_expedition','',['id' => 'instead_expedition','required'])}}
+                {{Form::text('instead_expedition','',['id' => 'instead_expedition'])}}
                 {{Form::label('instead_expedition','Lugar de expedicion')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('date_birth','',['id' => 'date_birth','required'])}}
+                {{Form::text('date_birth','',['id' => 'date_birth'])}}
                 {{Form::label('date_birth','Fecha de nacimiento')}}
                 <span></span>
             </div>
@@ -140,25 +140,25 @@
 
 
             <div class="material-input">
-                {{Form::text('address','',['id' => 'address','required'])}}
+                {{Form::text('address','',['id' => 'address'])}}
                 {{Form::label('address','Direccion')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('office_address','',['id' => 'office_address','required'])}}
+                {{Form::text('office_address','',['id' => 'office_address'])}}
                 {{Form::label('office_address','Direcion de la oficina')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('monthly_income','',['id' => 'monthly_income','required'])}}
+                {{Form::text('monthly_income','',['id' => 'monthly_income'])}}
                 {{Form::label('monthly_income','Ingresos mensuales')}}
                 <span></span>
             </div>
 
             <div class="material-input">
-                {{Form::text('monthly_expenses','',['id' => 'monthly_expenses','required'])}}
+                {{Form::text('monthly_expenses','',['id' => 'monthly_expenses'])}}
                 {{Form::label('monthly_expenses','Egresos mensuales')}}
                 <span></span>
             </div>
@@ -168,13 +168,13 @@
         <p>Referencia Personal 1</p>
 
         <div class="material-input">
-            {{Form::text('name_reference','',['id' => 'name_reference','required'])}}
+            {{Form::text('name_reference','',['id' => 'name_reference'])}}
             {{Form::label('Name_reference','Nombre')}}
             <span></span>
         </div>
 
         <div class="material-input">
-            {{Form::text('phone_reference','',['id' => 'phone_reference','required'])}}
+            {{Form::text('phone_reference','',['id' => 'phone_reference'])}}
             {{Form::label('phone_reference','Telefono')}}
             <span></span>
         </div>
@@ -182,13 +182,13 @@
         <p>Referencia Personal2</p>
 
         <div class="material-input">
-            {{Form::text('name_reference2','',['id' => 'name_reference2','required'])}}
+            {{Form::text('name_reference2','',['id' => 'name_reference2'])}}
             {{Form::label('Name_reference2','Nombre')}}
             <span></span>
         </div>
 
         <div class="material-input">
-            {{Form::text('phone_reference2','',['id' => 'phone_reference2','required'])}}
+            {{Form::text('phone_reference2','',['id' => 'phone_reference2'])}}
             {{Form::label('phone_reference2','Telefono')}}
             <span></span>
         </div>
