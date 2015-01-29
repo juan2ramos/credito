@@ -6,18 +6,19 @@ use credits\Entities\Log;
 
 class LogRepo extends BaseRepo{
 
+    private $_data;
+
+    public function __construct($data){
+        $this->_data= $data;
+    }
     protected function getModel()
     {
-
+        return new Log;
     }
-    public function log($responsible,$action,$affected_entity,$method)
+    public function log()
     {
-        $log=new Log();
-        $log->responsible=$responsible;
-        $log->action=$action;
-        $log->affected_entity=$affected_entity;
-        $log->method=$method;
-        $log->save();
+        $this->model->fill($this->_data) ;
+        $this->model->save();
     }
 
 }

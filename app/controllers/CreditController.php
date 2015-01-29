@@ -19,25 +19,40 @@ class CreditController extends BaseController
 
     public function updateCredit()
     {
-        $user_name=[ "user_name" => Input::get('name').'.'.Input::get('second_name').'.'.Input::get('last_name').'.'.Input::get('second_last_name')]+Input::all();
-        $creditManager = new CreditManager(new CreditRequest(), $user_name);
+        $user_name = ["user_name" =>
+            Input::get('name') . '.' .
+            Input::get('second_name') . '.' .
+            Input::get('last_name') . '.' .
+            Input::get('second_last_name')
+        ];
+
+        $dataCredit = $user_name + Input::all();
+        $creditManager = new CreditManager(new CreditRequest(), $dataCredit);
         $creditValidation = $creditManager->isValid();
 
-        if ($creditValidation)
-        {
-            return Redirect::to('credito')->withErrors($creditValidation)->withInput();
+        if ($creditValidation) {
+            return Redirect::route('credit')->withErrors($creditValidation)->withInput();
         }
-            $log=new LogRepo();
-            $log->log($user_name['user_name'],'ha solicitado un credito','','updateCredit');
-            $creditManager->saveCredit(Input::get('files'));
-            return Redirect::to('credito')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
+        $creditManager->saveCredit(Input::get('files'));
+
+        new LogRepo(
+            [
+                $user_name ,
+                'action' => 'ha solicitado un credito',
+                'affected_entity' => '',
+                'method' => 'updateCredit'
+            ]
+        );
+
+        return Redirect::route('credit')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
 
     }
 
+
     public function saveImage()
     {
-        $saveImages= new ImageRepo();
-        $message=$saveImages->saveImages($_FILES);
+        $saveImages = new ImageRepo();
+        $message = $saveImages->saveImages($_FILES);
         return Response::json(array($message));
     }
 

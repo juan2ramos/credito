@@ -163,11 +163,12 @@ $(function()
 });
 $("#date_birth").on('change',function()
 {
+        var $el=$(this);
         if($('#date_birth').val())
         {
-            this.css({"color": "#949494"});
+            $el.css({"color": "#949494"});
         }else{
-            this.css({"color": "rgba(161, 161, 161, 0)"});
+            $el.css({"color": "rgba(161, 161, 161, 0)"});
         }
 
 
@@ -175,11 +176,12 @@ $("#date_birth").on('change',function()
 
 $("#date_expedition").on('change',function()
 {
+    var $el=$(this);
         if($('#date_expedition').val())
         {
-            this.css({"color": "#949494"});
+            $el.css({"color": "#949494"});
         }else{
-            this.css({"color": "rgba(161, 161, 161, 0)"});
+            $el.css({"color": "rgba(161, 161, 161, 0)"});
         }
 
 

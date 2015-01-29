@@ -833,9 +833,11 @@ input[type=file] {
 }
 
 .Credit-section {
-    display: inline-block;
-    width: 45%;
     min-width: 312px;
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+
 }
 
 .u-CreditSection {
@@ -843,7 +845,7 @@ input[type=file] {
     margin-bottom: -38px;
 }
 
-.Credito h1 {
+.Credit h1 {
     text-align: center;
     padding-top: 50px;
 }
@@ -889,7 +891,11 @@ input[type=file] {
 .u-loader svg rect {
     fill: #ff53bd;
 }
-
+.TitleReference{
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 40px 0 0;
+}
 .notify {
     clear: both;
     font-size: 12px;

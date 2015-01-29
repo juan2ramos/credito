@@ -44,7 +44,7 @@
     @endif
 
 
-    <section class="Credito u-shadow-5">
+    <section class="Credit u-shadow-5">
         @extends('layout/notify')
 
         <h1>Solicitud de credito</h1>
@@ -165,7 +165,7 @@
 
         </section>
 
-        <p>Referencia Personal 1</p>
+        <p class="titleReference">Referencia Personal 1</p>
 
         <div class="material-input">
             {{Form::text('name_reference','',['id' => 'name_reference'])}}
@@ -179,7 +179,7 @@
             <span></span>
         </div>
 
-        <p>Referencia Personal2</p>
+        <p class="titleReference">Referencia Personal2</p>
 
         <div class="material-input">
             {{Form::text('name_reference2','',['id' => 'name_reference2'])}}
