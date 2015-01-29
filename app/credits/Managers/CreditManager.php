@@ -6,7 +6,7 @@ class CreditManager extends BaseManager
     public function getRules()
     {
         $rules=[
-
+            'identification_card'   => 'required|numeric|unique:users',
             'date_expedition'       => 'required',
             'instead_expedition'    => 'required',
             'office_address'        => 'required',
@@ -17,7 +17,7 @@ class CreditManager extends BaseManager
             'name_reference2'       => 'required',
             'phone_reference2'      => 'required|numeric',
             'files'                 => 'required',
-
+            'user_name'             => 'required|unique:users',
             'name'                  => 'required',
             'second_name'           => 'required',
             'last_name'             => 'required',
@@ -25,17 +25,12 @@ class CreditManager extends BaseManager
             'address'               => 'required',
             'residency_city'        => 'required',
             'birth_city'            => 'required',
-            'mobile_phone'          => 'required|numeric',
+            'mobile_phone'          => 'numeric',
             'phone'                 => 'numeric',
             'document_type'         => 'required|numeric',
-            'identification_card'   => 'required|numeric|unique:users',
             'date_birth'            => 'required',
 
         ];
-
-
-
-
 
         return  $rules;
     }
@@ -58,9 +53,6 @@ class CreditManager extends BaseManager
     }
     public function saveCredit($files)
     {
-
-
-
         $data=$this->prepareData($this->data);
         $user = new User($data);
         $user->save();
@@ -70,24 +62,4 @@ class CreditManager extends BaseManager
 
     }
 
-    public function saveImages($images)
-    {
-
-        foreach ($images as $image) {
-            if($image)
-            {
-                $imagename= $image->getClientOriginalName();
-
-                //upload
-                $uploadflag=$image->move('upload',$imagename);//dest,name
-
-                if($uploadflag)
-                {
-                    $uploadedimages[]=$imagename;
-                }
-            }
-
-        }
-
-    }
 }

@@ -26,11 +26,5 @@ class UserManager extends BaseManager
     }
 
 
-    public function saveUser()
-    {
-       //$user=$this->entity->find(1);
-
-        //$this->entity->CreditRequest()->save();
-    }
 
 }

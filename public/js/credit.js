@@ -81,7 +81,7 @@ function uploadImage(file) {
 
 }
 $('body').on('click','.img-content',function(){
-    var nombre=$(this).find('p').text();
+    var nombre=$(this).find('.p-image').text();
     $(this).remove();
     name=name.replace(nombre+",","");
     document.getElementById("form-files").value=name;
@@ -101,38 +101,95 @@ function saveImage(file,img) {
         x=request.onreadystatechange = function() {
        if (request.readyState == 4 && request.status == 200) {
                var myArr = JSON.parse(request.responseText);
-                myFunction(myArr,img);
-                return x;
+                myFunction(myArr,img,file);
                 }
             }
 }
 
-function myFunction(arr,img) {
+function myFunction(arr,img,file) {
     $(function(){
+
         name=name+arr+",";
         document.getElementById("form-files").value=name;
         var nombre = "<p class='p-image'>" + arr + "</p>";
-        $('.request-image').append("<div class='img-content' ><span class='close-button'><span class='close-line'></span><span class='close-line1'></span></span>" +img+  nombre + "</div>");
+        var nombreOculto = "<p class='p-image1'>" + file.name + "</p>";
+        $('.request-image').append("<div class='img-content' ><span class='close-button'><span class='close-line'></span><span class='close-line1'></span></span>" +img+nombreOculto+  nombre + "</div>");
     });
 }
-/*
+
 $('.material-input').on('change',function(){
     var inputValue=$(this).find('input').val();
+    var mobilePhone=$('#mobile_phone');
+    var phone=$('#phone');
     if(inputValue)
     {
-        //$(this).find("span").css({"width":"100%"});
-        //$(this).find('input').css({"height":"40px !important","padding-top":"20px"});
+        $(this).find("span").css({"width":"100% " });
+        $(this).find("label").css({"top":"-10px"});
+        $(this).find("input").css({"height": "40px","padding-top":" 20px"});
     }else
     {
-        //$(this).find("span").css({"width":"0%"});
-      //  $(this).find('input').css({"height":"20px !important","padding-top":"0px"});
+        $(this).find("span").css({"width":"0%"});
+        $(this).find("label").css({"top":"0px"});
+        $(this).find("input").css({"height": "20px","padding-top":" 10px"});
     }
+
+    if(mobilePhone.val())
+    {
+        phone.removeAttr("required","required");
+    }else{
+        phone.attr("required","required");
+    }
+    if(phone.val())
+    {
+        mobilePhone.removeAttr("required","required");
+    }else{
+        mobilePhone.attr("required","required");
+    }
+
+
+});
+$(function()
+{
+    $(".material-input" ).each(function() {
+        var $el=$(this);
+        if($el.find("input").val() )
+        {
+            $el.find("span").css({"width":"100% " });
+            $el.find("label").css({"top":"-10px"});
+            $el.find("input").css({"height": "40px","padding-top":" 20px","color": "#949494"});
+        }
+    });
+
+});
+$("#date_birth").on('change',function()
+{
+        if($('#date_birth').val())
+        {
+            this.css({"color": "#949494"});
+        }else{
+            this.css({"color": "rgba(161, 161, 161, 0)"});
+        }
+
+
 });
 
-$('.material-input').on('focus',function(){
-    //$(this).find('input').css({"height":"40px !important"});
+$("#date_expedition").on('change',function()
+{
+        if($('#date_expedition').val())
+        {
+            this.css({"color": "#949494"});
+        }else{
+            this.css({"color": "rgba(161, 161, 161, 0)"});
+        }
+
+
 });
-*/
+
+
+
+
+
+
 
 
 
