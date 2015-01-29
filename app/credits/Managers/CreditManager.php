@@ -25,8 +25,8 @@ class CreditManager extends BaseManager
             'address'               => 'required',
             'residency_city'        => 'required',
             'birth_city'            => 'required',
-            'mobile_phone'          => 'numeric',
-            'phone'                 => 'numeric',
+            'mobile_phone'          => 'numeric|required_if:phone,null',
+            'phone'                 => 'numeric|required_if:mobile_phone,null',
             'document_type'         => 'required|numeric',
             'date_birth'            => 'required',
 
