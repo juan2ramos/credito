@@ -103,7 +103,7 @@
             </div>
 
             <div class="material-input">
-                {{Form::text('date_expedition','',['id' => 'date_expedition'])}}
+                {{Form::input('date','date_expedition','',['id' => 'date_expedition'])}}
                 {{Form::label('date_expedition','Fecha de expedicion')}}
                 <span></span>
             </div>
@@ -121,7 +121,7 @@
             </div>
 
             <div class="material-input">
-                {{Form::text('date_birth','',['id' => 'date_birth'])}}
+                {{Form::input('date','date_birth','',['id' => 'date_birth'])}}
                 {{Form::label('date_birth','Fecha de nacimiento')}}
                 <span></span>
             </div>

@@ -118,7 +118,6 @@ function myFunction(arr,img,file) {
 }
 
 $('.material-input').on('change',function(){
-    console.log("change");
     var inputValue=$(this).find('input').val();
     var mobilePhone=$('#mobile_phone');
     var phone=$('#phone');
@@ -146,6 +145,8 @@ $('.material-input').on('change',function(){
     }else{
         mobilePhone.attr("required","required");
     }
+
+
 });
 $(function()
 {
@@ -155,9 +156,33 @@ $(function()
         {
             $el.find("span").css({"width":"100% " });
             $el.find("label").css({"top":"-10px"});
-            $el.find("input").css({"height": "40px","padding-top":" 20px"});
+            $el.find("input").css({"height": "40px","padding-top":" 20px","color": "#949494"});
         }
     });
+
+});
+$("#date_birth").on('change',function()
+{
+        if($('#date_birth').val())
+        {
+            this.css({"color": "#949494"});
+        }else{
+            this.css({"color": "rgba(161, 161, 161, 0)"});
+        }
+
+
+});
+
+$("#date_expedition").on('change',function()
+{
+        if($('#date_expedition').val())
+        {
+            this.css({"color": "#949494"});
+        }else{
+            this.css({"color": "rgba(161, 161, 161, 0)"});
+        }
+
+
 });
 
 
