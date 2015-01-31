@@ -30,11 +30,11 @@
                 <p>{{$errors->first('monthly_expenses')}}</p>
                 <p>{{$errors->first('name_reference')}}</p>
             @if($errors->first('phone_reference'))
-                <p>Ingrese el telefono en numeros</p>
+                <p>Ingrese el telefono de la referencia 1 en numeros</p>
             @endif
                 <p>{{$errors->first('name_reference2')}}</p>
             @if($errors->first('phone_reference2'))
-                <p>Ingrese el telefono en numeros</p>
+                <p>Ingrese el telefono de la referencia 2 en numeros</p>
             @endif
                 @if($errors->first('files'))
                     <p>Ingrese los archivos requeridos</p>

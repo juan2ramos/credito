@@ -20,4 +20,10 @@ Route::get('credito', ['as' => 'credit', 'uses' => 'CreditController@index']);
 Route::post('credito', ['as' => 'credit', 'uses' => 'CreditController@updateCredit']);
 Route::post('submit', ['as' => 'submit', 'uses' => 'CreditController@saveImage']);
 
+//slider
+
+Route::get('slider', ['as' => 'slider', 'uses' => 'SliderController@index']);
+Route::post('slider', ['as' => 'slider', 'uses' => 'SliderController@updateSlider']);
+Route::post('slider', ['as' => 'slider', 'uses' => 'SliderController@saveImage']);
+
 
