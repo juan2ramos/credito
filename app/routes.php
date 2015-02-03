@@ -22,8 +22,7 @@ Route::post('submit', ['as' => 'submit', 'uses' => 'CreditController@saveImage']
 
 //slider
 
-Route::get('slider', ['as' => 'slider', 'uses' => 'SliderController@index']);
-Route::post('slider', ['as' => 'slider', 'uses' => 'SliderController@updateSlider']);
-Route::post('slider', ['as' => 'slider', 'uses' => 'SliderController@saveImage']);
-
+Route::get('slider', ['as' => 'slider', 'uses' => 'SliderController@showSlider']);
+Route::post('slider', ['as' => 'slider', 'uses' => 'SliderController@saveSlider']);
+Route::post('administrar', ['as' => 'administratorSlider', 'uses' => 'SliderController@uploadSlider']);
 

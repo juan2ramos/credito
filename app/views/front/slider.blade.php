@@ -3,33 +3,52 @@
 @section('content')
 
     <section class="Slider u-shadow-5">
-        <h1>Sliders</h1>
-
-        {{Form::open(array('url'=>'slider','method'=>'POST','files'=>true,'class'=>"Slider-form",'enctype'=>'multipar/form-data'))}}
-
-        <div class="material-input">
-            {{Form::text('number_slider','',['id' => 'number_slider'])}}
-            {{Form::label('number_slider','número de imagenes')}}
-            <span></span>
+        <div class="slider-content">
+            <p class="slider-nuw" onclick="nuevo();">nuevo</p>
+            <p class="slider-edit" onclick="editar();">editar</p>
         </div>
 
-        <div class="hidden">
-            {{Form::text('files','',['id'=>'form-files'])}}
-        </div>
+        <section id="slider-new" class="hidden">
+            <h1>Sliders</h1>
 
-        <div class="pop-up ">
-            <p>Sube <tus></tus> documentos</p>
-            {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
-            {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
-        </div>
+            {{Form::open(array('route'=>'slider','method'=>'POST','files'=>true,'class'=>"Slider-form",'enctype'=>'multipar/form-data'))}}
 
-        <div class="request-image" > </div>
+            <div class="hidden">
+                {{Form::text('number_slider','',['id' => 'number_slider'])}}
+            </div>
 
-        <button class="u-button">
-            Guardar Sliders
-        </button>
+            <div class="pop-up ">
+                <p>Sube tu imagen</p>
+                {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
+                {{Form::file('files',array('id'=>'files','name'=>'files'))}}
+            </div>
 
-        {{Form::close()}}
+            <div id="request-image" > </div>
+
+            <button class="u-button">
+                Guardar Sliders
+            </button>
+
+            {{Form::close()}}
+        </section>
+        <section  id="slider-edit">
+            {{ Form::open(array('name'=>'slider-form','route' => 'administratorSlider', 'method' => 'POST','class'=>'form-slider')) }}
+            <div class="hidden">{{$i=0;}}</div>
+            @if(count($sliders))
+                @foreach($sliders as $slider)
+                    <section>
+                        <img src="sliders/{{$slider->files}}" />
+                        {{ Form::select("$i", $select, $slider->number_slider, array('class' => 'number_slider')) }}
+                        <div class="hidden">{{$i++;}}</div>
+                    </section>
+                @endforeach
+            @endif
+            <button class="u-button">
+                Guardar Sliders
+            </button>
+            {{Form::close()}}
+        </section>
+
     </section>
 
 @stop

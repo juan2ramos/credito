@@ -1261,17 +1261,20 @@ button.icon-search{
 }
 
 .slider{
-    display: inline-block;
     background:rgba(24, 23, 23, 0.5) !important;
+    color:rgba(222, 184, 135, 0);
+    cursor: pointer;
+    display: inline-block;
     width: 15px !important;
     height: 15px !important;
     border-radius: 15px;
     position: relative;
     top:-25px;
     left: 450px;
-    color:rgba(222, 184, 135, 0);
+
 }
 .sliderValid{
+    cursor: pointer;
     display: inline-block;
     background: #e80e8a !important;
     width: 15px !important;
@@ -1282,3 +1285,50 @@ button.icon-search{
     top:-25px;
     left: 450px;
 }
+
+/*Slider form*/
+
+.Slider-form{
+    margin: auto;
+    padding: 20px 20px 50px;
+    width: 80%;
+}
+
+.Slider-form #request-image{
+    text-align: center;
+}
+
+.Slider-form #request-image img
+{
+    width: 300px;
+}
+
+.form-slider{
+    margin: auto;
+    padding: 20px 20px 50px;
+    width: 80%;
+}
+
+.form-slider img{
+    width: 100%;
+}
+
+#slider-edit section{
+    width: 23%;
+    display: inline-block;
+    margin: 23px 8px;
+}
+
+.slider-content p{
+    display: inline-block;
+}
+
+.up{
+    animation: myfirst 2s;
+}
+
+@keyframes myfirst {
+    from {opacity: 0.1;}
+    to {opacity: 1;}
+}
+

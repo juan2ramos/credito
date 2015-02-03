@@ -14,6 +14,7 @@ function cambiarSlider(){
 }
 
 $(".slider").click(function(){
+
     i=$(this).text();
     procesos();
 });
@@ -45,200 +46,84 @@ function procesos()
 
 
 //subir imagenes para el sliders
+function archivo(evt) {
+    var files = evt.target.files; // FileList object
 
-var countImage = 0,aux= 0,images=0;
-var name="";
+    //Obtenemos la imagen del campo "file".
+    for (var i = 0, f; f = files[i]; i++) {
+        //Solo admitimos imágenes.
 
-$(function () {
-    $("#number_slider").on('change',function()
-    {
-        images=$(this).val();
-    });
-    console.log(images);
-    var $files = $('#files');
-    $files.on('change', function () {
-        for (var i = 0; i < this.files.length; i++) {
-            if(i<images)
-            {
-                if (this.files[i].size < 2400000 ) {
-                    if (countImage < images){
-                        aux=countImage+i;
-                        if(aux<images)
-                        {
-                            uploadImage(this.files[i]);
-                        }
-
-                    } else {
-                        alert("solo se pueden subir "+images+" archivos");
-                    }
-                }else{
-                    alert("El tamaño de la imagen debe ser inferior a 2MB");
-                }
-            }
-
+        if (!f.type.match('image.*')) {
+            continue;
         }
-    });
-    $files.on('dragover', function () {
 
-        $('.pop-up').addClass('hover-file');
-        $('#files').addClass('hover-file1');
-        $('#image-file').addClass('hover-file2');
-    });
-    $files.on('dragleave', removeElement);
-    $files.on('drop', removeElement);
-});
+        var reader = new FileReader();
 
-function removeElement() {
-    $('.pop-up').removeClass('hover-file');
-    $('#files').removeClass('hover-file1');
-    $('#image-file').removeClass('hover-file2');
-}
-function uploadImage(file) {
-    var reader = new FileReader(file);
+        reader.onload = (function(theFile) {
+            return function(e) {
+                // Creamos la imagen.
+                document.getElementById("request-image").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+            };
+        })(f);
 
-    reader.readAsDataURL(file);
-
-    reader.onload = function (e) {
-        var data = e.target.result;
-        switch (file.type) {
-
-            case "image/png":
-                var img = "<img src='img/jpg.png' />";
-                countImage++;
-                saveImage(file,img);
-                break;
-            case "image/jpeg":
-                var img = "<img src='img/jpg.png' />";
-                countImage++;
-                saveImage(file,img);
-                break;
-            case "application/pdf":
-                var img = "<img src='img/pdf.png' />";
-                countImage++;
-                saveImage(file,img);
-                break;
-            case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-                var img = "<img src='img/doc.png' />";
-                countImage++;
-                saveImage(file,img);
-                break;
-            default:
-                alert("el archivo no es soportado");
-                throw new Error('Invalid action.');
-                break;
-
-        }
-    };
-
-}
-$('body').on('click','.img-content',function(){
-    var nombre=$(this).find('.p-image').text();
-    $(this).remove();
-    name=name.replace(nombre+",","");
-    document.getElementById("form-files").value=name;
-    countImage--;
-});
-
-function saveImage(file,img) {
-    var form = document.querySelector('form');
-    var request= new XMLHttpRequest();
-    var x;
-    //e.preventDefault();
-    //multiple files will be in the form parameter
-    var formdata= new FormData(form);
-    formdata.append('file',file)
-    request.open('post','slider');//route
-    request.send(formdata);
-    x=request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200) {
-            var myArr = JSON.parse(request.responseText);
-            myFunction(myArr,img,file);
-        }
+        reader.readAsDataURL(f);
     }
 }
 
-function myFunction(arr,img,file) {
-    $(function(){
+document.getElementById('files').addEventListener('change', archivo, false);
 
-        name=name+arr+",";
-        document.getElementById("form-files").value=name;
-        var nombre = "<p class='p-image'>" + arr + "</p>";
-        var nombreOculto = "<p class='p-image1'>" + file.name + "</p>";
-        $('.request-image').append("<div class='img-content' ><span class='close-button'><span class='close-line'></span><span class='close-line1'></span></span>" +img+nombreOculto+  nombre + "</div>");
-    });
-}
-
-$('.material-input').on('change',function(){
-    var inputValue=$(this).find('input').val();
-    var mobilePhone=$('#mobile_phone');
-    var phone=$('#phone');
-    if(inputValue)
-    {
-        $(this).find("span").css({"width":"100% " });
-        $(this).find("label").css({"top":"-10px"});
-        $(this).find("input").css({"height": "40px","padding-top":" 20px"});
-    }else
-    {
-        $(this).find("span").css({"width":"0%"});
-        $(this).find("label").css({"top":"0px"});
-        $(this).find("input").css({"height": "20px","padding-top":" 10px"});
-    }
-
-    if(mobilePhone.val())
-    {
-        phone.removeAttr("required","required");
-    }else{
-        phone.attr("required","required");
-    }
-    if(phone.val())
-    {
-        mobilePhone.removeAttr("required","required");
-    }else{
-        mobilePhone.attr("required","required");
-    }
+//boton nuevo y editar
 
 
-});
-$(function()
+
+function nuevo()
 {
-    $(".material-input" ).each(function() {
-        var $el=$(this);
-        if($el.find("input").val() )
+    var nuevo =document.getElementById('slider-new');
+    nuevo.classList.remove('hidden');
+    nuevo.classList.add('up');
+}
+function editar()
+{
+    var nuevo =document.getElementById('slider-new');
+    nuevo.classList.add('hidden');
+    nuevo.classList.remove('up');
+}
+
+//orden slider
+var countSlider=[];
+$('.number_slider').on('click',function()
+{
+    countSlider=[];
+    $('.number_slider').each(function(index)
+    {
+        countSlider=countSlider+[$(this).val()];
+    });
+});
+
+
+$('.number_slider').on('change', function ()
+{
+
+    var validator=0;
+    for(var i=0;i<countSlider.length;i++)
+    {
+        if($(this).val()>0)
         {
-            $el.find("span").css({"width":"100% " });
-            $el.find("label").css({"top":"-10px"});
-            $el.find("input").css({"height": "40px","padding-top":" 20px","color": "#949494"});
+            if(countSlider[i]==$(this).val())
+            {
+                validator=1;
+            }
         }
-    });
-
-});
-$("#date_birth").on('change',function()
-{
-    var $el=$(this);
-    if($('#date_birth').val())
+    }
+    if(validator==0)
     {
-        $el.css({"color": "#949494"});
+        countSlider=countSlider+[$(this).val()];
     }else{
-        $el.css({"color": "rgba(161, 161, 161, 0)"});
+        alert("ese numero ya asignado a otra imagen")
+        $(this).val(0);
     }
 
-
 });
-
-$("#date_expedition").on('change',function()
-{
-    var $el=$(this);
-    if($('#date_expedition').val())
-    {
-        $el.css({"color": "#949494"});
-    }else{
-        $el.css({"color": "rgba(161, 161, 161, 0)"});
-    }
-
-
-});
-
-
 
 
 

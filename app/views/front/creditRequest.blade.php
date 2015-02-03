@@ -196,7 +196,7 @@
             {{Form::text('files','',['id'=>'form-files'])}}
         </div>
         <div class="pop-up ">
-            <p>Sube <tus></tus> documentos</p>
+            <p>Sube tus documentos</p>
             {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
             {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
         </div>
