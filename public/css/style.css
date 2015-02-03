@@ -1222,6 +1222,123 @@ button.icon-search{
 #date_birth:focus,#date_expedition:focus{
     color:#949494;
 }
+
+/*Slider */
+
+#slider{
+    height: 400px;
+    margin: auto;
+    max-width: 960px;
+    padding: 20px 10px
+}
+#slider img{
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+#slider img:nth-child(1){
+    display: block;
+}
+#back, #next {
+
+    background: #2a2a2a;
+    display: block;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    height: auto;
+    opacity: 0.8;
+    position: absolute;
+    padding: 1% 1%;
+    text-decoration: none;
+    top: 50%;
+    width: auto;
+    z-index: 1;
+}
+#back:hover, #next:hover{
+    opacity:1;
+}
+#back{
+    left: 152px;
+}
+#next{
+    right: 153px;
+}
+
+.slider{
+    background:rgba(24, 23, 23, 0.5) !important;
+    color:rgba(222, 184, 135, 0);
+    cursor: pointer;
+    display: inline-block;
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 15px;
+    position: relative;
+    top:-25px;
+    left: 450px;
+
+}
+.sliderValid{
+    cursor: pointer;
+    display: inline-block;
+    background: #e80e8a !important;
+    width: 15px !important;
+    height: 15px !important;
+    border: 2px solid rgba(256, 256, 256, 1) !important;
+    border-radius: 15px;
+    position: relative;
+    top:-25px;
+    left: 450px;
+}
+
+/*Slider form*/
+
+.Slider-form{
+    margin: auto;
+    padding: 20px 20px 50px;
+    width: 80%;
+}
+
+.Slider-form #request-image{
+    text-align: center;
+}
+
+.Slider-form #request-image img
+{
+    width: 300px;
+}
+
+.form-slider{
+    margin: auto;
+    padding: 20px 20px 50px;
+    width: 80%;
+}
+
+.form-slider img{
+    width: 100%;
+}
+
+#slider-edit section{
+    width: 23%;
+    display: inline-block;
+    margin: 23px 8px;
+}
+
+.slider-content p{
+    display: inline-block;
+}
+
+.up{
+    animation: myfirst 2s;
+}
+
+@keyframes myfirst {
+    from {opacity: 0.1;}
+    to {opacity: 1;}
+}
+
+}
 .button-update{
     margin: 50px auto;
     max-width: 300px;

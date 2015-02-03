@@ -13,12 +13,12 @@ class ImageRepo extends BaseRepo{
         // TODO: Implement getModel() method.
     }
 
-    public function saveImages($image)
+    public function saveImages($image,$carpeta)
     {
         $file = $image;
         $prefijo = sha1(time());
         $archivo = ($file['file']['name']);
-        $destino =  "upload/".$prefijo.$archivo;
+        $destino =  $carpeta.$prefijo.$archivo;
         if(move_uploaded_file($image['file']['tmp_name'], $destino))
         {
             return ($prefijo.$archivo);

@@ -12,7 +12,6 @@ abstract class BaseManager
 
     public function __construct($entity, $data)
     {
-
         $this->entity = $entity;
         $this->data = $data;
         //$this->data = array_only($data, array_keys($this->getRules()));
@@ -23,11 +22,9 @@ abstract class BaseManager
 
     public function isValid()
     {
-
         $rules = $this->getRules();
         $message = $this->getMessage();
         $validation = \Validator::make($this->data, $rules,$message);
-
         if ($validation->fails()) {
            return $validation->errors();
             //throw new ValidationException ('Error en los datos', $validation->messages());

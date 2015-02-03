@@ -35,7 +35,7 @@ class CreditController extends BaseController
         }
         $creditManager->saveCredit(Input::get('files'));
 
-        new LogRepo(
+        $log = new LogRepo(
             [
                 'responsible'=> $user_name['user_name'],
                 'action' => 'ha solicitado un credito',
