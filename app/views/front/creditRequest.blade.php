@@ -165,7 +165,7 @@
 
         </section>
 
-        <p class="titleReference">Referencia Personal 1</p>
+        <p class="">Referencia Personal 1</p>
 
         <div class="material-input">
             {{Form::text('name_reference','',['id' => 'name_reference'])}}

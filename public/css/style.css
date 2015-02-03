@@ -1222,3 +1222,7 @@ button.icon-search{
 #date_birth:focus,#date_expedition:focus{
     color:#949494;
 }
+.button-update{
+    margin: 50px auto;
+    max-width: 300px;
+}

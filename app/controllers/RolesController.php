@@ -1,19 +1,28 @@
 <?php
 use credits\Repositories\RolesRepo;
-class RolesController extends BaseController{
+use credits\Components\ACL\permission;
 
-        private $roles;
+class RolesController extends BaseController
+{
 
-        public function __construct(RolesRepo $rolesRepo){
-                $this->roles = $rolesRepo;
-        }
-        public function showAll(){
-                $roles = $this->roles->all();
-                return View::make('back.roles',compact('roles'));
-        }
-        public function show($id){
-                $permissionRole = $this->roles->rol($id);
-                $role = $this->roles->getModelNew();
-                return View::make('back.role',compact('permissionRole','role'));
-        }
+    private $roles;
+
+    public function __construct(RolesRepo $rolesRepo)
+    {
+        $this->roles = $rolesRepo;
+    }
+
+    public function showAll()
+    {
+        $roles = $this->roles->all();
+        return View::make('back.roles', compact('roles'));
+    }
+
+    public function show($id)
+    {
+        $permissionRole = $this->roles->rol($id);
+        $permissions = Permission::whereNotIn('id', $permissionRole->lists('id'))->get();
+        $role = $this->roles->getModelNew();
+        return View::make('back.role', compact('permissionRole', 'role', 'permissions'));
+    }
 }
