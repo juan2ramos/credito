@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeLogsTable extends Migration {
+class CreateSlidersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,12 @@ class ChangeLogsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('logs',function($table)
+		Schema::create('sliders',function($table)
 		{
 			$table->increments('id');
+			$table->integer('number_slider');
+			$table->string('files');
+			$table->timestamps();
 		});
 	}
 
@@ -25,10 +28,7 @@ class ChangeLogsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('logs',function($table)
-		{
-			$table->drop('logs');
-		});
+		Schema::drop('sliders');
 	}
 
 }

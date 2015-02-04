@@ -14,12 +14,12 @@ class CreateLogsTable extends Migration {
 	{
 		Schema::create('logs',function($table)
 		{
+			$table->increments('id');
 			$table->string('action');
 			$table->string('responsible');
 			$table->string('affected_entity');
 			$table->string('method');
 			$table->timestamps();
-
 		});
 	}
 
@@ -30,10 +30,7 @@ class CreateLogsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('logs',function($table)
-		{
-			$table->drop('logs');
-		});
+		Schema::drop('logs');
 	}
 
 }

@@ -15,20 +15,22 @@ class CreateCreditRequestTable extends Migration {
 		Schema::create('creditRequest',function($table)
 		{
 			$table->increments('id');
-			$table->integer('cedula');
-			$table->string('ciudad_residencia');
-			$table->date('fecha_expedicion');
-			$table->date('fecha_nacimiento');
-			$table->string('lugar_expedicion');
-			$table->integer('celular');
-			$table->integer('telefono');
-			$table->string('direccion');
-			$table->string('direccion_oficina');
-			$table->string('archivo');
-			$table->string('tipo_documento');
-			$table->string('referencia');
-			$table->string('valor_mensual');
+			$table->integer('user_id');
+			$table->integer('notify');
+			$table->string('state');
+			$table->string('files');
+			$table->string('name_reference');
+			$table->integer('phone_reference');
+			$table->string('name_reference2');
+			$table->integer('phone_reference2');
+			$table->integer('monthly_expenses');
+			$table->integer('monthly_income');
+			$table->string('office_address');
+			$table->string('instead_expedition');
+			$table->date('date_expedition');
 			$table->timestamps();
+
+
 		});
 	}
 
