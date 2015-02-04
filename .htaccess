@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^108.163.168.242/~creditoslilipink$ 
+RewriteCond %{REQUEST_URI} !^public/
+RewriteRule (.*) public/$1 [L]
