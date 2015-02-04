@@ -17,9 +17,12 @@ class UserTableSeeder extends Seeder {
 			'name' => 'admin',
 		]);
 		Role::Create([
+			'name' => 'POS',
+		]);
+		Role::Create([
 			'name' => 'register',
 		]);
-		foreach(range(1,10) as $index){
+		foreach(range(1,10) as $i){
 			$nameExtend = $faker->name;
 			$nameExtend = explode(' ', $nameExtend);
 			$name = array_shift($nameExtend);
