@@ -4,7 +4,7 @@
 
     <section class="Slider u-shadow-5">
         <div class="slider-content">
-            <p class="slider-nuw" onclick="nuevo();">nuevo</p>
+            <p class="slider-new" onclick="nuevo();">nuevo</p>
             <p class="slider-edit" onclick="editar();">editar</p>
         </div>
 

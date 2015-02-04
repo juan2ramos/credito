@@ -1327,6 +1327,9 @@ button.icon-search{
 
 .slider-content p{
     display: inline-block;
+    display: inline-block;
+    font-size: 17px;
+    margin-left: 10px;
 }
 
 .up{
@@ -1343,3 +1346,20 @@ button.icon-search{
     margin: 50px auto;
     max-width: 300px;
 }
+
+.slider-new{
+    border-right: 2px solid;
+    padding-right: 18px;
+}
+
+.slider-new:hover{
+    color: #D5C4CE;
+    cursor: pointer;
+}
+
+.slider-edit:hover{
+    color: #D5C4CE;
+    cursor: pointer;
+}
+
+

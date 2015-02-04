@@ -36,3 +36,6 @@
     </section>
     @include('layout.load')
 @stop
+@section('javascript')
+    {{ HTML::script('js/credit.js'); }}
+@stop
