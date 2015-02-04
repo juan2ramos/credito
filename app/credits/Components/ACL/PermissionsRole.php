@@ -3,4 +3,5 @@
 
 class PermissionsRole extends \Eloquent{
 
+
 }

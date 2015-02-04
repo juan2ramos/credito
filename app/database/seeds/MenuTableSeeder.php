@@ -14,50 +14,39 @@ class MenuTableSeeder extends Seeder
 
             Menu::create([
                 'nameMenu' => 'principal',
-                'nameLink' => 'home',
-                'route' => '/',
+                'nameLink' => 'inicio',
+                'route' => 'home',
                 'permission' => '',
                 'orderMenu' => '1'
             ]);
             Menu::create([
                 'nameMenu' => 'principal',
-                'nameLink' => 'about',
-                'route' => 'about',
+                'nameLink' => 'Solicitud de crédito',
+                'route' => 'credit',
                 'permission' => '',
                 'orderMenu' => '2'
 
             ]);
             Menu::create([
                 'nameMenu' => 'principal',
-                'nameLink' => 'contact',
-                'route' => 'contact',
-                'permission' => '',
-                'parent' => 1,
-                'orderMenu' => '1'
+                'nameLink' => 'usuarios',
+                'route' => 'users',
+                'permission' => 'users',
+                'orderMenu' => '3'
             ]);
             Menu::create([
                 'nameMenu' => 'principal',
-                'nameLink' => 'home1',
-                'route' => 'home1',
-                'permission' => '',
-                'parent' => 1,
-                'orderMenu' => '1'
+                'nameLink' => 'roles',
+                'route' => 'roles',
+                'permission' => 'roles',
+                'orderMenu' => '4'
             ]);
             Menu::create([
                 'nameMenu' => 'principal',
-                'nameLink' => 'home2',
-                'route' => 'home2',
+                'nameLink' => 'slider',
+                'route' => 'slider',
                 'permission' => '',
-                'parent' => 1,
-                'orderMenu' => '1'
-            ]);
-            Menu::create([
-                'nameMenu' => 'principal',
-                'nameLink' => 'home21',
-                'route' => 'home21',
-                'permission' => '',
-                'parent' => 5,
-                'orderMenu' => '1'
+                'orderMenu' => '5'
             ]);
 
     }

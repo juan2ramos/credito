@@ -9,15 +9,18 @@ class MenuBuilder
     private $data;
     private $permissions;
 
-    public function getMenu($nameMenu, $data = array())
+    public function create($nameMenu, $data = array())
     {
         $this->nameMenu = $nameMenu;
         $this->data = $data;
-        $this->permissions = \ACL::getPermissions(3);
+        $this->permissions = $this->checkAuth();
 
         return $this->styleMenu($this->createMenu());
     }
 
+    private function checkAuth(){
+        return (\Auth::check())?\ACL::getPermissions():array();
+    }
     private function styleMenu($menu)
     {
         $data = ' ';
@@ -90,7 +93,7 @@ class MenuBuilder
     private function template($li)
     {
         $a = (!empty($li['route'])) ? $li['route'] : '#';
-        return "<a href='$a' >" . $li['nameLink'] . '</a>';
+        return "<a href= '".route($a)."' >" . $li['nameLink'] . '</a>';
 
 
     }
