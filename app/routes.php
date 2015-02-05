@@ -25,4 +25,5 @@ Route::post('submit', ['as' => 'submit', 'uses' => 'CreditController@saveImage']
 Route::get('slider', ['as' => 'slider', 'uses' => 'SliderController@showSlider']);
 Route::post('slider', ['as' => 'slider', 'uses' => 'SliderController@saveSlider']);
 Route::post('administrar', ['as' => 'administratorSlider', 'uses' => 'SliderController@uploadSlider']);
+Route::post('administrar', ['as' => 'administratorSlider', 'uses' => 'SliderController@uploadSlider']);
 
