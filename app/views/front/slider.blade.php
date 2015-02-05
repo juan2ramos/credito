@@ -37,8 +37,12 @@
             @if(count($sliders))
                 @foreach($sliders as $slider)
                     <section>
-                        <img src="sliders/{{$slider->files}}" />
-                        {{ HTML::link(URL::to('administratorSlider/'.$slider->id), 'borrar slider',array('id'=>'slider-del')) }}
+                        <img src="sliders/{{$slider->files}}" >
+                        <span class="close-button-slider">
+                            <span class="close-line-slider"></span>
+                            <span class="close-line1-slider"></span>
+                        </span>
+                        {{ HTML::link(URL::to('administratorSlider/'.$slider->id), 'del',array('id'=>'slider-delete')) }}
                         {{ Form::select("$i", $select, $slider->number_slider, array('class' => 'number_slider')) }}
                         <div class="hidden">{{$i++;}}</div>
                     </section>
