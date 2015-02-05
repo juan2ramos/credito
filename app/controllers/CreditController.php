@@ -52,7 +52,7 @@ class CreditController extends BaseController
     public function saveImage()
     {
         $saveImages = new ImageRepo();
-        $message = $saveImages->saveImages($_FILES);
+        $message = $saveImages->saveImages($_FILES,'upload/');
         return Response::json(array($message));
     }
 
