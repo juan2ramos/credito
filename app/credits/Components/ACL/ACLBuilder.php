@@ -75,8 +75,8 @@ class ACLBuilder
     }
     private function permissionsUser(){
         $data = array();
-        $permissions = User::join('permissions_users', 'users.id', '=', 'permissions_users.user_id')
-            ->join('permissions', 'permissions_users.permission_id', '=', 'permissions.id')
+        $permissions = User::join('permission_user', 'users.id', '=', 'permission_user.user_id')
+            ->join('permissions', 'permission_user.permission_id', '=', 'permissions.id')
             ->whereRaw('users.id = ? ', [$this->idUser])
             ->get();
 
