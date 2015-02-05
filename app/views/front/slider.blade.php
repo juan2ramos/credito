@@ -38,7 +38,7 @@
                 @foreach($sliders as $slider)
                     <section>
                         <img src="sliders/{{$slider->files}}" />
-                        {{ HTML::link(URL::to('administratarSlider/'.$slider->id), 'borrar slider',array('id'=>'slider-del')) }}
+                        {{ HTML::link(URL::to('administratorSlider/'.$slider->id), 'borrar slider',array('id'=>'slider-del')) }}
                         {{ Form::select("$i", $select, $slider->number_slider, array('class' => 'number_slider')) }}
                         <div class="hidden">{{$i++;}}</div>
                     </section>
