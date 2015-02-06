@@ -29,7 +29,7 @@ class AuthController extends BaseController
         //$success = $userRepo->passwordRestart(Input::get('email'));
         $data=['password'=>'3424234'];
         Mail::send('back.home', $data, function ($message) {
-            $message->to('edwarddiaz92@gmail.com', 'drawde')->subject('bienvenido!');
+            $message->to('edwarddiaz92@gmail.com', 'drawde')->subject('bien!');
         });
         return Response::json(['success' => $success]);
 
