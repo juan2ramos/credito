@@ -22,6 +22,7 @@ class RolesController extends BaseController
     {
         $permissionRole = $this->roles->rol($id);
         $permissions = Permission::whereNotIn('id', $permissionRole->lists('id'))->get();
+        ddj($permissionRole );
         $role = $this->roles->getModelNew();
         return View::make('back.role', compact('permissionRole', 'role', 'permissions'));
     }

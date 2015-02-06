@@ -18,7 +18,7 @@
                     <td>{{$permission->id}}</td>
                     <td>{{$permission->name}}</td>
                     <td>
-                        {{Form::checkbox('permission[]', $permission, null, ['class' => 'checkbox',])}}
+                        {{Form::checkbox('permission[]', $permission, 1, ['class' => 'checkbox',])}}
                     </td>
                 </tr>
             @endforeach
