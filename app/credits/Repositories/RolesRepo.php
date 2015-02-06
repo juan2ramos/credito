@@ -3,6 +3,8 @@
 namespace credits\Repositories;
 
 use credits\Components\ACL\Role;
+use Illuminate\Support\Facades\Input;
+
 class RolesRepo extends BaseRepo{
 
     protected function getModel()
@@ -12,6 +14,24 @@ class RolesRepo extends BaseRepo{
     public function rol($id){
         $this->model = $this->model->find($id);
         return $this->model->permissionsRole()->get();
+    }
+
+    /**
+     * @param $id
+     */
+    public function updatePermissions($id){
+        $this->model = $this->model->find($id);
+        $permissions  = Input::get('permission');
+        $permissionRole = array();
+        foreach ($permissions as $permission){
+            $permissionRole[] =  array(
+                'permission_id' => $permission,
+                'available' => true
+            );
+        }
+        ddj($permissions);
+
+        $this->model->permissionsRole()->sync($permissionRole);
     }
 
 

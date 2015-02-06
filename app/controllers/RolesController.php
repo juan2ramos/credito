@@ -21,8 +21,19 @@ class RolesController extends BaseController
     public function show($id)
     {
         $permissionRole = $this->roles->rol($id);
-        $permissions = Permission::whereNotIn('id', $permissionRole->lists('id'))->get();
         $role = $this->roles->getModelNew();
+
+        $permissions = ($permissionRole->isEmpty()) ? Permission::all():
+            Permission::whereNotIn('id', $permissionRole->lists('id'))->get();
         return View::make('back.role', compact('permissionRole', 'role', 'permissions'));
+    }
+    public function updateRol($id){
+        $this->roles->updatePermissions($id);
+        return Redirect::back()->with([
+
+            'alert'			=>	'Pacote atualizado com sucesso!',
+            'alert_type' 	=> 	'alert-success'
+
+        ]);
     }
 }

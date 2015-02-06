@@ -3,7 +3,8 @@
 
     <h1>{{Lang::get('utils.roles.' . $role->name)}}</h1>
     <div class="Table-content">
-        {{Form::open(array('route'=>'rolUpdate','method'=>'POST'))}}
+        {{Form::model($role, array('route' => array('updateRol', $role->id)))}}
+
         <table class="table table-striped table-hover ">
             <thead>
             <tr>
@@ -16,9 +17,9 @@
             @foreach($permissionRole as $permission)
                 <tr>
                     <td>{{$permission->id}}</td>
-                    <td>{{$permission->name}}</td>
+                    <td>{{Lang::get('utils.permissions.'.$permission->name)}}</td>
                     <td>
-                        {{Form::checkbox('permission[]', $permission, null, ['class' => 'checkbox',])}}
+                        {{Form::checkbox('permission[]', $permission->id, 1, ['class' => 'checkbox',])}}
                     </td>
                 </tr>
             @endforeach
@@ -27,7 +28,7 @@
                     <td>{{$permission->id}}</td>
                     <td>{{Lang::get('utils.permissions.'.$permission->name)}}</td>
                     <td>
-                        {{Form::checkbox('permission[]', $permission, null, ['class' => 'checkbox',])}}
+                        {{Form::checkbox('permission[]', $permission->id, null, ['class' => 'checkbox',])}}
                     </td>
                 </tr>
             @endforeach
@@ -37,4 +38,5 @@
     <div class="button-update">
         <button class="u-button">Cambiar Permisos</button>
     </div>
+    {{Form::close()}}
 @stop
