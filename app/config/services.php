@@ -15,14 +15,13 @@ return array(
 	*/
 
 	'mailgun' => array(
-		'domain' => '',
-		'secret' => '',
+		'domain' => 'your-mailgun-domain',
+		'secret' => 'your-mailgun-key',
 	),
 
 	'mandrill' => array(
-		'secret' => '',
+		'secret' => 'your-mandrill-key',
 	),
-
 	'stripe' => array(
 		'model'  => 'User',
 		'secret' => '',
