@@ -26,14 +26,14 @@ class AuthController extends BaseController
     public function password()
     {
         $userRepo = new UserRepo();
-        $success = $userRepo->passwordRestart(Input::get('email'));
+       // $success = $userRepo->passwordRestart(Input::get('email'));
         $password = str_random(30);
         $data = ['password' => $password];
         Mail::send('emails.password', $data, function ($message) {
             $message->subject('Restart password');
             $message->to('drawderiah@gmail.com');
         });
-        return Response::json(['success' => $success]);
+        return Response::json(['success' => '1']);
 
     }
 }
