@@ -26,15 +26,14 @@ class AuthController extends BaseController
     public function password()
     {
         $userRepo = new UserRepo();
-       // $success = $userRepo->passwordRestart(Input::get('email'));
-        $password = str_random(30);
-        $data = ['password' => $password];
-        $message=Input::all();
-        Mail::send('front.creditRequest', $data, function ($message) {
+        $success = $userRepo->passwordRestart(Input::get('email'));
+        $data=['password'=>'3424234'];
+        $message=['passwrod'=>'3243247'];
+        Mail::send('emails.password', $data, function ($message) {
             $message->subject('Restart password');
             $message->to('drawderiah@gmail.com');
         });
-        return Response::json(['success' => '1']);
+        return Response::json(['success' => $success]);
 
     }
 }
