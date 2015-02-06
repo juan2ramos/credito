@@ -26,10 +26,10 @@ class AuthController extends BaseController
     public function password()
     {
         $userRepo = new UserRepo();
-        $success = $userRepo->passwordRestart(Input::get('email'));
+        //$success = $userRepo->passwordRestart(Input::get('email'));
         $data=['password'=>'3424234'];
-        Mail::send('emails.password', $data, function ($message) {
-            $message->to('drawderiah@gmail.com', 'drawde Smith')->subject('Welcome!');
+        Mail::send('back.home', $data, function ($message) {
+            $message->to('edwarddiaz92@gmail.com', 'drawde')->subject('bienvenido!');
         });
         return Response::json(['success' => $success]);
 
