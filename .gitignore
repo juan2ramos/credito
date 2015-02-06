@@ -1,5 +1,6 @@
 /.idea
 /bootstrap/compiled.php
+/public/sliders/
 /vendor
 composer.phar
 composer.lock

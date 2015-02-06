@@ -56,4 +56,14 @@ class SliderController extends BaseController
         }
         return Redirect::route('slider')->with(array('mensaje' => 'Los slider estan guardados'));
     }
+
+    public function deleteSlider($id)
+    {
+        $slider=Slider::find($id);
+        if($slider->delete())
+        {
+            return Redirect::route('slider')->with(array('mensaje' => 'La imagen fue eliminada'));
+        }
+        return Redirect::route('slider')->with(array('mensaje' => 'No se pudo eliminar la imagen'));
+    }
 }
