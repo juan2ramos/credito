@@ -11,6 +11,7 @@ return [
         'updateUser'      => 'Actualizar usuario',
         'users' => 'Administración de usuarios',
         'createPermissions'        => 'Crear permisos',
-        'roles'   => 'Administración de roles'
+        'roles'   => 'Administración de roles',
+        'createUser'   => 'Crear usuarios',
     ],
 ];
