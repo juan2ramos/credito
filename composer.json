@@ -4,6 +4,7 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"type": "project",
+  	"guzzlehttp/guzzle": "~4.0",
     "require-dev": {
         "way/generators": "2.*",
         "barryvdh/laravel-debugbar":"1.*",

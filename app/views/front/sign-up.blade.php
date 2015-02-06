@@ -13,12 +13,12 @@
     <section class="Login u-shadow-5">
         {{ Form::open(['route' => 'login', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
         <div class="material-input">
-            {{Form::text('email','',['id' => 'email','required'])}}
+            {{Form::text('email','',['id' => 'email'])}}
             {{Form::label('email','E-Mail')}}
             <span></span>
         </div>
         <div class="material-input">
-            {{Form::password('password',['id' => 'password','required'])}}
+            {{Form::password('password',['id' => 'password'])}}
             {{Form::label('password','Password')}}
             <span></span>
         </div>

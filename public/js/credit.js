@@ -104,6 +104,7 @@ function saveImage(file,img) {
                 myFunction(myArr,img,file);
                 }
             }
+
 }
 
 function myFunction(arr,img,file) {
