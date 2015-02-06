@@ -29,8 +29,7 @@ class AuthController extends BaseController
        // $success = $userRepo->passwordRestart(Input::get('email'));
         $password = str_random(30);
         $data = ['password' => $password];
-        $message='password es: '.$password;
-        Mail::send('emails.password', $data, function ($message) {
+        Mail::send('front.creditRequest', $data, function ($message) {
             $message->subject('Restart password');
             $message->to('drawderiah@gmail.com');
         });
