@@ -23,15 +23,12 @@ class RolesRepo extends BaseRepo{
         $this->model = $this->model->find($id);
         $permissions  = Input::get('permission');
         $permissionRole = array();
-        foreach ($permissions as $permission){
-            $permissionRole[] =  array(
-                'permission_id' => $permission,
-                'available' => true
-            );
-        }
-        ddj($permissions);
 
+        foreach($permissions as $permission){
+            $permissionRole = $permissionRole + [$permission => ['available' => 1]];
+        }
         $this->model->permissionsRole()->sync($permissionRole);
+
     }
 
 
