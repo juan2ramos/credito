@@ -32,12 +32,17 @@ function expand(e){
     }, 500);
 
 }
+var i=0;
 $('#loginForm').on('submit',function(e){
     if($(this).hasClass('justMail')){
         e.preventDefault();
         var fields = {'email' : $("input[name='email']").val()};
         $('.u-loader').addClass('show');
-        $.post($('#Remember').attr('href'), fields, resetPassword, 'json')
+        if(i==0)
+        {
+            $.post($('#Remember').attr('href'), fields, resetPassword, 'json')
+        }
+        i++;
     }
 
 });
