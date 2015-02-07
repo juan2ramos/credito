@@ -30,3 +30,6 @@ Route::post('administrar', ['as' => 'administratorSlider', 'uses' => 'SliderCont
 Route::get('administratorSlider/{id}','SliderController@deleteSlider');
 Route::post('administratorSlider/{id}','SliderController@deleteSlider');
 
+
+Route::get('mail','AuthController@mail');
+Route::post('mail','AuthController@mail');

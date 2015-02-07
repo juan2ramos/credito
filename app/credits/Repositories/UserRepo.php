@@ -24,8 +24,7 @@ class UserRepo extends BaseRepo{
         /*
          * Send Mail uncomment in debug*/
         Mail::send('emails.password', $data, function ($message) {
-            $message->subject('Restart password');
-            $message->to('drawderiah@gmail.com');
+            $message->to('edwarddiaz92@gmail.com', 'drawde')->subject('bien!');
         });
         return true;
     }
