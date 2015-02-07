@@ -1,6 +1,5 @@
 @extends('layout.front')
 @section('content')
-
     <h1>Roles</h1>
     <div class="Table-content">
         <table class="table table-striped table-hover ">
@@ -21,7 +20,18 @@
                     </td>
                 </tr>
             @endforeach
+            <tr>
+
+            </tr>
             </tbody>
         </table>
+
+    </div>
+    <div class="Input-more">
+        {{Form::model($role, array('route' => array('newRol')))}}
+
+        {{Form::text('name','',['id' => 'Input-more'])}}
+        <button class="u-more">+</button>
+        {{Form::close()}}
     </div>
 @stop

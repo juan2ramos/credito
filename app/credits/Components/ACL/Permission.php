@@ -2,6 +2,8 @@
 
 
 class Permission extends \Eloquent{
+
+    protected $fillable = array('name');
     public function permissionRole()
     {
         return $this->hasMany('juan2ramos\Entities\PermissionsRole')->withTimestamps();
