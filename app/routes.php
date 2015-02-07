@@ -30,3 +30,7 @@ Route::post('administrar', ['as' => 'administratorSlider', 'uses' => 'SliderCont
 Route::get('administratorSlider/{id}','SliderController@deleteSlider');
 Route::post('administratorSlider/{id}','SliderController@deleteSlider');
 
+//restaurar contraseña
+
+Route::get('restaurar/{id}',['restore','uses'=>'AuthController@restorePassword']);
+Route::post('restaurar/{id}',['restore','uses'=>'AuthController@changePassword']);

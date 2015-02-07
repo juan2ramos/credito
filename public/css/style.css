@@ -403,7 +403,8 @@ img {
 
 .Header-content {
     display: flex;
-    margin: 0 2rem;
+    margin: auto;
+    max-width: 1000px;
 }
 
 .Header-logoLilipink {
@@ -764,21 +765,6 @@ input[type=file] {
     }
 }
 
-@media all and (max-width: 1024px) and (min-width: 400px) {
-    .Credito {
-        text-align: center;
-    }
-
-    .u-CreditSection {
-        margin-right: 0 !important;
-    }
-
-    .Credit-section {
-        width: 80% !important;
-    }
-
-}
-
 .hover-file {
     background: rgba(255, 255, 255, 0.8);
     color: rgba(255, 255, 255, 0);
@@ -1034,7 +1020,6 @@ a.login-button {
     margin: 6px 5px 0 0;
     vertical-align: top;
 }
-
 a.icon-logout {
     color: rgb(96, 97, 104);
     font-size: 1.1rem;
@@ -1045,6 +1030,11 @@ a.icon-logout {
 .Table-content {
     overflow: auto;
     box-shadow: 0 1px 5px 0;
+    max-width: 1000px;
+    margin: auto;
+}
+.Back-content {
+    overflow: auto;
     max-width: 1000px;
     margin: auto;
 }
@@ -1147,21 +1137,6 @@ button.icon-search{
 }
 .search.is-open .search-input{
     width: 200px;
-}
-@media (min-width: 600px) {
-    .Remember {
-        text-align: right;
-    }
-
-    a.login-button {
-        padding: 8px 16px;
-        font-size: .8em;
-        margin: 6px 15px 0 0;
-    }
-
-    a.icon-child-1 {
-        display: inline-block;
-    }
 }
 
 .hidden{
@@ -1405,5 +1380,82 @@ button.icon-search{
 
 .number_slider{
     float:right;
+}
+.Input-more{
+    background: rgb(238, 238, 238);
+    border: 1px dashed;
+    margin: 5px auto;
+    max-width: 1000px;
+}
+#Input-more{
+    max-width: 700px;
+    height: 40px;
+    margin: 10px;
+    width: 80%;
+}
+.u-more{
+    background: #e80e8a;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    box-sizing: content-box;
+    color: white;
+    cursor: pointer;
+    font-size: 2em;
+    margin: 8px 30px;
+    height: 40px;
+    outline: none;
+    padding: 0;
+    pointer-events: auto;
+    float: right;
+    width: 42px;
+
+}
+.u-more:hover{
+    box-shadow: none
+}
+.Input-more form{
+    margin: auto;
+    width: 722px;
+}
+
+@media all and (max-width: 1024px) and (min-width: 400px) {
+    .Credito {
+        text-align: center;
+    }
+
+    .u-CreditSection {
+        margin-right: 0 !important;
+    }
+
+    .Credit-section {
+        width: 80% !important;
+    }
+
+
+}
+
+@media (min-width: 100px) {
+    .Remember {
+        text-align: right;
+    }
+
+    a.login-button {
+        padding: 8px 16px;
+        font-size: .8em;
+        margin: 6px 15px 0 0;
+    }
+
+    a.icon-child-1 {
+        display: inline-block;
+    }
+}
+@media (max-width: 800px) {
+    .Input-more form {
+        width: auto;
+    }
+    #Input-more {
+        width: 67%;
+    }
 }
 

@@ -1,6 +1,17 @@
 @extends('layout.front')
 @section('content')
 
+    @include('layout.notify')
+    @if(Session::has('message'))
+        <script>
+            var notify = document.getElementById('notify');
+            notify.classList.add('is-show');
+            notify.classList.add('success');
+            notify.querySelector('.text-notify').innerText = 'Se ha actualizado los permisos correctamente';
+        </script>
+    @endif
+    <div class="Back-content"><a href="{{ URL::previous() }}" class="login-button">Atras</a></div>
+
     <h1>{{Lang::get('utils.roles.' . $role->name)}}</h1>
     <div class="Table-content">
         {{Form::model($role, array('route' => array('updateRol', $role->id)))}}

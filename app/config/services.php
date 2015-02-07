@@ -15,12 +15,12 @@ return array(
 	*/
 
 	'mailgun' => array(
-		'domain' => 'your-mailgun-domain',
-		'secret' => 'your-mailgun-key',
+		'domain' => 'pruebas@creditos.lilipink.com',
+		'secret' => '123456',
 	),
 
 	'mandrill' => array(
-		'secret' => 'your-mandrill-key',
+		'secret' => 'pruebas@creditos.lilipink.com',
 	),
 	'stripe' => array(
 		'model'  => 'User',

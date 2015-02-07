@@ -15,19 +15,23 @@ class UserRepo extends BaseRepo{
         $user = $this->model;
         $user = $user::where('email', '=', $email)->first();
         if( ! $user)
-            return false;
+            return $data=['link'=>"restorePassword/"]
+                +['return'=>false]
+                +['username'=>''];
 
-        $password = str_random(30);
-        $data = ['password' => $password];
-        $user->password = $password;
+        $restore_password = str_random(30);
+        $user->restore_password = $restore_password;
         $user->save();
-        /*
-         * Send Mail uncomment in debug*/
-        Mail::send('emails.password', $data, function ($message) {
-            $message->subject('Restart password');
-            $message->to('drawderiah@gmail.com');
-        });
-        return true;
+        return $data=['link'=> 'restaurar/'.$restore_password ]
+            +['return'=>true]
+            +['username'=>$user->user_name];
+    }
+
+    public function validatorUser($restore_password)
+    {
+        $user = $this->model;
+        $user = $user::where('restore_password', '=', $restore_password)->first();
+        return $user;
     }
 
 }
