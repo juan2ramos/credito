@@ -1,4 +1,5 @@
 <?php namespace credits\Managers;
+use credits\Entities\User;
 
 class UserManager extends BaseManager
 {
@@ -7,24 +8,35 @@ class UserManager extends BaseManager
     {
         $rules=[
 
-            'name'                  => 'required',
-            'second_name'           => 'required',
-            'last_name'             => 'required',
-            'second_last_name'      => 'required',
-            'address'               => 'required',
-            'residency_city'        => 'required',
-            'birth_city'            => 'required',
-            'mobile_phone'          => 'required|numeric',
-            'phone'                 => 'required|numeric',
-            'document_type'         => 'required|numeric',
-            'identification_card'   => 'required|numeric|unique:users',
-            'date_birth'            => 'required',
+            'password'              => 'required',
+            'confirmar_password'    => 'required|same:password'
 
 
         ];
         return  $rules;
     }
 
+    public function getMessage()
+    {
+        $messages = [
+            'required'  => 'El campo :attribute es obligatorio.',
+            'same'      => 'Las contraseñas deben ser iguales'
+        ];
+        return $messages;
+    }
+
+    public function savePassword($restore_password)
+    {
+
+        $user = User::where('restore_password', '=', $restore_password)->first();
+        $user->password=$this->data['password'];
+        if($user->save())
+        {
+            return $user->user_name;
+        }
+            return false;
+
+    }
 
 
 }

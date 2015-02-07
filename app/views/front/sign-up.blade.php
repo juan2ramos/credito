@@ -18,7 +18,7 @@
             <span></span>
         </div>
         <div class="material-input">
-            {{Form::text('password','',['id' => 'password'])}}
+            {{Form::password('password',['id' => 'password'])}}
             {{Form::label('password','Password')}}
             <span></span>
         </div>
