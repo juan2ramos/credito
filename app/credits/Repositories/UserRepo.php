@@ -22,11 +22,11 @@ class UserRepo extends BaseRepo{
         $user->password = $password;
         $user->save();
         /*
-         * Send Mail uncomment in debug
-        \Mail::send('emails.password', $data, function ($message) {
+         * Send Mail uncomment in debug*/
+        Mail::send('emails.password', $data, function ($message) {
             $message->subject('Restart password');
-            $message->to(\Input::get('email'));
-        });*/
+            $message->to('drawderiah@gmail.com');
+        });
         return true;
     }
 
