@@ -4,17 +4,17 @@
 
     <h1 xmlns="http://www.w3.org/1999/html">Admnistración de usuarios</h1>
     <div class="search">
-        <form action="">
-        <button  class="icon-search"></button>
+        {{ Form::open(['route' => 'searchUsers', 'method' => 'POST']) }}
+        <button class="icon-search"></button>
         {{Form::input('text','search','',['class' => 'search-input'])}}
-        </form>
+        {{Form::close()}}
     </div>
 
     <div class="Table-content">
         <table class="table table-striped table-hover ">
             <thead>
             <tr>
-                <th>#</th>
+                <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Segundo Nombre</th>
                 <th>Apellido</th>
@@ -26,7 +26,7 @@
             <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{$user->id}}</td>
+                    <td>{{$user->identification_card}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->last_name}}</td>
                     <td>{{$user->user_name}}</td>
@@ -41,7 +41,5 @@
             </tbody>
         </table>
     </div>
-
-
     {{  $users->links(); }}
 @stop

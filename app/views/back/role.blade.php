@@ -10,9 +10,15 @@
             notify.querySelector('.text-notify').innerText = 'Se ha actualizado los permisos correctamente';
         </script>
     @endif
-    <div class="Back-content"><a href="{{ URL::previous() }}" class="login-button">Atras</a></div>
+    <div class="Back-content"><a href="{{ route('roles') }}" class="login-button">Atras</a></div>
 
-    <h1>{{Lang::get('utils.roles.' . $role->name)}}</h1>
+    <h1>
+        @if(Lang::has('utils.roles.'.$role->name))
+            {{Lang::get('utils.roles.'.$role->name)}}
+        @else
+            {{$role->name}}
+        @endif
+    </h1>
     <div class="Table-content">
         {{Form::model($role, array('route' => array('updateRol', $role->id)))}}
 
