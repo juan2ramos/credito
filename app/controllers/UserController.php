@@ -22,4 +22,9 @@ class UserController extends BaseController{
         $users = $this->userRepo->searchUsers();
         return View::make('back.users',compact('users'));
     }
+    public function userShow($id){
+        $user = $this->userRepo->find($id);
+        $credits = $user->CreditRequest()->get();
+        return View::make('back.user',compact('user','credits'));
+    }
 }

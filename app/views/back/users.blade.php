@@ -33,7 +33,7 @@
                     <td>{{$user->user_name}}</td>
                     <td>{{$user->email}}</td>
                     <td>
-                        <a href="" class="icon-folder-open "></a>
+                        <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
                         <a href="" class="icon-trash-empty "></a>
                     </td>
                 </tr>

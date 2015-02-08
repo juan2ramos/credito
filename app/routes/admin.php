@@ -3,6 +3,8 @@
 Route::get('/', function () { return Redirect::route('home');});
 Route::get('usuarios', ['before' => 'permissions:users', 'as' => 'users','uses' => 'UserController@showAll' ]);
 Route::post('usuarios', ['before' => 'permissions:users', 'as' => 'searchUsers','uses' => 'UserController@searchUsers' ]);
+Route::get('usuarios/{id}', ['before' => 'permissions:users', 'as' => 'userShow','uses' => 'UserController@userShow' ]);
+
 Route::get('roles', ['before' => 'permissions:roles', 'as' => 'roles','uses' => 'RolesController@showAll' ]);
 Route::get('rol/{id}', ['before' => 'permissions:roles', 'as' => 'rol','uses' => 'RolesController@show' ]);
 Route::get('eliminar-rol/{id}', ['before' => 'permissions:roles', 'as' => 'deleteRol','uses' => 'RolesController@deleteRol' ]);
