@@ -14,8 +14,17 @@ class UserController extends BaseController{
         return View::make('front/sign-up');
     }
     public function showAll(){
-        $users = $this->userRepo->allPaginate(5);
+        $users = $this->userRepo->allPaginate(20);
         return View::make('back.users',compact('users'));
 
+    }
+    public function searchUsers(){
+        $users = $this->userRepo->searchUsers();
+        return View::make('back.users',compact('users'));
+    }
+    public function userShow($id){
+        $user = $this->userRepo->find($id);
+        $credits = $user->CreditRequest()->get();
+        return View::make('back.user',compact('user','credits'));
     }
 }

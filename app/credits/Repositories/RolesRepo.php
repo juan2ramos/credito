@@ -30,4 +30,9 @@ class RolesRepo extends BaseRepo{
         $this->model->permissionsRole()->sync($permissionRole);
 
     }
+    public function deleteRol($id){
+        $this->model = $this->model->find($id);
+        $this->model->permissionsRole()->detach();
+        $this->model->delete();
+    }
 }
