@@ -1,8 +1,10 @@
 @extends('layout/front')
 @section('title') Solicitud de Credito @stop
 @section('content')
+    {{ Session::get('mensaje') }}
     @if($errors->first())
         <div id="form-errors">
+            <p>{{$errors->first('user_name')}}</p>
             @if($errors->first('document_type'))
                 <p>Seleccione un tipo de documento</p>
             @endif
@@ -36,9 +38,12 @@
             @if($errors->first('phone_reference2'))
                 <p>Ingrese el telefono de la referencia 2 en numeros</p>
             @endif
-                @if($errors->first('files'))
-                    <p>Ingrese los archivos requeridos</p>
-                @endif
+            @if($errors->first('files'))
+                <p>Ingrese los archivos requeridos</p>
+            @endif
+            @if($errors->first('email'))
+                <p>No puede pedir mas de un credito</p>
+            @endif
         </div>
 
     @endif
