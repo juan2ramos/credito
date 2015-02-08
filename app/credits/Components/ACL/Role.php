@@ -3,7 +3,7 @@
 
 class Role extends \Eloquent{
 
-    protected $fillable = array('name');
+    protected $fillable = array('name','priority');
 
     public function permissionsRole()
     {

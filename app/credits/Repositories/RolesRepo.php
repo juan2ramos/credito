@@ -20,6 +20,12 @@ class RolesRepo extends BaseRepo{
      */
     public function updatePermissions($id){
         $this->model = $this->model->find($id);
+
+        $this->model->name = Input::get('name');
+        $this->model->priority = Input::get('priority');
+
+        $this->model->save();
+
         $permissions  = Input::get('permission');
         $permissionRole = array();
         if (!empty($permissions)){

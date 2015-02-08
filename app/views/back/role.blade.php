@@ -11,16 +11,11 @@
         </script>
     @endif
     <div class="Back-content"><a href="{{ route('roles') }}" class="login-button">Atras</a></div>
-
-    <h1>
-        @if(Lang::has('utils.roles.'.$role->name))
-            {{Lang::get('utils.roles.'.$role->name)}}
-        @else
-            {{$role->name}}
-        @endif
-    </h1>
+    {{Form::model($role, array('route' => array('updateRol', $role->id)))}}
+    <div class="wrap-content">
+        {{Form::text('name',$nameRol,['class' => 'Input-title'])}}
+    </div>
     <div class="Table-content">
-        {{Form::model($role, array('route' => array('updateRol', $role->id)))}}
 
         <table class="table table-striped table-hover ">
             <thead>
@@ -52,8 +47,12 @@
             </tbody>
         </table>
     </div>
+    <div class="wrap-content">
+        {{Form::label('priority','Prioridad de envio de solicitud de crédito',['class' => 'Label-priority'])}}
+        {{Form::checkbox('priority', 1, 1, ['class' => 'checkbox',])}}
+    </div>
     <div class="button-update">
-        <button class="u-button">Cambiar Permisos</button>
+        <button class="u-button">Actualizar Rol</button>
     </div>
     {{Form::close()}}
 @stop
