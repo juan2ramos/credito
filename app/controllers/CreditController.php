@@ -19,6 +19,7 @@ class CreditController extends BaseController
 
     public function updateCredit()
     {
+        $user=Auth::user();
         $user_name = ["user_name" =>
             Input::get('name') . '.' .
             Input::get('second_name') . '.' .
@@ -33,7 +34,7 @@ class CreditController extends BaseController
         if ($creditValidation) {
             return Redirect::route('credit')->withErrors($creditValidation)->withInput();
         }
-        $creditManager->saveCredit(Input::get('files'));
+        $creditMessage=$creditManager->saveCredit(Input::get('files'),$user);
 
         new LogRepo(
             [
@@ -44,7 +45,15 @@ class CreditController extends BaseController
             ]
         );
 
-        return Redirect::route('credit')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
+        if($creditMessage['mail'])
+        {
+            $data=["link"=>1];
+            Mail::send('emails.verification', $data, function ($message) {
+                $message->to(Auth::user()->email, 'drawde')->subject('su solicitud de credito esta siendo procesada');
+
+            });
+        }
+        return Redirect::route('credit')->with(array('mensaje' => $creditMessage['message']));
 
     }
 
