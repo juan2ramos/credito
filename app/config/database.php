@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'creditos_default',
+			'database'  => 'creditos_credito',
 			'username'  => 'creditos_laravel',
 			'password'  => 'q#wSP6aFLhhO',
 			'charset'   => 'utf8',

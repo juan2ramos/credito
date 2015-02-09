@@ -1,4 +1,6 @@
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^108.163.168.242/~creditoslilipink$ 
+RewriteCond %{HTTP_HOST} ^creditos.lilipink.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www.creditos.lilipink.com$
 RewriteCond %{REQUEST_URI} !^public/
-RewriteRule (.*) public/$1 [L]
+RewriteRule (.*) /public/$1 [L]
+	

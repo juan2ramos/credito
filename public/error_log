@@ -1,0 +1,1 @@
+[06-Feb-2015 22:08:45 UTC] PHP Fatal error:  Class 'credits\Repositories\Mail' not found in /home/creditoslilipink/public_html/app/credits/Repositories/UserRepo.php on line 26
