@@ -34,7 +34,7 @@ class AuthController extends BaseController
         if($validator['return'])
         {
             Mail::send('emails.password', $data, function ($message) {
-                $message->to(Input::get('email'), 'drawde')->subject('correo de restauracion de su password');
+                $message->to(Input::get('email'), 'creditos lilipink')->subject('correo de restauracion de su password');
 
             });
         }

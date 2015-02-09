@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeUsersTable extends Migration {
+class ChangeRolesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class ChangeUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('users',function($table)
+		Schema::table('roles',function($table)
 		{
-			$table->timestamps();
+			$table->integer('priority');
 		});
 	}
 
@@ -25,7 +25,10 @@ class ChangeUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('users');
+		Schema::drop('roles',function($table)
+		{
+			$table->drop('roles');
+		});
 	}
 
 }

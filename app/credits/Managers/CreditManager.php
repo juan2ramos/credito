@@ -1,5 +1,7 @@
 <?php namespace credits\Managers;
 use credits\Entities\User;
+use credits\Entities\Role;
+use credits\Entities\CreditRequest;
 class CreditManager extends BaseManager
 {
 
@@ -13,6 +15,7 @@ class CreditManager extends BaseManager
             'monthly_income'        => 'required',
             'monthly_expenses'      => 'required',
             'name_reference'        => 'required',
+            'email'                 => 'email|unique:users',
             'phone_reference'       => 'required|numeric',
             'name_reference2'       => 'required',
             'phone_reference2'      => 'required|numeric',
@@ -51,15 +54,30 @@ class CreditManager extends BaseManager
         ];
         return $messages;
     }
-    public function saveCredit($files)
+    public function saveCredit($files,$user)
     {
+
+        if($user)
+        {
+            $priority=Role::where('id', '=', $user->roles_id)->first();
+            $priority=$priority->priority;
+            $credit=CreditRequest::where('user_id', '=', $user->id)->first();
+            if($credit)
+                return ["message"=>"no puedes solicitar mas creditos"]+["role"=>false];
+
+        }else{
+            $priority=0;
+        }
+
         $data=$this->prepareData($this->data);
         $user = new User($data);
+        $user->roles_id=4;
         $user->save();
+        $this->entity->priority=$priority;
         $this->entity->files=$files;
         $this->entity->fill($this->prepareData($this->data));
         $user->CreditRequest()->save($this->entity);
-
+        return ["message"=>"la solicitud de credito fue enviada"]+["role"=>true];
     }
 
 }

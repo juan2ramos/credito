@@ -1388,9 +1388,10 @@ button.icon-search{
     max-width: 1000px;
 }
 #Input-more{
-    max-width: 700px;
     height: 40px;
     margin: 10px;
+    max-width: 700px;
+    padding-left: 20px;
     width: 80%;
 }
 .u-more{
@@ -1416,9 +1417,30 @@ button.icon-search{
 }
 .Input-more form{
     margin: auto;
-    width: 722px;
 }
-
+.Label-priority{
+    vertical-align: sub;
+    margin-right: 10px;
+}
+.wrap-content{
+    margin: 10px auto 0;
+    max-width: 1000px;
+    width: 100%;
+}
+#Input-more {
+    height: 40px;
+    margin: 10px;
+    max-width: 700px;
+    padding-left: 20px;
+    width: 80%;
+}
+.Input-title {
+    height: 40px;
+    margin: 10px 0;
+    max-width: 700px;
+    padding-left: 20px;
+    width: 80%;
+}
 @media all and (max-width: 1024px) and (min-width: 400px) {
     .Credito {
         text-align: center;

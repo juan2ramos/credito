@@ -1,14 +1,20 @@
 @extends('layout/front')
 @section('title') Solicitud de Credito @stop
 @section('content')
+    {{ Session::get('mensaje') }}
     @if($errors->first())
         <div id="form-errors">
+            @if($errors->first('user_name'))
+                <p>los nombres ya se encuentran registrados</p>
+            @endif
             @if($errors->first('document_type'))
                 <p>Seleccione un tipo de documento</p>
             @endif
             @if($errors->first('identification_card'))
                 <p>La cedula ya se en encuentra registrada o tiene letras </p>
             @endif
+                <p>{{$errors->first('email')}}</p>
+                <p>{{$errors->first('name_reference')}}</p>
                 <p>{{$errors->first('name')}}</p>
                 <p>{{$errors->first('second_name')}}</p>
                 <p>{{$errors->first('last_name')}}</p>
@@ -36,9 +42,10 @@
             @if($errors->first('phone_reference2'))
                 <p>Ingrese el telefono de la referencia 2 en numeros</p>
             @endif
-                @if($errors->first('files'))
-                    <p>Ingrese los archivos requeridos</p>
-                @endif
+            @if($errors->first('files'))
+                <p>Ingrese los archivos requeridos</p>
+            @endif
+
         </div>
 
     @endif
@@ -63,6 +70,12 @@
             <div class="material-input">
                 {{Form::text('identification_card','',['id' => 'identification_card'])}}
                 {{Form::label('identification_card','Cedula')}}
+                <span></span>
+            </div>
+
+            <div class="material-input">
+                {{Form::text('email','',['id' => 'mail'])}}
+                {{Form::label('email','Correo')}}
                 <span></span>
             </div>
 
@@ -102,17 +115,15 @@
                 <span></span>
             </div>
 
+        </section>
+
+        <section class="Credit-section">
+
             <div class="material-input">
                 {{Form::input('date','date_expedition','',['id' => 'date_expedition'])}}
                 {{Form::label('date_expedition','Fecha de expedicion')}}
                 <span></span>
             </div>
-
-
-
-        </section>
-
-        <section class="Credit-section">
 
             <div class="material-input">
                 {{Form::text('instead_expedition','',['id' => 'instead_expedition'])}}

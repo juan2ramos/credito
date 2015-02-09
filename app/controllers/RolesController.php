@@ -23,10 +23,13 @@ class RolesController extends BaseController
     {
         $permissionRole = $this->roles->rol($id);
         $role = $this->roles->getModelNew();
+        $nameRol = (Lang::has('utils.roles.' . $role->name)) ?
+            Lang::get('utils.roles.' . $role->name) :
+            $role->name;
 
         $permissions = ($permissionRole->isEmpty()) ? Permission::orderBy('name')->get() :
             Permission::whereNotIn('id', $permissionRole->lists('id'))->orderBy('name')->get();
-        return View::make('back.role', compact('permissionRole', 'role', 'permissions'));
+        return View::make('back.role', compact('permissionRole', 'role', 'permissions','nameRol'));
     }
 
     public function updateRol($id)
@@ -37,7 +40,8 @@ class RolesController extends BaseController
 
     public function newRol()
     {
-        Role::create(array('name' => Input::get('name')));
+        Input::only('name', 'priority');
+        Role::create(Input::only('name', 'priority'));
         return Redirect::back()->with(['message' => true]);
     }
 
