@@ -70,8 +70,8 @@ class CreditController extends BaseController
                 });
             }
         }
-
-        return Redirect::route('credit')->with(array('mensaje' => $message['message']));
+        $messages=$message['message'];
+        return View::make('front.sendCredit',compact('messages'));
 
     }
 
