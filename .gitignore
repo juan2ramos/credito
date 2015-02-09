@@ -2,6 +2,8 @@
 /bootstrap/compiled.php
 /public/sliders/
 /vendor
+public/sliders/
+app/config/database.php
 composer.phar
 composer.lock
 .env.*.php
@@ -12,4 +14,3 @@ Thumbs.db
 .htaccess
 /public/upload/
 
-app/config/database.php
