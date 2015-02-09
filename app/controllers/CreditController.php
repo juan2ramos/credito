@@ -1,7 +1,7 @@
 <?php
 
 use credits\Managers\CreditManager;
-use credits\Managers\UserManager;
+use credits\Entities\Location;
 use credits\Entities\CreditRequest;
 use credits\Entities\User;
 use credits\Repositories\ImageRepo;
@@ -13,7 +13,9 @@ class CreditController extends BaseController
     {
 
         $type = ["tipo de documento" => "Tipo de documento"] + [0 => "Cedula"] + [1 => "Cedula de extranjeria"];
-        return View::make('front.creditRequest', compact('type'));
+        $locations= ['location'=>'Seleccione una region']+Location::all()->lists('name','id');
+
+        return View::make('front.creditRequest', compact('type','locations'));
 
     }
 
@@ -70,8 +72,8 @@ class CreditController extends BaseController
                 });
             }
         }
-
-        return Redirect::route('credit')->with(array('mensaje' => $message['message']));
+        $messages=$message['message'];
+        return View::make('front.sendCredit',compact('messages'));
 
     }
 
