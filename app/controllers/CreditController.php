@@ -45,7 +45,7 @@ class CreditController extends BaseController
                         'method' => 'updateCredit'
                     ]
                 );
-                $data = Input::all();
+                $data = Input::all()+["link"=>"solicitud"];
                 Mail::send('emails.verification', $data, function ($message) {
                     $message->to(Input::get('email'), 'creditos lilipink')->subject('su solicitud de credito esta siendo procesada');
 
@@ -85,7 +85,20 @@ class CreditController extends BaseController
 
     public function showRequest()
     {
-        
+        $users=User::all();
+        $showRequest=[];
+        $i=0;
+        foreach($users as $user)
+        {
+            $credit=CreditRequest::where('user_id','=',$user->id)->first();
+            if($credit)
+            {
+                $showRequest[$i]=["user"=>$user]+["credit"=>$credit];
+                $i++;
+            }
+        }
+
+        return View::make('front.request',compact('showRequest'));
     }
 
 }

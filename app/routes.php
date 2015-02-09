@@ -37,4 +37,4 @@ Route::post('restaurar/{id}',['restore','uses'=>'AuthController@changePassword']
 
 //mostrar solicitudes de credito
 
-Route::get('solicitud',['request','uses'=>'CreditController@showRequest ']);
+Route::get('solicitud',['request','uses'=>'CreditController@showRequest']);

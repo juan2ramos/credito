@@ -16,6 +16,7 @@
         <p>Correo : {{$email}}</p>
         <p>telefono : {{$phone}}</p>
         <p>Celular : {{$mobile_phone}}</p>
+        {{ HTML::link(URL::to($link), 'Ver la solicitudes de credito ') }}
     </div>
 </div>
 </body>
