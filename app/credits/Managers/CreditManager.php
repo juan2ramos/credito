@@ -1,5 +1,6 @@
 <?php namespace credits\Managers;
 use credits\Entities\User;
+use credits\Entities\Role;
 use credits\Entities\CreditRequest;
 class CreditManager extends BaseManager
 {
@@ -14,7 +15,7 @@ class CreditManager extends BaseManager
             'monthly_income'        => 'required',
             'monthly_expenses'      => 'required',
             'name_reference'        => 'required',
-            'email'                 => 'unique:users',
+            'email'                 => 'email|unique:users',
             'phone_reference'       => 'required|numeric',
             'name_reference2'       => 'required',
             'phone_reference2'      => 'required|numeric',
@@ -55,35 +56,28 @@ class CreditManager extends BaseManager
     }
     public function saveCredit($files,$user)
     {
-        $data=$this->prepareData($this->data);
+
         if($user)
         {
-            $credit = CreditRequest::where('user_id', '=', $user->id)->first();
+            $priority=Role::where('id', '=', $user->roles_id)->first();
+            $priority=$priority->priority;
+            $credit=CreditRequest::where('user_id', '=', $user->id)->first();
             if($credit)
-            {
-                return ['message'=>"solo se puede solicitar un credito"]+['mail'=>false];
-            }else{
-                $entityUser=User::find($user->id);
-                $entityUser->fill($data);
-                $entityUser->save();
-                $this->entity->priority=1;
-                $this->entity->files=$files;
-                $this->entity->user_id=$user->id;
-                $this->entity->fill($this->prepareData($this->data));
-                $this->entity->save();
-                return ['message'=>"El usuario ha sido creado correctamente."]+['mail'=>true];
-            }
+                return ["message"=>"no puedes solicitar mas creditos"]+["role"=>false];
+
         }else{
-            $user = new User($data);
-            $user->save();
-            $this->entity->priority=0;
-            $this->entity->files=$files;
-            $this->entity->fill($this->prepareData($this->data));
-            $user->CreditRequest()->save($this->entity);
-            return ['message'=>"El usuario ha sido creado correctamente."]+['mail'=>false];
+            $priority=0;
         }
 
-
+        $data=$this->prepareData($this->data);
+        $user = new User($data);
+        $user->roles_id=4;
+        $user->save();
+        $this->entity->priority=$priority;
+        $this->entity->files=$files;
+        $this->entity->fill($this->prepareData($this->data));
+        $user->CreditRequest()->save($this->entity);
+        return ["message"=>"la solicitud de credito fue enviada"]+["role"=>true];
     }
 
 }
