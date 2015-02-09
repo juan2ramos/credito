@@ -1441,6 +1441,17 @@ button.icon-search{
     padding-left: 20px;
     width: 80%;
 }
+.u-link{
+    margin: 0 0 50px 0;
+    height: auto;
+    padding: 10px 16px;
+    width: auto;
+}
+.user-form {
+    margin: auto;
+    padding: 20px 20px 50px;
+    width: 80%;
+}
 @media all and (max-width: 1024px) and (min-width: 400px) {
     .Credito {
         text-align: center;

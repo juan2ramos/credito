@@ -42,4 +42,7 @@
         </table>
     </div>
     {{  $users->links(); }}
+    <div class="wrap-content ">
+        <a href="{{route('userNew')}}" class="u-more u-link">+</a>
+    </div>
 @stop

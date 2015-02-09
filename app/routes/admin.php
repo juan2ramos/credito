@@ -2,6 +2,7 @@
 
 Route::get('/', function () { return Redirect::route('home');});
 Route::get('usuarios', ['before' => 'permissions:users', 'as' => 'users','uses' => 'UserController@showAll' ]);
+Route::get('nuevo-usuario', ['before' => 'permissions:users', 'as' => 'userNew','uses' => 'UserController@newUser' ]);
 Route::post('usuarios', ['before' => 'permissions:users', 'as' => 'searchUsers','uses' => 'UserController@searchUsers' ]);
 Route::get('usuarios/{id}', ['before' => 'permissions:users', 'as' => 'userShow','uses' => 'UserController@userShow' ]);
 

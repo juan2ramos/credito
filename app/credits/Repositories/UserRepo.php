@@ -52,6 +52,5 @@ class UserRepo extends BaseRepo
         })->paginate(10);
 
         return $users;
-
     }
 }

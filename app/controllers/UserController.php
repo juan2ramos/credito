@@ -27,4 +27,7 @@ class UserController extends BaseController{
         $credits = $user->CreditRequest()->get();
         return View::make('back.user',compact('user','credits'));
     }
+    public function newUser(){
+        return View::make('back.userNew');
+    }
 }
