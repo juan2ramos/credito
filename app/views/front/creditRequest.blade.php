@@ -35,6 +35,9 @@
                 <p>{{$errors->first('monthly_income')}}</p>
                 <p>{{$errors->first('monthly_expenses')}}</p>
                 <p>{{$errors->first('name_reference')}}</p>
+            @if($errors->first('location'))
+                <p>Seleccione una locacion</p>
+            @endif
             @if($errors->first('phone_reference'))
                 <p>Ingrese el telefono de la referencia 1 en numeros</p>
             @endif
@@ -171,6 +174,11 @@
             <div class="material-input">
                 {{Form::text('monthly_expenses','',['id' => 'monthly_expenses'])}}
                 {{Form::label('monthly_expenses','Egresos mensuales')}}
+                <span></span>
+            </div>
+
+            <div class="material-input">
+                {{ Form::select('location', $locations,'',array('class'=>'Credit-select')) }}
                 <span></span>
             </div>
 

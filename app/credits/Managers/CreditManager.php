@@ -32,6 +32,7 @@ class CreditManager extends BaseManager
             'phone'                 => 'numeric|required_if:mobile_phone,null',
             'document_type'         => 'required|numeric',
             'date_birth'            => 'required',
+            'location'              => 'required|numeric',
 
         ];
 
