@@ -118,6 +118,11 @@
                 <span></span>
             </div>
 
+            <div class="material-input">
+                {{ Form::select('location', $locations,'',array('class'=>'Credit-select')) }}
+                <span></span>
+            </div>
+
         </section>
 
         <section class="Credit-section">
@@ -174,11 +179,6 @@
             <div class="material-input">
                 {{Form::text('monthly_expenses','',['id' => 'monthly_expenses'])}}
                 {{Form::label('monthly_expenses','Egresos mensuales')}}
-                <span></span>
-            </div>
-
-            <div class="material-input">
-                {{ Form::select('location', $locations,'',array('class'=>'Credit-select')) }}
                 <span></span>
             </div>
 

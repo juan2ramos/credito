@@ -5,6 +5,14 @@ Route::group(['before' => 'auth'], function () {
 	{
 		require (__DIR__ . '/routes/admin.php');
 	});
+	//mostrar solicitudes de credito
+
+	Route::get('solicitud',['as' => 'request','uses'=>'CreditController@showRequest']);
+
+	//regiones
+
+	Route::get('Regiones',['as' => 'location','uses'=>'CreditController@addLocations']);
+	//Route::post('Regiones',['as' => 'location','uses'=>'CreditController@addLocations']);
 });
 Route::group(['before' => 'guest'], function () {
 	Route::post('login', ['as' => 'login', 'uses' => 'AuthController@login']);
@@ -32,9 +40,9 @@ Route::post('administratorSlider/{id}','SliderController@deleteSlider');
 
 //restaurar contraseña
 
-Route::get('restaurar/{id}',['restore','uses'=>'AuthController@restorePassword']);
-Route::post('restaurar/{id}',['restore','uses'=>'AuthController@changePassword']);
+Route::get('restaurar/{id}',['as' => 'restore','uses'=>'AuthController@restorePassword']);
+Route::post('restaurar/{id}',['as' => 'restore','uses'=>'AuthController@changePassword']);
 
-//mostrar solicitudes de credito
 
-Route::get('solicitud',['request','uses'=>'CreditController@showRequest']);
+
+

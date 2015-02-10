@@ -103,4 +103,9 @@ class CreditController extends BaseController
         return View::make('front.request',compact('showRequest'));
     }
 
+    public function addLocations()
+    {
+        return View::make('back.location');
+    }
+
 }
