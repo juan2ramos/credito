@@ -18,7 +18,7 @@
             notify.querySelector('.text-notify').innerText = '{{$errors->first('name')}}';
         </script>
     @endif
-
+    <h1>Regiones</h1>
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>

@@ -128,9 +128,12 @@ class CreditController extends BaseController
     {
         $location=Location::find($id);
         if($location->delete())
-        {
+        {   dd("entro");exit;
             return Redirect::route('location')->with(array('message'=>"La region ha sido eliminada"));
+        }else{
+            dd("paila ");exit;
         }
+
         return Redirect::route('location')->with(array('message'=>"No se pudo eliminar la region"));
     }
 
