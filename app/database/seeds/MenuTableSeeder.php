@@ -48,6 +48,13 @@ class MenuTableSeeder extends Seeder
                 'permission' => '',
                 'orderMenu' => '5'
             ]);
+        Menu::create([
+            'nameMenu' => 'principal',
+            'nameLink' => 'Regiones',
+            'route' => 'location',
+            'permission' => 'location',
+            'orderMenu' => '6'
+        ]);
 
     }
 

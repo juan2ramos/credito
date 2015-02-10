@@ -21,7 +21,18 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name' => 'createPermissions',
         ]);
-
+        Permission::create([
+            'name' => 'users',
+        ]);
+        Permission::create([
+            'name' => 'roles',
+        ]);
+        Permission::create([
+            'name' => 'slider',
+        ]);
+        Permission::create([
+            'name' => 'location',
+        ]);
 
 
 

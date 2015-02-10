@@ -119,6 +119,14 @@ class CreditController extends BaseController
         }
 
         $message=$locationManager->saveLocation();
+        new LogRepo(
+            [
+                'responsible' => Auth::user()->user_name,
+                'action' => 'ha agregado una region ',
+                'affected_entity' => 'Regiones',
+                'method' => 'saveLocation'
+            ]
+        );
         return Redirect::route('location')->with(array('message'=>$message));
 
     }
@@ -126,15 +134,23 @@ class CreditController extends BaseController
 
     public function deleteLocation($id)
     {
-        $location=Location::find($id);
-        if($location->delete())
-        {   dd("entro");exit;
+        try {
+
+            $location=Location::find($id);
+            $location->delete();
+            new LogRepo(
+                [
+                    'responsible' => Auth::user()->user_name,
+                    'action' => 'ha eliminado una region ',
+                    'affected_entity' => 'Regiones',
+                    'method' => 'deleteLocation'
+                ]
+            );
             return Redirect::route('location')->with(array('message'=>"La region ha sido eliminada"));
-        }else{
-            dd("paila ");exit;
+        }catch (\Illuminate\Database\QueryException $e){
+            return Redirect::route('location')->with(array('messages'=>"No se pudo eliminar la region"));
         }
 
-        return Redirect::route('location')->with(array('message'=>"No se pudo eliminar la region"));
     }
 
 }

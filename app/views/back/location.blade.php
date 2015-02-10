@@ -10,12 +10,12 @@
             notify.querySelector('.text-notify').innerText = '{{Session::get('message')}}';
         </script>
     @endif
-    @if($errors->first('name'))
+    @if($errors->first('name') or Session::get('messages') )
         <script>
             var notify = document.getElementById('notify');
             notify.classList.add('is-show');
             notify.classList.add('error');
-            notify.querySelector('.text-notify').innerText = '{{$errors->first('name')}}';
+            notify.querySelector('.text-notify').innerText = '{{$errors->first('name').Session::get('messages') }}';
         </script>
     @endif
     <h1>Regiones</h1>
