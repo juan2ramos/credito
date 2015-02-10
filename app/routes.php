@@ -11,9 +11,17 @@ Route::group(['before' => 'auth'], function () {
 
 	//regiones
 
-	Route::get('Regiones',['as' => 'location','uses'=>'CreditController@addLocations']);
-	//Route::post('Regiones',['as' => 'location','uses'=>'CreditController@addLocations']);
+	Route::get('Regiones',['as' => 'location','uses'=>'CreditController@showLocations']);
+	Route::post('Regiones',['as' => 'location','uses'=>'CreditController@addLocations']);
+
+	Route::get('deleteLocation/{id}','CreditController@deleteLocation');
+	Route::post('deleteLocation/{id}','CreditController@deleteLocation');
+
+
 });
+
+
+
 Route::group(['before' => 'guest'], function () {
 	Route::post('login', ['as' => 'login', 'uses' => 'AuthController@login']);
 	Route::get('sign-up', ['as' => 'sign-up', 'uses' => 'UserController@signUp']);
