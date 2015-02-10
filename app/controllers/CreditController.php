@@ -6,6 +6,7 @@ use credits\Entities\CreditRequest;
 use credits\Entities\User;
 use credits\Repositories\ImageRepo;
 use credits\Repositories\LogRepo;
+use credits\Managers\LocationManager;
 
 class CreditController extends BaseController
 {
@@ -103,9 +104,34 @@ class CreditController extends BaseController
         return View::make('front.request',compact('showRequest'));
     }
 
+    public function showLocations()
+    {
+        $locations=Location::all();
+        return View::make('back.location',compact('locations'));
+    }
+
     public function addLocations()
     {
-        return View::make('back.location');
+        $locationManager=new LocationManager(new Location(),Input::all());
+        $locationValidator=$locationManager->isValid();
+        if ($locationValidator) {
+            return Redirect::route('location')->withErrors($locationValidator)->withInput();
+        }
+
+        $message=$locationManager->saveLocation();
+        return Redirect::route('location')->with(array('message'=>$message));
+
+    }
+
+
+    public function deleteLocation($id)
+    {
+        $location=Location::find($id);
+        if($location->delete())
+        {
+            return Redirect::route('location')->with(array('message'=>"La region ha sido eliminada"));
+        }
+        return Redirect::route('location')->with(array('message'=>"No se pudo eliminar la region"));
     }
 
 }
