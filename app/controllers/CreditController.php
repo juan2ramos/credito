@@ -134,22 +134,24 @@ class CreditController extends BaseController
 
     public function deleteLocation($id)
     {
-        try {
 
-            $location=Location::find($id);
-            $location->delete();
-            new LogRepo(
-                [
-                    'responsible' => Auth::user()->user_name,
-                    'action' => 'ha eliminado una region ',
-                    'affected_entity' => 'Regiones',
-                    'method' => 'deleteLocation'
-                ]
-            );
-            return Redirect::route('location')->with(array('message'=>"La region ha sido eliminada"));
-        }catch (\Illuminate\Database\QueryException $e){
-            return Redirect::route('location')->with(array('messages'=>"No se pudo eliminar la region"));
+        $user=User::where('location', '=', $id)->first();
+        if($user)
+        {
+            return Redirect::route('location')->with(array('messages'=>"No se pudo eliminar la region por que esta siendo usada"));
         }
+        $location=Location::find($id);
+        $location->delete();
+        new LogRepo(
+            [
+                'responsible' => Auth::user()->user_name,
+                'action' => 'ha eliminado una region ',
+                'affected_entity' => 'Regiones',
+                'method' => 'deleteLocation'
+            ]
+        );
+        return Redirect::route('location')->with(array('message'=>"La region ha sido eliminada"));
+
 
     }
 
