@@ -40,5 +40,6 @@ class RolesRepo extends BaseRepo{
         $this->model = $this->model->find($id);
         $this->model->permissionsRole()->detach();
         $this->model->delete();
+        return 'Rol eliminado exitosamente';
     }
 }

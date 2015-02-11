@@ -120,7 +120,6 @@ class CreditController extends BaseController
 
         $message=$locationManager->saveLocation();
         return Redirect::route('location')->with(array('message'=>$message));
-
     }
 
 
