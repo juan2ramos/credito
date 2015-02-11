@@ -13,10 +13,10 @@ class LocationSeeder extends Seeder
 
         Location::create([
             'id'=>1,
-            'name' => 'Ninguno',
+            'name' => 'Bogota',
         ]);
         Location::create([
-            'name' => 'Bogota',
+            'name' => 'Medellin',
         ]);
 
     }

@@ -1492,3 +1492,37 @@ button.icon-search{
     }
 }
 
+
+/*DATOS DE ACEPTACION DEL CREDITO*/
+
+#showFiles{
+    display: block;
+    margin: auto;
+    width: 55px;
+}
+
+#textTable{
+    color: #e80e8a;
+    font-size: 12px;
+    margin: 2px;
+    padding: 0 .2rem;
+}
+
+.acceptSection{
+    margin: auto;
+    text-align: center;
+    width: 1000px;
+}
+
+.acceptSection h2{
+    margin:10px;
+}
+
+.accpt-checkbox{
+    display: block;
+    margin: 22px;
+}
+.accpt-checkbox div{
+    display: inline-block;
+    margin-right: 78px;
+}
