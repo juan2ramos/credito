@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'creditos',
+			'database'  => 'credito',
 			'username'  => 'root',
-			'password'  => 'root',
+			'password'  => '123456',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
