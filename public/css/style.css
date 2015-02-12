@@ -1518,11 +1518,11 @@ button.icon-search{
     margin:10px;
 }
 
-.accpt-checkbox{
-    display: block;
-    margin: 22px;
-}
-.accpt-checkbox div{
+.accpt-checkbox {
     display: inline-block;
-    margin-right: 78px;
+    margin: 20px 40px 20px 40px;
+}
+
+.accept-content{
+    display: block;
 }

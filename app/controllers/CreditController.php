@@ -4,9 +4,12 @@ use credits\Managers\CreditManager;
 use credits\Entities\Location;
 use credits\Entities\CreditRequest;
 use credits\Entities\User;
+use credits\Entities\General_variables;
 use credits\Repositories\ImageRepo;
 use credits\Repositories\LogRepo;
 use credits\Managers\LocationManager;
+use credits\Managers\VariableManager;
+
 
 class CreditController extends BaseController
 {
@@ -173,7 +176,33 @@ class CreditController extends BaseController
         );
         return Redirect::route('location')->with(array('message'=>"La region ha sido eliminada"));
 
+    }
 
+
+    //se decide si se acepta el credito
+    public function acceptCredit($id)
+    {
+        dd(Input::all());exit;
+    }
+
+    //VARIABLES GENERALES
+    public function showVariables()
+    {
+        $variables=General_variables::all();
+        return View::make('back.generalVariables',compact('variables'));
+    }
+
+    public function saveVariables($id)
+    {
+
+        $variableManager=new VariableManager(new General_variables(),Input::all());
+        $variableValidator=$variableManager->isValid();
+        if($variableValidator)
+        {
+            return Redirect::to('variables')->withErrors($variableValidator) ;
+        }
+        $variableManager->saveVariables($id);
+        return Redirect::to('variables')->with(array('message'=>"Se actualizo correctamente"));
     }
 
 }
