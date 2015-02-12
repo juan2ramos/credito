@@ -66,7 +66,6 @@
 
             <div class="material-input">
                 {{ Form::select('document_type', $type,'',array('class'=>'Credit-select')) }}
-
                 <span></span>
             </div>
 

@@ -2,6 +2,7 @@
 use credits\Repositories\RolesRepo;
 use credits\Components\ACL\permission;
 use credits\Components\ACL\Role;
+use credits\Managers\RoleManager;
 
 class RolesController extends BaseController
 {
@@ -40,9 +41,13 @@ class RolesController extends BaseController
 
     public function newRol()
     {
-        Input::only('name', 'priority');
-        Role::create(Input::only('name', 'priority'));
-        return Redirect::back()->with(['message' => true]);
+
+        $roleManager = new RoleManager(new Role(),Input::all());
+        $roleValidator = $roleManager->isValid();
+        if ($roleValidator) {
+            return Redirect::back()->withErrors($roleValidator)->withInput();
+        }
+        return Redirect::back()->with(['message' => $roleManager->saveRole()]);
     }
 
     public function deleteRol($id)

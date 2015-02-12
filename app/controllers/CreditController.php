@@ -149,7 +149,6 @@ class CreditController extends BaseController
             ]
         );
         return Redirect::route('location')->with(array('message'=>$message));
-
     }
 
     //BORRA LAS REGIONES QUE NO ESTAN SIENDO UTILIZADAS POR OTROS USUARIOS

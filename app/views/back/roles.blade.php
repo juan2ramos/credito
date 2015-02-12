@@ -1,5 +1,22 @@
 @extends('layout.front')
 @section('content')
+    @include('layout.notify')
+    @if($errors->first('name'))
+        <script>
+            var notify = document.getElementById('notify');
+            notify.classList.add('is-show');
+            notify.classList.add('error');
+            notify.querySelector('.text-notify').innerText = '{{$errors->first('name')}}';
+        </script>
+    @endif
+    @if(Session::get('message'))
+        <script>
+            var notify = document.getElementById('notify');
+            notify.classList.add('is-show');
+            notify.classList.add('success');
+            notify.querySelector('.text-notify').innerText = '{{Session::get('message')}}';
+        </script>
+    @endif
     <h1>Roles</h1>
     <div class="Table-content">
         <table class="table table-striped table-hover ">
