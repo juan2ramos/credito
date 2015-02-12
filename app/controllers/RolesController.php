@@ -52,7 +52,6 @@ class RolesController extends BaseController
 
     public function deleteRol($id)
     {
-        $this->roles->deleteRol($id);
-        return Redirect::back()->with(['message' => true]);
+        return Redirect::back()->with(['message' => $this->roles->deleteRol($id)]);
     }
 }
