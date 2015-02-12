@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeUsersTable extends Migration {
+class CreateGeneralVariablesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,8 +12,12 @@ class ChangeUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('users',function($table)
+		Schema::create('general_variables',function($table)
 		{
+			$table->increments('id');
+			$table->string('name');
+			$table->integer('value');
+			$table->integer('percentage');
 			$table->timestamps();
 		});
 	}
@@ -25,7 +29,7 @@ class ChangeUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('users');
+		Schema::drop('general_cariables');
 	}
 
 }

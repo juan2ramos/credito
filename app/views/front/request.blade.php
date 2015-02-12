@@ -1,8 +1,7 @@
 @extends('layout/front')
 
 @section('content')
-    <section class="Credit u-shadow-5">
-    </section>
+    <h1>Solicitud de creditos pendientes</h1>
     <div class="Table-content">
         <table class="table table-striped table-hover ">
             <thead>
@@ -11,8 +10,9 @@
                 <th>Cedula</th>
                 <th>Prioridad</th>
                 <th>Estado</th>
-                <th>Leido</th>
+                <th>Region</th>
                 <th>E-mail</th>
+                <th>Revisar</th>
             </tr>
             </thead>
             <tbody>
@@ -26,18 +26,20 @@
                         @if($request["credit"]->state)
                             Aprobado
                         @else
-                            Pendiente
+                            Pendiente por aprobacion
                         @endif
                     </td>
                     <td>
-                        @if($request["credit"]->notify==0)
-                            No visto
-                        @else
-                            Visto
-                        @endif
+                        @foreach($locations as $location)
+                            @if($request["credit"]->location==$location->id)
+                                {{$location->name}}
+                            @endif
+                        @endforeach
                     </td>
                     <td>{{$request["user"]->email}}</td>
+                    <td>{{ HTML::link(URL::to('showCreditRequest/'.$request["user"]->id), '',array('class'=>'icon-folder-open')) }}</td>
                 </tr>
+
                 @endif
             @endforeach
             @foreach ($showRequest as $request)
@@ -54,13 +56,14 @@
                         @endif
                     </td>
                     <td>
-                        @if($request["credit"]->notify==0)
-                            No visto
-                        @else
-                            Visto
-                        @endif
+                        @foreach($locations as $location)
+                            @if($request["credit"]->location==$location->id)
+                                {{$location->name}}
+                            @endif
+                        @endforeach
                     </td>
                     <td>{{$request["user"]->email}}</td>
+                    <td>{{ HTML::link(URL::to('showCreditRequest/'.$request["user"]->id), '',array('class'=>'icon-folder-open')) }}</td>
                 </tr>
                 @endif
             @endforeach

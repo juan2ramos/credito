@@ -36,7 +36,7 @@
                 <p>{{$errors->first('monthly_expenses')}}</p>
                 <p>{{$errors->first('name_reference')}}</p>
             @if($errors->first('location'))
-                <p>Seleccione una locacion</p>
+                <p>Seleccione una Region</p>
             @endif
             @if($errors->first('phone_reference'))
                 <p>Ingrese el telefono de la referencia 1 en numeros</p>

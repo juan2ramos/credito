@@ -16,7 +16,7 @@ class ImageRepo extends BaseRepo{
     public function saveImages($image,$carpeta)
     {
         $file = $image;
-        $prefijo = sha1(time());
+        $prefijo = str_random(15);
         $archivo = ($file['file']['name']);
         $destino =  $carpeta.$prefijo.$archivo;
         if(move_uploaded_file($image['file']['tmp_name'], $destino))

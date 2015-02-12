@@ -9,6 +9,11 @@ Route::group(['before' => 'auth'], function () {
 
 	Route::get('solicitud',['as' => 'request','uses'=>'CreditController@showRequest']);
 
+	Route::get('showCreditRequest/{id}','CreditController@showCreditRequest');
+	//Route::post('showCreditRequest/{id}','CreditController@showCreditRequest');
+
+
+
 	//regiones
 
 	Route::get('Regiones',['as' => 'location','uses'=>'CreditController@showLocations']);
@@ -16,6 +21,16 @@ Route::group(['before' => 'auth'], function () {
 
 	Route::get('deleteLocation/{id}','CreditController@deleteLocation');
 	Route::post('deleteLocation/{id}','CreditController@deleteLocation');
+
+	//slider
+
+	Route::get('slider', ['as' => 'slider', 'uses' => 'SliderController@showSlider']);
+	Route::post('slider', ['as' => 'slider', 'uses' => 'SliderController@saveSlider']);
+	Route::post('administrar', ['as' => 'administratorSlider', 'uses' => 'SliderController@uploadSlider']);
+
+
+	Route::get('administratorSlider/{id}','SliderController@deleteSlider');
+	Route::post('administratorSlider/{id}','SliderController@deleteSlider');
 
 
 });
@@ -36,15 +51,7 @@ Route::get('credito', ['as' => 'credit', 'uses' => 'CreditController@index']);
 Route::post('credito', ['as' => 'credit', 'uses' => 'CreditController@updateCredit']);
 Route::post('submit', ['as' => 'submit', 'uses' => 'CreditController@saveImage']);
 
-//slider
 
-Route::get('slider', ['as' => 'slider', 'uses' => 'SliderController@showSlider']);
-Route::post('slider', ['as' => 'slider', 'uses' => 'SliderController@saveSlider']);
-Route::post('administrar', ['as' => 'administratorSlider', 'uses' => 'SliderController@uploadSlider']);
-
-
-Route::get('administratorSlider/{id}','SliderController@deleteSlider');
-Route::post('administratorSlider/{id}','SliderController@deleteSlider');
 
 //restaurar contraseña
 

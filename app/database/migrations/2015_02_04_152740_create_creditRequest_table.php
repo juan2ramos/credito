@@ -28,6 +28,8 @@ class CreateCreditRequestTable extends Migration {
 			$table->string('office_address');
 			$table->string('instead_expedition');
 			$table->date('date_expedition');
+			$table->integer('priority');
+			$table->integer('location');
 			$table->timestamps();
 
 
