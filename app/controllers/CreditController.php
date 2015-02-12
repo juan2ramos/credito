@@ -174,7 +174,11 @@ class CreditController extends BaseController
         );
         return Redirect::route('location')->with(array('message'=>"La region ha sido eliminada"));
 
+    }
 
+    public function acceptCredit($id)
+    {
+        dd(Input::all());exit;
     }
 
 }

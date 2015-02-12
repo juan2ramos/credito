@@ -8,10 +8,8 @@ Route::group(['before' => 'auth'], function () {
 	//mostrar solicitudes de credito
 
 	Route::get('solicitud',['as' => 'request','uses'=>'CreditController@showRequest']);
-
 	Route::get('showCreditRequest/{id}','CreditController@showCreditRequest');
-	//Route::post('showCreditRequest/{id}','CreditController@showCreditRequest');
-
+	Route::post('solicitud/{id}',['as' => 'request','uses'=>'CreditController@acceptCredit']);
 
 
 	//regiones

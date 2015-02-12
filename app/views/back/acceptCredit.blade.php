@@ -10,7 +10,7 @@
 
     <section class="acceptSection">
         <h2>datos personales</h2>
-        {{Form::open(array('route'=>'slider','method'=>'POST','class'=>""))}}
+        {{Form::open(array('url'=>'solicitud/'.$credit->id,'method'=>'POST','class'=>""))}}
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -40,21 +40,23 @@
                 </tbody>
             </table>
         </div>
-
-        <label class="accpt-checkbox">
-            <div>
-                {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
+        <div class="accept-content">
+            <label class="accpt-checkbox">
+                {{Form::checkbox('data_monthly', 1, null, ['class' => 'checkbox','required'])}}
                 Datos cuota mensual
-            </div>
-            <div>
-                {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
+            </label>
+
+            <label class="accpt-checkbox">
+                {{Form::checkbox('value_monthly', 1, null, ['class' => 'checkbox','required'])}}
                 Valor cuota mensual
-            </div>
-            <div>
-                {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-                Data Credito
-            </div>
-        </label>
+            </label>
+
+            <label class="accpt-checkbox">
+                {{Form::checkbox('data_credit', 1, null, ['class' => 'checkbox','required'])}}
+                Data credito
+            </label>
+        </div>
+
 
 
         <h2>Referencia 1</h2>
@@ -77,7 +79,7 @@
         </div>
 
         <label class="accpt-checkbox">
-            {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
+            {{Form::checkbox('reference1', 1, null, ['class' => 'checkbox','required'])}}
             Referencia 1 confirmada
         </label>
 
@@ -101,7 +103,7 @@
         </div>
 
         <label class="accpt-checkbox">
-            {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
+            {{Form::checkbox('reference2', 1, null, ['class' => 'checkbox','required'])}}
             Referencia 2 confirmada
         </label>
 
@@ -156,7 +158,7 @@
         </div>
 
         <label class="accpt-checkbox">
-            {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
+            {{Form::checkbox('files', 1, null, ['class' => 'checkbox','required'])}}
             Archivos correctos
         </label>
 
