@@ -17,7 +17,7 @@ class CreateGeneralVariablesTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->integer('value');
-			$table->integer('percentage');
+			$table->integer('porcentage');
 			$table->timestamps();
 		});
 	}

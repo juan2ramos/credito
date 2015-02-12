@@ -10,7 +10,7 @@
 
     <section class="acceptSection">
         <h2>datos personales</h2>
-        {{Form::open(array('url'=>'solicitud/'.$credit->id,'method'=>'POST','class'=>""))}}
+        {{Form::open(array('url'=>'showCreditRequest/'.$credit->id,'method'=>'POST','class'=>""))}}
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -42,17 +42,17 @@
         </div>
         <div class="accept-content">
             <label class="accpt-checkbox">
-                {{Form::checkbox('data_monthly', 1, null, ['class' => 'checkbox','required'])}}
+                {{Form::checkbox('data_monthly', 1, null, ['class' => 'checkbox'])}}
                 Datos cuota mensual
             </label>
 
             <label class="accpt-checkbox">
-                {{Form::checkbox('value_monthly', 1, null, ['class' => 'checkbox','required'])}}
+                {{Form::checkbox('value_monthly', 1, null, ['class' => 'checkbox'])}}
                 Valor cuota mensual
             </label>
 
             <label class="accpt-checkbox">
-                {{Form::checkbox('data_credit', 1, null, ['class' => 'checkbox','required'])}}
+                {{Form::checkbox('data_credit', 1, null, ['class' => 'checkbox'])}}
                 Data credito
             </label>
         </div>
@@ -79,7 +79,7 @@
         </div>
 
         <label class="accpt-checkbox">
-            {{Form::checkbox('reference1', 1, null, ['class' => 'checkbox','required'])}}
+            {{Form::checkbox('reference1', 1, null, ['class' => 'checkbox'])}}
             Referencia 1 confirmada
         </label>
 
@@ -103,7 +103,7 @@
         </div>
 
         <label class="accpt-checkbox">
-            {{Form::checkbox('reference2', 1, null, ['class' => 'checkbox','required'])}}
+            {{Form::checkbox('reference2', 1, null, ['class' => 'checkbox'])}}
             Referencia 2 confirmada
         </label>
 
@@ -158,7 +158,7 @@
         </div>
 
         <label class="accpt-checkbox">
-            {{Form::checkbox('files', 1, null, ['class' => 'checkbox','required'])}}
+            {{Form::checkbox('files', 1, null, ['class' => 'checkbox'])}}
             Archivos correctos
         </label>
 

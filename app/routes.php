@@ -9,8 +9,13 @@ Route::group(['before' => 'auth'], function () {
 
 	Route::get('solicitud',['as' => 'request','uses'=>'CreditController@showRequest']);
 	Route::get('showCreditRequest/{id}','CreditController@showCreditRequest');
-	Route::post('solicitud/{id}',['as' => 'request','uses'=>'CreditController@acceptCredit']);
+	Route::post('showCreditRequest/{id}','CreditController@acceptCredit');
 
+
+	//Variables generales
+
+	Route::get('variables',['as' => 'variables','uses'=>'CreditController@showVariables']);
+	Route::post('variables/{id}',['as' => 'variables/{id}','uses'=>'CreditController@saveVariables']);
 
 	//regiones
 
