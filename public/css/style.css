@@ -1526,3 +1526,32 @@ button.icon-search{
 .accept-content{
     display: block;
 }
+.icon-file-excel,.icon-file-pdf, .icon-file-word{
+    margin-bottom: 20px;
+    display: inline-block;
+    font-size: 2rem;
+}
+.icon-file-excel{
+    color: #48A12F;
+}
+.icon-file-pdf{
+    color: #E25D5D;
+}
+.accept-radio{
+    animation: show-animation 3s ;
+}
+
+.accept-radio input{
+    margin: 35px;
+}
+
+.input-content .material-input{
+    display: inline-block;
+    margin: 50px;
+    width: 120px;
+
+}
+
+.icon-upload{
+    color: #e80e8a;
+}
