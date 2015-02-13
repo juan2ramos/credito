@@ -1,6 +1,24 @@
 @extends('layout/front')
 
 @section('content')
+    @include('layout.notify')
+    @if(Session::get('message'))
+
+        <script>
+            var notify = document.getElementById('notify');
+            notify.classList.add('is-show');
+            notify.classList.add('success');
+            notify.querySelector('.text-notify').innerText = '{{Session::get('message')}}';
+        </script>
+    @endif
+    @if($errors->first())
+        <script>
+            var notify = document.getElementById('notify');
+            notify.classList.add('is-show');
+            notify.classList.add('error');
+            notify.querySelector('.text-notify').innerText = '{{$errors->first('data_monthly')}} {{$errors->first('value_monthly')}} {{$errors->first('data_credit')}} {{$errors->first('fenalco')}} {{$errors->first('reference')}} {{$errors->first('files')}}';
+        </script>
+    @endif
 
     <div class="Back-content">
         {{ HTML::link(URL::to('solicitud'), 'atras',array('class'=>'login-button')) }}
@@ -10,7 +28,7 @@
 
     <section class="acceptSection">
         <h2>datos personales</h2>
-        {{Form::open(array('url'=>'showCreditRequest/'.$credit->id,'method'=>'POST','class'=>""))}}
+        {{Form::open(array('url'=>'showCreditRequest/'.$user->id,'method'=>'POST','class'=>""))}}
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -40,22 +58,33 @@
                 </tbody>
             </table>
         </div>
-        <div class="accept-content">
-            <label class="accpt-checkbox">
-                {{Form::checkbox('data_monthly', 1, null, ['class' => 'checkbox'])}}
-                Datos cuota mensual
-            </label>
 
-            <label class="accpt-checkbox">
-                {{Form::checkbox('value_monthly', 1, null, ['class' => 'checkbox'])}}
-                Valor cuota mensual
-            </label>
-
-            <label class="accpt-checkbox">
-                {{Form::checkbox('data_credit', 1, null, ['class' => 'checkbox'])}}
-                Data credito
-            </label>
+        <div class="input-content">
+            <div class="material-input">
+                {{Form::text('data_monthly','',['id' => 'data_monthly'])}}
+                {{Form::label('data_monthly','Datos mensuales')}}
+                <span></span>
+            </div>
+            <div class="material-input">
+                {{Form::text('value_monthly','',['id' => 'value_monthly'])}}
+                {{Form::label('value_monthly','Valor mensual')}}
+                <span></span>
+            </div>
+            <div class="material-input">
+                {{Form::text('data_credit','',['id' => 'data_credit'])}}
+                {{Form::label('data_credit','Data credito')}}
+                <span></span>
+            </div>
         </div>
+        <label class="accpt-checkbox">
+            {{Form::checkbox('show', 1, null, ['class' => 'checkbox show-accept'])}}
+            Fenalco
+        </label>
+        <section class="hidden accept-radio">
+            {{Form::radio('fenalco', '0', true, ['class' => 'checkbox']);}}rojo
+            {{Form::radio('fenalco', '1', true, ['class' => 'checkbox']);}}amarillo
+            {{Form::radio('fenalco', '2', true, ['class' => 'checkbox']);}}verde
+        </section>
 
 
 
@@ -169,4 +198,9 @@
     </section>
 
 
+@stop
+
+@section('javascript')
+    {{ HTML::script('js/credit.js'); }}
+    {{ HTML::script('js/variables.js'); }}
 @stop
