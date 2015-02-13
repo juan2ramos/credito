@@ -4,15 +4,18 @@ use credits\Managers\CreditManager;
 use credits\Entities\Location;
 use credits\Entities\CreditRequest;
 use credits\Entities\User;
+use credits\Entities\Accept_credit;
 use credits\Entities\General_variables;
 use credits\Repositories\ImageRepo;
 use credits\Repositories\LogRepo;
 use credits\Managers\LocationManager;
 use credits\Managers\VariableManager;
+use credits\Managers\AcceptCreditManager;
 
 
 class CreditController extends BaseController
 {
+    private $_mail;
     //MOSTRAR FORMULARIO CREDIT REQUEST
     public function index()
     {
@@ -182,7 +185,32 @@ class CreditController extends BaseController
     //se decide si se acepta el credito
     public function acceptCredit($id)
     {
-        dd(Input::all());exit;
+        $acceptCredit=new AcceptCreditManager(new Accept_credit(),Input::all());
+        $acceptCreditValidator=$acceptCredit->isValid();
+
+
+        if($acceptCreditValidator)
+        {
+            return Redirect::to('showCreditRequest/'.$id)->withErrors($acceptCreditValidator);
+        }
+        $probabilityCredit=$acceptCredit->verificatorCredit();
+        if(isset($probabilityCredit['return'])==true)
+        {
+            $mailCredit=$acceptCredit->saveCredit($id);
+            $this->_mail=$mailCredit['mail'];
+            if($this->_mail)
+            {
+                $data=$mailCredit;
+                Mail::send('emails.verification', $data, function ($message) {
+                    $message->to($this->_mail, 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
+
+                });
+            }
+
+            return Redirect::to('solicitud')->with(array('message'=>"La solicitud de credito fue aprobada"));
+        }
+        return Redirect::to('showCreditRequest/'.$id)->withErrors($probabilityCredit);
+
     }
 
     //VARIABLES GENERALES

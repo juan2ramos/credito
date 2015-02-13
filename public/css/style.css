@@ -1526,3 +1526,23 @@ button.icon-search{
 .accept-content{
     display: block;
 }
+
+.accept-radio{
+    animation: show-animation 3s ;
+}
+
+.accept-radio input{
+    margin: 35px;
+}
+
+.input-content .material-input{
+    display: inline-block;
+    margin: 50px;
+    width: 120px;
+
+}
+
+.icon-upload{
+    color: #e80e8a;
+}
+
