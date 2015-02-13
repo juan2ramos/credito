@@ -209,7 +209,7 @@ class CreditController extends BaseController
 
             return Redirect::to('solicitud')->with(array('message'=>"La solicitud de credito fue aprobada"));
         }
-        return Redirect::to('showCreditRequest/'.$id)->withErrors($probabilityCredit);
+        return Redirect::to('showCreditRequest/'.$id)->withErrors($probabilityCredit)->withInput();
 
     }
 
@@ -220,6 +220,8 @@ class CreditController extends BaseController
         return View::make('back.generalVariables',compact('variables'));
     }
 
+
+    //ACTUALIZAR LOS CAMBIOS DE LAS VARIABLES GENERALES DATA CREDITO Y OTROS
     public function saveVariables($id)
     {
 
@@ -231,6 +233,26 @@ class CreditController extends BaseController
         }
         $variableManager->saveVariables($id);
         return Redirect::to('variables')->with(array('message'=>"Se actualizo correctamente"));
+    }
+
+
+    //reprobar credito
+    public function reprobateCredit($id)
+    {
+        $user=User::find($id);
+        $credit=CreditRequest::where('user_id', '=', $id)->first();
+        $credit->state=2;
+        $credit->save();
+        $this->_mail=$user->email;
+        if($this->_mail)
+        {
+            $data=["link"=>1];
+            Mail::send('emails.verification', $data, function ($message) {
+                $message->to($this->_mail, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
+
+            });
+        }
+        return Redirect::to('solicitud')->with(array('message'=>"el credito no fue aprobado"));
     }
 
 }

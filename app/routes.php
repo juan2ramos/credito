@@ -35,6 +35,9 @@ Route::group(['before' => 'auth'], function () {
 	Route::get('administratorSlider/{id}','SliderController@deleteSlider');
 	Route::post('administratorSlider/{id}','SliderController@deleteSlider');
 
+	Route::get('showCreditRequest/reprobate/{id}','CreditController@reprobateCredit');
+	//Route::post('showCreditRequest/reprobate//{id}','CreditController@reprobateCredit');
+
 
 });
 

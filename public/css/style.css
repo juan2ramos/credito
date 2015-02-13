@@ -1555,3 +1555,8 @@ button.icon-search{
 .icon-upload{
     color: #e80e8a;
 }
+
+.accept-links{
+    text-align: center;
+    margin-top: 100px;
+}

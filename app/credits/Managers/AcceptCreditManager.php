@@ -103,14 +103,14 @@ class AcceptCreditManager extends BaseManager
             {
                 return ['return'=>true];
             }else{
-                return $message;
+                return $message+['accept'=>'1'];
             }
         }else{
             if($countCredit==6)
             {
                 return ['return'=>true];
             }else{
-                return $message;
+                return $message+['accept'=>'1'];
             }
         }
 

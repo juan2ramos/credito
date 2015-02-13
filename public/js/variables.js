@@ -20,4 +20,15 @@ $('.show-accept').on('change',function()
       $('.accept-radio').removeClass('count');
       i=0;
    }
+   console.log();
 });
+
+if($('.show-accept:checked').val()==1)
+{
+   $('.accept-radio').removeClass('hidden');
+   $('.accept-radio').addClass('count');
+}else{
+   $('.accept-radio').addClass('hidden');
+   $('.accept-radio').removeClass('count');
+}
+
