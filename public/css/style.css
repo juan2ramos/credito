@@ -1526,3 +1526,14 @@ button.icon-search{
 .accept-content{
     display: block;
 }
+.icon-file-excel,.icon-file-pdf, .icon-file-word{
+    margin-bottom: 20px;
+    display: inline-block;
+    font-size: 2rem;
+}
+.icon-file-excel{
+    color: #48A12F;
+}
+.icon-file-pdf{
+    color: #E25D5D;
+}

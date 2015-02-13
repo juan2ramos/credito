@@ -125,6 +125,7 @@ return array(
 		/* Vendor */
         'Way\Generators\GeneratorsServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
 
 		/* Custom */
 
@@ -199,6 +200,7 @@ return array(
 		/* Custom */
 		'ACL'				=> 'credits\Components\ACL\ACL',
 		'Menus'				=> 'credits\Components\Menu\Menus',
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
 	),
 

@@ -2,6 +2,7 @@
 
 use credits\Repositories\UserRepo;
 use credits\Entities\Location;
+use credits\Entities\User;
 use credits\Components\ACL\Role;
 
 class UserController extends BaseController
@@ -44,5 +45,33 @@ class UserController extends BaseController
         $location = Location::all()->lists('name');
         $roles = Role::all()->lists('name','id');
         return View::make('back.userNew',compact('roles','location'));
+    }
+    public function usersExcel()
+    {
+        $data = User::all(['id','name','user_name']);
+        Excel::create('usuarios', function($excel) use($data){
+
+            $excel->sheet('Excel sheet', function($sheet) use($data){
+                $sheet->setAutoSize(true);
+                $sheet->fromArray($data);
+                $sheet->setOrientation('landscape');
+
+            });
+
+        })->export('xls');
+    }
+    public function usersPdf()
+    {
+        $data = User::where('name','like','%juan%')->get();
+        Excel::create('usuarios', function($excel) use($data){
+
+            $excel->sheet('Excel sheet', function($sheet) use($data){
+                $sheet->setAutoSize(true);
+                $sheet->fromArray($data, null, 'A1', true);
+                $sheet->setOrientation('landscape');
+
+            });
+
+        })->export('pdf');
     }
 }

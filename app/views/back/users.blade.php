@@ -9,7 +9,10 @@
         {{Form::input('text','search','',['class' => 'search-input'])}}
         {{Form::close()}}
     </div>
-
+    <div class="wrap-content">
+        <a href="{{route('usersExcel')}}" class="icon-file-excel"></a>
+        <a href="{{route('usersPdf')}}" class="icon-file-pdf"></a>
+    </div>
     <div class="Table-content">
         <table class="table table-striped table-hover ">
             <thead>
