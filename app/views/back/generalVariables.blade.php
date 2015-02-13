@@ -28,7 +28,6 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Valor minimo</th>
-                    <th>Porcentaje</th>
                     <th>Modificar</th>
                 </tr>
                 </thead>
@@ -38,7 +37,6 @@
                             {{Form::open(array('url'=>'variables/'.$variable->id,'method'=>'POST','class'=>"variables"))}}
                             <td>{{$variable->name}}</td>
                             <td class="variable"><p class="p1">{{$variable->value}}</p>{{form::text('value',$variable->value,array('class'=>'hidden variableText1'))}}</td>
-                            <td class="variable"><p class="p2" >{{$variable->percentage}}</p>{{form::text('percentage',$variable->percentage,array('class'=>'hidden variableText2'))}}</td>
                             <td> <button class="icon-upload"></button></td>
                         </tr>
                         {{form::close()}}
