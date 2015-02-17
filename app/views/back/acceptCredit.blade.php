@@ -82,17 +82,16 @@
                 <span></span>
             </div>
         </div>
-        <label class="accpt-checkbox">
-            {{Form::checkbox('show', 1, null, ['class' => 'checkbox show-accept'])}}
-            Fenalco
-        </label>
-        <section class="hidden accept-radio">
-            {{Form::radio('fenalco', '0', true, ['class' => 'checkbox']);}}rojo
-            {{Form::radio('fenalco', '1', true, ['class' => 'checkbox']);}}amarillo
-            {{Form::radio('fenalco', '2', true, ['class' => 'checkbox']);}}verde
-        </section>
-
-
+        @if(strtolower($locations->name)=="medellin")
+            <label class="accpt-checkbox">
+                <h2>Fenalco</h2>
+            </label>
+            <section class=" accept-radio">
+                {{Form::radio('fenalco', '0', true, ['class' => 'checkbox']);}}rojo
+                {{Form::radio('fenalco', '1', true, ['class' => 'checkbox']);}}amarillo
+                {{Form::radio('fenalco', '2', true, ['class' => 'checkbox']);}}verde
+            </section>
+        @endif
 
         <h2>Referencia 1</h2>
 

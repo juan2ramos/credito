@@ -8,8 +8,7 @@ class VariableManager extends BaseManager
     public function getRules()
     {
         $rules = [
-            'value' => 'required|numeric',
-            'percentage' =>'required|numeric'
+            'value' => 'required|numeric'
         ];
         return $rules;
     }
@@ -27,7 +26,6 @@ class VariableManager extends BaseManager
     {
         $variables=$this->entity->find($id);
         $variables->fill($this->prepareData($this->data));
-        $variables->percentage=$this->data['percentage'];
         $variables->save();
     }
 }

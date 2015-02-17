@@ -2,6 +2,7 @@
 use credits\Entities\General_variables;
 use credits\Entities\CreditRequest;
 use credits\Entities\User;
+use credits\Entities\Location;
 class AcceptCreditManager extends BaseManager
 {
 
@@ -44,8 +45,10 @@ class AcceptCreditManager extends BaseManager
         return ['return'=>true]+['mail'=>$user->email];
     }
 
-    public function verificatorCredit()
+    public function verificatorCredit($id)
     {
+        $credit=CreditRequest::where('user_id', '=', $id)->first();
+        $locations=Location::where('id', '=', $credit->location)->first();
         $variables=General_variables::all();
         $data = $this->prepareData($this->data);
         $message=[];
@@ -91,7 +94,7 @@ class AcceptCreditManager extends BaseManager
             $message=$message+['files'=>'Los archivos no estan correctos'];
         }
 
-        if(isset($data['show']))
+        if(strtolower($locations->name)=="medellin")
         {
             if($data['fenalco']>0)
             {

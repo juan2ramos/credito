@@ -125,8 +125,9 @@ class CreditController extends BaseController
     {
         $user=User::find($id);
         $credit=CreditRequest::where('user_id','=',$id)->first();
+        $locations=Location::where('id', '=', $credit->location)->first();
         $images =explode(",",$credit->files);
-        return View::make('back.acceptCredit',compact('user','credit','images'));
+        return View::make('back.acceptCredit',compact('user','credit','images','locations'));
     }
 
     //MUESTRA LA TABLA DONDE ESTAN TODAS LAS REGIONES
@@ -193,7 +194,7 @@ class CreditController extends BaseController
         {
             return Redirect::to('showCreditRequest/'.$id)->withErrors($acceptCreditValidator);
         }
-        $probabilityCredit=$acceptCredit->verificatorCredit();
+        $probabilityCredit=$acceptCredit->verificatorCredit($id);
         if(isset($probabilityCredit['return'])==true)
         {
             $mailCredit=$acceptCredit->saveCredit($id);

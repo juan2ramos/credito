@@ -28,7 +28,6 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Valor minimo</th>
-                    <th>Modificar</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,7 +36,6 @@
                             {{Form::open(array('url'=>'variables/'.$variable->id,'method'=>'POST','class'=>"variables"))}}
                             <td>{{$variable->name}}</td>
                             <td class="variable"><p class="p1">{{$variable->value}}</p>{{form::text('value',$variable->value,array('class'=>'hidden variableText1'))}}</td>
-                            <td> <button class="icon-upload"></button></td>
                         </tr>
                         {{form::close()}}
                     @endforeach
