@@ -57,11 +57,12 @@ class CreditManager extends BaseManager
     }
     public function saveCredit($files,$user)
     {
-
+        $data=$this->prepareData($this->data);
         if($user)
         {
             $priority=Role::where('id', '=', $user->roles_id)->first();
             $priority=$priority->priority;
+            $this->entity->responsible=$user->id;
             $credit=CreditRequest::where('user_id', '=', $user->id)->first();
             if($credit)
                 return ["message"=>"no puedes solicitar mas creditos"]+["role"=>false];
@@ -69,8 +70,6 @@ class CreditManager extends BaseManager
         }else{
             $priority=0;
         }
-
-        $data=$this->prepareData($this->data);
         $user = new User($data);
         $user->roles_id=4;
         $user->save();
