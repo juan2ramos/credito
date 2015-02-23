@@ -38,7 +38,7 @@ class UserController extends BaseController
     public function userShow($id)
     {
         $user = $this->userRepo->find($id);
-        $credits = CreditRequest::all();
+        $credits = $user->CreditRequest()->get();
         $locations= ['0'=>'Sin region']+Location::all()->lists('name','id');
         $location=Location::where('id', '=', $user->location)->first();
         if($location)
