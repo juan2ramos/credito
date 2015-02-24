@@ -13,7 +13,9 @@
   "require": {
     "laravel/framework": "4.2.*",
     "maatwebsite/excel": "1.*",
-    "dompdf/dompdf" : "0.6.*"
+    "dompdf/dompdf" : "0.6.*",
+    "brainboxlabs/brain-socket": "v1.0.0",
+    "redbaron76/larapush": "dev-master"
   },
   "autoload": {
     "psr-4": {

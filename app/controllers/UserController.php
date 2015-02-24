@@ -33,6 +33,7 @@ class UserController extends BaseController
         return View::make('back.users', compact('users'));
     }
 
+
     public function userShow($id)
     {
         $user = $this->userRepo->find($id);

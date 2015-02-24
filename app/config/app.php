@@ -126,6 +126,8 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
+        'BrainSocket\BrainSocketServiceProvider',
+
 
 		/* Custom */
 
@@ -200,7 +202,8 @@ return array(
 		/* Custom */
 		'ACL'				=> 'credits\Components\ACL\ACL',
 		'Menus'				=> 'credits\Components\Menu\Menus',
-		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+		'Excel'             => 'Maatwebsite\Excel\Facades\Excel',
+        'BrainSocket'       => 'BrainSocket\BrainSocketFacade',
 
 	),
 
