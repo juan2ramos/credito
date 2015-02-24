@@ -20,6 +20,12 @@
         </script>
     @endif
 
+    @if($errors->first('accept'))
+        <section class="accept-links">
+            <a href="reprobate/{{$user->id}}" class="u-button">Reprobar el credito</a>
+        </section>
+    @endif
+
     <div class="Back-content">
         {{ HTML::link(URL::to('solicitud'), 'atras',array('class'=>'login-button')) }}
     </div>
@@ -76,17 +82,16 @@
                 <span></span>
             </div>
         </div>
-        <label class="accpt-checkbox">
-            {{Form::checkbox('show', 1, null, ['class' => 'checkbox show-accept'])}}
-            Fenalco
-        </label>
-        <section class="hidden accept-radio">
-            {{Form::radio('fenalco', '0', true, ['class' => 'checkbox']);}}rojo
-            {{Form::radio('fenalco', '1', true, ['class' => 'checkbox']);}}amarillo
-            {{Form::radio('fenalco', '2', true, ['class' => 'checkbox']);}}verde
-        </section>
-
-
+        @if(strtolower($locations->name)=="medellin")
+            <label class="accpt-checkbox">
+                <h2>Fenalco</h2>
+            </label>
+            <section class=" accept-radio">
+                {{Form::radio('fenalco', '0', true, ['class' => 'checkbox']);}}rojo
+                {{Form::radio('fenalco', '1', true, ['class' => 'checkbox']);}}amarillo
+                {{Form::radio('fenalco', '2', true, ['class' => 'checkbox']);}}verde
+            </section>
+        @endif
 
         <h2>Referencia 1</h2>
 
@@ -154,31 +159,31 @@
                 <tr>
 
                     @foreach($images as $image)
-                            @if(strpos($image,"jpg"))
-                                <td>
-                                    {{ HTML::image('img/jpg.png','', array ('id' => 'showFiles')) }}
-                                    {{ HTML::link(URL::to('upload/'.$image), 'mostrar',array('id'=>'textTable','target'=>'_blank')) }}
-                                </td>
-                            @endif
-                            @if(strpos($image,"png"))
-                                <td>
-                                    {{ HTML::image('img/jpg.png','', array ('id' => 'showFiles')) }}
-                                    {{ HTML::link(URL::to('upload/'.$image), 'mostrar',array('id'=>'textTable','target'=>'_blank')) }}
-                                </td>
-                            @endif
-                            @if(strpos($image, "pdf"))
-                                <td>
-                                    {{ HTML::image('img/pdf.png','', array ('id' => 'showFiles')) }}
-                                    {{ HTML::link(URL::to('upload/'.$image), 'mostrar',array('id'=>'textTable','target'=>'_blank')) }}
-                                </td>
+                        @if(strpos($image,"jpg"))
+                            <td>
+                                {{ HTML::image('img/jpg.png','', array ('id' => 'showFiles')) }}
+                                {{ HTML::link(URL::to('upload/'.$image), 'mostrar',array('id'=>'textTable','target'=>'_blank')) }}
+                            </td>
+                        @endif
+                        @if(strpos($image,"png"))
+                            <td>
+                                {{ HTML::image('img/jpg.png','', array ('id' => 'showFiles')) }}
+                                {{ HTML::link(URL::to('upload/'.$image), 'mostrar',array('id'=>'textTable','target'=>'_blank')) }}
+                            </td>
+                        @endif
+                        @if(strpos($image, "pdf"))
+                            <td>
+                                {{ HTML::image('img/pdf.png','', array ('id' => 'showFiles')) }}
+                                {{ HTML::link(URL::to('upload/'.$image), 'mostrar',array('id'=>'textTable','target'=>'_blank')) }}
+                            </td>
 
-                            @endif
-                            @if(strpos($image, "docx"))
-                                <td>
-                                    {{ HTML::image('img/doc.png','', array ('id' => 'showFiles')) }}
-                                    {{ HTML::link(URL::to('upload/'.$image), 'descargar',array('id'=>'textTable','target'=>'_blank')) }}
-                                </td>
-                            @endif
+                        @endif
+                        @if(strpos($image, "docx"))
+                            <td>
+                                {{ HTML::image('img/doc.png','', array ('id' => 'showFiles')) }}
+                                {{ HTML::link(URL::to('upload/'.$image), 'descargar',array('id'=>'textTable','target'=>'_blank')) }}
+                            </td>
+                        @endif
                     @endforeach
 
                 </tr>
@@ -191,12 +196,19 @@
             Archivos correctos
         </label>
 
-        <button class="u-button">
-            Guardar Cambios
-        </button>
+        @if($errors->first('accept'))
+            <button class="u-button">
+                Volver a intentarlo
+            </button>
+        @else
+            <button class="u-button">
+                Calcular Credito
+            </button>
+        @endif
+
+
         {{Form::close()}}
     </section>
-
 
 @stop
 

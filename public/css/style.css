@@ -1234,9 +1234,9 @@ button.icon-search{
 /*Slider */
 
 #slider{
-    height: 400px;
+    height: 620px;
     margin: auto;
-    max-width: 960px;
+    max-width: 1170px;
     padding: 20px 10px
 }
 #slider img{
@@ -1268,10 +1268,10 @@ button.icon-search{
     opacity:1;
 }
 #back{
-    left: 152px;
+    left: 48px;
 }
 #next{
-    right: 153px;
+    right: 48px;
 }
 
 .slider{
@@ -1284,7 +1284,7 @@ button.icon-search{
     border-radius: 15px;
     position: relative;
     top:-25px;
-    left: 450px;
+    left: 550px;
 
 }
 .sliderValid{
@@ -1297,7 +1297,7 @@ button.icon-search{
     border-radius: 15px;
     position: relative;
     top:-25px;
-    left: 450px;
+    left: 550px;
 }
 
 /*Slider form*/
@@ -1554,4 +1554,9 @@ button.icon-search{
 
 .icon-upload{
     color: #e80e8a;
+}
+
+.accept-links{
+    text-align: center;
+    margin-top: 100px;
 }

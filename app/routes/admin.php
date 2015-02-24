@@ -13,3 +13,5 @@ Route::get('rol/{id}', ['before' => 'permissions:roles', 'as' => 'rol','uses' =>
 Route::get('eliminar-rol/{id}', ['before' => 'permissions:roles', 'as' => 'deleteRol','uses' => 'RolesController@deleteRol' ]);
 Route::post('rol/{id}', ['before' => 'permissions:roles', 'as' => 'updateRol','uses' => 'RolesController@updateRol' ]);
 Route::post('roles', ['before' => 'permissions:roles', 'as' => 'newRol','uses' => 'RolesController@newRol' ]);
+
+Route::post('uploadUser/{id}','UserController@updateUser');

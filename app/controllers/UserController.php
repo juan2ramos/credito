@@ -3,7 +3,9 @@
 use credits\Repositories\UserRepo;
 use credits\Entities\Location;
 use credits\Entities\User;
+use credits\Entities\CreditRequest;
 use credits\Components\ACL\Role;
+use credits\Managers\UploadUserManager;
 
 class UserController extends BaseController
 {
@@ -38,7 +40,16 @@ class UserController extends BaseController
     {
         $user = $this->userRepo->find($id);
         $credits = $user->CreditRequest()->get();
-        return View::make('back.user', compact('user', 'credits'));
+        $locations= ['0'=>'Sin region']+Location::all()->lists('name','id');
+        $location=Location::where('id', '=', $user->location)->first();
+        if($location)
+        {
+            $location=$location->name;
+        }else{
+            $location="No asignada";
+        }
+
+        return View::make('back.user', compact('user', 'credits','location','locations'));
     }
 
     public function newUser()
@@ -74,5 +85,18 @@ class UserController extends BaseController
             });
 
         })->export('pdf');
+    }
+
+    public function updateUser($id)
+    {
+        $user=new UploadUserManager(new User(),Input::all());
+        $userValidator=$user->isValid();
+        if($userValidator)
+        {
+            return Redirect::to('/admin/usuarios/'.$id)->withErrors($userValidator)->withInput();
+
+        }
+        $user->uploadUser($id);
+        return Redirect::to('/admin/usuarios/'.$id)->with(array('message'=>"El usuario se actualizo correctamente"));
     }
 }

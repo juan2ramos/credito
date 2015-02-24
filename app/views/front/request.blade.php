@@ -27,7 +27,7 @@
             </thead>
             <tbody>
             @foreach ($showRequest as $request)
-                @if($request["credit"]->state!=1)
+                @if($request["credit"]->state<1)
                     @if($request["credit"]->priority==1)
                         <tr>
                             <td>{{$request["user"]->user_name}}</td>
@@ -55,7 +55,7 @@
                 @endif
             @endforeach
             @foreach($showRequest as $request)
-                @if($request["credit"]->state!=1)
+                @if($request["credit"]->state<1)
                     @if($request["credit"]->priority==0)
                         <tr>
                             <td>{{$request["user"]->user_name}}</td>
