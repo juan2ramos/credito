@@ -113,8 +113,8 @@
             </div>
 
             <div class="material-input">
-                {{Form::input('date','date_birth',$user->date_birth,['class'=>' variableText1'])}}
-                {{Form::label('date_birth','telefono')}}
+                {{Form::input('date','date_birth',$user->date_birth,['class'=>' variableText1','id' => 'date_birth'])}}
+                {{Form::label('date_birth','fecha de nacimiento')}}
                 <span></span>
             </div>
 
