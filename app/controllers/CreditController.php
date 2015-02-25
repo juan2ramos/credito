@@ -12,10 +12,8 @@ use credits\Managers\LocationManager;
 use credits\Managers\VariableManager;
 use credits\Managers\AcceptCreditManager;
 
-
 class CreditController extends BaseController
 {
-    private $_mail;
     //MOSTRAR FORMULARIO CREDIT REQUEST
     public function index()
     {
@@ -198,12 +196,12 @@ class CreditController extends BaseController
         if(isset($probabilityCredit['return'])==true)
         {
             $mailCredit=$acceptCredit->saveCredit($id);
-            $this->_mail=$mailCredit['mail'];
-            if($this->_mail)
+            ;
+            if($mailCredit['return'])
             {
                 $data=$mailCredit;
-                Mail::send('emails.verification', $data, function ($message) {
-                    $message->to($this->_mail, 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
+                Mail::send('emails.verification', $data, function ($message) use($mailCredit){
+                    $message->to($mailCredit['mail'], 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
 
                 });
             }
@@ -244,12 +242,11 @@ class CreditController extends BaseController
         $credit=CreditRequest::where('user_id', '=', $id)->first();
         $credit->state=2;
         $credit->save();
-        $this->_mail=$user->email;
-        if($this->_mail)
+        if($user->email)
         {
             $data=["link"=>1];
-            Mail::send('emails.verification', $data, function ($message) {
-                $message->to($this->_mail, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
+            Mail::send('emails.verification', $data, function ($message) use($user){
+                $message->to($user->email, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
 
             });
         }
