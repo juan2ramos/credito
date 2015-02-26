@@ -80,7 +80,7 @@
                     {{ Form::open(['route' => 'credit', 'method' => 'post', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
 
                     <div class="">
-                        {{Form::label('identification_card','Numero de Cedula..',array('id'=>'email'))}}
+                        {{Form::label('identification_card','Numero de Cedula.',array('id'=>'email'))}}
                         {{Form::text('identification_card','',['id' => 'identification_card'])}}
                     </div>
 

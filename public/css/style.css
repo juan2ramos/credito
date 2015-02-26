@@ -278,6 +278,8 @@
     content: '\e831';
 }
 
+.icon-pinterest:before { content:'\e89'; }
+
 *:focus {
     outline: 0;
 }
@@ -499,9 +501,29 @@ img {
     z-index: 2000;
 }
 
-@media all and (max-width: 800px) and (min-width: 400px) {
+@media all and (max-width: 890px) and (min-width: 400px) {
     .Header-buttonNav {
         display: inline-block;
+    }
+
+    #header-menu{
+        display:none;
+    }
+
+    .Header-content{
+        height: 34px;
+    }
+
+    .Header-contentNav{
+        margin-left: -1px;
+    }
+
+    .Header-logoLilipink{
+        width: 80px;
+    }
+
+    .Header-logoIntima{
+        width: 140px;
     }
 }
 
