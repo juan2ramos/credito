@@ -31,6 +31,32 @@
 </head>
 <body>
 <header class="Header">
+    <div class="Header-content">
+        <figure class="Header-logoLilipink">
+            <img src="{{asset('img/lilipink_logo.svg')}}" alt=""/></figure>
+        <figure class="Header-logoIntima">
+            <img src="{{asset('img/intima.svg')}}" alt=""/>
+        </figure>
+        <div class="Header-contentNav">
+            @if(Auth::check())
+                <a class="icon-logout" href="{{route('logout')}}"></a>
+                @if(Auth::user()->roles_id == 2)
+
+                    <a class="icon-bell" href="#">
+                        <span>
+                             {{notify()}}
+                        </span>
+
+                    </a>
+                @endif
+                <a class="icon-child-1" href="#"></a>
+            @else
+                <a class="login-button" href="{{route('sign-up')}}">Iniciar sesión</a>
+            @endif
+            <div id="buttonMenu" class="Header-buttonNav">
+                <span class="Header-line1 u-line"></span>
+                <span class="Header-line2 u-line"></span>
+                <span class="Header-line3 u-line"></span>
     <div class="content-header">
         <div class="Header-content">
             <figure class="Header-logoLilipink">
@@ -54,6 +80,7 @@
             </div>
             {{Menus::create('principal',[ 'class'=>'Header-nav'])}}
         </div>
+        {{Menus::create('principal',[ 'class'=>'Header-nav'])}}
     </div>
     <figure class="Logo">
         <img class="Logo-img" src="{{asset('img/lilipink.svg')}}" alt="Lilipink"/>
