@@ -77,7 +77,7 @@
 
             <a href="http://www.twitter.com/LILI_PINK_col" target="_blank" class="icon-twitter-1"></a>
 
-            <a href="http://pinterest.com/lilipinkCol/?e_t_s=fullname&e_t=aa6f4bc889ae46b787b994acec4e3c1c&utm_source=sendgrid.com&utm_medium=email&utm_campaign=activity_aggregation" target="_blank" class="icon-youtube"></a>
+            <a href="http://pinterest.com/lilipinkCol/?e_t_s=fullname&e_t=aa6f4bc889ae46b787b994acec4e3c1c&utm_source=sendgrid.com&utm_medium=email&utm_campaign=activity_aggregation" target="_blank" class="icon-pinterest"></a>
 
             <a href="https://www.youtube.com/user/tiendasintimasecret" target="_blank" class="icon-youtube"></a>
 
@@ -87,7 +87,7 @@
 
     </div>
 <footer>
-    <p>®Lilipink Todos los derechos reservados - 2014 -  Diseño Web - Agencia de Publicidad <a href="http://mi-martinez.com" target="_blank" class="icon-logoblanco:before">Mi-martinez</a></p>
+    <p>®Lilipink Todos los derechos reservados - 2014 -  Diseño de aplicacion Web - Agencia de Publicidad <a href="http://mi-martinez.com" target="_blank" class="icon-logoblanco:before">Mi-martinez</a></p>
 </footer>
 </body>
 <!-- JavaScript -->
