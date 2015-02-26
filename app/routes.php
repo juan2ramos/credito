@@ -73,5 +73,10 @@ Route::get('info', function () {
 
 Route::get('drawde', function()
 {
-	return View::make('emails.password');
+	return View::make('emails.accept');
 });
+
+
+/**
+ * php-cli composer.phar update
+ */

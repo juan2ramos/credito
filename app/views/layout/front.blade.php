@@ -26,35 +26,69 @@
     <!-- Humans -->
     <link type="text/plain" rel="author" href="{{asset('humans.txt')}}"/>
 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 <header class="Header">
-    <div class="Header-content">
-        <figure class="Header-logoLilipink">
-            <img src="{{asset('img/lilipink_logo.svg')}}" alt=""/></figure>
-        <figure class="Header-logoIntima">
-            <img src="{{asset('img/intima.svg')}}" alt=""/>
-        </figure>
-        <div class="Header-contentNav">
-            @if(Auth::check())
-                <a class="icon-logout" href="{{route('logout')}}"></a>
-                <a class="icon-bell" href="#"><span>2</span></a>
-                <a class="icon-child-1" href="#"></a>
-            @else
-                <a class="login-button" href="{{route('sign-up')}}">Iniciar sesión</a>
-            @endif
-            <div id="buttonMenu" class="Header-buttonNav">
-                <span class="Header-line1 u-line"></span>
-                <span class="Header-line2 u-line"></span>
-                <span class="Header-line3 u-line"></span>
+    <div class="content-header">
+        <div class="Header-content">
+            <figure class="Header-logoLilipink">
+                <img src="{{asset('img/lilipink_logo.svg')}}" alt=""/></figure>
+            <figure class="Header-logoIntima">
+                <img src="{{asset('img/intima.svg')}}" alt=""/>
+            </figure>
+            <div class="Header-contentNav">
+                @if(Auth::check())
+                    <a class="icon-logout" href="{{route('logout')}}"></a>
+                    <a class="icon-bell" href="#"><span>2</span></a>
+                    <a class="icon-child-1" href="#"></a>
+                @else
+                    <a class="login-button" href="{{route('sign-up')}}">Iniciar sesión</a>
+                @endif
+                <div id="buttonMenu" class="Header-buttonNav">
+                    <span class="Header-line1 u-line"></span>
+                    <span class="Header-line2 u-line"></span>
+                    <span class="Header-line3 u-line"></span>
+                </div>
             </div>
+            {{Menus::create('principal',[ 'class'=>'Header-nav'])}}
         </div>
-        {{Menus::create('principal',[ 'class'=>'Header-nav'])}}
+    </div>
+    <figure class="Logo">
+        <img class="Logo-img" src="{{asset('img/lilipink.svg')}}" alt="Lilipink"/>
+    </figure>
+    <div id="header-menu" >
+        {{Menus::create('principal',[ 'class'=>''])}}
+
     </div>
 </header>
 <div class="wrap">
     @yield('content')
+
 </div>
+
+    <div class="content-social" >
+
+        <div class="social-text">
+            <p>Siguenos en nuestras Redes Sociales</p>
+
+            <a href="https://www.facebook.com/LiliPinkColombia" target="_blank" class="icon-facebook-1"></a>
+
+            <a href="http://www.twitter.com/LILI_PINK_col" target="_blank" class="icon-twitter-1"></a>
+
+            <a href="http://pinterest.com/lilipinkCol/?e_t_s=fullname&e_t=aa6f4bc889ae46b787b994acec4e3c1c&utm_source=sendgrid.com&utm_medium=email&utm_campaign=activity_aggregation" target="_blank" class="icon-youtube"></a>
+
+            <a href="https://www.youtube.com/user/tiendasintimasecret" target="_blank" class="icon-youtube"></a>
+
+            <a href="http://instagram.com/intimasecret_lilipink" target="_blank" class="icon-instagramm"></a>
+
+        </div>
+
+    </div>
+<footer>
+    <p>®Lilipink Todos los derechos reservados - 2014 -  Diseño Web - Agencia de Publicidad <a href="http://mi-martinez.com" target="_blank" class="icon-logoblanco:before">Mi-martinez</a></p>
+</footer>
 </body>
 <!-- JavaScript -->
 

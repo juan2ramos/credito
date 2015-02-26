@@ -13,7 +13,7 @@ $('#buttonMenu').on('click',function(){
         $headerNav.addClass('show--element');
     }
 });
-$('.u-button').on('click', expand);
+$('.home-button').on('click', expand);
 
 function expand(e){
     circle = $("<div class='u-circle'></div>");
@@ -48,14 +48,14 @@ $('#loginForm').on('submit',function(e){
 });
 $('#Remember').on('click',function(e){
     e.preventDefault();
-    var $form = $('#loginForm'),$signUp = $('#signUpButton');
+    var $form = $('#loginForm'),$signUp = $('#signUpButton-home');
     if($form.hasClass('justMail')){
         $form.removeClass('justMail');
-        $signUp.text('Ingresar');
+        $signUp.text('IDENTIFICARSE');
         $(this).text('Olvidaste la contraseña?')
     }else{
         $form.addClass('justMail');
-        $signUp.text('Restaurar  contraseña');
+        $signUp.text('ENVIAR');
         $(this).text('Volver a iniciar sesión')
     }
 

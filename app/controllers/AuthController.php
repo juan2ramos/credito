@@ -9,7 +9,6 @@ class AuthController extends BaseController
 
     public function login()
     {
-
         $data = Input::only('email', 'password', 'remember');
         $credentials = ['email' => $data['email'], 'password' => $data['password']];
 

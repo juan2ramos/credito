@@ -298,7 +298,7 @@ html, body {
 }
 
 body {
-    background-color: #eeeeee;
+    background-color: #fff;
     color: #949494;
     font-family: 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
     font-size: 14px;
@@ -326,10 +326,8 @@ img {
 }
 
 .wrap {
-    height: 100%;
-    max-width: 1280px;
-    margin: auto;
-    padding: 20px;
+    max-width: 1180px;
+    margin: 28px auto;
     position: relative;
     width: 100%;
 }
@@ -396,15 +394,22 @@ img {
 /* Header */
 
 .Header {
-    background: #dedede;
     text-align: center;
     width: 100%;
+}
+
+.content-header{
+    background: #dedede;
+}
+
+.Logo{
+    height: 137px;
 }
 
 .Header-content {
     display: flex;
     margin: auto;
-    max-width: 1000px;
+    max-width: 1180px;
 }
 
 .Header-logoLilipink {
@@ -476,17 +481,28 @@ img {
 .Header-contentNav {
     flex: 2;
     text-align: right;
+
 }
+
+
+
+
 
 .Header-buttonNav {
     background: #9d9d9d;
     cursor: pointer;
-    display: inline-block;
+    display: none;
     margin-bottom: -3px;
     position: relative;
     padding: 8px;
     user-select: none;
     z-index: 2000;
+}
+
+@media all and (max-width: 800px) and (min-width: 400px) {
+    .Header-buttonNav {
+        display: inline-block;
+    }
 }
 
 .show--element {
@@ -515,6 +531,46 @@ img {
     height: 4px;
     margin: 3px;
     width: 25px;
+}
+
+/* MENU */
+
+#header-menu{
+    height: 50px;
+    margin: auto;
+    width: 1180px;
+}
+#header-menu ul{
+    list-style:none;
+    border-top:#CCC solid 1px;
+    border-bottom:#CCC solid 1px;
+    height: 100%;
+    text-align:center;
+}
+
+#header-menu ul li{
+    display:inline-block;
+    margin:17px 30px 20px 26px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#header-menu ul li a{
+    color: #666;
+    font-family: 'Open Sans', sans-serif;
+    font-size:13px;
+    text-decoration:none;
+    text-transform: uppercase;
+
+}
+
+#header-menu ul li a:hover{
+    border-bottom: 2px solid #ba087e;
+    border-top: 2px solid #ba087e;
+    color: #ba087e !important;
+    padding-top: 13px;
+    padding-bottom: 14px;
+    width: 100%;
+    background: none;
 }
 
 /* Input */
@@ -582,16 +638,51 @@ img {
 }
 
 /* Login */
+
+.Content-home{
+    margin-top: 20px;
+}
+
+.content-sign-up{
+    display: inline-block;
+    margin-left: 27px;
+    vertical-align: top;
+}
+
 .Login {
-    margin: 80px auto;
+    background: rgba(13, 12, 12, 0.03);
+    border: 2px solid rgba(204, 204, 204, 0.53);
     max-width: 600px;
+    height: 245px;
+    padding: 20px 30px;
+    width: 356px;
 
 }
 
-.Login-form {
-    margin: auto;
-    padding: 20px 20px 50px;
-    width: 80%;
+.Login-form #email{
+    font-weight: 100;
+    font-size: 14px;
+    width: 100%;
+}
+
+
+.Login-form #password{
+    font-weight: 100;
+    font-size: 14px;
+    width: 100%;
+}
+
+.Login-form input{
+    border: 1.5px solid;
+    height: 33px;
+    margin-bottom: 12px;
+    margin-top: 3px;
+    width: 100%;
+}
+
+.Login p{
+    font-size: 17px;
+    margin: 11px 0px;
 }
 
 .label--checkbox {
@@ -837,14 +928,12 @@ input[type=file] {
 }
 
 .Remember {
-    margin: auto;
-    padding: 0 20px 30px;
-    text-align: center;
-    width: 80%;
+    display: inline-block;
+    font-size: 12px;
 }
 
 .Remember a {
-    color: #ff0f98;
+    color: #949494;
 }
 
 .Remember a:hover {
@@ -968,7 +1057,9 @@ input[type=file] {
 }
 
 .Logo-img {
-    width: 80%;
+    height: 58px;
+    margin-top: 38px;
+    width: 268px;
 }
 
 .Banner-img {
@@ -1012,13 +1103,31 @@ a.icon-bell span {
 
 a.login-button {
     background: #e80e8a;
+    display: none;
     padding: 8px 12px;
     color: #fff;
-    display: inline-block;
     font-size: .8em;
     line-height: inherit;
     margin: 6px 5px 0 0;
     vertical-align: top;
+
+}
+
+.home-button{
+    background: rgba(130, 130, 130, 0.67);
+    border: 1px solid #949494;
+    color: white;
+    float: right;
+    font-size: 12px;
+    height: 27px;
+    padding-top: 5px;
+    width: 120px;
+}
+
+@media all and (max-width: 800px) and (min-width: 400px) {
+    a.login-button {
+        display: inline-block;
+    }
 }
 a.icon-logout {
     color: rgb(96, 97, 104);
@@ -1234,10 +1343,11 @@ button.icon-search{
 /*Slider */
 
 #slider{
-    height: 620px;
-    margin: auto;
-    max-width: 1170px;
-    padding: 20px 10px
+    display: inline-block;
+    height: 452px;
+    margin-left: 15px;
+    max-width: 762px;
+    text-align: center;
 }
 #slider img{
     display: none;
@@ -1263,6 +1373,7 @@ button.icon-search{
     top: 50%;
     width: auto;
     z-index: 1;
+    display: none;
 }
 #back:hover, #next:hover{
     opacity:1;
@@ -1275,16 +1386,15 @@ button.icon-search{
 }
 
 .slider{
-    background:rgba(24, 23, 23, 0.5) !important;
-    color:rgba(222, 184, 135, 0);
+    background: rgba(24, 23, 23, 0.5) !important;
+    color: rgba(222, 184, 135, 0);
     cursor: pointer;
     display: inline-block;
     width: 15px !important;
     height: 15px !important;
     border-radius: 15px;
     position: relative;
-    top:-25px;
-    left: 550px;
+    top: -33px;
 
 }
 .sliderValid{
@@ -1296,8 +1406,7 @@ button.icon-search{
     border: 2px solid rgba(256, 256, 256, 1) !important;
     border-radius: 15px;
     position: relative;
-    top:-25px;
-    left: 550px;
+    top:-33px;
 }
 
 /*Slider form*/
@@ -1559,4 +1668,70 @@ button.icon-search{
 .accept-links{
     text-align: center;
     margin-top: 100px;
+}
+
+/* HOME */
+
+.content-creditRequest{
+    background: rgba(165, 165, 165, 0.25);
+    border: 2px solid rgba(166, 157, 157, 0.63);
+    height: 180px;
+    margin-top: 27px;
+    padding: 16px 30px;
+    width: 356px;
+
+}
+
+.content-creditRequest .Home-request p{
+    font-size: 17px;
+}
+
+.content-creditRequest .Home-request form{
+    font-size: 14px;
+}
+
+.content-Request{
+    height: 135px;
+    margin-left: 15px;
+    width: 1149px;
+}
+
+/* LAYOU REDES SOCIALES */
+
+.content-social{
+    background: rgba(165, 165, 165, 0.21);
+    color: rgba(0, 0, 0, 0.69);;
+    height: 43px;
+    margin-top: 160px;
+    padding-top: 6px;
+    text-align: center;
+}
+
+.content-social .social-text a {
+    border: 1px solid rgba(0, 0, 0, 0.69);
+    border-radius: 19px;
+    color: rgba(0, 0, 0, 0.69);
+    display: inline-block;
+    font-size: 12px;
+    height: 30px;
+    margin-top: -13px;
+    padding-top: 8px;
+    vertical-align: middle;
+    width: 30px;
+}
+
+.content-social .social-text p{
+    display: inline-block;
+    position: relative;
+    top: -4px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align: center;
+    font-size: 12px;
+    background: #6E6C6C;
+    margin: 0;
+    padding: 5px;
 }

@@ -200,7 +200,7 @@ class CreditController extends BaseController
             if($mailCredit['return'])
             {
                 $data=$mailCredit;
-                Mail::send('emails.verification', $data, function ($message) use($mailCredit){
+                Mail::send('emails.accept', $data, function ($message) use($mailCredit){
                     $message->to($mailCredit['mail'], 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
 
                 });
@@ -245,7 +245,7 @@ class CreditController extends BaseController
         if($user->email)
         {
             $data=["link"=>1];
-            Mail::send('emails.verification', $data, function ($message) use($user){
+            Mail::send('emails.rejected', $data, function ($message) use($user){
                 $message->to($user->email, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
 
             });

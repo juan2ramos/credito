@@ -57,8 +57,8 @@
     </div>
 
     <div id="imagen1" style="height:385px;text-align:center;">
-        <a href="{{asset($link)}}">
-            <img  src="http://creditos.lilipink.com/img/password.jpg" width="800" alt="creditoslilipink">
+        <a href="{{asset('sign-up')}}">
+            <img  src="http://creditos.lilipink.com/img/aprobada.jpg" width="800" alt="creditoslilipink">
         </a>
     </div>
     <div id="textocre" style="color: #999;
@@ -66,7 +66,7 @@
             font-size:16px;
             font-family:Arial, Helvetica, sans-serif;
             padding-bottom: 10px;">
-        Recientemente has solicitado una restauracion de contraseña da click <a href="{{asset($link)}}">Aqui</a> para cambiar la contraseña, si no has solicitado la solicitud de contraseña haga caso omiso de este correo</div>
+       Lilipink le informa que su solicitud de credito fue aprobada. dale <a href="{{asset('sign-up')}}">aqui</a> para iniciar session </div>
     <div id="redes" style="height:40px;
             font-family:Arial, Helvetica, sans-serif;
             color: #999;
