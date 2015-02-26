@@ -1085,7 +1085,7 @@ a.icon-child-1 {
 a.icon-bell {
     color: rgb(219, 85, 61);
     font-size: 1.5rem;
-    padding: 15px 12px 5px 5px;
+    padding: 20px 12px 5px 5px;
     position: relative;
 }
 
@@ -1098,7 +1098,7 @@ a.icon-bell span {
     left: 15px;
     padding: 10px 6px 9px;
     position: absolute;
-    top: 4px;
+    top: 2px;
 }
 
 a.login-button {
