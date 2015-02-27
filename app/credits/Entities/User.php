@@ -37,10 +37,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
     public function CreditRequest()
     {
 
-        return $this->hasOne('credits\Entities\CreditRequest')
-            ->where('state','=','2')->get();
+        return $this->hasOne('credits\Entities\CreditRequest');
     }
-
-
 
 }

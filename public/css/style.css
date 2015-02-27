@@ -278,6 +278,8 @@
     content: '\e831';
 }
 
+.icon-pinterest:before { content:'\e89'; }
+
 *:focus {
     outline: 0;
 }
@@ -499,9 +501,29 @@ img {
     z-index: 2000;
 }
 
-@media all and (max-width: 800px) and (min-width: 400px) {
+@media all and (max-width: 890px) and (min-width: 400px) {
     .Header-buttonNav {
         display: inline-block;
+    }
+
+    #header-menu{
+        display:none;
+    }
+
+    .Header-content{
+        height: 34px;
+    }
+
+    .Header-contentNav{
+        margin-left: -1px;
+    }
+
+    .Header-logoLilipink{
+        width: 80px;
+    }
+
+    .Header-logoIntima{
+        width: 140px;
     }
 }
 
@@ -665,8 +687,37 @@ img {
 
 }
 
+.Login .content-inf{
+    margin-top: 25px;
+}
+
 .Login h2{
-    text-align: center;
+    font-size: 17px;
+    font-weight: 200;
+    margin-top: 10px;
+}
+
+.Login .title{
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.Login .title-body{
+    font-weight: 300;
+    font-size: 18px;
+}
+
+
+.Login .button-edit{
+    background: rgb(148, 148, 148);
+    border: 1px solid rgba(102, 102, 102, 0.21);
+    color: white;
+    display: block;
+    font-size: 12px;
+    float: right;
+    font-weight: 100;
+    padding: 6px 13px 4px 13px;
+    width: 113px;
 }
 
 .Login section figure{
@@ -676,6 +727,9 @@ img {
 
 .Login section div{
     display: inline-block;
+    vertical-align: top;
+    margin-left: 15px;
+
 }
 
 .Login-form #email{
@@ -1104,7 +1158,7 @@ a.icon-child-1 {
 a.icon-bell {
     color: rgb(219, 85, 61);
     font-size: 1.5rem;
-    padding: 15px 12px 5px 5px;
+    padding: 20px 12px 5px 5px;
     position: relative;
 }
 
@@ -1117,7 +1171,7 @@ a.icon-bell span {
     left: 15px;
     padding: 10px 6px 9px;
     position: absolute;
-    top: 4px;
+    top: 2px;
 }
 
 a.login-button {
@@ -1709,6 +1763,49 @@ button.icon-search{
     font-size: 14px;
 }
 
+.home-request .content-text{
+    display: inline-block;
+}
+
+.home-request .state-text{
+    font-weight: 100;
+}
+
+.home-request .state-text1{
+    font-weight: 800;
+    float: right;
+    text-align: right;
+    width: 107px;
+}
+
+.home-request h2{
+    font-weight: 200;
+    font-size: 17px;
+}
+
+.home-request .state-home{
+    background: red;
+    color: white;
+    float: right;
+    font-size: 12px;
+    margin-top: -4px;
+    padding: 5px 6px 2px 4px;
+    width: 78px;
+}
+
+.home-request a{
+    background: rgb(148, 148, 148);
+    border: 1px solid rgba(102, 102, 102, 0.21);
+    color: white;
+    display: block;
+    font-size: 12px;
+    float: right;
+    font-weight: 100;
+    padding: 6px 13px 4px 13px;
+    width: 152px;
+
+}
+
 .content-Request{
     height: 135px;
     margin-left: 15px;
@@ -1754,3 +1851,5 @@ footer{
     margin: 0;
     padding: 5px;
 }
+
+/* PRELOAD */

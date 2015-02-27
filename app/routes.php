@@ -63,8 +63,6 @@ Route::post('submit', ['as' => 'submit', 'uses' => 'CreditController@saveImage']
 
 Route::get('restaurar/{id}', ['as' => 'restore', 'uses' => 'AuthController@restorePassword']);
 Route::post('restaurar/{id}', ['as' => 'restore', 'uses' => 'AuthController@changePassword']);
-
-
 Route::get('info', function () {
     Event::listen('generic.event',function($client_data){
         print_r($client_data);

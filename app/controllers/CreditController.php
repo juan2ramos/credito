@@ -274,5 +274,12 @@ class CreditController extends BaseController
         }
         return Redirect::to('solicitud')->with(array('message'=>"el credito no fue aprobado"));
     }
-
+    public static function notify()
+    {
+        if(Auth::user()->roles_id == 2){
+            $user = Auth::user();
+            $credits = CreditRequest::whereRaw('notify = 0 and location = ' . $user->location);
+            return $credits->count();
+        }
+    }
 }

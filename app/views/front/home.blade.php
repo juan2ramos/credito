@@ -37,12 +37,9 @@
         <div class="content-sign-up">
             @if(Auth::user())
                 <section class="Login">
-                    <h2>BIENVENIDO</h2>
-                    <section>
-                        <p>ahora estan autenticado en creditos.lilipink.com</p>
-                    </section>
+                    <h2>BIENVENIDA</h2>
 
-                    <section>
+                    <section class="content-inf">
                         <figure>
                             <a href="">
                                 <img src="img/profile-default.png"/>
@@ -50,11 +47,14 @@
 
                         </figure>
                         <div>
-                            <p>{{Auth::user()->name}} {{Auth::user()->last_name}}</p>
-                            <p>C.C {{Auth::user()->identification_card}}</p>
-                            <a href="">actualizar datos</a>
+                            <p class="title">Tu nombre:</p>
+                            <p class="title-body">{{Auth::user()->name}} {{Auth::user()->last_name}}</p>
+                            <p class="title">Cedula de ciudadania:</p>
+                            <p class="title-body">{{Auth::user()->identification_card}}</p>
                         </div>
                     </section>
+
+                    <a class="button-edit" href="">EDITAR PERFIL</a>
                 </section>
             @else
                 <section class="Login ">
@@ -81,26 +81,44 @@
                     {{ Form::close() }}
                 </section>
             @endif
-            <div class="content-creditRequest">
-                <section class="Home-request ">
-                    <p>SOLICITAR CREDITO</p>
-                    {{ Form::open(['route' => 'credit', 'method' => 'post', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
-                    <div class="">
-                        {{Form::label('identification_card','Numero de Cedula..',array('id'=>'email'))}}
-                        {{Form::text('identification_card','',['id' => 'identification_card'])}}
-                    </div>
+            <div class="content-creditRequest" style="background:rgba(13, 12, 12, 0.03) !important; border: 2px solid rgba(204, 204, 204, 0.53);">
+                @if(Auth::user())
+                    <section class="home-request">
+                        <h2>PROXIMO PAGO</h2>
+                        <div class="content-text state-text">
+                            <p>Fecha limite de pago.</p>
+                            <p>Pago minimo.</p>
+                            <p>Estado.</p>
+                        </div>
+                        <div class="content-text state-text1">
+                            <p>2015 - 03 - 01</p>
+                            <p>$60.000</p>
+                            <div><p class="state-home">EN MORA.</p></div>
+                        </div>
+                        <a href="">ESTADO DE CUENTA</a>
+                    </section>
+                @else
+                    <section class="Home-request ">
+                        <p>SOLICITAR CREDITO</p>
+                        {{ Form::open(['route' => 'credit', 'method' => 'post', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
+                        <div class="">
+                            {{Form::label('identification_card','Numero de Cedula.',array('id'=>'email'))}}
+                            {{Form::text('identification_card','',['id' => 'identification_card'])}}
+                        </div>
 
-                    <div>
-                    <div class="Remember">
-                        <a id="Remember" href="{{route('passwordRestart')}}">Como funciona?</a>
-                    </div>
-                        <button class="home-button" id="signUpButton-home">
-                            IDENTIFICARSE
-                        </button>
-                    </div>
-                    {{ Form::close() }}
+                        <div>
+                            <div class="Remember">
+                                <a id="Remember" href="{{route('passwordRestart')}}">Como funciona?</a>
+                            </div>
+                            <button class="home-button" id="signUpButton-home">
+                                IDENTIFICARSE
+                            </button>
+                        </div>
+                        {{ Form::close() }}
 
-                </section>
+                    </section>
+                @endif
+
             </div>
         </div>
 
