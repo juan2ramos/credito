@@ -35,50 +35,56 @@
 
         </div>
         <div class="content-sign-up">
-            <section class="Login ">
-                <p>INICIAR SESION</p>
-                {{ Form::open(['url' => 'login', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
+            @if(Auth::user())
+                <section class="Login">
+                    <h2>BIENVENIDO</h2>
+                    <section>
+                        <p>ahora estan autenticado en creditos.lilipink.com</p>
+                    </section>
 
-                <div class="">
-                    {{Form::label('email','Correo Electronico.',array('id'=>'email'))}}
-                    @if(Auth::user())
-                        {{Form::text('email','',['id' => 'emailInput','disabled'])}}
-                    @else
+                    <section>
+                        <figure>
+                            <a href="">
+                                <img src="img/profile-default.png"/>
+                            </a>
+
+                        </figure>
+                        <div>
+                            <p>{{Auth::user()->name}} {{Auth::user()->last_name}}</p>
+                            <p>C.C {{Auth::user()->identification_card}}</p>
+                            <a href="">actualizar datos</a>
+                        </div>
+                    </section>
+                </section>
+            @else
+                <section class="Login ">
+                    <p>INICIAR SESION</p>
+                    {{ Form::open(['url' => 'login', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
+
+                    <div class="">
+                        {{Form::label('email','Correo Electronico.',array('id'=>'email'))}}
                         {{Form::text('email','',['id' => 'emailInput'])}}
-                    @endif
-                    <span></span>
-                </div>
-
-                <div class="">
-                    {{Form::label('password','Contraseña.',array('id'=>'password'))}}
-                    @if(Auth::user())
-                    {{Form::password('password',['id' => 'password', 'disabled'])}}
-                    @else
-                    {{Form::password('password',['id' => 'password'])}}
-                    @endif
-                </div>
-                <div>
-                    <div class="Remember">
-                        <a id="Remember" href="{{route('passwordRestart')}}">Olvidaste la contraseña?</a>
                     </div>
-                    @if(Auth::user())
-                        <button class="home-button" id="signUpButton-home" disabled>
-                            IDENTIFICARSE
-                        </button>
-                    @else
+
+                    <div class="">
+                        {{Form::label('password','Contraseña.',array('id'=>'password'))}}
+                        {{Form::password('password',['id' => 'password'])}}
+                    </div>
+                    <div>
+                        <div class="Remember">
+                            <a id="Remember" href="{{route('passwordRestart')}}">Olvidaste la contraseña?</a>
+                        </div>
                         <button class="home-button" id="signUpButton-home">
                             IDENTIFICARSE
                         </button>
-                    @endif
-                </div>
-                {{ Form::close() }}
-
-            </section>
+                    </div>
+                    {{ Form::close() }}
+                </section>
+            @endif
             <div class="content-creditRequest">
                 <section class="Home-request ">
                     <p>SOLICITAR CREDITO</p>
                     {{ Form::open(['route' => 'credit', 'method' => 'post', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
-
                     <div class="">
                         {{Form::label('identification_card','Numero de Cedula..',array('id'=>'email'))}}
                         {{Form::text('identification_card','',['id' => 'identification_card'])}}

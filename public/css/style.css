@@ -540,6 +540,12 @@ img {
     margin: auto;
     width: 1180px;
 }
+
+#header-menu nav{
+    display: block;
+    height: 50px;
+}
+
 #header-menu ul{
     list-style:none;
     border-top:#CCC solid 1px;
@@ -550,7 +556,7 @@ img {
 
 #header-menu ul li{
     display:inline-block;
-    margin:17px 30px 20px 26px;
+    margin:13px 30px 20px 26px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -567,8 +573,8 @@ img {
     border-bottom: 2px solid #ba087e;
     border-top: 2px solid #ba087e;
     color: #ba087e !important;
-    padding-top: 13px;
-    padding-bottom: 14px;
+    padding-top: 11px;
+    padding-bottom: 13px;
     width: 100%;
     background: none;
 }
@@ -657,6 +663,19 @@ img {
     padding: 20px 30px;
     width: 356px;
 
+}
+
+.Login h2{
+    text-align: center;
+}
+
+.Login section figure{
+    display: inline-block;
+    width: 110px;
+}
+
+.Login section div{
+    display: inline-block;
 }
 
 .Login-form #email{

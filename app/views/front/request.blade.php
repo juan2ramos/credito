@@ -29,10 +29,10 @@
             @foreach ($showRequest as $request)
                 @if($request["credit"]->state<1)
                     @if($request["credit"]->priority==1)
-                        <tr>
+                        <tr style="background: rgba(223, 130, 130, 0.21)">
                             <td>{{$request["user"]->user_name}}</td>
                             <td>{{$request["user"]->identification_card}}</td>
-                            <td>{{$request["credit"]->priority}}</td>
+                            <td>alta</td>
                             <td>
                                 @if($request["credit"]->state)
                                     Aprobado
@@ -60,7 +60,7 @@
                         <tr>
                             <td>{{$request["user"]->user_name}}</td>
                             <td>{{$request["user"]->identification_card}}</td>
-                            <td>{{$request["credit"]->priority}}</td>
+                            <td>baja</td>
                             <td>
                                 @if($request["credit"]->state)
                                     Aprobado
