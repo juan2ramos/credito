@@ -13,7 +13,7 @@ $('#buttonMenu').on('click',function(){
         $headerNav.addClass('show--element');
     }
 });
-//$('.home-button').on('click', expand);
+$('.u-button').on('click', expand);
 
 function expand(e){
     circle = $("<div class='u-circle'></div>");
@@ -40,7 +40,6 @@ $('#loginForm').on('submit',function(e){
         $('.u-loader').addClass('show');
         if(i==0)
         {
-            alert("entro");
             $.post($('#Remember').attr('href'), fields, resetPassword, 'json')
         }
         i++;
