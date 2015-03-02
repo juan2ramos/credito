@@ -25,6 +25,11 @@ Route::group(['before' => 'auth'], function () {
 	Route::get('deleteLocation/{id}','CreditController@deleteLocation');
 	Route::post('deleteLocation/{id}','CreditController@deleteLocation');
 
+	//actualizar usuario
+
+	Route::post('Actualizar/{id}', ['as' => 'update', 'uses' => 'UserController@updateUser' ]);
+	Route::get('Actualizar/{id}', ['as' => 'update', 'uses' => 'UserController@userShow' ]);
+
 	//slider
 
 	Route::get('slider', ['as' => 'slider', 'uses' => 'SliderController@showSlider']);

@@ -578,7 +578,7 @@ img {
 
 #header-menu ul li{
     display:inline-block;
-    margin:13px 30px 20px 26px;
+    margin:13px 30px 20px 15px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -881,6 +881,19 @@ input[type=file] {
     width: 100%;
     z-index: 4;
     left: 0
+}
+
+#photo{
+    border: 1px solid #ff0f98;
+    cursor: pointer;
+    height: 29px;
+    opacity: 1;
+    width: 306px;
+    z-index: 4;
+    left: 0;
+    position: inherit;
+    margin: 20px;
+    padding: 5px 5px;
 }
 
 .Credit-select {

@@ -119,6 +119,7 @@ class CreditController extends BaseController
             }])->get();
         }
 
+        //drawde($showRequest[0]->created_at->toDateTimeString());exit;
         return View::make('front.request',compact('showRequest','locations'));
     }
 
