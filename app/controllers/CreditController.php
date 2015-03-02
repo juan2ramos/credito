@@ -101,32 +101,22 @@ class CreditController extends BaseController
     //MUESTRA LA TABLA DONDE SE CONTIENEN TODAS LAS SOLICITUDES PENDIENTES
     public function showRequest()
     {
-
         $mytime = Carbon\Carbon::now();
-        echo $mytime->toDateTimeString();
-        echo date('Y-m-d H:i:s');
-        $users=User::all();
+        //echo $mytime->toDateTimeString();
+        //echo date('Y-m-d H:i:s');
         $locations= Location::all();
-        $showRequest=[];
-        $i=0;
-        foreach($users as $user)
+        if(Auth::user()->role_id>1)
         {
-            $credit=CreditRequest::where('user_id','=',$user->id)->first();
-            if($credit)
+            $showRequest = User::with(['CreditRequest' => function($query)
             {
-                if(Auth::user()->role_id>1)
-                {
-                    if($credit->state=='' and $credit->location==Auth::user()->location)
-                    {
-                        $showRequest[$i]=["user"=>$user]+["credit"=>$credit];
-                        $i++;
-                    }
-                }else{
-                    $showRequest[$i]=["user"=>$user]+["credit"=>$credit];
-                    $i++;
-                }
-
-            }
+                $query->where('state', '=','')
+                    ->where('location','=', Auth::user()->location );
+            }])->get();
+        }else{
+            $showRequest = User::with(['CreditRequest' => function($query)
+            {
+                $query->where('state', '=','');
+            }])->get();
         }
 
         return View::make('front.request',compact('showRequest','locations'));
