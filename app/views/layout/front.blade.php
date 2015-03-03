@@ -41,13 +41,10 @@
             <div class="Header-contentNav">
                 @if(Auth::check())
                     <a class="icon-logout" href="{{route('logout')}}"></a>
-<<<<<<< HEAD
                     @if(Auth::user()->roles_id == 2)
                         <a class="icon-bell" href="{{route('request')}}"> <span>{{notify()}}</span> </a>
                     @endif
-=======
                     <a class="icon-bell" href="#"><span>2</span></a>
->>>>>>> bafe46e2dc3dd175c9d2dbd50393821f20a4d00c
                     <a class="icon-child-1" href="#"></a>
                 @else
                     <a class="login-button" href="{{route('sign-up')}}">Iniciar sesión</a>
