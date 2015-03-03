@@ -269,7 +269,7 @@ class CreditController extends BaseController
     {
         if(Auth::user()->roles_id == 2){
             $user = Auth::user();
-            $credits = CreditRequest::whereRaw('notify = 0 and location = ' . $user->location);
+            $credits = CreditRequest::whereRaw('notify = 0 and state = "" and location = ' . $user->location);
             return $credits->count();
         }
     }

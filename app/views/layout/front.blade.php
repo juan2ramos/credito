@@ -44,7 +44,6 @@
                     @if(Auth::user()->roles_id == 2)
                         <a class="icon-bell" href="{{route('request')}}"> <span>{{notify()}}</span> </a>
                     @endif
-                    <a class="icon-bell" href="#"><span>2</span></a>
                     <a class="icon-child-1" href="#"></a>
                 @else
                     <a class="login-button" href="{{route('sign-up')}}">Iniciar sesión</a>
