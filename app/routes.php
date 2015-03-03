@@ -25,6 +25,11 @@ Route::group(['before' => 'auth'], function () {
 	Route::get('deleteLocation/{id}','CreditController@deleteLocation');
 	Route::post('deleteLocation/{id}','CreditController@deleteLocation');
 
+	//actualizar usuario
+
+	Route::post('Actualizar/{id}', ['as' => 'update', 'uses' => 'UserController@updateUser' ]);
+	Route::get('Actualizar/{id}', ['as' => 'update', 'uses' => 'UserController@userShow' ]);
+
 	//slider
 
 	Route::get('slider', ['as' => 'slider', 'uses' => 'SliderController@showSlider']);
@@ -63,3 +68,20 @@ Route::post('submit', ['as' => 'submit', 'uses' => 'CreditController@saveImage']
 
 Route::get('restaurar/{id}', ['as' => 'restore', 'uses' => 'AuthController@restorePassword']);
 Route::post('restaurar/{id}', ['as' => 'restore', 'uses' => 'AuthController@changePassword']);
+Route::get('info', function () {
+    Event::listen('generic.event',function($client_data){
+        print_r($client_data);
+        return BrainSocket::message('generic.event',array('user_id'=>100,'message'=>'A message from a generic event fired in Laravel!'));
+    });
+
+});
+
+Route::get('drawde', function()
+{
+	return View::make('emails.accept');
+});
+
+
+/**
+ * php-cli composer.phar update
+ */

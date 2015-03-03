@@ -17,7 +17,7 @@ $('#buttonMenu').on('click',function(){
         $headerNav.addClass('show--element');
     }
 });
-$('.home-button').on('click', expand);
+$('.u-button').on('click', expand);
 
 function expand(e){
     circle = $("<div class='u-circle'></div>");

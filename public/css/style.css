@@ -562,6 +562,12 @@ img {
     margin: auto;
     width: 1180px;
 }
+
+#header-menu nav{
+    display: block;
+    height: 50px;
+}
+
 #header-menu ul{
     list-style:none;
     border-top:#CCC solid 1px;
@@ -572,7 +578,7 @@ img {
 
 #header-menu ul li{
     display:inline-block;
-    margin:17px 30px 20px 26px;
+    margin:13px 30px 20px 15px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -589,8 +595,8 @@ img {
     border-bottom: 2px solid #ba087e;
     border-top: 2px solid #ba087e;
     color: #ba087e !important;
-    padding-top: 13px;
-    padding-bottom: 14px;
+    padding-top: 11px;
+    padding-bottom: 13px;
     width: 100%;
     background: none;
 }
@@ -678,6 +684,51 @@ img {
     height: 245px;
     padding: 20px 30px;
     width: 356px;
+
+}
+
+.Login .content-inf{
+    margin-top: 25px;
+}
+
+.Login h2{
+    font-size: 17px;
+    font-weight: 200;
+    margin-top: 10px;
+}
+
+.Login .title{
+    font-weight: 100;
+    font-size: 13px;
+}
+
+.Login .title-body{
+    font-weight: 300;
+    font-size: 18px;
+}
+
+
+.Login .button-edit{
+    background: rgb(148, 148, 148);
+    border: 1px solid rgba(102, 102, 102, 0.21);
+    color: white;
+    display: block;
+    font-size: 12px;
+    float: right;
+    font-weight: 100;
+    padding: 6px 13px 4px 13px;
+    width: 113px;
+}
+
+.Login section figure{
+    display: inline-block;
+    width: 110px;
+}
+
+.Login section div{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 15px;
 
 }
 
@@ -830,6 +881,19 @@ input[type=file] {
     width: 100%;
     z-index: 4;
     left: 0
+}
+
+#photo{
+    border: 1px solid #ff0f98;
+    cursor: pointer;
+    height: 29px;
+    opacity: 1;
+    width: 306px;
+    z-index: 4;
+    left: 0;
+    position: inherit;
+    margin: 20px;
+    padding: 5px 5px;
 }
 
 .Credit-select {
@@ -1710,6 +1774,49 @@ button.icon-search{
 
 .content-creditRequest .Home-request form{
     font-size: 14px;
+}
+
+.home-request .content-text{
+    display: inline-block;
+}
+
+.home-request .state-text{
+    font-weight: 100;
+}
+
+.home-request .state-text1{
+    font-weight: 800;
+    float: right;
+    text-align: right;
+    width: 107px;
+}
+
+.home-request h2{
+    font-weight: 200;
+    font-size: 17px;
+}
+
+.home-request .state-home{
+    background: red;
+    color: white;
+    float: right;
+    font-size: 12px;
+    margin-top: -4px;
+    padding: 5px 6px 2px 4px;
+    width: 78px;
+}
+
+.home-request a{
+    background: rgb(148, 148, 148);
+    border: 1px solid rgba(102, 102, 102, 0.21);
+    color: white;
+    display: block;
+    font-size: 12px;
+    float: right;
+    font-weight: 100;
+    padding: 6px 13px 4px 13px;
+    width: 152px;
+
 }
 
 .content-Request{
