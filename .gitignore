@@ -1,6 +1,7 @@
 /.idea
 /bootstrap/compiled.php
 /public/sliders/
+/public/users/
 /vendor
 public/sliders/
 app/config/database.php

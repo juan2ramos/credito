@@ -6,6 +6,7 @@ use credits\Entities\User;
 use credits\Entities\CreditRequest;
 use credits\Components\ACL\Role;
 use credits\Managers\UploadUserManager;
+use credits\Repositories\LogRepo;
 
 class UserController extends BaseController
 {
@@ -89,6 +90,7 @@ class UserController extends BaseController
 
     public function updateUser($id)
     {
+
         $user=new UploadUserManager(new User(),Input::all());
         $userValidator=$user->isValid();
         if($userValidator)
@@ -96,7 +98,19 @@ class UserController extends BaseController
             return Redirect::to('/admin/usuarios/'.$id)->withErrors($userValidator)->withInput();
 
         }
-        $user->uploadUser($id);
-        return Redirect::to('/admin/usuarios/'.$id)->with(array('message'=>"El usuario se actualizo correctamente"));
+        $updateUser=$user->uploadUser($id);
+        if($updateUser)
+        {
+            new LogRepo(
+                [
+                    'responsible' => Auth::user()->user_name,
+                    'action' => 'ha actualizado un usuario ',
+                    'affected_entity' => Input::get('user_name'),
+                    'method' => 'updateUser'
+                ]
+            );
+            return Redirect::to('/admin/usuarios/'.$id)->with(array('message'=>"El usuario se actualizo correctamente"));
+        }
+        return Redirect::to('/admin/usuarios/'.$id)->with(array('message_error'=>"solo se puede actualizar una vez por mes"));
     }
 }

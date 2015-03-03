@@ -42,7 +42,11 @@
                     <section class="content-inf">
                         <figure>
                             <a href="">
-                                <img src="img/profile-default.png"/>
+                                @if(Auth::user()->photo!="")
+                                {{ HTML::image('users/'.Auth::user()->photo,'',array('id'=>'')) }}
+                                @else
+                                {{ HTML::image('users/profile-default.png','',array('id'=>'')) }}
+                                @endif
                             </a>
 
                         </figure>

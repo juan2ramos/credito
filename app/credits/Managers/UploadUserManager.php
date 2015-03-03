@@ -1,5 +1,6 @@
 <?php namespace credits\Managers;
 use credits\Entities\User;
+use Carbon\Carbon;
 
 class UploadUserManager extends BaseManager
 {
@@ -38,8 +39,47 @@ class UploadUserManager extends BaseManager
 
     public function uploadUser($id)
     {
+        $data=$this->prepareData($this->data);
         $user=User::find($id);
-        $user->update($this->data);
+        $file=$data['photo'];
+        if($file)
+        {
+            $data["photo"]=sha1(time()).$file->getClientOriginalName();
+            $file->move("users",sha1(time()).$file->getClientOriginalName());
+        }else{
+            $data["photo"]=$user->photo;
+        }
+        if($this->date($user->updated_at))
+        {
+            $user->update($data);
+            return true;
+        }
+            return false;
+
+    }
+
+    public function date($date)
+    {
+        $created = new Carbon($date);
+        $now = Carbon::now();
+        $difference = ($created->diff($now)->days < 1)
+            ? 'today'
+            : $created->diffForHumans($now);
+        $dates=explode(" ",$difference);
+        if(count($dates)>1)
+        {
+            if($dates[1]=="month" or $dates[1]=="months" )
+            {
+                if($dates[0]>=1)
+                {
+                    return true;
+                }
+            }else{
+                return false;
+            }
+        }
+        return false;
+        //echo $date->timespan();  // zondag 28 april 2013 21:58:16
     }
 
 

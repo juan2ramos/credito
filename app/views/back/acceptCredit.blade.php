@@ -57,8 +57,8 @@
                     <td>{{$user->phone}}</td>
                     <td>{{$user->date_birth}}</td>
                     <td>{{$user->address}}</td>
-                    <td>{{$credit->monthly_expenses}}</td>
-                    <td>{{$credit->monthly_income}}</td>
+                    <td>{{$user->CreditRequest->monthly_expenses}}</td>
+                    <td>{{$user->CreditRequest->monthly_income}}</td>
 
                 </tr>
                 </tbody>
@@ -105,8 +105,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{$credit->name_reference}}</td>
-                    <td>{{$credit->phone_reference}}</td>
+                    <td>{{$user->CreditRequest->name_reference}}</td>
+                    <td>{{$user->CreditRequest->phone_reference}}</td>
                 </tr>
                 </tbody>
             </table>

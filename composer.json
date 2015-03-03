@@ -11,10 +11,12 @@
     "fzaninotto/faker": "v1.3.0"
   },
   "require": {
+    "nesbot/carbon": "~1.15",
     "laravel/framework": "4.2.*",
     "maatwebsite/excel": "1.*",
     "dompdf/dompdf" : "0.6.*",
-    "brainboxlabs/brain-socket": "v1.0.0"
+    "brainboxlabs/brain-socket": "v1.0.0",
+    "jenssegers/date": "~2.0"
   },
   "autoload": {
     "psr-4": {

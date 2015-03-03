@@ -12,6 +12,7 @@ use credits\Managers\LocationManager;
 use credits\Managers\VariableManager;
 use credits\Managers\AcceptCreditManager;
 
+
 class CreditController extends BaseController
 {
     //MOSTRAR FORMULARIO CREDIT REQUEST
@@ -101,9 +102,6 @@ class CreditController extends BaseController
     //MUESTRA LA TABLA DONDE SE CONTIENEN TODAS LAS SOLICITUDES PENDIENTES
     public function showRequest()
     {
-        $mytime = Carbon\Carbon::now();
-        //echo $mytime->toDateTimeString();
-        //echo date('Y-m-d H:i:s');
         $locations= Location::all();
         if(Auth::user()->role_id>1)
         {
@@ -118,8 +116,6 @@ class CreditController extends BaseController
                 $query->where('state', '=','');
             }])->get();
         }
-
-        //drawde($showRequest[0]->created_at->toDateTimeString());exit;
         return View::make('front.request',compact('showRequest','locations'));
     }
 
@@ -127,9 +123,8 @@ class CreditController extends BaseController
     public function showCreditRequest($id)
     {
         $user=User::find($id);
-        $credit=CreditRequest::where('user_id','=',$id)->first();
-        $locations=Location::where('id', '=', $credit->location)->first();
-        $images =explode(",",$credit->files);
+        $locations=Location::where('id', '=', $user->CreditRequest->location)->first();
+        $images =explode(",",$user->CreditRequest->files);
         return View::make('back.acceptCredit',compact('user','credit','images','locations'));
     }
 
@@ -273,4 +268,7 @@ class CreditController extends BaseController
             return $credits->count();
         }
     }
+
+
+
 }

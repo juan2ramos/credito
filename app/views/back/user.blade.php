@@ -10,12 +10,15 @@
             notify.querySelector('.text-notify').innerText = '{{Session::get('message')}}';
         </script>
     @endif
-    @if($errors->first())
+    @if($errors->first() or Session::get('message_error'))
         <script>
             var notify = document.getElementById('notify');
             notify.classList.add('is-show');
             notify.classList.add('error');
-            notify.querySelector('.text-notify').innerText = 'Los datos estan incorrectos {{$errors->first('identification_card')}} {{$errors->first('email')}}{{$errors->first('name')}} ';
+            @if( Session::get('message_error'))
+            notify.querySelector('.text-notify').innerText = '{{Session::get('message_error')}}';
+            @endif
+            notify.querySelector('.text-notify').innerText = 'Los datos estan incorrectos {{$errors->first('identification_card')}} {{$errors->first('email')}}{{$errors->first('name')}} {{Session::get('message_error')}}';
         </script>
     @endif
 

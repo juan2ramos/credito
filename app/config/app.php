@@ -204,6 +204,7 @@ return array(
 		'Menus'				=> 'credits\Components\Menu\Menus',
 		'Excel'             => 'Maatwebsite\Excel\Facades\Excel',
         'BrainSocket'       => 'BrainSocket\BrainSocketFacade',
+		'Date'            => 'Jenssegers\Date\Date',
 
 	),
 
