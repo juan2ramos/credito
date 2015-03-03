@@ -101,20 +101,25 @@ class CreditController extends BaseController
     //MUESTRA LA TABLA DONDE SE CONTIENEN TODAS LAS SOLICITUDES PENDIENTES
     public function showRequest()
     {
-        $users=User::all();
+        $mytime = Carbon\Carbon::now();
+        //echo $mytime->toDateTimeString();
+        //echo date('Y-m-d H:i:s');
         $locations= Location::all();
-        $showRequest=[];
-        $i=0;
-        foreach($users as $user)
+        if(Auth::user()->role_id>1)
         {
-            $credit=CreditRequest::where('user_id','=',$user->id)->first();
-            if($credit)
+            $showRequest = User::with(['CreditRequest' => function($query)
             {
-                $showRequest[$i]=["user"=>$user]+["credit"=>$credit];
-                $i++;
-            }
+                $query->where('state', '=','')
+                    ->where('location','=', Auth::user()->location );
+            }])->get();
+        }else{
+            $showRequest = User::with(['CreditRequest' => function($query)
+            {
+                $query->where('state', '=','');
+            }])->get();
         }
 
+        //drawde($showRequest[0]->created_at->toDateTimeString());exit;
         return View::make('front.request',compact('showRequest','locations'));
     }
 
@@ -195,15 +200,23 @@ class CreditController extends BaseController
         $probabilityCredit=$acceptCredit->verificatorCredit($id);
         if(isset($probabilityCredit['return'])==true)
         {
-            $mailCredit=$acceptCredit->saveCredit($id);
-            ;
-            if($mailCredit['return'])
+            $mailCredit=$acceptCredit->saveCredit($id,Auth::user()->id);
+            new LogRepo(
+                [
+                    'responsible' => Auth::user()->user_name,
+                    'action' => 'ha aprobado un credito ',
+                    'affected_entity' => '',
+                    'method' => 'acceptCredit'
+                ]
+            );
+            if($mailCredit['mail'])
             {
                 $data=$mailCredit;
                 Mail::send('emails.accept', $data, function ($message) use($mailCredit){
                     $message->to($mailCredit['mail'], 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
 
                 });
+
             }
 
             return Redirect::to('solicitud')->with(array('message'=>"La solicitud de credito fue aprobada"));
@@ -252,5 +265,12 @@ class CreditController extends BaseController
         }
         return Redirect::to('solicitud')->with(array('message'=>"el credito no fue aprobado"));
     }
-
+    public static function notify()
+    {
+        if(Auth::user()->roles_id == 2){
+            $user = Auth::user();
+            $credits = CreditRequest::whereRaw('notify = 0 and location = ' . $user->location);
+            return $credits->count();
+        }
+    }
 }

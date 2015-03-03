@@ -30,7 +30,7 @@
 
         <h1>Datos del usuario</h1>
 
-        {{Form::open(array('url'=>'admin/uploadUser/'.$user->id,'method'=>'POST','class'=>"User-form"))}}
+        {{Form::open(array('url'=>'admin/uploadUser/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
 
         <section class="Credit-section ">
 
@@ -124,6 +124,11 @@
             </div>
 
         </section>
+
+        <div class="material">
+            {{Form::label('photo','Foto')}}
+            {{Form::file('photo',['id'=>'photo'])}}
+        </div>
 
         <button class="u-button">
             Actualizar datos

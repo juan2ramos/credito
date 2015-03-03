@@ -31,7 +31,7 @@ class AcceptCreditManager extends BaseManager
         return $messages;
     }
 
-    public function saveCredit($id)
+    public function saveCredit($id,$responsible)
     {
 
         $credit=CreditRequest::where('user_id', '=', $id)->first();
@@ -40,6 +40,7 @@ class AcceptCreditManager extends BaseManager
         $this->entity->credit_id=$credit->id;
         $this->save();
         $credit->state=1;
+        $credit->responsible=$responsible;
         $credit->save();
         $user=User::find($id);
         return ['return'=>true]+['mail'=>$user->email];

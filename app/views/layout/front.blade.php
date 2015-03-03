@@ -65,9 +65,7 @@
 </header>
 <div class="wrap">
     @yield('content')
-
 </div>
-
     <div class="content-social" >
 
         <div class="social-text">
@@ -86,9 +84,12 @@
         </div>
 
     </div>
-<footer>
-    <p>®Lilipink Todos los derechos reservados - 2014 -  Diseño Web - Agencia de Publicidad <a href="http://mi-martinez.com" target="_blank" class="icon-logoblanco:before">Mi-martinez</a></p>
-</footer>
+    <footer>
+        <p>®Lilipink Todos los derechos reservados - 2014 -  Diseño Web - Agencia de Publicidad <a href="http://mi-martinez.com" target="_blank" class="icon-logoblanco:before">Mi-martinez</a></p>
+    </footer>
+
+
+
 </body>
 <!-- JavaScript -->
 
