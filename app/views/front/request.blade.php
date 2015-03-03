@@ -49,7 +49,7 @@
                                     @endforeach
                                 </td>
                                 <td>{{$credit->email}}</td>
-                                <td>{{ HTML::link(URL::to('showCreditRequest/'.$credit->CreditRequest["id"]), '',array('class'=>'icon-folder-open')) }}</td>
+                                <td>{{ HTML::link(URL::to('showCreditRequest/'.$credit->id), '',array('class'=>'icon-folder-open')) }}</td>
                             </tr>
                         @endif
                     @endif
@@ -78,7 +78,7 @@
                                     @endforeach
                                 </td>
                                 <td>{{$credit->email}}</td>
-                                <td>{{ HTML::link(URL::to('showCreditRequest/'.$credit->CreditRequest["id"]), '',array('class'=>'icon-folder-open')) }}</td>
+                                <td>{{ HTML::link(URL::to('showCreditRequest/'.$credit->id), '',array('class'=>'icon-folder-open')) }}</td>
                             </tr>
                         @endif
                     @endif
