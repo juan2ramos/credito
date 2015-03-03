@@ -43,7 +43,7 @@
                 @if(Auth::check())
                     <a class="icon-logout" href="{{route('logout')}}"></a>
                     @if(Auth::user()->roles_id == 2)
-                        <a class="icon-bell" href="#"> <span>{{notify()}}</span> </a>
+                        <a class="icon-bell" href="{{route('request')}}"> <span>{{notify()}}</span> </a>
                     @endif
                     <a class="icon-child-1" href="#"></a>
                 @else
