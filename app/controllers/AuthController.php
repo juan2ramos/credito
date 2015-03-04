@@ -84,7 +84,7 @@ class AuthController extends BaseController
             ]
         );
 
-        return Redirect::route('sign-up')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
+        return Redirect::route('home')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
     }
 
 }

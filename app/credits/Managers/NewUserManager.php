@@ -34,8 +34,9 @@ class NewUserManager extends BaseManager
     public function createUser()
     {
         $data=$this->prepareData($this->data);
-        $this->entity->fill($data);
-        $this->entity->save();
+        $user=new User($data);
+        $user->save();
+
     }
 
 }
