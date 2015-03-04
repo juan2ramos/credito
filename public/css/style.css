@@ -886,15 +886,19 @@ input[type=file] {
 
 #photo{
     border: 1px solid #ff0f98;
+    border-radius: 5px;
     cursor: pointer;
-    height: 29px;
-    opacity: 1;
-    width: 306px;
-    z-index: 4;
+    height: 35px;
     left: 0;
+    margin: 5px 0px;
+    opacity: 1;
     position: inherit;
-    margin: 20px;
-    padding: 5px 5px;
+    padding: 8px 75px;
+    width: 100%;
+    z-index: 4;
+
+
+
 }
 
 .Credit-select {
@@ -902,7 +906,7 @@ input[type=file] {
     height: 35px;
     width: 100%;
     background: transparent;
-    border: 1px solid transparent;
+    border:1px solid rgb(232, 14, 138);
 
 }
 
@@ -1866,4 +1870,43 @@ footer{
     padding: 5px;
 }
 
-/* PRELOAD */
+/* UPDATE USER */
+
+.update-user{
+    padding: 0px 62px 34px;
+}
+
+.update-user .User-section{
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+}
+.User-section:first-of-type{
+    margin-right: 38px;
+}
+
+.material{
+    margin-top: -19px;
+}
+
+.material-card{
+    background: rgba(222, 222, 222, 0.29);
+    border: 1px solid #E80E8A;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    width: 500px;
+}
+
+.material-card input{
+    width: 280px;
+    height: 33px;
+    border: 1px solid #E80E8A;
+}
+
+.material-card label{
+    display: block;
+    padding: 15px;
+    width: 100%;
+
+}

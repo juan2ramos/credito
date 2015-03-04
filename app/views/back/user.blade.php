@@ -29,7 +29,7 @@
 
 
 
-    <section class="Credit u-shadow-5">
+    <section class="update-user u-shadow-5">
 
         <h1>Datos del usuario</h1>
         @if(Auth::user()->roles_id==4)
@@ -39,15 +39,14 @@
         @endif
         @if(Auth::user()->roles_id==1)
             @if($user->roles_id==4)
-                <div class="material-input">
+                <div class="material-card">
+                    {{Form::label('card','ENTREGAR TARJETA LILIPINK')}}
                     {{form::text('card', $user->card ,array('class'=>' variableText1'))}}
-                    {{Form::label('card','Tarjeta ')}}
-                    <span></span>
                 </div>
             @endif
         @endif
 
-        <section class="Credit-section ">
+        <section class="User-section ">
 
             {{form::text('id', $user->id,array('class'=>'hidden'))}}
 
@@ -94,15 +93,20 @@
                 <span></span>
             </div>
 
+            <div class="material">
+                {{Form::label('photo','Foto')}}
+                {{Form::file('photo',['id'=>'photo'])}}
+            </div>
+
+        </section>
+
+        <section class="User-section ">
+
             <div class="material-input">
                 {{form::text('email', $user->email ,array('class'=>'variableText1'))}}
                 {{Form::label('email','E-mail')}}
                 <span></span>
             </div>
-
-        </section>
-
-        <section class="Credit-section u-CreditSection">
 
             <div class="material-input">
                 {{form::text('address', $user->address ,array('class'=>' variableText1'))}}
@@ -145,12 +149,10 @@
                 <span></span>
             </div>
 
+
         </section>
 
-        <div class="material">
-            {{Form::label('photo','Foto')}}
-            {{Form::file('photo',['id'=>'photo'])}}
-        </div>
+
 
         <button class="u-button">
             Actualizar datos

@@ -118,7 +118,8 @@
             </div>
 
             <div class="material-input">
-                {{ Form::select('location', $locations,'',array('class'=>'Credit-select')) }}
+                {{Form::input('date','date_expedition','',['id' => 'date_expedition'])}}
+                {{Form::label('date_expedition','Fecha de expedicion')}}
                 <span></span>
             </div>
 
@@ -127,10 +128,11 @@
         <section class="Credit-section">
 
             <div class="material-input">
-                {{Form::input('date','date_expedition','',['id' => 'date_expedition'])}}
-                {{Form::label('date_expedition','Fecha de expedicion')}}
+                {{ Form::select('location', $locations,'',array('class'=>'Credit-select')) }}
                 <span></span>
             </div>
+
+
 
             <div class="material-input">
                 {{Form::text('instead_expedition','',['id' => 'instead_expedition'])}}

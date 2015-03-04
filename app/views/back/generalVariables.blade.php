@@ -19,7 +19,7 @@
         </script>
     @endif
 
-    <h1>Aceptacion del credito</h1>
+    <h1>Variables generales</h1>
 
     <section class="acceptSection">
         <div class="Table-content">

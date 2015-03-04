@@ -2,7 +2,9 @@
 
 Route::get('/', function () { return Redirect::route('home');});
 Route::get('usuarios', ['before' => 'permissions:users', 'as' => 'users','uses' => 'UserController@showAll' ]);
+Route::get('eliminar-usuario/{id}', ['before' => 'permissions:users', 'as' => 'userDelete','uses' => 'UserController@userDelete' ]);
 Route::get('nuevo-usuario', ['before' => 'permissions:users', 'as' => 'userNew','uses' => 'UserController@newUser' ]);
+Route::post('nuevo-usuario', ['before' => 'permissions:users', 'as' => 'userNew','uses' => 'UserController@createUser' ]);
 Route::post('usuarios', ['before' => 'permissions:users', 'as' => 'searchUsers','uses' => 'UserController@searchUsers' ]);
 Route::get('usuarios/{id}', ['before' => 'permissions:users', 'as' => 'userShow','uses' => 'UserController@userShow' ]);
 Route::get('usersExcel', ['before' => 'permissions:users', 'as' => 'usersExcel','uses' => 'UserController@usersExcel' ]);

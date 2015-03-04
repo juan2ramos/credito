@@ -6,6 +6,7 @@ use credits\Entities\User;
 use credits\Entities\CreditRequest;
 use credits\Components\ACL\Role;
 use credits\Managers\UploadUserManager;
+use credits\Managers\NewUserManager;
 use credits\Repositories\LogRepo;
 
 class UserController extends BaseController
@@ -55,10 +56,31 @@ class UserController extends BaseController
 
     public function newUser()
     {
-        $location = Location::all()->lists('name');
-        $roles = Role::all()->lists('name','id');
+        $location = ["seleccione una region"=>"seleccione una region"]+Location::all()->lists('name');
+        $roles = ["seleccione un role"=>"seleccione un role"]+Role::all()->lists('name','id');
         return View::make('back.userNew',compact('roles','location'));
     }
+
+    public function createUser()
+    {
+        $UserManager=new NewUserManager(new User(),Input::all());
+        $userValidator=$UserManager->isValid();
+        if($userValidator)
+        {
+            return Redirect::to('admin/nuevo-usuario')->withErrors($userValidator)->withInput();
+        }
+        $UserManager->createUser();
+        new LogRepo(
+            [
+                'responsible' => Auth::user()->user_name,
+                'action' => 'ha creado un usuario ',
+                'affected_entity' => Input::get('user_name'),
+                'method' => 'createUser'
+            ]
+        );
+        return Redirect::to('admin/usuarios')->with('message','el usuario fue creado correctamente');
+    }
+
     public function usersExcel()
     {
         $data = User::all(['id','name','user_name']);
@@ -137,5 +159,19 @@ class UserController extends BaseController
             return Redirect::to('Actualizar/'.$id)->with(array('message'=>"El usuario se actualizo correctamente"));
         }
         return Redirect::to('Actualizar/'.$id)->with(array('message_error'=>"solo se puede actualizar una vez por mes"));
+    }
+
+    public function userDelete($id)
+    {
+        User::destroy($id);
+        new LogRepo(
+            [
+                'responsible' => Auth::user()->user_name,
+                'action' => 'ha eliminado un usuario ',
+                'affected_entity' => '',
+                'method' => 'userDelete'
+            ]
+        );
+        return Redirect::to('admin/usuarios')->with('message','el usuario fue eliminado correctamente');
     }
 }

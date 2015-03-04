@@ -11,6 +11,7 @@ use credits\Repositories\LogRepo;
 use credits\Managers\LocationManager;
 use credits\Managers\VariableManager;
 use credits\Managers\AcceptCreditManager;
+use Carbon\Carbon;
 
 
 class CreditController extends BaseController
@@ -116,6 +117,18 @@ class CreditController extends BaseController
                 $query->where('state', '=','');
             }])->get();
         }
+        foreach($showRequest as $user)
+        {
+            if(isset($user->CreditRequest))
+            {
+                $date=$this->date($user->CreditRequest["created_at"]);
+                if($date)
+                {
+                    $user->CreditRequest["priority"]="1";
+                }
+            }
+        }
+
         return View::make('front.request',compact('showRequest','locations'));
     }
 
@@ -269,6 +282,23 @@ class CreditController extends BaseController
         }
     }
 
+
+    public function date($date)
+    {
+        $created = new Carbon($date);
+        $now = Carbon::now();
+        $difference = ($created->diff($now)->days < 1)
+            ? 'today'
+            : $created->diffForHumans($now);
+        $dates=explode(" ",$difference);
+        if(count($dates)==1)
+        {
+            return false;
+        }
+
+        return true;
+        //echo $date->timespan();  // zondag 28 april 2013 21:58:16
+    }
 
 
 }
