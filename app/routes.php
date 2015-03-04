@@ -27,7 +27,7 @@ Route::group(['before' => 'auth'], function () {
 
 	//actualizar usuario
 
-	Route::post('Actualizar/{id}', ['as' => 'update', 'uses' => 'UserController@updateUser' ]);
+	Route::post('Actualizar/{id}', ['as' => 'update', 'uses' => 'UserController@updateClient' ]);
 	Route::get('Actualizar/{id}', ['as' => 'update', 'uses' => 'UserController@userShow' ]);
 
 	//slider

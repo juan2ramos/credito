@@ -55,6 +55,9 @@
                             <p class="title-body">{{Auth::user()->name}} {{Auth::user()->last_name}}</p>
                             <p class="title">Cedula de ciudadania:</p>
                             <p class="title-body">{{Auth::user()->identification_card}}</p>
+                            @if(Auth::user()->card!=0)
+                                <p class="title">Ya tienes tarjeta</p>
+                            @endif
                         </div>
                     </section>
 

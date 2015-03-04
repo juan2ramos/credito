@@ -32,12 +32,31 @@
     <section class="Credit u-shadow-5">
 
         <h1>Datos del usuario</h1>
-
-        {{Form::open(array('url'=>'admin/uploadUser/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
+        @if(Auth::user()->roles_id==4)
+            {{Form::open(array('url'=>'Actualizar/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
+        @else
+            {{Form::open(array('url'=>'admin/uploadUser/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
+        @endif
+        @if(Auth::user()->roles_id==1)
+            @if($user->roles_id==4)
+                <div class="material-input">
+                    {{form::text('card', $user->card ,array('class'=>' variableText1'))}}
+                    {{Form::label('card','Tarjeta ')}}
+                    <span></span>
+                </div>
+            @endif
+        @endif
 
         <section class="Credit-section ">
 
             {{form::text('id', $user->id,array('class'=>'hidden'))}}
+
+
+            <div class="material-input">
+                {{form::text('name', $user->name ,array('class'=>' variableText1'))}}
+                {{Form::label('name','Nombre')}}
+                <span></span>
+            </div>
 
             <div class="material-input">
                 {{form::text('identification_card', $user->identification_card,array('class'=>' variableText1'))}}

@@ -98,7 +98,7 @@ class UserController extends BaseController
             return Redirect::to('/admin/usuarios/'.$id)->withErrors($userValidator)->withInput();
 
         }
-        $updateUser=$user->uploadUser($id);
+        $updateUser=$user->uploadUser($id,Auth::user()->roles_id);
         if($updateUser)
         {
             new LogRepo(
@@ -112,5 +112,30 @@ class UserController extends BaseController
             return Redirect::to('/admin/usuarios/'.$id)->with(array('message'=>"El usuario se actualizo correctamente"));
         }
         return Redirect::to('/admin/usuarios/'.$id)->with(array('message_error'=>"solo se puede actualizar una vez por mes"));
+    }
+
+    public function updateClient($id)
+    {
+        $user=new UploadUserManager(new User(),Input::all());
+        $userValidator=$user->isValid();
+        if($userValidator)
+        {
+            return Redirect::to('Actualizar/'.$id)->withErrors($userValidator)->withInput();
+
+        }
+        $updateUser=$user->uploadUser($id,Auth::user()->roles_id);
+        if($updateUser)
+        {
+            new LogRepo(
+                [
+                    'responsible' => Auth::user()->user_name,
+                    'action' => 'ha actualizado un usuario ',
+                    'affected_entity' => Input::get('user_name'),
+                    'method' => 'updateUser'
+                ]
+            );
+            return Redirect::to('Actualizar/'.$id)->with(array('message'=>"El usuario se actualizo correctamente"));
+        }
+        return Redirect::to('Actualizar/'.$id)->with(array('message_error'=>"solo se puede actualizar una vez por mes"));
     }
 }

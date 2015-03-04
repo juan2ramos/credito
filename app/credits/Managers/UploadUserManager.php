@@ -21,7 +21,8 @@ class UploadUserManager extends BaseManager
             'mobile_phone'              => 'required|numeric',
             'phone'                     => 'required|numeric',
             'date_birth'                => 'required',
-            'location'                  => 'numeric'
+            'location'                  => 'numeric',
+            'card'                      => 'numeric'
 
 
         ];
@@ -37,7 +38,7 @@ class UploadUserManager extends BaseManager
         return $messages;
     }
 
-    public function uploadUser($id)
+    public function uploadUser($id,$role)
     {
         $data=$this->prepareData($this->data);
         $user=User::find($id);
@@ -49,12 +50,20 @@ class UploadUserManager extends BaseManager
         }else{
             $data["photo"]=$user->photo;
         }
-        if($this->date($user->updated_at))
+        if($role==4)
         {
+            if($this->date($user->updated_at))
+            {
+                $user->update($data);
+                return true;
+            }
+            return false;
+        }else{
             $user->update($data);
             return true;
         }
-            return false;
+
+
 
     }
 
