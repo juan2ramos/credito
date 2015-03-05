@@ -1922,6 +1922,15 @@ footer{
 
 /* RESPONSIBE */
 
+@media all and (min-width: 320px)  and (max-width: 1135px){
+
+    .content-condition{
+        margin: 0 0 10px 0;
+        width: 100%;
+    }
+
+}
+
 @media all and (min-width: 320px)  and (max-width: 900px){
 
     body{
@@ -2019,6 +2028,8 @@ footer{
     .acceptSection{
         width: 100%;
     }
+
+
 
 }
 
