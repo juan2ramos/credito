@@ -1920,7 +1920,7 @@ footer{
 
     .Content-home{
         text-align: center;
-        width: 95%;
+        width: 100%;
     }
 
     .content-Request{
@@ -1938,9 +1938,9 @@ footer{
     }
 
     .content-sign-up{
-        margin-left:auto;
         text-align: left;
-        width: 90%;
+        max-width: 357px!important;
+        margin-left: 0;
     }
 
     .Header-contentNav .icon-logout{

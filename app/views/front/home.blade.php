@@ -113,7 +113,7 @@
 
                         <div>
                             <div class="Remember">
-                                <a id="Remember" href="{{route('passwordRestart')}}">Como funciona?</a>
+                                <a id="Remember" href="">Como funciona?</a>
                             </div>
                             <button class="home-button" id="signUpButton-home">
                                 IDENTIFICARSE
