@@ -14,6 +14,7 @@ $(function () {
                         aux=countImage+i;
                         if(aux<4)
                         {
+                            $('.preload').removeClass("hidden");
                             uploadImage(this.files[i]);
                         }
 
@@ -114,6 +115,7 @@ function myFunction(arr,img,file) {
         document.getElementById("form-files").value=name;
         var nombre = "<p class='p-image'>" + arr + "</p>";
         var nombreOculto = "<p class='p-image1'>" + file.name + "</p>";
+        $('.preload').addClass('hidden');
         $('.request-image').append("<div class='img-content' ><span class='close-button'><span class='close-line'></span><span class='close-line1'></span></span>" +img+nombreOculto+  nombre + "</div>");
     });
 }

@@ -221,7 +221,18 @@
             {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
         </div>
 
-        <div class="request-image" > </div>
+        <div>
+            <div class="request-image" style="display: inline-block"></div>
+            <div style="display: inline-block;vertical-align: top">
+                <div class="preload hidden "  >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
 
 
         <label class="label--checkbox">
