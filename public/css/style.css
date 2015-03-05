@@ -501,7 +501,7 @@ img {
     z-index: 2000;
 }
 
-@media all and (max-width: 890px) and (min-width: 400px) {
+@media all and (min-width: 320px)  and (max-width: 730px){
     .Header-buttonNav {
         display: inline-block;
         height: 34px;
