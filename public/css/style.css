@@ -1914,6 +1914,12 @@ footer{
 
 @media all and (min-width: 320px)  and (max-width: 900px){
 
+    body{
+        margin: 0;
+        padding: 0;
+        width: 100%!important;
+    }
+
     .Header-content{
         margin: 0;
         padding: 0;
