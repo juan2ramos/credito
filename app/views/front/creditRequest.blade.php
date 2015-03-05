@@ -234,11 +234,16 @@
 
         </div>
 
+        <div>
+            <label class="label--checkbox">
+                {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
+                Acepto las condiciones de lilipink
+            </label>
+            <div class="content-condition">
+                <p>fkjdaslfjdlaksjflkñdasjlkfasdj</p>
+            </div>
+        </div>
 
-        <label class="label--checkbox">
-            {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-            Acepto las condiciones de lilipink
-        </label>
 
         <button class="u-button">
             Enviar Solicitud

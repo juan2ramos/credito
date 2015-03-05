@@ -767,12 +767,22 @@ img {
 }
 
 .label--checkbox {
+    display: inline-block;
     position: relative;
     line-height: 200%;
     cursor: pointer;
-    margin-top: -10px;
-    display: block;
+    margin: 24px 9px;
     padding: 0 2px 20px
+}
+
+.content-condition{
+    background: rgba(23, 20, 20, 0.1);
+    display: inline-block;
+    overflow: scroll;
+    margin: 0 10px 10px 10px;
+    vertical-align: top;
+    width: 580px;
+    height: 70px;
 }
 
 .checkbox {
