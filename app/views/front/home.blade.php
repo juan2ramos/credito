@@ -15,7 +15,6 @@
 
     <div class="Content-home">
         <div id="slider">
-            <a href="{{asset('/')}}">
                 @for($i=0;$i<count($slidersArrays);$i++)
                     @if($slidersArrays[$i]>0)
                         <img src="sliders/{{$slidersName[$i]}}" />
@@ -29,7 +28,6 @@
                         <span  class="slider ">{{$i}}</span>
                     @endif
                 @endfor
-            </a>
             <span id="back"><</span>
             <span id="next">></span>
 

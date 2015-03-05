@@ -504,6 +504,13 @@ img {
 @media all and (max-width: 890px) and (min-width: 400px) {
     .Header-buttonNav {
         display: inline-block;
+        height: 34px;
+        width: 39px;
+    }
+
+    .Header-line1, .u-line{
+        margin-top: 0px!important;
+        margin-left: 0px!important;
     }
 
     #header-menu{
@@ -1215,11 +1222,6 @@ a.login-button {
     width: 120px;
 }
 
-@media all and (max-width: 800px) and (min-width: 400px) {
-    a.login-button {
-        display: inline-block;
-    }
-}
 a.icon-logout {
     color: rgb(96, 97, 104);
     font-size: 1.1rem;
@@ -1825,7 +1827,6 @@ button.icon-search{
 }
 
 .content-Request{
-    height: 135px;
     margin-left: 15px;
     width: 1149px;
 }
@@ -1835,8 +1836,6 @@ button.icon-search{
 .content-social{
     background: rgba(165, 165, 165, 0.21);
     color: rgba(0, 0, 0, 0.69);;
-    height: 43px;
-    margin-top: 160px;
     padding-top: 6px;
     text-align: center;
 }
@@ -1908,5 +1907,92 @@ footer{
     display: block;
     padding: 15px;
     width: 100%;
+
+}
+
+/* RESPONSIBE */
+
+@media all and (min-width: 320px)  and (max-width: 730px){
+
+    #slider{
+        display: none;
+    }
+
+    .Content-home{
+        text-align: center;
+    }
+
+    .content-Request{
+        height: 0px;
+        width: 100%;
+        margin: 22px 0 78px;
+    }
+
+    .content-Request img{
+        width: 94%;
+    }
+
+    .notify{
+        width: 100%;
+    }
+
+    .content-sign-up{
+        margin-left:auto;
+        text-align: left;
+    }
+
+    .Header-contentNav .icon-logout{
+        margin-top: 8px;
+    }
+
+    .Header-contentNav .icon-child-1{
+        font-size: 19px;
+        padding-bottom: 15px;
+
+    }
+
+    .content-social{
+        padding-top: 0px;
+    }
+
+    .content-social .social-text p{
+        display: block;
+        top:8px;
+    }
+
+    .content-social .social-text a{
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    #slider-edit section{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .Table-content{
+        width: 95%;
+    }
+
+    .Table-content th{
+        display: none;
+    }
+
+    .Table-content td{
+        display: block;
+    }
+
+    .wrap-content{
+        display: block;
+        height: 32px;
+    }
+
+    .u-more{
+        float: initial;
+    }
+
+    .acceptSection{
+        width: 100%;
+    }
 
 }
