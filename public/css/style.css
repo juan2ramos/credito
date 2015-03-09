@@ -526,12 +526,15 @@ img {
     }
 
     .Header-logoLilipink{
-        width: 80px;
+        padding: 10px 2px 8px;
+        width: 20%;
     }
 
     .Header-logoIntima{
-        width: 140px;
+        width: 36%;
     }
+
+
 }
 
 .show--element {
@@ -2047,18 +2050,20 @@ footer{
 
     .State section figure{
         height: 175px;
-        margin-top: 10px;
         width: 100%;
     }
 
-    .content-creditRequest, .Login{
+    .content-creditRequest, .Login, .material-card , .material-card input{
         width: 100%;
     }
 
     .Credit-select, .material-input input{
-        width: 85%;
+        width: 75%;
     }
 
+    #photo{
+        padding: 8px 27%;
+    }
 
 }
 
@@ -2105,6 +2110,10 @@ footer{
 
     .u-more{
         float: right;
+    }
+
+    .Credit-section {
+        width: 100% !important;
     }
 }
 
