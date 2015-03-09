@@ -2019,6 +2019,7 @@ footer{
     .wrap-content{
         display: block;
         height: 32px;
+        text-align: center;
     }
 
     .u-more{
@@ -2029,6 +2030,9 @@ footer{
         width: 100%;
     }
 
+    .User-section{
+        width: 100%!important;
+    }
 
 
 }

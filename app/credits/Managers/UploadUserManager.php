@@ -18,10 +18,10 @@ class UploadUserManager extends BaseManager
             'address'                   => 'required',
             'residency_city'            => 'required',
             'birth_city'                => 'required',
-            'mobile_phone'              => 'required|numeric',
-            'phone'                     => 'required|numeric',
+            'mobile_phone'              => 'required|numeric|digits_between:6,11',
+            'phone'                     => 'required|numeric|digits_between:6,11',
             'date_birth'                => 'required',
-            'location'                  => 'numeric',
+            'location'                  => 'required|numeric',
             'card'                      => 'numeric'
 
 

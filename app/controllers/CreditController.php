@@ -41,7 +41,6 @@ class CreditController extends BaseController
         $dataCredit = $user_name + Input::all();
         $creditManager = new CreditManager(new CreditRequest(), $dataCredit);
         $creditValidation = $creditManager->isValid();
-
         if ($creditValidation) {
             return Redirect::route('credit')->withErrors($creditValidation)->withInput();
         }
