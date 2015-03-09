@@ -2039,6 +2039,26 @@ footer{
         width: 100%!important;
     }
 
+    .State{
+        height: 410px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .State section figure{
+        height: 175px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .content-creditRequest, .Login{
+        width: 100%;
+    }
+
+    .Credit-select, .material-input input{
+        width: 85%;
+    }
+
 
 }
 

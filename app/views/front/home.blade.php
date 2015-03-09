@@ -34,7 +34,7 @@
         </div>
         <div class="content-sign-up">
             @if(Auth::user())
-                <section class="Login">
+                <section class="Login State">
                     <h2>BIENVENIDA</h2>
 
                     <section class="content-inf">
