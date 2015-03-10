@@ -62,6 +62,9 @@ Route::get('credito', ['as' => 'credit', 'uses' => 'CreditController@index']);
 Route::post('credito', ['as' => 'credit', 'uses' => 'CreditController@updateCredit']);
 Route::post('submit', ['as' => 'submit', 'uses' => 'CreditController@saveImage']);
 
+//Subida excel
+Route::get('subidaExcel', ['as' => 'excel', 'uses' => 'UserController@showExcel']);
+Route::post('subidaExcel', ['as' => 'excel', 'uses' => 'UserController@uploadExcel']);
 
 
 //restaurar contraseña

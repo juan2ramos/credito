@@ -174,4 +174,14 @@ class UserController extends BaseController
         );
         return Redirect::to('admin/usuarios')->with('message','el usuario fue eliminado correctamente');
     }
+
+    public function showExcel()
+    {
+        return View::make('back.uploadExcel');
+    }
+
+    public function uploadExcel()
+    {
+        dd("drawde");
+    }
 }

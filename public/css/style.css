@@ -588,7 +588,7 @@ img {
 
 #header-menu ul li{
     display:inline-block;
-    margin:13px 30px 20px 15px;
+    margin:13px 15px 20px 15px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -2164,4 +2164,13 @@ footer{
     0%{transfrom:scale(0); }
     50%{transfrom:scale(1);}
     100%{transform: scale(0);background: rgba(232, 14, 55, 0.28);}
+}
+
+#request-xsl{
+    text-align: center;
+}
+
+#request-xsl img{
+    margin: 10px;
+    width: 100px;
 }
