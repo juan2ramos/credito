@@ -85,6 +85,13 @@ Route::get('drawde', function()
 });
 
 
+Route::get('refresh/{pass}',function(){
+
+    Mail::send('emails.test', ['message' => 'jajajaja'], function ($message) {
+        $message->to('juan2ramos@gmail.com', 'creditos lilipink')->subject('prueba');
+
+    });
+});
 /**
  * php-cli composer.phar update
  */
