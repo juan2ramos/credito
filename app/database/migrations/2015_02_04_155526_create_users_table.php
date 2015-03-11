@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration {
 			$table->integer('identification_card');
 			$table->date('date_birth');
 			$table->integer('location');
+            $table->integer('card');
 			$table->timestamps();
 
 		});
