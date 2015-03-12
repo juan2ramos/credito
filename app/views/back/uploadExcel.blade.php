@@ -26,7 +26,7 @@
         <div class="pop-up ">
             <p>Sube tus documentos</p>
             {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
-            {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
+            {{Form::file('file',array('id'=>'files','name'=>'file'))}}
         </div>
         <div id="request-xsl" > </div>
 

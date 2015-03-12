@@ -8,6 +8,7 @@ use credits\Components\ACL\Role;
 use credits\Managers\UploadUserManager;
 use credits\Managers\NewUserManager;
 use credits\Repositories\LogRepo;
+use credits\Entities\Extract;
 
 class UserController extends BaseController
 {
@@ -182,6 +183,19 @@ class UserController extends BaseController
 
     public function uploadExcel()
     {
-        dd("drawde");
+        $file = Input::file('file');
+
+
+        $data = Excel::load($file, function($reader)  {
+
+            // Getting all results
+            echo '<pre>';
+            dd($reader->toArray()[0][1]['nit']);exit;
+            Extract::insert($reader->toArray()[0]);
+             ;
+
+        });
+
+        //dd(Input::file('file'));
     }
 }
