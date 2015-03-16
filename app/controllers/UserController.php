@@ -189,8 +189,7 @@ class UserController extends BaseController
         $data = Excel::load($file, function($reader)  {
 
             // Getting all results
-            echo '<pre>';
-            dd($reader->toArray()[0][1]['nit']);exit;
+            $reader->get();
             Extract::insert($reader->toArray()[0]);
              ;
 
