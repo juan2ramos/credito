@@ -30,6 +30,7 @@
 
 </head>
 <body>
+<div class="body-all">
 <header class="Header">
     <div class="content-header">
         <div class="Header-content">
@@ -67,6 +68,7 @@
 </header>
 <div class="wrap">
     @yield('content')
+</div>
 </div>
     <div class="content-social" >
 

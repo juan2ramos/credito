@@ -21,7 +21,11 @@ class HomeController extends BaseController {
 		$sliders= Slider::all();
 		$slidersArrays=$this->getOrder($sliders,0);
 		$slidersName=$this->getOrder($sliders,1);
-		$diario=ExcelDaily::where('cedula','=',Auth::user()->identification_card)->first();
+		$diario='';
+		if(Auth::user())
+		{
+			$diario=ExcelDaily::where('cedula','=',Auth::user()->identification_card)->first();
+		}
 		return View::make('front/home',compact('slidersArrays','slidersName','diario'));
 	}
 

@@ -32,7 +32,7 @@
     <section class="update-user u-shadow-5">
 
         <h1>Datos del usuario</h1>
-        @if(Auth::user()->roles_id==4)
+        @if(Auth::user()->roles_id>1)
             {{Form::open(array('url'=>'Actualizar/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
         @else
             {{Form::open(array('url'=>'admin/uploadUser/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
@@ -42,6 +42,7 @@
                 <div class="material-card">
                     {{Form::label('card','ENTREGAR TARJETA LILIPINK')}}
                     {{form::text('card', $user->card ,array('class'=>' variableText1'))}}
+                    {{$errors->first('card')}}
                 </div>
             @endif
         @endif
@@ -52,22 +53,28 @@
 
 
             <div class="material-input">
-                {{form::text('name', $user->name ,array('class'=>' variableText1'))}}
-                {{Form::label('name','Nombre')}}
-                <span></span>
-            </div>
-
-            <div class="material-input">
                 {{form::text('identification_card', $user->identification_card,array('class'=>' variableText1'))}}
                 {{Form::label('identification_card','Cedula')}}
                 <span></span>
             </div>
 
+            @if($errors->first('identification_card'))
+                <div class="errors">
+                    *{{$errors->first('identification_card')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{form::text('name', $user->name ,array('class'=>' variableText1'))}}
                 {{Form::label('name','Nombre')}}
                 <span></span>
             </div>
+
+            @if($errors->first('name'))
+                <div class="errors">
+                    *{{$errors->first('name')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{form::text('second_name', $user->second_name ,array('class'=>' variableText1'))}}
@@ -75,11 +82,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('second_name'))
+                <div class="errors">
+                    *{{$errors->first('second_name')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{form::text('last_name', $user->last_name ,array('class'=>' variableText1'))}}
                 {{Form::label('last_name','Apellido')}}
                 <span></span>
             </div>
+
+            @if($errors->first('last_name'))
+                <div class="errors">
+                    *{{$errors->first('last_name')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{form::text('second_last_name', $user->second_last_name ,array('class'=>' variableText1'))}}
@@ -87,8 +106,26 @@
                 <span></span>
             </div>
 
+            @if($errors->first('second_last_name'))
+                <div class="errors">
+                    *{{$errors->first('second_last_name')}}
+                </div>
+            @endif
+
             <div class="material-input">
-                {{form::text('user_name', $user->user_name ,array('class'=>' variableText1'))}}
+                {{form::text('email', $user->email ,array('class'=>'variableText1'))}}
+                {{Form::label('email','E-mail')}}
+                <span></span>
+            </div>
+
+            @if($errors->first('email'))
+                <div class="errors">
+                    *{{$errors->first('email')}}
+                </div>
+            @endif
+
+            <div class="material-input hidden">
+                {{form::text('user_name', $user->user_name ,array('class'=>'variableText1'))}}
                 {{Form::label('user_name','Username')}}
                 <span></span>
             </div>
@@ -98,15 +135,16 @@
                 {{Form::file('photo',['id'=>'photo'])}}
             </div>
 
+            @if($errors->first('photo'))
+                <div class="errors">
+                    *{{$errors->first('photo')}}
+                </div>
+            @endif
+
         </section>
 
         <section class="User-section ">
 
-            <div class="material-input">
-                {{form::text('email', $user->email ,array('class'=>'variableText1'))}}
-                {{Form::label('email','E-mail')}}
-                <span></span>
-            </div>
 
             <div class="material-input">
                 {{form::text('address', $user->address ,array('class'=>' variableText1'))}}
@@ -114,11 +152,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('address'))
+                <div class="errors">
+                    *{{$errors->first('address')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{form::text('residency_city', $user->residency_city ,array('class'=>' variableText1'))}}
                 {{Form::label('residency_city','Ciudad de residencia')}}
                 <span></span>
             </div>
+
+            @if($errors->first('residency_city'))
+                <div class="errors">
+                    *{{$errors->first('residency_city')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{form::text('birth_city', $user->birth_city ,array('class'=>' variableText1'))}}
@@ -126,11 +176,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('birth_city'))
+                <div class="errors">
+                    *{{$errors->first('birth_city')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{form::text('mobile_phone', $user->mobile_phone ,array('class'=>' variableText1'))}}
                 {{Form::label('mobile_phone','Celular')}}
                 <span></span>
             </div>
+
+            @if($errors->first('mobile_phone'))
+                <div class="errors">
+                    *{{$errors->first('mobile_phone')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{form::text('phone', $user->phone ,array('class'=>' variableText1'))}}
@@ -138,17 +200,34 @@
                 <span></span>
             </div>
 
+            @if($errors->first('phone'))
+                <div class="errors">
+                    *{{$errors->first('phone')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::input('date','date_birth',$user->date_birth,['class'=>' variableText1','id' => 'date_birth'])}}
                 {{Form::label('date_birth','fecha de nacimiento')}}
                 <span></span>
             </div>
 
+            @if($errors->first('date_birth'))
+                <div class="errors">
+                    *{{$errors->first('date_birth')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{ Form::select('location', $locations,$user->location,array('class'=>'Credit-select')) }}
                 <span></span>
             </div>
 
+            @if($errors->first('location'))
+                <div class="errors">
+                    *{{$errors->first('location')}}
+                </div>
+            @endif
 
         </section>
 
@@ -159,27 +238,60 @@
         </button>
 
         {{form::close()}}
+        <div class="Table-content">
+            <table class="table table-striped table-hover ">
+                <thead>
+                <tr>
+                    <th>Cedula</th>
+                    <th>Punto de Venta</th>
+                    <th>Tasa de interes</th>
+                    <th>Valor de la Compra</th>
+                    <th>Cargos y abonos</th>
+                    <th>Saldo del Credito</th>
+                    <th>Cuotas</th>
+                    <th>Saldo sin Vencer</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($extracts as $extract)
+                    @if($extract->numero_documento==$user->identification_card)
+                        <tr>
+                            <td>{{$extract->numero_documento}}</td>
+                            <td>{{$extract->punto_venta}}</td>
+                            <td>{{$extract->tasa_interes}}</td>
+                            <td>{{$extract->valor_compra}}</td>
+                            <td>{{$extract->cargos_abonos}}</td>
+                            <td>{{$extract->saldo_credito_diferido}}</td>
+                            <td>{{$extract->cuotas}}</td>
+                            <td>{{$extract->saldo_sin_vencer}}</td>
+                        </tr>
+                    @endif
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+        @if(isset($credits[0]))
+            <details>
+                <summary><h2>Credito solicitado</h2></summary>
+                <p>Estado: {{$credits[0]->state}}</p>
+                <p>Prioridad: {{$credits[0]->priority}}</p>
+                <p>Egresos Mensuales: {{$credits[0]->monthly_expenses}}</p>
+                <p>Ingresos Mensuales: {{$credits[0]->monthly_income}}</p>
+                <p>Direccion de la oficina: {{$credits[0]->office_address}}</p>
+                <p>Lugar de expedicion: {{$credits[0]->instead_expedition}}</p>
+                <p>Fecha de expedicion: {{$credits[0]->date_expedition}}</p>
+                <h3>Referencia 1</h3>
+                <p>Nombre: {{$credits[0]->name_reference}}</p>
+                <p>Telefono: {{$credits[0]->phone_reference}}</p>
+                <h3>Referencia 2</h3>
+                <p>Nombre: {{$credits[0]->name_reference}}</p>
+                <p>Telefono: {{$credits[0]->phone_reference}}</p>
 
+            </details>
+        @endif
     </section>
-            @if(isset($credits[0]))
-                        <details>
-                            <summary><h2>Credito solicitado</h2></summary>
-                            <p>Estado: {{$credits[0]->state}}</p>
-                            <p>Prioridad: {{$credits[0]->priority}}</p>
-                            <p>Egresos Mensuales: {{$credits[0]->monthly_expenses}}</p>
-                            <p>Ingresos Mensuales: {{$credits[0]->monthly_income}}</p>
-                            <p>Direccion de la oficina: {{$credits[0]->office_address}}</p>
-                            <p>Lugar de expedicion: {{$credits[0]->instead_expedition}}</p>
-                            <p>Fecha de expedicion: {{$credits[0]->date_expedition}}</p>
-                            <h3>Referencia 1</h3>
-                            <p>Nombre: {{$credits[0]->name_reference}}</p>
-                            <p>Telefono: {{$credits[0]->phone_reference}}</p>
-                            <h3>Referencia 2</h3>
-                            <p>Nombre: {{$credits[0]->name_reference}}</p>
-                            <p>Telefono: {{$credits[0]->phone_reference}}</p>
 
-                        </details>
-            @endif
+
 
 
 @stop

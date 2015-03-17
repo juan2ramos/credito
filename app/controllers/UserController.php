@@ -52,8 +52,9 @@ class UserController extends BaseController
         }else{
             $location="No asignada";
         }
+        $extracts=Extract::all();
 
-        return View::make('back.user', compact('user', 'credits','location','locations'));
+        return View::make('back.user', compact('user', 'credits','location','locations','extracts'));
     }
 
     public function newUser()
@@ -117,6 +118,7 @@ class UserController extends BaseController
 
         $user=new UploadUserManager(new User(),Input::all());
         $userValidator=$user->isValid();
+
         if($userValidator)
         {
             return Redirect::to('/admin/usuarios/'.$id)->withErrors($userValidator)->withInput();
@@ -140,6 +142,7 @@ class UserController extends BaseController
 
     public function updateClient($id)
     {
+
         $user=new UploadUserManager(new User(),Input::all());
         $userValidator=$user->isValid();
         if($userValidator)
@@ -226,4 +229,23 @@ class UserController extends BaseController
         }
         return Redirect::route('diario')->with('mensaje_error','el diario no pudo ser guardado');
     }
+
+    public function showState()
+    {
+        $users=User::all();
+        $extracts=Extract::where('numero_documento','=',Auth::user()->identification_card)->get();
+        $vencidos=0 ;
+        $debe=0;
+        foreach($extracts as $extract)
+        {
+            if($extract->dias_vencidos>0)
+            {
+                $vencidos=$vencidos+$extract->dias_vencidos;
+                $debe=$debe+$extract->saldo_credito_diferido;
+            }
+
+        }
+        return View::make('front.state',compact('extracts','vencidos','debe','users'));
+    }
+
 }

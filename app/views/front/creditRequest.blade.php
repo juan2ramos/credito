@@ -2,57 +2,6 @@
 @section('title') Solicitud de Credito @stop
 @section('content')
     {{ Session::get('mensaje') }}
-    @if($errors->first())
-        <div id="form-errors">
-            @if($errors->first('user_name'))
-                <p>los nombres ya se encuentran registrados</p>
-            @endif
-            @if($errors->first('document_type'))
-                <p>Seleccione un tipo de documento</p>
-            @endif
-            @if($errors->first('identification_card'))
-                <p>La cedula ya se en encuentra registrada o tiene letras </p>
-            @endif
-                <p>{{$errors->first('email')}}</p>
-                <p>{{$errors->first('name_reference')}}</p>
-                <p>{{$errors->first('name')}}</p>
-                <p>{{$errors->first('second_name')}}</p>
-                <p>{{$errors->first('last_name')}}</p>
-                <p>{{$errors->first('second_last_name')}}</p>
-                <p>{{$errors->first('birth_city')}}</p>
-                <p>{{$errors->first('residency_city')}}</p>
-                <p>{{$errors->first('date_expedition')}}</p>
-                <p>{{$errors->first('instead_expedition')}}</p>
-                <p>{{$errors->first('date_birth')}}</p>
-            @if($errors->first('mobile_phone'))
-                <p>Ingrese el celular en numeros</p>
-            @endif
-            @if($errors->first('phone'))
-                <p>Ingrese el telefono en numeros</p>
-            @endif
-                <p>{{$errors->first('address')}}</p>
-                <p>{{$errors->first('office_address')}}</p>
-                <p>{{$errors->first('monthly_income')}}</p>
-                <p>{{$errors->first('monthly_expenses')}}</p>
-                <p>{{$errors->first('name_reference')}}</p>
-            @if($errors->first('location'))
-                <p>Seleccione una Region</p>
-            @endif
-            @if($errors->first('phone_reference'))
-                <p>Ingrese el telefono de la referencia 1 en numeros</p>
-            @endif
-                <p>{{$errors->first('name_reference2')}}</p>
-            @if($errors->first('phone_reference2'))
-                <p>Ingrese el telefono de la referencia 2 en numeros</p>
-            @endif
-            @if($errors->first('files'))
-                <p>Ingrese los archivos requeridos</p>
-            @endif
-
-        </div>
-
-    @endif
-
 
     <section class="Credit u-shadow-5">
         @extends('layout/notify')
@@ -69,11 +18,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('document_type'))
+                <div class="errors">
+                    *{{$errors->first('document_type')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::text('identification_card','',['id' => 'identification_card'])}}
                 {{Form::label('identification_card','Cedula')}}
                 <span></span>
             </div>
+
+            @if($errors->first('identification_card'))
+                <div class="errors">
+                    *{{$errors->first('identification_card')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{Form::text('email','',['id' => 'mail'])}}
@@ -81,11 +42,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('email'))
+                <div class="errors">
+                    *{{$errors->first('email')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::text('name','',['id' => 'name'])}}
                 {{Form::label('name','Nombre')}}
                 <span></span>
             </div>
+
+            @if($errors->first('name'))
+                <div class="errors">
+                    *{{$errors->first('name')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{Form::text('second_name','',['id' => 'second_name'])}}
@@ -93,11 +66,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('second_name'))
+                <div class="errors">
+                    *{{$errors->first('second_name')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::text('last_name','',['id' => 'last_name'])}}
                 {{Form::label('last_name','Apellido')}}
                 <span></span>
             </div>
+
+            @if($errors->first('last_name'))
+                <div class="errors">
+                    *{{$errors->first('last_name')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{Form::text('second_last_name','',['id' => 'second_last_name'])}}
@@ -105,11 +90,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('second_last_name'))
+                <div class="errors">
+                    *{{$errors->first('second_last_name')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::text('birth_city','',['id' => 'birth_city'])}}
                 {{Form::label('birth_city','Ciudad de nacimiento')}}
                 <span></span>
             </div>
+
+            @if($errors->first('birth_city'))
+                <div class="errors">
+                    *{{$errors->first('birth_city')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{Form::text('residency_city','',['id' => 'residency_city'])}}
@@ -117,11 +114,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('residency_city'))
+                <div class="errors">
+                    *{{$errors->first('residency_city')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::input('date','date_expedition','',['id' => 'date_expedition'])}}
                 {{Form::label('date_expedition','Fecha de expedicion')}}
                 <span></span>
             </div>
+
+            @if($errors->first('date_expedition'))
+                <div class="errors">
+                    *{{$errors->first('date_expedition')}}
+                </div>
+            @endif
 
         </section>
 
@@ -132,7 +141,11 @@
                 <span></span>
             </div>
 
-
+            @if($errors->first('location'))
+                <div class="errors">
+                    *{{$errors->first('location')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{Form::text('instead_expedition','',['id' => 'instead_expedition'])}}
@@ -140,11 +153,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('instead_expedition'))
+                <div class="errors">
+                    *{{$errors->first('instead_expedition')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::input('date','date_birth','',['id' => 'date_birth'])}}
                 {{Form::label('date_birth','Fecha de nacimiento')}}
                 <span></span>
             </div>
+
+            @if($errors->first('date_birth'))
+                <div class="errors">
+                    *{{$errors->first('date_birth')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{Form::text('mobile_phone','',['id' => 'mobile_phone','required'])}}
@@ -152,12 +177,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('mobile_phone'))
+                <div class="errors">
+                    *{{$errors->first('mobile_phone')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::text('phone','',['id' => 'phone','required'])}}
                 {{Form::label('phone','Numero telefonico')}}
                 <span></span>
             </div>
 
+            @if($errors->first('phone'))
+                <div class="errors">
+                    *{{$errors->first('phone')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{Form::text('address','',['id' => 'address'])}}
@@ -165,11 +201,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('address'))
+                <div class="errors">
+                    *{{$errors->first('address')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::text('office_address','',['id' => 'office_address'])}}
                 {{Form::label('office_address','Direcion de la oficina')}}
                 <span></span>
             </div>
+
+            @if($errors->first('office_address'))
+                <div class="errors">
+                    *{{$errors->first('office_address')}}
+                </div>
+            @endif
 
             <div class="material-input">
                 {{Form::text('monthly_income','',['id' => 'monthly_income'])}}
@@ -177,11 +225,23 @@
                 <span></span>
             </div>
 
+            @if($errors->first('monthly_income'))
+                <div class="errors">
+                    *{{$errors->first('monthly_income')}}
+                </div>
+            @endif
+
             <div class="material-input">
                 {{Form::text('monthly_expenses','',['id' => 'monthly_expenses'])}}
                 {{Form::label('monthly_expenses','Egresos mensuales')}}
                 <span></span>
             </div>
+
+            @if($errors->first('monthly_expenses'))
+                <div class="errors">
+                    *{{$errors->first('monthly_expenses')}}
+                </div>
+            @endif
 
         </section>
 
@@ -193,11 +253,23 @@
             <span></span>
         </div>
 
+        @if($errors->first('name_reference'))
+            <div class="errors">
+                *{{$errors->first('name_reference')}}
+            </div>
+        @endif
+
         <div class="material-input">
             {{Form::text('phone_reference','',['id' => 'phone_reference'])}}
             {{Form::label('phone_reference','Telefono')}}
             <span></span>
         </div>
+
+        @if($errors->first('phone_reference'))
+            <div class="errors">
+                *{{$errors->first('phone_reference')}}
+            </div>
+        @endif
 
         <p class="titleReference">Referencia Personal2</p>
 
@@ -207,11 +279,24 @@
             <span></span>
         </div>
 
+        @if($errors->first('name_reference2'))
+            <div class="errors">
+                *{{$errors->first('name_reference2')}}
+            </div>
+        @endif
+
         <div class="material-input">
             {{Form::text('phone_reference2','',['id' => 'phone_reference2'])}}
             {{Form::label('phone_reference2','Telefono')}}
             <span></span>
         </div>
+
+        @if($errors->first('phone_reference2'))
+            <div class="errors">
+                *{{$errors->first('phone_reference2')}}
+            </div>
+        @endif
+
         <div class="hidden">
             {{Form::text('files','',['id'=>'form-files'])}}
         </div>
@@ -233,6 +318,12 @@
             </div>
 
         </div>
+
+        @if($errors->first('files'))
+            <div class="errors">
+                *Los archivos son obligatorios
+            </div>
+        @endif
 
         <div>
             <label class="label--checkbox">

@@ -110,7 +110,7 @@
 
 
                         </div>
-                        <a href="">ESTADO DE CUENTA</a>
+                        <a href="{{route('state')}}">ESTADO DE CUENTA</a>
                     </section>
                 @else
                     <section class="Home-request ">

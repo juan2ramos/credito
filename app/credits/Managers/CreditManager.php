@@ -45,13 +45,12 @@ class CreditManager extends BaseManager
     public function getMessage()
     {
         $messages = [
-            'required'      => 'El campo :attribute es obligatorio.',
-            'min'           => 'El campo :attribute no puede tener menos de :min carácteres.',
-            'max'           => 'El campo :attribute no puede tener más de :max carácteres.',
-            'email'         => 'El correo esta mal escrito',
-            'same'          => 'Las contraseñas deben ser iguales',
-            'unique'        => 'El :attribute ya se encuentra registrado',
-            'numeric'       => 'El :attribute va en numeros'
+            'required'          => 'El campo  es obligatorio.',
+            'email'             => 'El correo esta mal escrito',
+            'same'              => 'Las contraseñas deben ser iguales',
+            'unique'            => 'El campo ya se encuentra registrado',
+            'digits_between'   => 'El campo debe ser entre 6 a 11 digitos',
+            'numeric'           => 'El campo va en numeros'
         ];
         return $messages;
     }
