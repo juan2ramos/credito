@@ -96,9 +96,19 @@
                             <p>Estado.</p>
                         </div>
                         <div class="content-text state-text1">
-                            <p>2015 - 03 - 01</p>
-                            <p>$60.000</p>
-                            <div><p class="state-home">EN MORA.</p></div>
+                            @if(isset($diario))
+                                <p>INMEDIATO</p>
+                                <p>$ {{$diario->pago_minimo}}</p>
+                                <div><p class="state-home">EN MORA.</p></div>
+
+                            @else
+                                <p>/-/-/</p>
+                                <p>$ 0</p>
+                                <div ><p class="state-home" style="background: #008000 !important;">ACTIVO.</p></div>
+                            @endif
+
+
+
                         </div>
                         <a href="">ESTADO DE CUENTA</a>
                     </section>

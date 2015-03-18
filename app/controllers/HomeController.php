@@ -1,5 +1,6 @@
 <?php
 use credits\Entities\Slider;
+use credits\Entities\ExcelDaily;
 class HomeController extends BaseController {
 
 	/*
@@ -20,7 +21,8 @@ class HomeController extends BaseController {
 		$sliders= Slider::all();
 		$slidersArrays=$this->getOrder($sliders,0);
 		$slidersName=$this->getOrder($sliders,1);
-		return View::make('front/home',compact('slidersArrays','slidersName'));
+		$diario=ExcelDaily::where('cedula','=',Auth::user()->identification_card)->first();
+		return View::make('front/home',compact('slidersArrays','slidersName','diario'));
 	}
 
 	private function getOrder($sliders,$number)

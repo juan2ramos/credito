@@ -9,6 +9,7 @@ use credits\Managers\UploadUserManager;
 use credits\Managers\NewUserManager;
 use credits\Repositories\LogRepo;
 use credits\Entities\Extract;
+use credits\Entities\ExcelDaily;
 
 class UserController extends BaseController
 {
@@ -181,14 +182,23 @@ class UserController extends BaseController
         return View::make('back.uploadExcel');
     }
 
+    public function showExcelDaily()
+    {
+        return View::make('back.uploadExcelDiario');
+    }
+
     public function uploadExcel()
     {
         $file = Input::file('file');
 
 
+        DB::table('extracts')->truncate();
+
+
         $data = Excel::load($file, function($reader)  {
             ini_set('max_execution_time', 10000);
             // Getting all results
+
 
             $mounths = [
                 'Ene' => 1,
@@ -233,12 +243,33 @@ class UserController extends BaseController
                 print_r($row);
             }
 
-            dd();
-            //Extract::insert($reader->toArray()[0]);
-             ;
 
+            $reader->get();
+            Extract::insert($reader->toArray()[0]);
         });
 
-        //dd(Input::file('file'));
+
+
+    }
+
+    public function uploadExcelDaily()
+    {
+        $file = Input::file('file');
+
+
+        DB::table('excelDaily')->truncate();
+
+        $data = Excel::load($file, function($reader)  {
+
+            // Getting all results
+            $reader->get();
+            ExcelDaily::insert($reader->toArray()[0]);
+
+        });
+        if($data)
+        {
+            return Redirect::route('diario')->with('mensaje','el diario fue guardado correctamente');
+        }
+        return Redirect::route('diario')->with('mensaje_error','el diario no pudo ser guardado');
     }
 }

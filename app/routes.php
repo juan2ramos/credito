@@ -66,6 +66,9 @@ Route::post('submit', ['as' => 'submit', 'uses' => 'CreditController@saveImage']
 Route::get('subidaExcel', ['as' => 'excel', 'uses' => 'UserController@showExcel']);
 Route::post('subidaExcel', ['as' => 'excel', 'uses' => 'UserController@uploadExcel']);
 
+//Subida excel diario
+Route::get('subidaExcelDiario', ['as' => 'diario', 'uses' => 'UserController@showExcelDaily']);
+Route::post('subidaExcelDiario', ['as' => 'diario', 'uses' => 'UserController@uploadExcelDaily']);
 
 //restaurar contraseña
 
