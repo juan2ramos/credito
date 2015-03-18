@@ -192,11 +192,9 @@ class UserController extends BaseController
 
     public function uploadExcel()
     {
-        $file = Input::file('file');
-
 
         DB::table('extracts')->truncate();
-
+        $file = Input::file('file');
 
         $data = Excel::load($file, function($reader)  {
             ini_set('max_execution_time', 10000);
@@ -243,16 +241,12 @@ class UserController extends BaseController
                 ));
 
 
-                print_r($row);
             }
 
-
-            $reader->get();
-            Extract::insert($reader->toArray()[0]);
         });
 
 
-
+        return Redirect::route('excel')->with('mensaje','el extracto fue guardado correctamente');
     }
 
     public function uploadExcelDaily()
