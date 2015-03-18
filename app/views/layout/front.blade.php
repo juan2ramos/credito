@@ -42,18 +42,18 @@
             <div class="Header-contentNav">
                 @if(Auth::check())
                     <a class="icon-logout" href="{{route('logout')}}"></a>
-                    @if(Auth::user()->roles_id == 2)
+                    @if(Auth::user()->roles_id == 3)
                         <a class="icon-bell" href="{{route('request')}}"> <span>{{notify()}}</span> </a>
                     @endif
-                    <a class="icon-child-1" href="#"></a>
+                    <a class="icon-child-1" href="{{route('update',Auth::user()->id)}}"></a>
                 @else
                     <a class="login-button" href="{{route('sign-up')}}">Iniciar sesión</a>
                 @endif
-                <div id="buttonMenu" class="Header-buttonNav">
-                    <span class="Header-line1 u-line"></span>
-                    <span class="Header-line2 u-line"></span>
-                    <span class="Header-line3 u-line"></span>
-                </div>
+                    <div id="buttonMenu" class="Header-buttonNav">
+                        <span class="Header-line1 u-line"></span>
+                        <span class="Header-line2 u-line"></span>
+                        <span class="Header-line3 u-line"></span>
+                    </div>
             </div>
             {{Menus::create('principal',[ 'class'=>'Header-nav'])}}
         </div>

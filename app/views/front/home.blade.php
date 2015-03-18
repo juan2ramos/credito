@@ -88,30 +88,45 @@
             @endif
             <div class="content-creditRequest" style="background:rgba(13, 12, 12, 0.03) !important; border: 2px solid rgba(204, 204, 204, 0.53);">
                 @if(Auth::user())
-                    <section class="home-request">
-                        <h2>PROXIMO PAGO</h2>
-                        <div class="content-text state-text">
-                            <p>Fecha limite de pago.</p>
-                            <p>Pago minimo.</p>
-                            <p>Estado.</p>
-                        </div>
-                        <div class="content-text state-text1">
-                            @if(isset($diario))
-                                <p>INMEDIATO</p>
-                                <p>$ {{$diario->pago_minimo}}</p>
-                                <div><p class="state-home">EN MORA.</p></div>
-
-                            @else
-                                <p>/-/-/</p>
-                                <p>$ 0</p>
-                                <div ><p class="state-home" style="background: #008000 !important;">ACTIVO.</p></div>
-                            @endif
+                    @if(Auth::user()->roles_id<4)
+                        @if(Auth::user()->roles_id==1)
+                            <p class="type-account">Super administrador<p>
+                        @endif
+                        @if(Auth::user()->roles_id==2)
+                            <p class="type-account">Administrador</p>
+                        @endif
+                        @if(Auth::user()->roles_id==3)
+                            <p class="type-account">Punto de Venta</p>
+                        @endif
 
 
+                    @else
+                        <section class="home-request">
+                            <h2>PROXIMO PAGO</h2>
+                            <div class="content-text state-text">
+                                <p>Fecha limite de pago.</p>
+                                <p>Pago minimo.</p>
+                                <p>Estado.</p>
+                            </div>
+                            <div class="content-text state-text1">
+                                @if(isset($diario))
+                                    <p>INMEDIATO</p>
+                                    <p>$ {{$diario->pago_minimo}}</p>
+                                    <div><p class="state-home">EN MORA.</p></div>
 
-                        </div>
-                        <a href="{{route('state')}}">ESTADO DE CUENTA</a>
-                    </section>
+                                @else
+                                    <p>/-/-/</p>
+                                    <p>$ 0</p>
+                                    <div ><p class="state-home" style="background: #008000 !important;">ACTIVO.</p></div>
+                                @endif
+
+
+
+                            </div>
+                            <a href="{{route('state')}}">ESTADO DE CUENTA</a>
+                        </section>
+                    @endif
+
                 @else
                     <section class="Home-request ">
                         <p>SOLICITAR CREDITO</p>

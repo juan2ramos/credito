@@ -11,14 +11,6 @@
             notify.querySelector('.text-notify').innerText = '{{Session::get('message')}}';
         </script>
     @endif
-    @if($errors->first())
-        <script>
-            var notify = document.getElementById('notify');
-            notify.classList.add('is-show');
-            notify.classList.add('error');
-            notify.querySelector('.text-notify').innerText = '{{$errors->first('data_monthly')}} {{$errors->first('value_monthly')}} {{$errors->first('data_credit')}} {{$errors->first('fenalco')}} {{$errors->first('reference')}} {{$errors->first('files')}}';
-        </script>
-    @endif
 
     @if($errors->first('accept'))
         <section class="accept-links">
@@ -71,16 +63,31 @@
                 {{Form::label('data_monthly','Datos mensuales')}}
                 <span></span>
             </div>
+            @if($errors->first('data_monthly'))
+                <div class="errors">
+                    *{{$errors->first('data_monthly')}}
+                </div>
+            @endif
             <div class="material-input">
                 {{Form::text('value_monthly','',['id' => 'value_monthly'])}}
                 {{Form::label('value_monthly','Valor mensual')}}
                 <span></span>
             </div>
+            @if($errors->first('value_monthly'))
+                <div class="errors">
+                    *{{$errors->first('value_monthly')}}
+                </div>
+            @endif
             <div class="material-input">
                 {{Form::text('data_credit','',['id' => 'data_credit'])}}
                 {{Form::label('data_credit','Data credito')}}
                 <span></span>
             </div>
+            @if($errors->first('data_credit'))
+                <div class="errors">
+                    *{{$errors->first('data_credit')}}
+                </div>
+            @endif
         </div>
         @if(strtolower($locations->name)=="medellin")
             <label class="accpt-checkbox">
@@ -91,6 +98,11 @@
                 {{Form::radio('fenalco', '1', true, ['class' => 'checkbox']);}}amarillo
                 {{Form::radio('fenalco', '2', true, ['class' => 'checkbox']);}}verde
             </section>
+        @endif
+        @if($errors->first('fenalco'))
+            <div class="errors">
+                *{{$errors->first('fenalco')}}
+            </div>
         @endif
 
         <h2>Referencia 1</h2>
@@ -111,6 +123,7 @@
                 </tbody>
             </table>
         </div>
+
 
         <label class="accpt-checkbox">
             {{Form::checkbox('reference1', 1, null, ['class' => 'checkbox'])}}

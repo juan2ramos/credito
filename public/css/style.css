@@ -505,7 +505,7 @@ img {
     z-index: 2000;
 }
 
-@media all and (min-width: 320px)  and (max-width: 900px){
+@media all and (min-width: 30px)  and (max-width: 900px){
     .Header-buttonNav {
         display: inline-block;
         height: 34px;
@@ -526,7 +526,7 @@ img {
     }
 
     .Header-contentNav{
-        margin-left: -1px;
+        margin-left: -30px;
     }
 
     .Header-logoLilipink{
@@ -537,6 +537,8 @@ img {
     .Header-logoIntima{
         width: 36%;
     }
+    
+
 
 
 }
@@ -613,6 +615,13 @@ img {
     padding-bottom: 13px;
     width: 100%;
     background: none;
+}
+
+.type-account{
+    text-align: center;
+    margin-top: 55px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 /* Input */
@@ -2067,8 +2076,16 @@ footer{
     }
 
     .State section figure{
-        height: 175px;
+        display: block;
         width: 100%;
+        height: 100px;
+        margin-bottom: 50px;
+    }
+
+    .Login section figure img{
+        position: relative;
+        width: 70%;
+        height: 100px;
     }
 
     .content-creditRequest, .Login, .material-card , .material-card input{

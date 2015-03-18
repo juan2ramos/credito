@@ -12,7 +12,7 @@ class NewUserManager extends BaseManager
             'last_name'                 => 'required',
             'user_name'                 => 'required|unique:users',
             'email'                     => 'required|email|unique:users',
-            'mobile_phone'              => 'required|numeric',
+            'mobile_phone'              => 'required|numeric|digits_between:6,11',
             'address'                   => 'required',
             'roles_id'                  => 'required|numeric',
             'location'                  => 'required|numeric'
@@ -25,8 +25,11 @@ class NewUserManager extends BaseManager
     public function getMessage()
     {
         $messages = [
-            'required'  => 'El campo :attribute es obligatorio.',
-            'same'      => 'Las contraseñas deben ser iguales'
+            'required'              => 'El campo es obligatorio.',
+            'digits_between'        => 'El campo debe ser mayor de 6 y menor de 11',
+            'numeric'               => 'El campo debe ser numercio',
+            'unique'                => 'El campo ya se encuentra registrado',
+            'email'                 => 'El Correo esta mal escrito'
         ];
         return $messages;
     }
