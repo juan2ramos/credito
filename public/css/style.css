@@ -281,7 +281,7 @@
 .icon-pinterest:before { content:'\e89'; }
 
 .body-all{
-    height: 100%;
+    min-height: 100%;
 }
 
 *:focus {
@@ -336,6 +336,7 @@ img {
     margin: 28px auto;
     position: relative;
     width: 100%;
+    margin-bottom: 160px;
 }
 
 .u-shadow-1 {
@@ -356,6 +357,7 @@ img {
 
 .u-shadow-5 {
     box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    margin-bottom: 139px;
 }
 
 .u-button {
@@ -594,7 +596,7 @@ img {
 
 #header-menu ul li{
     display:inline-block;
-    margin:13px 15px 20px 15px;
+    margin:13px 10px 20px 10px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -1661,6 +1663,12 @@ button.icon-search{
 }
 .wrap-content{
     margin: 10px auto 0;
+    margin-bottom: 190px;
+    max-width: 1000px;
+    width: 100%;
+}
+.wrap-content1{
+    margin: 10px auto 0;
     max-width: 1000px;
     width: 100%;
 }
@@ -1725,7 +1733,7 @@ button.icon-search{
         width: auto;
     }
     #Input-more {
-        width: 67%;
+        width: 50%;
     }
 }
 
@@ -1878,7 +1886,7 @@ button.icon-search{
     color: rgba(0, 0, 0, 0.69);;
     padding-top: 6px;
     text-align: center;
-    margin-top: -79px;
+    margin-top: -105px
 }
 
 .content-social .social-text a {
