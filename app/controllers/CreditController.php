@@ -274,7 +274,7 @@ class CreditController extends BaseController
     }
     public static function notify()
     {
-        if(Auth::user()->roles_id == 2){
+        if(Auth::user()->roles_id == 3){
             $user = Auth::user();
             $credits = CreditRequest::whereRaw('notify = 0 and state = "" and location = ' . $user->location);
             return $credits->count();

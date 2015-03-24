@@ -281,7 +281,7 @@
 .icon-pinterest:before { content:'\e89'; }
 
 .body-all{
-    min-height: 100%;
+    min-height: 89%;
 }
 
 *:focus {
@@ -336,7 +336,7 @@ img {
     margin: 28px auto;
     position: relative;
     width: 100%;
-    margin-bottom: 160px;
+
 }
 
 .u-shadow-1 {
@@ -694,6 +694,7 @@ img {
 
 .Content-home{
     margin-top: 20px;
+    margin-bottom: 139px;
 }
 
 .content-sign-up{
@@ -1762,6 +1763,7 @@ button.icon-search{
     margin: auto;
     text-align: center;
     width: 1000px;
+    margin-bottom: 139px;
 }
 
 .acceptSection h2{
@@ -1883,10 +1885,9 @@ button.icon-search{
 
 .content-social{
     background: rgba(165, 165, 165, 0.21);
-    color: rgba(0, 0, 0, 0.69);;
+    color: rgba(0, 0, 0, 0.69);
     padding-top: 6px;
     text-align: center;
-    margin-top: -105px
 }
 
 .content-social .social-text a {
