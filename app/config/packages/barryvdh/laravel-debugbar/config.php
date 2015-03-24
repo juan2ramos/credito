@@ -85,7 +85,7 @@ return array(
     'collectors' => array(
         'phpinfo'         => true,  // Php version
         'messages'        => true,  // Messages
-        'time'            => true,  // Time Datalogger
+        'time'            => false,  // Time Datalogger
         'memory'          => true,  // Memory usage
         'exceptions'      => true,  // Exception displayer
         'log'             => true,  // Logs from Monolog (merged in messages if enabled)
