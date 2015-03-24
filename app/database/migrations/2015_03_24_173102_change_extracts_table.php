@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeExtractsTable extends Migration {
+class ChangeExtractTable extends Migration {
 
 	/**
 	 * Run the migrations.
