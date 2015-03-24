@@ -339,6 +339,7 @@ img {
 
 }
 
+
 .u-shadow-1 {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
@@ -1271,7 +1272,7 @@ a.icon-logout {
     overflow: auto;
     box-shadow: 0 1px 5px 0;
     max-width: 1000px;
-    margin: auto;
+    margin: 25px;
 }
 .Back-content {
     overflow: auto;

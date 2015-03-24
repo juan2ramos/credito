@@ -200,49 +200,11 @@ class UserController extends BaseController
             ini_set('max_execution_time', 10000);
             // Getting all results
 
-
-            $mounths = [
-                'Ene' => 1,
-                'Feb' => 2,
-                'Mar' => 3,
-                'Abr' => 4,
-                'May' => 5,
-                'Jun' => 6,
-                'Jul' => 7,
-                'Ago' => 8,
-                'Sep' => 9,
-                'Oct' => 10,
-                'Nov' => 11,
-                'Dic' => 12,
-
-            ];
-
-            $rows = $reader->toArray()[0];
-            foreach ($rows as $row) {
-                $date = explode(' ' , $row['fecha_contabilizacion']);
-                $mounth = $mounths[$date[0]];
-                $date = new DateTime($date[1] . '-' . $mounth . '-' . $date[2]);
-
-                DB::table('extracts')->insert(array(
-                    'nit' =>  $row['nit'],
-                    'numero_documento' =>  $row['numero_documento'],
-                    'fecha_contabilizacion' => $date,
-                    'punto_venta' => $row['punto_venta'],
-                    'tasa_interes' => $row['tasa_interes'],
-                    'valor_compra' => $row['valor_compra'],
-                    'cargos_abonos' => $row['cargos_abonos'],
-                    'saldo_credito_diferido' => $row['saldo_credito_diferido'],
-                    'dias_vencidos' => $row['dias_vencidos'],
-                    'saldo_sin_vencer' => $row['saldo_sin_vencer'],
-                    'un_mes' => $row['un_mes'],
-                    'dos_meses' => $row['dos_meses'],
-                    'tres_meses' => $row['tres_meses'],
-                    'mas_tres' => $row['mas_tres']
-
-                ));
+                // Getting all results
+                $reader->get();
+                Extract::insert($reader->toArray()[0]);
 
 
-            }
 
         });
         $extracts = Extract::all()->toArray();

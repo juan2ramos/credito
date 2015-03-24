@@ -10,7 +10,7 @@
             notify.querySelector('.text-notify').innerText = 'Se ha actualizado los permisos correctamente';
         </script>
     @endif
-        <p>ya estamos verificando los datos de tu solicitud de credito. Puedes ver nuestro productos aqui</p><a href="http://lilipink.com/" target="_blank">aqui</a>
+        <p style="text-align:center">ya estamos verificando los datos de tu solicitud de credito. Puedes ver nuestro productos <a href="http://lilipink.com/" target="_blank">aqui</a></p>
 
     @include('layout.load')
 @stop

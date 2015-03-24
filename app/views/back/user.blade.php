@@ -271,7 +271,7 @@
             </table>
         </div>
         @if(isset($credits[0]))
-            <details>
+            <details style="text-align: center">
                 <summary><h2>Credito solicitado</h2></summary>
                 <p>Estado: {{$credits[0]->state}}</p>
                 <p>Prioridad: {{$credits[0]->priority}}</p>
