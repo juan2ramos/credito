@@ -225,6 +225,7 @@ class UserController extends BaseController
 
                 DB::table('extracts')->insert(array(
                     'nit' =>  $row['nit'],
+                    'numero_documento' =>  $row['numero_documento'],
                     'fecha_contabilizacion' => $date,
                     'punto_venta' => $row['punto_venta'],
                     'tasa_interes' => $row['tasa_interes'],

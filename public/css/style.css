@@ -281,7 +281,7 @@
 .icon-pinterest:before { content:'\e89'; }
 
 .body-all{
-    height: 100%;
+    min-height: 89%;
 }
 
 *:focus {
@@ -336,6 +336,7 @@ img {
     margin: 28px auto;
     position: relative;
     width: 100%;
+
 }
 
 .u-shadow-1 {
@@ -356,6 +357,7 @@ img {
 
 .u-shadow-5 {
     box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    margin-bottom: 139px;
 }
 
 .u-button {
@@ -505,7 +507,7 @@ img {
     z-index: 2000;
 }
 
-@media all and (min-width: 320px)  and (max-width: 900px){
+@media all and (min-width: 30px)  and (max-width: 900px){
     .Header-buttonNav {
         display: inline-block;
         height: 34px;
@@ -526,7 +528,7 @@ img {
     }
 
     .Header-contentNav{
-        margin-left: -1px;
+        margin-left: -30px;
     }
 
     .Header-logoLilipink{
@@ -537,6 +539,8 @@ img {
     .Header-logoIntima{
         width: 36%;
     }
+    
+
 
 
 }
@@ -592,7 +596,7 @@ img {
 
 #header-menu ul li{
     display:inline-block;
-    margin:13px 15px 20px 15px;
+    margin:13px 10px 20px 10px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -613,6 +617,13 @@ img {
     padding-bottom: 13px;
     width: 100%;
     background: none;
+}
+
+.type-account{
+    text-align: center;
+    margin-top: 55px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 /* Input */
@@ -683,6 +694,7 @@ img {
 
 .Content-home{
     margin-top: 20px;
+    margin-bottom: 139px;
 }
 
 .content-sign-up{
@@ -1652,6 +1664,12 @@ button.icon-search{
 }
 .wrap-content{
     margin: 10px auto 0;
+    margin-bottom: 190px;
+    max-width: 1000px;
+    width: 100%;
+}
+.wrap-content1{
+    margin: 10px auto 0;
     max-width: 1000px;
     width: 100%;
 }
@@ -1716,7 +1734,7 @@ button.icon-search{
         width: auto;
     }
     #Input-more {
-        width: 67%;
+        width: 50%;
     }
 }
 
@@ -1745,6 +1763,7 @@ button.icon-search{
     margin: auto;
     text-align: center;
     width: 1000px;
+    margin-bottom: 139px;
 }
 
 .acceptSection h2{
@@ -1866,10 +1885,9 @@ button.icon-search{
 
 .content-social{
     background: rgba(165, 165, 165, 0.21);
-    color: rgba(0, 0, 0, 0.69);;
+    color: rgba(0, 0, 0, 0.69);
     padding-top: 6px;
     text-align: center;
-    margin-top: -79px;
 }
 
 .content-social .social-text a {
@@ -2067,8 +2085,16 @@ footer{
     }
 
     .State section figure{
-        height: 175px;
+        display: block;
         width: 100%;
+        height: 100px;
+        margin-bottom: 50px;
+    }
+
+    .Login section figure img{
+        position: relative;
+        width: 70%;
+        height: 100px;
     }
 
     .content-creditRequest, .Login, .material-card , .material-card input{
