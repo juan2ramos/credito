@@ -197,7 +197,7 @@ class UserController extends BaseController
         $file = Input::file('file');
 
         $data = Excel::load($file, function($reader)  {
-            ini_set('max_execution_time', 10000);
+            ini_set('max_execution_time', 100000);
             // Getting all results
 
                 // Getting all results
