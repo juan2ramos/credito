@@ -34,7 +34,7 @@
                 </tbody>
             </table>
         </div>
-        <section>
+        <section style="  margin: 26px;  padding: 10px;">
             <p>Dias vencidos: {{$vencidos}} dias</p>
             <p>Deuda pendiente por pagar: $ {{$debe}}</p>
         </section>

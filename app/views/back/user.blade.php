@@ -270,6 +270,10 @@
                 </tbody>
             </table>
         </div>
+        <section style="  margin: 26px;  padding: 10px;">
+            <p>Dias vencidos: {{$vencidos}} dias</p>
+            <p>Deuda pendiente por pagar: $ {{$debe}}</p>
+        </section>
         @if(isset($credits[0]))
             <details style="text-align: center">
                 <summary><h2>Credito solicitado</h2></summary>

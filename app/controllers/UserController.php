@@ -53,8 +53,21 @@ class UserController extends BaseController
             $location="No asignada";
         }
         $extracts=Extract::all();
+        $vencidos=0 ;
+        $debe=0;
+        foreach($extracts as $extract)
+        {
+            if($extract->numero_documento==$user->identification_card)
+            {
+                if($extract->dias_vencidos>0)
+                {
+                    $vencidos=$vencidos+$extract->dias_vencidos;
+                    $debe=$debe+$extract->saldo_credito_diferido;
+                }
+            }
+        }
 
-        return View::make('back.user', compact('user', 'credits','location','locations','extracts'));
+        return View::make('back.user', compact('user', 'credits','location','locations','extracts','vencidos','debe'));
     }
 
     public function newUser()
