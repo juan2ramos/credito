@@ -244,9 +244,13 @@ class UserController extends BaseController
             }
 
         });
+        $extracts = Extract::all()->toArray();
+        echo('Se registraron ' . Extract::all()->count() . ' <br><br><br>');
 
+        foreach($extracts as $extract){
 
-        return Redirect::route('excel')->with('mensaje','el extracto fue guardado correctamente');
+            print_r(implode("___", $extract));echo('</br>');
+        }
     }
 
     public function uploadExcelDaily()
