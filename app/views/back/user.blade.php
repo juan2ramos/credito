@@ -238,6 +238,7 @@
         </button>
 
         {{form::close()}}
+
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>

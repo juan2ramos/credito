@@ -81,4 +81,19 @@ class HomeController extends BaseController {
 		return $slidersName;
 	}
 
+	public function email()
+	{
+		$data = ["link" => 1];
+		$emails=array(array('mail'=>'edwarddiaz92@gmail.com'),array('mail'=>'drawderiah@gmail.com'));
+		foreach($emails as $email)
+		{
+			$correo=$email["mail"];
+			Mail::send('emails.auth.reminder', $data, function ($message) use ($correo) {
+				$message->to($correo, 'creditos lilipink')->subject('su solicitud de credito esta siendo procesada');
+			});
+		}
+
+
+	}
+
 }

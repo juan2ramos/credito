@@ -1,4 +1,6 @@
 <?php
+
+Route::get('mail','HomeController@email');
 Route::group(['before' => 'auth'], function () {
     Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
     Route::group(['prefix' => 'admin'], function () {
