@@ -12,7 +12,7 @@
         </script>
     @endif
 
-    <h1 xmlns="http://www.w3.org/1999/html">Admnistración de usuarios</h1>
+    <h1 xmlns="http://www.w3.org/1999/html">Administración de usuarios</h1>
     <div class="search">
         {{ Form::open(['route' => 'searchUsers', 'method' => 'POST']) }}
         <button class="icon-search"></button>
@@ -29,10 +29,10 @@
             <tr>
                 <th>Cedula</th>
                 <th>Nombre</th>
-                <th>Segundo Nombre</th>
                 <th>Apellido</th>
-                <th>Segundo Apellido</th>
-                <th>E-mail</th>
+                <th>Telefono</th>
+                <th>Fecha de aprovacion</th>
+                <th>Medio de solicitud</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -43,9 +43,9 @@
                     <td>{{$user->identification_card}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->last_name}}</td>
-                    <td>{{$user->user_name}}</td>
-                    <td>{{$user->user_name}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>{{$user->phone}}</td>
+                    <td>{{$user->updated_at}}</td>
+                    <td>por definir</td>
                     <td>
                         <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
                         <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>

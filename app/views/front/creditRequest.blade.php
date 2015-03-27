@@ -331,7 +331,9 @@
                 Acepto las condiciones de lilipink
             </label>
             <div class="content-condition">
-                <p>fkjdaslfjdlaksjflkñdasjlkfasdj</p>
+                <p>Acepto las condiciones de lilipink: <br>
+                    - Acepto las politicas de uso del sitio de Innova Quality SAS <br>
+                    - Acepto las politicas de privacidad de datos de la tarjeta recargable.</p>
             </div>
         </div>
 
