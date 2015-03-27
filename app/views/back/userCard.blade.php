@@ -13,7 +13,6 @@
     @endif
 
     <h1 xmlns="http://www.w3.org/1999/html">Admnistración de usuarios</h1>
-    <a href="{{route('searchUsersCard')}}" class="">usuario que faltan por tarjeta</a>
     <div class="search">
         {{ Form::open(['route' => 'searchUsers', 'method' => 'POST']) }}
         <button class="icon-search"></button>
@@ -39,6 +38,7 @@
             </thead>
             <tbody>
             @foreach ($users as $user)
+                @if($user->roles_id==4)
                 <tr>
                     <td>{{$user->identification_card}}</td>
                     <td>{{$user->name}}</td>
@@ -51,11 +51,11 @@
                         <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
                     </td>
                 </tr>
+                @endif
             @endforeach
             </tbody>
         </table>
     </div>
-    {{  $users->links(); }}
     <div class="wrap-content ">
         <a href="{{route('userNew')}}" class="u-more u-link">+</a>
     </div>

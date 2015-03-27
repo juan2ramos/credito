@@ -267,4 +267,10 @@ class UserController extends BaseController
         return View::make('front.state',compact('extracts','vencidos','debe','users'));
     }
 
+    public function searchUsersCard()
+    {
+        $users = User::where('card','=',0)->get();
+        return View::make('back.userCard', compact('users'));
+    }
+
 }
