@@ -17,7 +17,7 @@ class CreateExtractTable extends Migration {
 			$table->increments('id');
 			$table->integer('nit');
 			$table->integer('numero_documento');
-			$table->date('fecha_contabilizacion');
+			$table->string('fecha_contabilizacion');
 			$table->string('punto_venta');
 			$table->float('tasa_interes');
 			$table->float('valor_compra');
@@ -29,6 +29,7 @@ class CreateExtractTable extends Migration {
 			$table->integer('un_mes');
 			$table->integer('dos_meses');
 			$table->integer('tres_meses');
+			$table->integer('mas_tes');
 			$table->timestamps();
 		});
 	}

@@ -33,6 +33,7 @@ class CreditManager extends BaseManager
             'document_type'         => 'required|numeric',
             'date_birth'            => 'required',
             'location'              => 'required|numeric',
+            'point'                 => 'required'
 
         ];
 

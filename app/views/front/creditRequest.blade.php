@@ -243,6 +243,18 @@
                 </div>
             @endif
 
+            <div class="material-input">
+                {{Form::text('point','',['id' => 'punto de venta'])}}
+                {{Form::label('point','Punto de venta')}}
+                <span></span>
+            </div>
+
+            @if($errors->first('point'))
+                <div class="errors">
+                    *{{$errors->first('point')}}
+                </div>
+            @endif
+
         </section>
 
         <p class="titleReference">Referencia Personal 1</p>

@@ -39,18 +39,36 @@
             </thead>
             <tbody>
             @foreach ($users as $user)
-                <tr>
-                    <td>{{$user->identification_card}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->last_name}}</td>
-                    <td>{{$user->user_name}}</td>
-                    <td>{{$user->user_name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>
-                        <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
-                        <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
-                    </td>
-                </tr>
+                @if(Auth::user()->roles_id==3)
+                    @if(Auth::user()->location==$user->location and $user->roles_id==4)
+                        <tr>
+                            <td>{{$user->identification_card}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->last_name}}</td>
+                            <td>{{$user->user_name}}</td>
+                            <td>{{$user->user_name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>
+                                <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
+                                <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
+                            </td>
+                        </tr>
+                    @endif
+                @else
+                    <tr>
+                        <td>{{$user->identification_card}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->last_name}}</td>
+                        <td>{{$user->user_name}}</td>
+                        <td>{{$user->user_name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>
+                            <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
+                            <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
+                        </td>
+                    </tr>
+                @endif
+
             @endforeach
             </tbody>
         </table>

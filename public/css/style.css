@@ -328,7 +328,6 @@ h1 {
 }
 
 img, .img-slider{
-    display: block!important;
     width: 100%;
 }
 
@@ -541,7 +540,7 @@ img, .img-slider{
     .Header-logoIntima{
         width: 36%;
     }
-    
+
 
 
 
@@ -1990,7 +1989,7 @@ footer{
         padding: 0;
         width: 100%;
     }
-    
+
     #slider{
         display: none;
     }
