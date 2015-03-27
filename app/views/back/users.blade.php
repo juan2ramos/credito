@@ -13,7 +13,7 @@
     @endif
 
     <h1 xmlns="http://www.w3.org/1999/html">Admnistración de usuarios</h1>
-    <a href="{{route('searchUsersCard')}}" class="">usuario que faltan por tarjeta</a>
+    <a style="  color: #666;" href="{{route('searchUsersCard')}}" class="">usuario que faltan por tarjeta</a>
     <div class="search">
         {{ Form::open(['route' => 'searchUsers', 'method' => 'POST']) }}
         <button class="icon-search"></button>

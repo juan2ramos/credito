@@ -33,11 +33,27 @@ class AcceptCreditManager extends BaseManager
 
     public function saveCredit($id,$responsible)
     {
-
         $credit=CreditRequest::where('user_id', '=', $id)->first();
+        $min=General_variables::where('name','=','min')->first();
+        $max=General_variables::where('name','=','max')->first();
+
         $data = $this->prepareData($this->data);
         $this->entity->fill($data);
         $this->entity->credit_id=$credit->id;
+
+        $i = $credit->monthly_income ; //ingresos
+        $e = $credit->monthly_expenses; // Egresos
+        $min=$min->value; //variable general de minimo valor que presta el credito
+        $max=$max->value;//variable general de maximo valor que presta el credito
+        $r = $i - $e;
+
+        if ($r > $max){
+            $credit->value = $min;
+        }else{
+
+            $credit->value = $this->roundValue($r);
+        }
+        $credit->update();
         $this->save();
         $credit->state=1;
         $credit->responsible=$responsible;
@@ -73,14 +89,14 @@ class AcceptCreditManager extends BaseManager
             $countCredit++;
         }else{
 
-            $message=$message+['value_monthly'=>'no superado datos mensuales'];
+            $message=$message+['value_monthly'=>'no superado el valor mensual'];
         }
         if($variables[2]->value<$data['value_monthly'])
         {
             $countCredit++;
         }else{
 
-            $message=$message+['value_monthly'=>'no superado datos mensuales'];
+            $message=$message+['value_monthly'=>'no superado el valor mensual'];
         }
         if(isset($data['reference1']) or isset($data['reference2']))
         {
@@ -119,5 +135,12 @@ class AcceptCreditManager extends BaseManager
         }
 
     }
+
+    function roundValue($valor) {
+        $valor = intval($valor);
+        return ceil($valor/100000)*100000;
+
+    }
+
 
 }

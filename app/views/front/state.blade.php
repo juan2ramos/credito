@@ -4,6 +4,10 @@
     <section class="Credit u-shadow-5">
         <h2>Estado de cuenta</h2>
 
+        <div style="text-align: center">
+            <p style="  font-size: 20px;
+  font-weight: 700;">Tu credito fue aceptado por : {{$credit->value}}$</p>
+        </div>
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>

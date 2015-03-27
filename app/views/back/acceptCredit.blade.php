@@ -1,16 +1,7 @@
 @extends('layout/front')
 
 @section('content')
-    @include('layout.notify')
-    @if(Session::get('message'))
 
-        <script>
-            var notify = document.getElementById('notify');
-            notify.classList.add('is-show');
-            notify.classList.add('success');
-            notify.querySelector('.text-notify').innerText = '{{Session::get('message')}}';
-        </script>
-    @endif
 
     @if($errors->first('accept'))
         <section class="accept-links">
@@ -107,6 +98,12 @@
 
         <h2>Referencia 1</h2>
 
+        @if($errors->first('reference'))
+            <div style="margin-top: 10px" class="errors">
+                *{{$errors->first('reference')}}
+            </div>
+        @endif
+
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -132,6 +129,12 @@
 
         <h2>Referencia 2</h2>
 
+        @if($errors->first('reference'))
+            <div style="margin-top: 10px" class="errors">
+                *{{$errors->first('reference')}}
+            </div>
+        @endif
+
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -155,6 +158,11 @@
         </label>
 
         <h2>archivos</h2>
+        @if($errors->first('files'))
+            <div style="margin-top: 10px" class="errors">
+                *{{$errors->first('files')}}
+            </div>
+        @endif
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -208,6 +216,8 @@
             {{Form::checkbox('files', 1, null, ['class' => 'checkbox'])}}
             Archivos correctos
         </label>
+
+
 
         @if($errors->first('accept'))
             <button class="u-button">

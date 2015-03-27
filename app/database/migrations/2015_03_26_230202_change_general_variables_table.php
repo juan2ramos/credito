@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeExtractTable extends Migration {
+class ChangeGeneralVariablesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,11 @@ class ChangeExtractTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('extracts',function($table)
-		{
-			$table->dropColumn('fecha_contabilizacion');
-		});
+		Schema::table('general_variables',function($table){
+            $table->dropColumn('porcentage');
+            $table->integer('percentage');
+
+        });
 	}
 
 	/**
@@ -25,7 +26,7 @@ class ChangeExtractTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('extracts');
+		Schema::drop('general_variables');
 	}
 
 }

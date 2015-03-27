@@ -228,7 +228,7 @@ class CreditController extends BaseController
 
             return Redirect::to('solicitud')->with(array('message'=>"La solicitud de credito fue aprobada"));
         }
-        return Redirect::to('showCreditRequest/'.$id)->withErrors($probabilityCredit)->withInput();
+        return Redirect::to('showCreditRequest/'.$id)->with('message',$probabilityCredit)->withErrors($probabilityCredit)->withInput();
 
     }
 

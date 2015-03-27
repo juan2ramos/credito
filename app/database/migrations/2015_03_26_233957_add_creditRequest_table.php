@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeExtracts1Table extends Migration {
+class AddCreditRequestTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class ChangeExtracts1Table extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('extracts',function($table)
-		{
-			$table->string('fecha_contabilizacion');
-		});
+		Schema::table('creditRequest',function($table)
+        {
+            $table->integer('value');
+        });
 	}
 
 	/**
@@ -25,7 +25,7 @@ class ChangeExtracts1Table extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('extracts');
+		Schema::drop('creditRequest');
 	}
 
 }
