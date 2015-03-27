@@ -30,7 +30,7 @@
                 <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Telefono</th>
+                <th>Credito aprobado</th>
                 <th>Fecha de aprovacion</th>
                 <th>Medio de solicitud</th>
                 <th>Acciones</th>
@@ -44,7 +44,7 @@
                             <td>{{$user->identification_card}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->last_name}}</td>
-                            <td>{{$user->phone}}</td>
+                            <td>${{$user->creditRequest['value']}}</td>
                             <td>{{$user->updated_at}}</td>
                             <td>{{$user->creditRequest['point']}}</td>
                             <td>
@@ -59,7 +59,7 @@
                             <td>{{$user->identification_card}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->last_name}}</td>
-                            <td>{{$user->phone}}</td>
+                            <td>${{$user->creditRequest['value']}}</td>
                             <td>{{$user->updated_at}}</td>
                             <td>{{$user->creditRequest['point']}}</td>
                             <td>
