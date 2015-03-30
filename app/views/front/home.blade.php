@@ -96,7 +96,7 @@
                             <p class="type-account">Administrador</p>
                         @endif
                         @if(Auth::user()->roles_id==3)
-                            <p class="type-account">Punto de Venta</p>
+                            <p class="+">Punto de Venta</p>
                         @endif
 
 
@@ -153,7 +153,7 @@
         </div>
 
         <div class="content-Request">
-            <a href="{{asset('/')}}">
+            <a href="{{asset('credito')}}">
                 <img src="{{asset('img/inferior.png')}}">
             </a>
         </div>
