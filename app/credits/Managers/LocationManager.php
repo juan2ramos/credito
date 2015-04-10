@@ -11,7 +11,7 @@ class LocationManager extends BaseManager
     public function getMessage()
     {
         $messages = [
-            'required' => 'El campo :attribute es obligatorio.',
+            'required' => 'El campo  es obligatorio.',
             'unique' => 'La Region ya esta registrada'
         ];
         return $messages;

@@ -47,7 +47,11 @@ Route::group(['before' => 'auth'], function () {
     Route::get('showCreditRequest/reprobate/{id}', 'CreditController@reprobateCredit');
     //Route::post('showCreditRequest/reprobate//{id}','CreditController@reprobateCredit');
 
+    //puntos de venta
 
+    Route::post('puntos', ['as' => 'point', 'uses' => 'PointController@create']);
+    Route::get('puntos', ['as' => 'point', 'uses' => 'PointController@show']);
+    Route::get('puntos/{id}', ['as' => 'pointDelete', 'uses' => 'PointController@delete']);
 });
 
 

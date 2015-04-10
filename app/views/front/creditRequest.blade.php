@@ -344,8 +344,8 @@
             </label>
             <div class="content-condition">
                 <p>Acepto las condiciones de lilipink: <br>
-                    - Acepto las politicas de uso del sitio de Innova Quality SAS <br>
-                    - Acepto las politicas de privacidad de datos de la tarjeta recargable.</p>
+                    - Acepto las politicas de uso del sitio de Innova Quality SAS  {{ HTML::link(URL::to('img/usoSitio.docx'), 'descargar',array('id'=>'','target'=>'_blank')) }}<br>
+                    - Acepto las politicas de privacidad de datos de la tarjeta recargable.  {{ HTML::link(URL::to('img/politicasTratamiento.docx'), 'descargar',array('id'=>'','target'=>'_blank')) }}</p>
             </div>
         </div>
 
