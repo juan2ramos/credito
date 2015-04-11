@@ -32,7 +32,7 @@
                 <th>Apellido</th>
                 <th>Credito aprobado</th>
                 <th>Fecha de aprovacion</th>
-                <th>Medio de solicitud</th>
+                <th>Punto de Venta</th>
                 <th>Acciones</th>
             </tr>
             </thead>
