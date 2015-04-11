@@ -67,7 +67,13 @@
                             <td>{{$user->last_name}}</td>
                             <td>${{$user->creditRequest['value']}}</td>
                             <td>{{$user->updated_at}}</td>
-                            <td>{{$user->creditRequest['point']}}</td>
+                            @foreach($points as $point)
+                                @if($user->creditRequest['point']==$point->id)
+                                    <td>{{$point->name}}</td>
+                                @else
+                                    <td>No definido</td>
+                                @endif
+                            @endforeach
                             <td>
                                 <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
                                 <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
