@@ -3,6 +3,7 @@
 use credits\Repositories\UserRepo;
 use credits\Entities\Location;
 use credits\Entities\User;
+use credits\Entities\Point;
 use credits\Entities\CreditRequest;
 use credits\Components\ACL\Role;
 use credits\Managers\UploadUserManager;
@@ -271,7 +272,8 @@ class UserController extends BaseController
     public function searchUsersCard()
     {
         $users = User::where('card','=',0)->get();
-        return View::make('back.userCard', compact('users'));
+        $points=Point::all();
+        return View::make('back.userCard', compact('users','point'));
     }
 
 }
