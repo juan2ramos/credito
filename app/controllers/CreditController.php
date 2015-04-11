@@ -2,6 +2,7 @@
 
 use credits\Managers\CreditManager;
 use credits\Entities\Location;
+use credits\Entities\Point;
 use credits\Entities\CreditRequest;
 use credits\Entities\User;
 use credits\Entities\Accept_credit;
@@ -19,11 +20,11 @@ class CreditController extends BaseController
     //MOSTRAR FORMULARIO CREDIT REQUEST
     public function index()
     {
-
+        $points=[''=>'seleccione un punto de venta']+Point::all()->lists('name','id');
         $type = ["tipo de documento" => "Tipo de documento"] + [0 => "Cedula"] + [1 => "Cedula de extranjeria"];
         $locations= ['location'=>'Seleccione una region']+Location::all()->lists('name','id');
 
-        return View::make('front.creditRequest', compact('type','locations'));
+        return View::make('front.creditRequest', compact('type','locations','points'));
 
     }
 

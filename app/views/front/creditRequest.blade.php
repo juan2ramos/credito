@@ -244,8 +244,7 @@
             @endif
 
             <div class="material-input">
-                {{Form::text('point','via web',['id' => 'punto de venta'])}}
-                {{Form::label('point','Punto de venta')}}
+                {{ Form::select('point', $points,'',array('class'=>'Credit-select')) }}
                 <span></span>
             </div>
 

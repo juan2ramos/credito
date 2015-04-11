@@ -45,13 +45,13 @@
             {{ Form::select('location_id', $locations,'',array('class'=>'Credit-select')) }}
 
         @if($errors->first('location_id'))
-            <div class="errors">
+            <div class="errors" style="margin-top: 0">
                 *{{$errors->first('location_id')}}
             </div>
         @endif
         {{Form::text('name','',['id' => 'Input-more','placeholder' => 'Ingrese una nueva region'])}}
         @if($errors->first('name'))
-            <div class="errors">
+            <div class="errors" style="margin-top: 0 !important;">
                 *{{$errors->first('name')}}
             </div>
         @endif
