@@ -273,7 +273,7 @@ class UserController extends BaseController
     {
         $users = User::where('card','=',0)->get();
         $points=Point::all();
-        return View::make('back.userCard', compact('users','point'));
+        return View::make('back.userCard', compact('users','points'));
     }
 
 }
