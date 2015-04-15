@@ -100,7 +100,19 @@ class UserController extends BaseController
 
     public function usersExcel()
     {
-        $data = User::all(['id','name','user_name']);
+        $data= User::where('roles_id','=','4')->select('identification_card','name', 'second_name','last_name','second_last_name','email','mobile_phone','location','created_at')->get();
+        $locations=Location::all();
+        foreach($data as $user)
+        {
+            foreach($locations as $location)
+            {
+                if($user->location==$location->id)
+                {
+                    $user->location=$location->name;
+                }
+            }
+
+        }
         Excel::create('usuarios', function($excel) use($data){
 
             $excel->sheet('Excel sheet', function($sheet) use($data){
@@ -114,7 +126,19 @@ class UserController extends BaseController
     }
     public function usersPdf()
     {
-        $data = User::where('name','like','%juan%')->get();
+        $data= User::where('roles_id','=','4')->select('identification_card','name', 'second_name','last_name','second_last_name','email','mobile_phone','location','created_at')->get();
+        $locations=Location::all();
+        foreach($data as $user)
+        {
+            foreach($locations as $location)
+            {
+                if($user->location==$location->id)
+                {
+                    $user->location=$location->name;
+                }
+            }
+
+        }
         Excel::create('usuarios', function($excel) use($data){
 
             $excel->sheet('Excel sheet', function($sheet) use($data){
