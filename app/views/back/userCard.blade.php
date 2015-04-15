@@ -31,7 +31,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Credito aprobado</th>
-                <th>Fecha de aprovacion</th>
+                <th>Fecha de aprobacion</th>
                 <th>Punto de Venta</th>
                 <th>Acciones</th>
             </tr>

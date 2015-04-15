@@ -312,7 +312,10 @@
             {{Form::text('files','',['id'=>'form-files'])}}
         </div>
         <div class="pop-up ">
-            <p>Sube tus documentos</p>
+            <p>Sube tus documentos <br>
+                <span>Fotocopia de la cedula 150%</span>
+            </p>
+
             {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
             {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
         </div>
@@ -339,13 +342,10 @@
         <div>
             <label class="label--checkbox">
                 {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-                Acepto las condiciones de lilipink
+                - Acepto las politicas de uso del sitio de Innova Quality SAS  {{ HTML::link(URL::to('img/usoSitio.docx'), 'descargar',array('id'=>'','target'=>'_blank')) }}<br>
+                {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
+                - Acepto las politicas de privacidad de datos de la tarjeta recargable.  {{ HTML::link(URL::to('img/politicasTratamiento.docx'), 'descargar',array('id'=>'','target'=>'_blank')) }}
             </label>
-            <div class="content-condition">
-                <p>Acepto las condiciones de lilipink: <br>
-                    - Acepto las politicas de uso del sitio de Innova Quality SAS  {{ HTML::link(URL::to('img/usoSitio.docx'), 'descargar',array('id'=>'','target'=>'_blank')) }}<br>
-                    - Acepto las politicas de privacidad de datos de la tarjeta recargable.  {{ HTML::link(URL::to('img/politicasTratamiento.docx'), 'descargar',array('id'=>'','target'=>'_blank')) }}</p>
-            </div>
         </div>
 
 
