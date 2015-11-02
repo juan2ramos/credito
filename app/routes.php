@@ -1,5 +1,12 @@
 <?php
-
+use Guzzle\Http\EntityBody;
+Route::get('aws', function()
+{
+$client = App::make('aws')->get('s3');
+$plainUrl = $client->getObjectUrl('creditos', 'sw.png');
+$signedUrl = $client->getObjectUrl('creditos', 'sw.png', '+10 minutes');
+echo '<img src="'.$signedUrl.'" >';exit;
+});
 Route::get('mail','HomeController@email');
 Route::group(['before' => 'auth'], function () {
     Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
