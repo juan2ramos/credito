@@ -33,7 +33,7 @@ class SliderManager extends BaseManager
             $result = $client->putObject(array(
                 'Bucket'     => 'creditos',
                 'Key'        => $fileName,
-                'SourceFile' => $file,
+                'Body' => $file,
                 
             ));
             #$file->move("sliders",$fileName);
