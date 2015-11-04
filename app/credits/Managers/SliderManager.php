@@ -29,15 +29,16 @@ class SliderManager extends BaseManager
         $slider->files=$fileName;
         if($slider->save())
         {
-            print_r($file);exit();
+
             $client = \App::make('aws')->get('s3');
-            $result = $client->putObject(array(
+            $client->putObject(array(
                 'Bucket'     => 'creditos',
                 'Key'        => $fileName,
-                'Body' => $file,
-                
+                'SourceFile' => $file->getRealPath(),
+                'ContentType'    => $file->getClientMimeType(),
+
             ));
-            #$file->move("sliders",$fileName);
+
             return true;
         }
         return false;
