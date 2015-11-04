@@ -13,6 +13,11 @@ class SliderController extends BaseController
     public function showSlider()
     {
         $sliders = Slider::all();
+        $client = App::make('aws')->get('s3');
+        foreach($sliders as $slider)
+        {
+            $slider->files=$client->getObjectUrl('creditos', "sliders/".$slider->files, '+10 minutes');
+        }
         $i=0;
         $select=[0=>"no colocar"];
         if(count($sliders))

@@ -32,7 +32,7 @@ class UserTableSeeder extends Seeder {
 				'last_name' => $last_name,
 				'user_name' => $faker->userName,
 				'email' => $faker->email,
-				'password' => \Hash::make(12345),
+				'password' => \Hash::make(123456),
 				'roles_id' => $faker->randomElement([1,2,3]),
 				'location'=>'1'
 

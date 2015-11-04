@@ -20,7 +20,8 @@ class HomeController extends BaseController {
 	{
 		$sliders= Slider::all();
 		$slidersArrays=$this->getOrder($sliders,0);
-		$slidersName=$this->getOrder($sliders,1);
+		$slidersName=$this->aws($this->getOrder($sliders,1));
+
 		$diario='';
 		if(Auth::user())
 		{
@@ -95,5 +96,19 @@ class HomeController extends BaseController {
 
 
 	}
+
+    private function aws($arrays)
+    {
+        $client = App::make('aws')->get('s3');
+        $return=[];
+        $i=0;
+        foreach($arrays as $array)
+        {
+
+            $return[$i] =$client->getObjectUrl('creditos', "sliders/".$array, '+10 minutes');
+            $i++;
+        }
+        return $return;
+    }
 
 }
