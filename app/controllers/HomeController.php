@@ -20,7 +20,7 @@ class HomeController extends BaseController {
 	{
 		$sliders= Slider::all();
 		$slidersArrays=$this->getOrder($sliders,0);
-		$slidersName=$this->aws($this->getOrder($sliders,1));
+		$slidersName=$this->getOrder($sliders,1);
 
 		$diario='';
 		if(Auth::user())

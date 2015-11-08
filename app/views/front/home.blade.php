@@ -18,7 +18,7 @@
                 @for($i=0;$i<count($slidersArrays);$i++)
                     @if($slidersArrays[$i]>0)
 
-                        <img class="img-slider" src="{{$slidersName[$i]}}" />
+                        <img class="img-slider" src="sliders/{{$slidersName[$i]}}" />
 
                     @endif
                 @endfor

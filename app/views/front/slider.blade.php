@@ -37,7 +37,7 @@
             @if(count($sliders))
                 @foreach($sliders as $slider)
                     <section>
-                        <img src="{{$slider->files}}" >
+                        <img src="sliders/{{$slider->files}}" >
                         <span class="close-button-slider">
                             <span class="close-line-slider"></span>
                             <span class="close-line1-slider"></span>
