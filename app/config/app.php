@@ -127,7 +127,7 @@ return array(
         'Barryvdh\Debugbar\ServiceProvider',
         'Maatwebsite\Excel\ExcelServiceProvider',
         'BrainSocket\BrainSocketServiceProvider',
-	'Aws\Laravel\AwsServiceProvider',
+#	'Aws\Laravel\AwsServiceProvider',
         'Thujohn\Pdf\PdfServiceProvider',
 
         /* Custom */
@@ -208,7 +208,7 @@ return array(
         'BrainSocket' => 'BrainSocket\BrainSocketFacade',
         'Date' => 'Jenssegers\Date\Date',
         'PDF' => 'Thujohn\Pdf\PdfFacade',
-	 'AWS' => 'Aws\Laravel\AwsFacade',
+#	 'AWS' => 'Aws\Laravel\AwsFacade',
 
     ),
 
