@@ -10,9 +10,7 @@ class UploadUserManager extends BaseManager
         $rules=[
             'identification_card'       => 'required|unique:users,identification_card,'.$this->data["id"].'',
             'name'                      => 'required',
-            'second_name'               => 'required',
             'last_name'                 => 'required',
-            'second_last_name'          => 'required',
             'user_name'                 => 'required|unique:users,user_name,'.$this->data["id"].'',
             'email'                     => 'email|unique:users,email,'.$this->data["id"].'',
             'address'                   => 'required',
