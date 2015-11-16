@@ -1,6 +1,8 @@
 <?php namespace credits\Components\Menu;
 
 use credits\Components\Menu\Menu;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class MenuBuilder
 {
@@ -65,6 +67,7 @@ class MenuBuilder
         $html = "";
         if (isset($menu['parents'][$parent])) {
             $html .= "<ul>";
+
             foreach ($menu['parents'][$parent] as $itemId) {
                 if (!$this->checkPermission($menu['items'][$itemId]['permission'])) {
                     continue;
@@ -73,6 +76,13 @@ class MenuBuilder
                 $html .= $this->template($menu['items'][$itemId]);
                 $html .= $this->prepareMenu($itemId, $menu);
                 $html .= '</li>';
+            }
+
+            if(Auth::check())
+            {
+
+            }else{
+                $html .= '<li><a href="credito">SOLICITUD DE CREDITO</a></li>';
             }
             $html .= "</ul>  ";
         }
