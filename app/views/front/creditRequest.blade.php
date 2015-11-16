@@ -173,7 +173,7 @@
 
             <div class="material-input">
                 {{Form::text('mobile_phone','',['id' => 'mobile_phone','required'])}}
-                {{Form::label('mobile_phone','Numero del celular')}}
+                {{Form::label('mobile_phone','Número de celular')}}
                 <span></span>
             </div>
 
@@ -185,7 +185,7 @@
 
             <div class="material-input">
                 {{Form::text('phone','',['id' => 'phone','required'])}}
-                {{Form::label('phone','Numero telefonico')}}
+                {{Form::label('phone','Número fijo')}}
                 <span></span>
             </div>
 
@@ -197,7 +197,7 @@
 
             <div class="material-input">
                 {{Form::text('address','',['id' => 'address'])}}
-                {{Form::label('address','Direccion')}}
+                {{Form::label('address','Dirección')}}
                 <span></span>
             </div>
 
@@ -209,7 +209,7 @@
 
             <div class="material-input">
                 {{Form::text('office_address','',['id' => 'office_address'])}}
-                {{Form::label('office_address','Direcion de la oficina')}}
+                {{Form::label('office_address','Direción de la oficina')}}
                 <span></span>
             </div>
 
