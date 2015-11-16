@@ -105,7 +105,7 @@ class CreditController extends BaseController
     {
 
         $locations = Location::all();
-        if (Auth::user()->role_id > 1) {
+        if (Auth::user()->roles_id > 1) {
             $showRequest = DB::table('creditRequest')
                 ->join('users', 'users.id', '=', 'creditRequest.user_id')
                 ->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `state`=''")

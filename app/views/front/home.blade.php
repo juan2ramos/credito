@@ -59,8 +59,8 @@
                             @endif
                         </div>
                     </section>
-
-                    <a class="button-edit" href="{{route('update',Auth::user()->id)}}">EDITAR PERFIL</a>
+                    <!--
+                    <a class="button-edit" href="{{route('update',Auth::user()->id)}}">EDITAR PERFIL</a>-->
                 </section>
             @else
                 <section class="Login ">
