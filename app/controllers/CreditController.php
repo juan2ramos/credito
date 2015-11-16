@@ -112,10 +112,13 @@ class CreditController extends BaseController
                     ->where('location','=', Auth::user()->location );
             }])->get();
         }else{
-            $showRequest = User::with(['CreditRequest' => function($query)
+           
+	     $showRequest = User::with(['CreditRequest' => function($query)
             {
-                $query->where('state', '=','');
-            }])->get();
+                $query->whereRaw('state = "" and created_at > "2015-10-15"');
+			#where('state', '=','')->
+			#where('created_at', '>','2015-11-15');
+            }])->take(100)->get();
         }
         foreach($showRequest as $user)
         {
@@ -128,7 +131,8 @@ class CreditController extends BaseController
                 }
             }
         }
-
+	#echo('<pre>');
+        #dd($showRequest);
         return View::make('front.request',compact('showRequest','locations'));
     }
 

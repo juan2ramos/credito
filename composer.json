@@ -17,8 +17,7 @@
     "dompdf/dompdf" : "0.6.*",
     "brainboxlabs/brain-socket": "v1.0.0",
     "jenssegers/date": "~2.0",
-    "thujohn/pdf": "dev-master",
-    "aws/aws-sdk-php-laravel": "1.*"
+    "thujohn/pdf": "dev-master"
   },
   "autoload": {
     "psr-4": {
