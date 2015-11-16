@@ -13,7 +13,7 @@ class ImageRepo extends BaseRepo{
         // TODO: Implement getModel() method.
     }
 
-    public function saveImages($image,$carpeta)
+        public function saveImages($image,$carpeta)
     {
         $file = $image;
         $prefijo = str_random(15);
