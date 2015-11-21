@@ -76,7 +76,9 @@
         </table>
     </div>
     {{  $users->links(); }}
+    @if(Auth::user()->role_id==1)
     <div class="wrap-content ">
         <a href="{{route('userNew')}}" class="u-more u-link">+</a>
     </div>
+    @endif
 @stop
