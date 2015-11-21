@@ -37,7 +37,7 @@
         @else
             {{Form::open(array('url'=>'admin/uploadUser/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
         @endif
-        @if(Auth::user()->roles_id==1)
+        @if(Auth::user()->roles_id<4 )
             @if($user->roles_id==4)
                 <div class="material-card">
                     {{Form::label('card','ENTREGAR TARJETA LILIPINK')}}
