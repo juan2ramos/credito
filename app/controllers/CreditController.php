@@ -24,7 +24,7 @@ class CreditController extends BaseController
 
         $points = ['' => 'seleccione un punto de venta'] + Point::all()->lists('name', 'id');
         $type = ["tipo de documento" => "Tipo de documento"] + [0 => "Cedula"] + [1 => "Cedula de extranjeria"];
-        $locations = ['location' => 'Seleccione una region'] + Location::all()->lists('name', 'id');
+        $locations = ['location' => 'Seleccione una ciudad'] + Location::all()->lists('name', 'id');
 
         return View::make('front.creditRequest', compact('type', 'locations', 'points'));
 
