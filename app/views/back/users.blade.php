@@ -41,6 +41,24 @@
             @foreach ($users as $user)
                 @if(Auth::user()->roles_id==3 )
                     @if(Auth::user()->location==$user->location and $user->roles_id==4)
+                        @if($user->roles_id==4)
+                            <tr>
+                                <td>{{$user->identification_card}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->last_name}}</td>
+                                <td>{{$user->user_name}}</td>
+                                <td>{{$user->user_name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>
+                                    <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
+                                    <!--<a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>-->
+                                </td>
+                            </tr>
+                        @endif
+
+                    @endif
+                @else
+                    @if($user->roles_id==4)
                         <tr>
                             <td>{{$user->identification_card}}</td>
                             <td>{{$user->name}}</td>
@@ -50,25 +68,13 @@
                             <td>{{$user->email}}</td>
                             <td>
                                 <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
-                                <!--<a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>-->
+                                @if(Auth::user()->roles_id==1)
+                                    <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
+                                @endif
                             </td>
                         </tr>
                     @endif
-                @else
-                    <tr>
-                        <td>{{$user->identification_card}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->last_name}}</td>
-                        <td>{{$user->user_name}}</td>
-                        <td>{{$user->user_name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>
-                            <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
-                            @if(Auth::user()->roles_id==1)
-                            <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
-                            @endif
-                        </td>
-                    </tr>
+
                 @endif
 
             @endforeach
