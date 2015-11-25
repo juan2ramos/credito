@@ -228,6 +228,9 @@
                     *{{$errors->first('location')}}
                 </div>
             @endif
+            @foreach($points as $point)
+                {{$point->name}}
+            @endforeach
 
         </section>
 

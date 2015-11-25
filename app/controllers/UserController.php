@@ -47,6 +47,7 @@ class UserController extends BaseController
         $credits = $user->CreditRequest()->get();
         $locations= ['0'=>'Sin region']+Location::all()->lists('name','id');
         $location=Location::where('id', '=', $user->location)->first();
+        $poins=Point::all();
         if($location)
         {
             $location=$location->name;
@@ -68,7 +69,7 @@ class UserController extends BaseController
             }
         }
 
-        return View::make('back.user', compact('user', 'credits','location','locations','extracts','vencidos','debe'));
+        return View::make('back.user', compact('user', 'credits','location','locations','extracts','vencidos','debe','points'));
     }
 
     public function newUser()
