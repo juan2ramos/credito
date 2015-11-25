@@ -229,6 +229,7 @@
                 </div>
             @endif
             @foreach($points as $point)
+                @if($user->point==$point->id)
                 {{$point->name}}
             @endforeach
 
