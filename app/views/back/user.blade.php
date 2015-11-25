@@ -228,6 +228,10 @@
                     *{{$errors->first('location')}}
                 </div>
             @endif
+            @foreach($credits as $credit)
+                {{$credit->user_id}}
+               {{$user->id}}
+            @endforeach
             @foreach($points as $point)
                 @if($user->point==$point->id)
                 {{$point->name}}
