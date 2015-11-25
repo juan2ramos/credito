@@ -229,14 +229,16 @@
                 </div>
             @endif
             @foreach($credits as $credit)
-                {{$credit->user_id}}
-               {{$user->id}}
-            @endforeach
-            @foreach($points as $point)
-                @if($user->point==$point->id)
-                {{$point->name}}
+                @if($credit->user_id==$user->id)
+                    @foreach($points as $point)
+                        @if($credit->point==$point->id)
+                            {{$point->name}}
+                        @endif
+                    @endforeach
                 @endif
+
             @endforeach
+
 
         </section>
 
