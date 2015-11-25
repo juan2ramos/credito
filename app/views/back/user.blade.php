@@ -231,6 +231,7 @@
             @foreach($points as $point)
                 @if($user->point==$point->id)
                 {{$point->name}}
+                @endif
             @endforeach
 
         </section>
