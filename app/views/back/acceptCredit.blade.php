@@ -145,8 +145,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>cedula</td>
-                    <td>name</td>
+                    <td>{{$user->CreditRequest->name_reference2}}</td>
+                    <td>{{$user->CreditRequest->phone_reference2}}</td>
                 </tr>
                 </tbody>
             </table>
