@@ -248,10 +248,11 @@
         </section>
 
 
-
+        @if(Auth::user()->roles_id==1)
         <button class="u-button">
             Actualizar datos
         </button>
+        @endif
 
         {{form::close()}}
 
