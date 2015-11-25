@@ -248,7 +248,7 @@
         </section>
 
 
-        @if(Auth::user()->roles_id==1)
+        @if(Auth::user()->roles_id<3)
         <button class="u-button">
             Actualizar datos
         </button>
