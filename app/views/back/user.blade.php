@@ -143,7 +143,7 @@
 
             @foreach($credits as $credit)
                 @if($credit->user_id==$user->id)
-                    <div class="material-input hidden">
+                    <div class="material-input ">
                         {{form::text('monto aprobado', '$'.$credit->value ,array('class'=>'variableText1'))}}
                         {{Form::label('monto','monto aprobado')}}
                         <span></span>
