@@ -206,12 +206,12 @@
                 </div>
             @endif
 
+
             <div class="material-input">
                 {{Form::input('date','date_birth',$user->date_birth,['class'=>' variableText1','id' => 'date_birth'])}}
                 {{Form::label('date_birth','fecha de nacimiento')}}
                 <span></span>
             </div>
-
             @if($errors->first('date_birth'))
                 <div class="errors">
                     *{{$errors->first('date_birth')}}
@@ -232,7 +232,12 @@
                 @if($credit->user_id==$user->id)
                     @foreach($points as $point)
                         @if($credit->point==$point->id)
-                            {{$point->name}}
+                            <div class="material-input">
+                                {{Form::input('point','point',$point->name,['class'=>' variableText1','id' => 'date_birth'])}}
+                                {{Form::label('point','punto de venta')}}
+                                <span></span>
+                            </div>
+
                         @endif
                     @endforeach
                 @endif
