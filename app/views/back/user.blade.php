@@ -228,7 +228,7 @@
                     *{{$errors->first('location')}}
                 </div>
             @endif
-            {{dd($user->CreditRequest())}}
+            {{dd($user->CreditRequest());}}
             @foreach($points as $point)
                 @if($user->point==$point->id)
                 {{$point->name}}
