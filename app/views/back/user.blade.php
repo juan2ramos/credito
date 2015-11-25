@@ -141,6 +141,16 @@
                 </div>
             @endif
 
+            @foreach($credits as $credit)
+                @if($credit->user_id==$user->id)
+                    <div class="material-input hidden">
+                        {{form::text('monto aprobado', '$'.$credit->value ,array('class'=>'variableText1'))}}
+                        {{Form::label('monto','monto aprobado')}}
+                        <span></span>
+                    </div>
+                @endif
+            @endforeach
+
         </section>
 
         <section class="User-section ">

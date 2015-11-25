@@ -41,7 +41,7 @@ class AcceptCreditManager extends BaseManager
         $this->entity->fill($data);
         $this->entity->credit_id=$credit->id;
 
-        $i = $credit->monthly_income ; //ingresos
+        /*$i = $credit->monthly_income ; //ingresos
         $e = $credit->monthly_expenses; // Egresos
         $min=$min->value; //variable general de minimo valor que presta el credito
         $max=$max->value;//variable general de maximo valor que presta el credito
@@ -52,7 +52,8 @@ class AcceptCreditManager extends BaseManager
         }else{
 
             $credit->value = $this->roundValue($r);
-        }
+        }*/
+        $credit->value=300000;
         $credit->update();
         $this->save();
         $credit->state=1;
