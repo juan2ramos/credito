@@ -30,6 +30,7 @@
                     <th>Direccion</th>
                     <th>Egresos mensuales</th>
                     <th>Ingresos mensuales</th>
+                    <th>Punto de venta</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,6 +43,8 @@
                     <td>{{$user->address}}</td>
                     <td>{{$user->CreditRequest->monthly_expenses}}</td>
                     <td>{{$user->CreditRequest->monthly_income}}</td>
+                    <td>{{$point->name}}</td>
+
 
                 </tr>
                 </tbody>

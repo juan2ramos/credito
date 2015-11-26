@@ -146,8 +146,9 @@ class CreditController extends BaseController
     {
         $user = User::find($id);
         $locations = Location::where('id', '=', $user->CreditRequest->location)->first();
+        $point = Point::where('id', '=', $user->CreditRequest->point)->first();
         $images = explode(",", $user->CreditRequest->files);
-        return View::make('back.acceptCredit', compact('user', 'credit', 'images', 'locations'));
+        return View::make('back.acceptCredit', compact('user', 'credit', 'images', 'locations','point'));
     }
 
     //MUESTRA LA TABLA DONDE ESTAN TODAS LAS REGIONES
