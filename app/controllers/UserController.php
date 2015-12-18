@@ -240,7 +240,7 @@ class UserController extends BaseController
 
                 // Getting all results
                 $reader->get();
-                Extract::insert($reader->toArray());
+                Extract::insert($reader->toArray()[0]);
 
 
 
@@ -265,7 +265,7 @@ class UserController extends BaseController
 
             // Getting all results
             $reader->get();
-            ExcelDaily::insert($reader->toArray());
+            ExcelDaily::insert($reader->toArray()[0]);
 
         });
         if($data)
