@@ -137,7 +137,7 @@
         <section class="Credit-section">
 
             <div class="material-input">
-                {{ Form::select('location', $locations,'',array('class'=>'Credit-select')) }}
+                {{ Form::select('location', $locations,'',array('class'=>'Credit-select','id'=>'location')) }}
                 <span></span>
             </div>
 
@@ -244,7 +244,12 @@
             @endif
 
             <div class="material-input">
-                {{ Form::select('point', $points,'',array('class'=>'Credit-select')) }}
+                <select class="Credit-select" name="point" id="point">
+                    <option value="" selected="selected">seleccione un punto de venta</option>
+                    @foreach ($points as $point)
+                        <option data-city="{{$point['location_id']}}" value="{{$point['id']}}">{{$point['name']}}</option>
+                    @endforeach
+                </select>
                 <span></span>
             </div>
 

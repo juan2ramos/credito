@@ -22,7 +22,7 @@ class CreditController extends BaseController
     public function index()
     {
 
-        $points = ['' => 'seleccione un punto de venta'] + Point::all()->lists('name', 'id');
+        $points =  Point::all()->toArray();
         $type = ["tipo de documento" => "Tipo de documento"] + [0 => "Cedula"] + [1 => "Cedula de extranjeria"];
         $locations = ['location' => 'Seleccione una ciudad'] + Location::all()->lists('name', 'id');
 
