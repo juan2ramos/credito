@@ -258,11 +258,11 @@
         </section>
 
 
-        @if(Auth::user()->roles_id<3)
+       {{-- @if(Auth::user()->roles_id<3)--}}
         <button class="u-button">
             Actualizar datos
         </button>
-        @endif
+      {{--  @endif--}}
 
         {{form::close()}}
 
