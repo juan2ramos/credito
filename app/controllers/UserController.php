@@ -7,6 +7,7 @@ use credits\Entities\Point;
 use credits\Entities\CreditRequest;
 use credits\Components\ACL\Role;
 use credits\Managers\UploadUserManager;
+use credits\Managers\CardUserManager;
 use credits\Managers\NewUserManager;
 use credits\Repositories\LogRepo;
 use credits\Entities\Extract;
@@ -69,7 +70,9 @@ class UserController extends BaseController
             }
         }
 
-        return View::make('back.user', compact('user', 'credits','location','locations','extracts','vencidos','debe','points'));
+       $disabled = (Auth::user()->roles_id == 3)?'disabled':'';
+
+        return View::make('back.user', compact('user', 'credits','location','locations','extracts','vencidos','debe','points','disabled'));
     }
 
     public function newUser()
@@ -182,14 +185,14 @@ class UserController extends BaseController
     public function updateClient($id)
     {
 
-        $user=new UploadUserManager(new User(),Input::all());
+        $user=new cardUserManager(new User(),Input::all());
         $userValidator=$user->isValid();
         if($userValidator)
         {
             return Redirect::to('Actualizar/'.$id)->withErrors($userValidator)->withInput();
-
         }
         $updateUser=$user->uploadUser($id,Auth::user()->roles_id);
+
         if($updateUser)
         {
             new LogRepo(

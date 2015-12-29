@@ -5,6 +5,7 @@ use Carbon\Carbon;
 class UploadUserManager extends BaseManager
 {
 
+
     public function getRules()
     {
         $rules=[
@@ -64,8 +65,6 @@ class UploadUserManager extends BaseManager
             $user->update($data);
             return true;
         }
-
-
 
     }
 

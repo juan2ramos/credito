@@ -34,6 +34,7 @@ abstract class BaseManager
         return false;
 
     }
+
     public function isValidFile(){
 
         $return = true;

@@ -1,6 +1,6 @@
 @extends('layout.front')
 @section('content')
-@include('layout.notify')
+    @include('layout.notify')
     @if(Session::get('message'))
 
         <script>
@@ -27,8 +27,6 @@
     </div>
 
 
-
-
     <section class="update-user u-shadow-5">
 
         <h1>Datos del usuario</h1>
@@ -46,14 +44,23 @@
                 </div>
             @endif
         @endif
+        @if(Auth::user()->roles_id == 3)
+            <button class="u-button" style="width: 200px; display: block; margin: 2rem auto 1rem;">
+                Actualizar # tarjeta
+            </button>
+        @endif
 
         <section class="User-section ">
 
             {{form::text('id', $user->id,array('class'=>'hidden'))}}
+            @if(empty($user->user_name))
+                <?php $user->user_name = $user->identification_card;?>
+            @endif
+            {{form::text('user_name', $user->user_name,array('class'=>'hidden'))}}
 
 
             <div class="material-input">
-                {{form::text('identification_card', $user->identification_card,array('class'=>' variableText1'))}}
+                {{form::text('identification_card', $user->identification_card,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('identification_card','Cedula')}}
                 <span></span>
             </div>
@@ -65,7 +72,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('name', $user->name ,array('class'=>' variableText1'))}}
+                {{form::text('name', $user->name ,array('class'=>' variableText1', $disabled ))}}
                 {{Form::label('name','Nombre')}}
                 <span></span>
             </div>
@@ -77,7 +84,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('second_name', $user->second_name ,array('class'=>' variableText1'))}}
+                {{form::text('second_name', $user->second_name ,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('second_name','Segundo nombre')}}
                 <span></span>
             </div>
@@ -89,7 +96,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('last_name', $user->last_name ,array('class'=>' variableText1'))}}
+                {{form::text('last_name', $user->last_name ,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('last_name','Apellido')}}
                 <span></span>
             </div>
@@ -101,7 +108,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('second_last_name', $user->second_last_name ,array('class'=>' variableText1'))}}
+                {{form::text('second_last_name', $user->second_last_name ,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('second_last_name','Segundo apellido')}}
                 <span></span>
             </div>
@@ -113,7 +120,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('email', $user->email ,array('class'=>'variableText1'))}}
+                {{form::text('email', $user->email ,array('class'=>'variableText1', $disabled))}}
                 {{Form::label('email','E-mail')}}
                 <span></span>
             </div>
@@ -125,14 +132,14 @@
             @endif
 
             <div class="material-input hidden">
-                {{form::text('user_name', $user->user_name ,array('class'=>'variableText1'))}}
+                {{form::text('user_name', $user->user_name ,array('class'=>'variableText1', $disabled))}}
                 {{Form::label('user_name','Username')}}
                 <span></span>
             </div>
 
             <div class="material">
                 {{Form::label('photo','Foto')}}
-                {{Form::file('photo',['id'=>'photo'])}}
+                {{Form::file('photo',['id'=>'photo', $disabled])}}
             </div>
 
             @if($errors->first('photo'))
@@ -157,7 +164,7 @@
 
 
             <div class="material-input">
-                {{form::text('address', $user->address ,array('class'=>' variableText1'))}}
+                {{form::text('address', $user->address ,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('address','Direccion')}}
                 <span></span>
             </div>
@@ -169,7 +176,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('residency_city', $user->residency_city ,array('class'=>' variableText1'))}}
+                {{form::text('residency_city', $user->residency_city ,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('residency_city','Ciudad de residencia')}}
                 <span></span>
             </div>
@@ -181,7 +188,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('birth_city', $user->birth_city ,array('class'=>' variableText1'))}}
+                {{form::text('birth_city', $user->birth_city ,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('birth_city','Ciudad de nacimiento')}}
                 <span></span>
             </div>
@@ -193,7 +200,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('mobile_phone', $user->mobile_phone ,array('class'=>' variableText1'))}}
+                {{form::text('mobile_phone', $user->mobile_phone ,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('mobile_phone','Celular')}}
                 <span></span>
             </div>
@@ -205,7 +212,7 @@
             @endif
 
             <div class="material-input">
-                {{form::text('phone', $user->phone ,array('class'=>' variableText1'))}}
+                {{form::text('phone', $user->phone ,array('class'=>' variableText1', $disabled))}}
                 {{Form::label('phone','telefono')}}
                 <span></span>
             </div>
@@ -218,7 +225,7 @@
 
 
             <div class="material-input">
-                {{Form::input('date','date_birth',$user->date_birth,['class'=>' variableText1','id' => 'date_birth'])}}
+                {{Form::input('date','date_birth',$user->date_birth,['class'=>' variableText1','id' => 'date_birth', $disabled])}}
                 {{Form::label('date_birth','fecha de nacimiento')}}
                 <span></span>
             </div>
@@ -229,7 +236,7 @@
             @endif
 
             <div class="material-input">
-                {{ Form::select('location', $locations,$user->location,array('class'=>'Credit-select')) }}
+                {{ Form::select('location', $locations,$user->location,array('class'=>'Credit-select', $disabled)) }}
                 <span></span>
             </div>
 
@@ -258,11 +265,11 @@
         </section>
 
 
-       {{-- @if(Auth::user()->roles_id<3)--}}
-        <button class="u-button">
-            Actualizar datos
-        </button>
-      {{--  @endif--}}
+        @if(Auth::user()->roles_id<3)
+            <button class="u-button">
+                Actualizar datos
+            </button>
+        @endif
 
         {{form::close()}}
 
@@ -300,23 +307,36 @@
         </div>
         <section style="  margin: 26px;  padding: 10px;">
             <p>Dias vencidos: {{$vencidos}} dias</p>
+
             <p>Deuda pendiente por pagar: $ {{$debe}}</p>
         </section>
         @if(isset($credits[0]))
             <details style="text-align: center">
                 <summary><h2>Credito solicitado</h2></summary>
                 <p>Estado: {{$credits[0]->state}}</p>
+
                 <p>Prioridad: {{$credits[0]->priority}}</p>
+
                 <p>Egresos Mensuales: {{$credits[0]->monthly_expenses}}</p>
+
                 <p>Ingresos Mensuales: {{$credits[0]->monthly_income}}</p>
+
                 <p>Direccion de la oficina: {{$credits[0]->office_address}}</p>
+
                 <p>Lugar de expedicion: {{$credits[0]->instead_expedition}}</p>
+
                 <p>Fecha de expedicion: {{$credits[0]->date_expedition}}</p>
+
                 <h3>Referencia 1</h3>
+
                 <p>Nombre: {{$credits[0]->name_reference}}</p>
+
                 <p>Telefono: {{$credits[0]->phone_reference}}</p>
+
                 <h3>Referencia 2</h3>
+
                 <p>Nombre: {{$credits[0]->name_reference}}</p>
+
                 <p>Telefono: {{$credits[0]->phone_reference}}</p>
 
             </details>
