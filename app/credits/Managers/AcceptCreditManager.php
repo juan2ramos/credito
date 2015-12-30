@@ -53,7 +53,7 @@ class AcceptCreditManager extends BaseManager
 
             $credit->value = $this->roundValue($r);
         }*/
-        $credit->value=300000;
+            $credit->value=300000;
         $credit->update();
         $this->save();
         $credit->state=1;

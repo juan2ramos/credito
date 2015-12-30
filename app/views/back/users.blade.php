@@ -58,7 +58,7 @@
 
                     @endif
                 @else
-                    @if($user->roles_id==4)
+
                         <tr>
                             <td>{{$user->identification_card}}</td>
                             <td>{{$user->name}}</td>
@@ -73,7 +73,7 @@
                                 @endif
                             </td>
                         </tr>
-                    @endif
+
 
                 @endif
 

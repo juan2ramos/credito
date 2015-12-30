@@ -13,7 +13,6 @@ abstract class BaseRepo {
     }
     public function allPaginate($paginate = 10){
         return $this->model->paginate($paginate);
-
     }
     public function all(){
         return $this->model->all();

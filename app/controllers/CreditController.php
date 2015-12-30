@@ -14,6 +14,8 @@ use credits\Managers\VariableManager;
 use credits\Managers\AcceptCreditManager;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use credits\Managers\quotaCreditUploadManager;
+
 
 
 class CreditController extends BaseController
@@ -29,7 +31,26 @@ class CreditController extends BaseController
         return View::make('front.creditRequest', compact('type', 'locations', 'points'));
 
     }
-
+    public function updateValueCredit($id)
+    {
+        $creditManager = new quotaCreditUploadManager(new CreditRequest(),Input::only('creditValue'));
+        $creditValidation = $creditManager->isValid();
+        if ($creditValidation) {
+            return Redirect::route('userShow', [$id])->withErrors($creditValidation)->withInput();
+        }
+        $user = Auth::user();
+       if($creditManager->saveCredit($id)){
+           new LogRepo(
+               [
+                   'responsible' => $user->user_name,
+                   'action' => 'Actualizo valor del credito',
+                   'affected_entity' => 'Credito - user - ' . $id,
+                   'method' => 'updateValueCredit'
+               ]
+           );
+       }
+        return Redirect::route('userShow', [$id]);
+    }
     //ENVIA LA SOLICITUD DE CREDITO
     public function updateCredit()
     {

@@ -341,9 +341,23 @@
 
             </details>
         @endif
+        @if(isset($credits[0]))
+            {{Form::open(array('url'=>'admin/updateValueCredit/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
+            <div class="material-input" style = "max-width: 300px; margin: 2rem auto;" >
+
+                {{Form::input('numeric','creditValue',$credits[0]->value,['class'=>' variableText1'])}}
+                {{Form::label('creditValue','Valor del crédito aprobado')}}
+                <span></span>
+
+            </div>
+            <button class="u-button">
+                Actualizar credito
+            </button>
+            {{Form::close()}}
+        @else
+            No tiene crédito aprobado
+        @endif
     </section>
-
-
 
 
 @stop

@@ -53,4 +53,21 @@ class UserRepo extends BaseRepo
 
         return $users;
     }
+
+    function userClients()
+    {
+        $users = $this->model->where(function ($query) {
+            $query->where('roles_id', '=', '4');
+        })->paginate(20);
+
+        return $users;
+    }
+    function userAdmin()
+    {
+        $users = $this->model->where(function ($query) {
+            $query->where('roles_id', '!=', '4');
+        })->paginate(20);
+
+        return $users;
+    }
 }

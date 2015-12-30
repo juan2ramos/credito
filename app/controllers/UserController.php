@@ -30,7 +30,13 @@ class UserController extends BaseController
 
     public function showAll()
     {
-        $users = $this->userRepo->allPaginate(20);
+        $users = $this->userRepo->userClients();
+        return View::make('back.users', compact('users'));
+
+    }
+    public function showAllAdmin()
+    {
+        $users = $this->userRepo->userAdmin();
         return View::make('back.users', compact('users'));
 
     }
@@ -185,7 +191,7 @@ class UserController extends BaseController
     public function updateClient($id)
     {
 
-        $user=new cardUserManager(new User(),Input::all());
+        $user=new cardUserManager(new User(),Input::only('card'));
         $userValidator=$user->isValid();
         if($userValidator)
         {
