@@ -92,7 +92,39 @@
         <p>®Lilipink Todos los derechos reservados - 2014 -  Diseño Web - Agencia de Publicidad <a href="http://mi-martinez.com" target="_blank" class="icon-logoblanco:before"><img src="{{asset('img/logomim.png')}}" style="width: 100px; opacity: 0.5;" alt=""/></a></p>
     </footer>
 
+<div id="modal">
+    <a href="#cerrar"></a>
+    <div id="modalContent-contact">
 
+        <section id="wraper-contact">
+
+            <article>
+
+                <h2>CONTÁCTENOS</h2>
+                <p>Escríbenos a, pronto estaremos en <br> contacto contigo.</p>
+                <p>Comunícate con Servicio al Cliente al <b>(57) 6702400</b> en Bogotá o Escríbenos un <b>tiendavirtual@innova-quality.com.co</b> </p>
+            </article>
+            <form name="form1" method="post" action="">
+                <input type="hidden" name="verificar" value="true">
+                <label>Nombre (requerido):</label>
+                <input type="text" id="contact0" name="nombre" value="">
+                <label>Correo electrónico (requerido):</label>
+                <input type="text" id="contact1" name="correo" value="">
+                <label>Ciudad (requerido):</label>
+                <input type="text" id="contact2" name="ciudad" value="">
+                <label>Mensaje (requerido):</label>
+                <textarea tapindex="4" id="contact3" name="mensaje"></textarea>
+                <input id="campo3" name="enviar" type="submit" value="Enviar" class="bttn skin">
+
+            </form>
+        </section>
+
+
+
+
+        <a id="cerrar" href="#">X</a>
+    </div>
+</div>
 
 </body>
 <!-- JavaScript -->

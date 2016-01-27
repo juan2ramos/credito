@@ -15,7 +15,11 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	public function faq()
+	{
 
+		return View::make('front/faq');
+	}
 	public function index()
 	{
 		$sliders= Slider::all();

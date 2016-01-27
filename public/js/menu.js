@@ -3,6 +3,15 @@
 
 
 $(function () {
+
+    $('li a#contacto').on('click',function(){
+
+        $('#modal').addClass('show');
+    })
+    $('#cerrar').on('click',function(){
+
+        $('#modal').removeClass('show');
+    })
 });
 
 $('#buttonMenu').on('click',function(){
@@ -87,3 +96,4 @@ $inputSearch.blur(function() {
         $('.search').removeClass('is-open');
     }
 });
+

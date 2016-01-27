@@ -577,21 +577,21 @@ img, .img-slider{
 /* MENU */
 
 #header-menu{
-    height: 50px;
+    display: block;
     margin: auto;
     max-width: 1180px;
 }
 
 #header-menu nav{
     display: block;
-    height: 50px;
+    height: auto;
 }
 
 #header-menu ul{
     list-style:none;
     border-top:#CCC solid 1px;
     border-bottom:#CCC solid 1px;
-    height: 100%;
+
     text-align:center;
 }
 
@@ -686,7 +686,7 @@ img, .img-slider{
     width: 100%
 }*/
 
-.material-input input:focus, /*.material-input input:valid*/ {
+.material-input input:focus /*.material-input input:valid*/ {
     height: 40px !important;
     padding-top: 20px !important;
 }
@@ -2218,4 +2218,140 @@ footer{
 #request-xsl img{
     margin: 10px;
     width: 100px;
+
+}
+.faq{
+    margin: 0 auto 60px;
+    max-width: 750px;
+}
+#modal {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    float: left;
+    width: 100%;
+    height: 100%;
+    background: -moz-radial-gradient(center, ellipse cover, rgba(198,198,198,0.2) 0%, rgba(186,186,186,0.2) 13%, rgba(110,110,110,0.34) 99%, rgba(109,109,109,0.34) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(198,198,198,0.2)), color-stop(13%,rgba(186,186,186,0.2)), color-stop(99%,rgba(110,110,110,0.34)), color-stop(100%,rgba(109,109,109,0.34)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(198,198,198,0.2) 0%,rgba(186,186,186,0.2) 13%,rgba(110,110,110,0.34) 99%,rgba(109,109,109,0.34) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(198,198,198,0.2) 0%,rgba(186,186,186,0.2) 13%,rgba(110,110,110,0.34) 99%,rgba(109,109,109,0.34) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(198,198,198,0.2) 0%,rgba(186,186,186,0.2) 13%,rgba(110,110,110,0.34) 99%,rgba(109,109,109,0.34) 100%);
+    background: radial-gradient(ellipse at center, rgba(198,198,198,0.2) 0%,rgba(186,186,186,0.2) 13%,rgba(110,110,110,0.34) 99%,rgba(109,109,109,0.34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33c6c6c6', endColorstr='#576d6d6d',GradientType=1 );
+    display: none;
+    opacity: 0;
+}
+
+#modal.show{
+    display: block;
+    opacity: 1;
+}
+#modalContent-contact {
+    background: #fff;
+    box-shadow: none;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.1) !important;
+    font-size: 12px;
+    height: 310px;
+    left: 50%;
+    margin: -180px -450px;
+    padding: 0px;
+    position: fixed;
+    text-transform: uppercase;
+    top: 50%;
+    width: 843px;
+    z-index: 9999;
+    text-align: center;
+    border-radius: 2px;
+}
+#wraper-contact {
+    margin: 0 auto;
+    width: 840px;
+    background: white;
+    color: #696363;
+    box-sizing: border-box;
+    padding: 63px 0 25px;
+}
+#wraper-contact article {
+    vertical-align: middle;
+    text-align: center;
+    padding: 50px 10px;
+    height: 350px;
+    margin: -11px;
+}
+#wraper-contact article, #wraper-contact form {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+#wraper-contact h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+#wraper-contact p {
+    font-size: 14px;
+}
+#wraper-contact form {
+    margin-left: -5px;
+    padding: 0px 30px;
+    margin-top: -10px;
+}
+#wraper-contact article {
+    border-right: 1px solid rgba(0, 0, 0, 0.16);
+}
+#wraper-contact textarea {
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    color: #A9A9A9;
+    font-size: 13px;
+}
+#wraper-contact input, #wraper-contact textarea {
+    width: 98%;
+    height: 30px;
+}
+#wraper-contact input {
+    margin-bottom: 10px;
+}
+#wraper-contact label {
+    font-size: 12px;
+    text-align: left;
+}
+#wraper-contact label, #wraper-contact input {
+    display: block;
+}
+#wraper-contact label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+#wraper-contact textarea {
+    height: 80px;
+}
+#wraper-contact input[type="submit"] {
+    width: 150px;
+    height: 40px;
+    float: right;
+    margin-right: 7px;
+    margin-top: 15px;
+    color: white;
+    background: #e80e8a;
+    border: 0px;
+    font-size: 15px;
+}
+#wraper-contact input {
+    margin-bottom: 10px;
+}
+#modalContent-contact > a {
+    position: absolute;
+    top: 10px;
+    right: -13px;
+    color: #fff;
+    border-radius: 2px;
+    background: #e80e8a;
+    padding: 7px;
+    text-transform: uppercase;
+    font-size: 13px;
 }
