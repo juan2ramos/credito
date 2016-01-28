@@ -114,5 +114,13 @@ class HomeController extends BaseController {
         }
         return $return;
     }
+	public function contact()
+	{
+		$data = Input::all();
+		Mail::send('emails.contact', $data, function ($message)  {
+			$message->to('carterainnova@innova-quality.com.co', 'creditos lilipink')->subject('Mensaje desde formulario de contacto de creditos lilipink');
+		});
+		dd(Input::all());
+	}
 
 }

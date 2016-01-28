@@ -1,6 +1,7 @@
 <?php
 
 Route::get('preguntas-frecuentes', ['as' => 'faq', 'uses' => 'HomeController@faq']);
+Route::post('contact', ['as' => 'contact', 'uses' => 'HomeController@contact']);
 Route::get('mail','HomeController@email');
 Route::group(['before' => 'auth'], function () {
     Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);

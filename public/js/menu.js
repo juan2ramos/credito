@@ -4,7 +4,7 @@
 
 $(function () {
 
-    $('li a#contacto').on('click',function(){
+    $('li a#nav-contacto').on('click',function(){
 
         $('#modal').addClass('show');
     })
