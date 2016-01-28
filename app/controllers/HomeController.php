@@ -120,7 +120,7 @@ class HomeController extends BaseController {
 		Mail::send('emails.contact', $data, function ($message)  {
 			$message->to('carterainnova@innova-quality.com.co', 'creditos lilipink')->subject('Mensaje desde formulario de contacto de creditos lilipink');
 		});
-		dd(Input::all());
+		return Redirect::back();
 	}
 
 }
