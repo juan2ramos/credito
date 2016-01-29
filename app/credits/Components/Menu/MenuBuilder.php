@@ -64,13 +64,14 @@ class MenuBuilder
 
     private function prepareMenu($parent, $menu)
     {
+
         $html = "";
         if (isset($menu['parents'][$parent])) {
             $html .= "<ul>";
 
             foreach ($menu['parents'][$parent] as $itemId) {
 
-                if(Auth::check() && $menu['items'][$itemId]["route"] == 'credit')
+                if(Auth::check() && $menu['items'][$itemId]["route"] == 'credit' && Auth::user()->roles_id == 4)
                 {
                     continue;
                 }
