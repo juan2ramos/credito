@@ -114,6 +114,7 @@
                 <input type="text" id="contact2" name="ciudad" value="">
                 <label>Mensaje (requerido):</label>
                 <textarea tapindex="4" id="contact3" name="mensaje"></textarea>
+            <div class="g-recaptcha" data-sitekey="6Lc5LhgTAAAAAJTsoqyXgUsp5DcYGeXtJNFw17-8"></div>
                 <input id="campo3" name="enviar" type="submit" value="Enviar" class="bttn skin">
 
             {{ Form::close() }}
@@ -130,6 +131,7 @@
 <!-- JavaScript -->
 
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="{{asset('js/menu.js')}}"></script>
 @yield('javascript')
 </html>
