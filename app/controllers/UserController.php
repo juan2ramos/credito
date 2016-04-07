@@ -110,8 +110,9 @@ class UserController extends BaseController
 
     public function usersExcel()
     {
-        $data= User::where('roles_id','=','4')->select('identification_card','name', 'second_name','last_name','second_last_name','email','mobile_phone','location','created_at')->get();
+        $data= User::where('roles_id','=','4')->select('card as Tarjeta','identification_card as Cedula','name as Nombre 1', 'second_name as Nombre 2','last_name as Apellido 1','second_last_name as Apellido 2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->get();
         $locations=Location::all();
+
         foreach($data as $user)
         {
             foreach($locations as $location)
@@ -121,15 +122,22 @@ class UserController extends BaseController
                     $user->location=$location->name;
                 }
             }
-
         }
         Excel::create('usuarios', function($excel) use($data){
 
             $excel->sheet('Excel sheet', function($sheet) use($data){
+
+                $sheet->cells('A1:H1', function($cells) {
+                    $cells->setFontWeight('bold');
+                    $cells->setBackground('#e80e8a');
+                    $cells->setFontColor('#ffffff');
+                    $cells->setAlignment('center');
+                    $cells->setValignment('middle');
+                });
+                $sheet->setHeight(1,20);
                 $sheet->setAutoSize(true);
                 $sheet->fromArray($data);
                 $sheet->setOrientation('landscape');
-
             });
 
         })->export('xls');

@@ -35,12 +35,7 @@ class UserTableSeeder extends Seeder {
 				'password' => \Hash::make(123456),
 				'roles_id' => $faker->randomElement([1,2,3]),
 				'location'=>'1'
-
 			]);
 		}
-
-
-
 	}
-
 }

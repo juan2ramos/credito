@@ -120,9 +120,6 @@
             {{ Form::close() }}
         </section>
 
-
-
-
         <a id="cerrar" href="#">X</a>
     </div>
 </div>
