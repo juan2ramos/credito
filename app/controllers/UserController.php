@@ -258,9 +258,6 @@ class UserController extends BaseController
                 // Getting all results
                 $reader->get();
                 Extract::insert($reader->toArray()[0]);
-
-
-
         });
         $extracts = Extract::all()->toArray();
         echo('Se registraron ' . Extract::all()->count() . ' <br><br><br>');
