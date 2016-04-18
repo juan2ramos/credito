@@ -21,7 +21,6 @@ class UploadUserManager extends BaseManager
             'date_birth'                => 'required',
             'location'                  => 'required|numeric',
             'card'                      => 'numeric',
-            'fingerprint'               => 'required'
         ];
 
         return  $rules;

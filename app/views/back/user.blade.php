@@ -53,7 +53,7 @@
                             @else
                                 <div>HUELLA</div>
                             @endif
-                            {{form::file('fingerprint', ['accept' => 'image/jpeg, image/png'])}}
+                                {{form::file('fingerprint', ['accept' => 'image/jpeg, image/png'])}}
                         </div>
                     </div>
                 </div>

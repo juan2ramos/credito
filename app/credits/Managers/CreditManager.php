@@ -68,6 +68,7 @@ class CreditManager extends BaseManager
         }else{
             $priority=0;
         }
+        
         $user = new User($data);
         $user->roles_id=4;
         $user->save();

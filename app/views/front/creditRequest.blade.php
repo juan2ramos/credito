@@ -328,7 +328,7 @@
             <div class="material-item fingerprint" style="width: 221px;">
                 <div id="dropzone">
                     <div>HUELLA</div>
-                    {{form::file('fingerprint', ['accept' => 'image/jpeg, image/png'])}}
+                    {{form::file('finger', ['name' => 'finger','accept' => 'image/jpeg, image/png'])}}
                 </div>
             </div>
         </div>

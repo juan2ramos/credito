@@ -8,7 +8,7 @@ class CreditRequest extends \Eloquent
 
 
     public function user(){
-        return $this->hasOne('credits\entities\user');
+        return $this->belongsTo('credits\entities\user');
     }
 
 }
