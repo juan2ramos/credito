@@ -10,7 +10,6 @@
 
         {{Form::open(array('url'=>'credito','method'=>'POST','files'=>true,'class'=>"Credito-form",'enctype'=>'multipar/form-data'))}}
 
-
         <section class="Credit-section u-CreditSection">
 
             <div class="material-input">
@@ -316,15 +315,23 @@
         <div class="hidden">
             {{Form::text('files','',['id'=>'form-files'])}}
         </div>
-        <div class="pop-up ">
-            <p>Sube tus documentos <br>
-                <span>Fotocopia de la cedula 150%</span>
-            </p>
 
-            {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
-            {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
+        <div class="files-container">
+            <div class="pop-up ">
+                <p>Sube tus documentos <br>
+                    <span>Fotocopia de la cedula 150%</span>
+                </p>
+
+                {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
+                {{Form::file('file[]',array('id'=>'files','name'=>'file[]','multiple'))}}
+            </div>
+            <div class="material-item fingerprint" style="width: 221px;">
+                <div id="dropzone">
+                    <div>HUELLA</div>
+                    {{form::file('fingerprint', ['accept' => 'image/jpeg, image/png'])}}
+                </div>
+            </div>
         </div>
-
         <div>
             <div class="request-image" style="display: inline-block"></div>
             <div style="display: inline-block;vertical-align: top">
@@ -365,4 +372,34 @@
 
 @section('javascript')
     {{ HTML::script('js/credit.js'); }}
+    <script>
+        $(function() {
+            $('#dropzone input').on('change', function(e) {
+                var file = this.files[0];
+
+                if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
+                    return alert('Tipo de archivo no permitido.');
+                }
+
+                $('#dropzone img').remove();
+
+                if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
+                    var reader = new FileReader(file);
+
+                    reader.readAsDataURL(file);
+
+                    reader.onload = function(e) {
+                        var data = e.target.result,
+                                $img = $('<img />').attr('src', data).fadeIn();
+
+                        $('#dropzone div').html($img);
+                    };
+                } else {
+                    var ext = file.name.split('.').pop();
+
+                    $('#dropzone div').html(ext);
+                }
+            });
+        });
+    </script>
 @stop

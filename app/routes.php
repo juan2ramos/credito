@@ -103,6 +103,7 @@ Route::get('refresh/{pass}', function () {
 
     });
 });
+
 Route::get('pdf', function () {
     $html = '
 <html>

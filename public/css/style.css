@@ -2423,3 +2423,17 @@ footer{
     bottom: 0;
     left: 0;
 }
+
+.files-container{
+    height:200px;
+    display:flex;
+}
+
+.files-container .fingerprint{
+    border: 1px solid #E80E8A;
+    border-left: none;
+}
+
+.files-container .fingerprint:hover{
+    border-style: dashed;
+}

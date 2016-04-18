@@ -21,3 +21,4 @@ Route::post('uploadUser/{id}','UserController@updateUser');
 Route::post('updateValueCredit/{id}','CreditController@updateValueCredit');
 
 Route::get('administradores', ['before' => 'permissions:users', 'as' => 'usersAdmin','uses' => 'UserController@showAllAdmin' ]);
+Route::get('enviar-email', ['before' => 'permissions:users', 'as' => 'usersAdmin','uses' => 'MailController@index' ]);
