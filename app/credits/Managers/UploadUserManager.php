@@ -5,7 +5,6 @@ use Carbon\Carbon;
 class UploadUserManager extends BaseManager
 {
 
-
     public function getRules()
     {
         $rules=[
@@ -21,10 +20,10 @@ class UploadUserManager extends BaseManager
             'phone'                     => 'required|numeric|digits_between:6,11',
             'date_birth'                => 'required',
             'location'                  => 'required|numeric',
-            'card'                      => 'numeric'
-
-
+            'card'                      => 'numeric',
+            'fingerprint'               => 'required'
         ];
+
         return  $rules;
     }
 
@@ -45,12 +44,21 @@ class UploadUserManager extends BaseManager
     {
         $data=$this->prepareData($this->data);
         $user=User::find($id);
-        $file=$data['photo'];
-        if($file)
+        $photo=$data['photo'];
+        $fingerprint=$data['fingerprint'];
+
+        if($photo || $fingerprint)
         {
-            $data["photo"]=sha1(time()).$file->getClientOriginalName();
-            $file->move("users",sha1(time()).$file->getClientOriginalName());
+            if($photo){
+                $data["photo"]=sha1(time()).$photo->getClientOriginalName();
+                $photo->move("users",sha1(time()).$photo->getClientOriginalName());
+            }
+            if($fingerprint){
+                $data["fingerprint"]=sha1(time()).$fingerprint->getClientOriginalName();
+                $fingerprint->move("users",sha1(time()).$fingerprint->getClientOriginalName());
+            }
         }else{
+            $data["fingerprint"]=$user->fingerprint;
             $data["photo"]=$user->photo;
         }
         if($role==4)

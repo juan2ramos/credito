@@ -14,4 +14,5 @@ app/config/mail.php
 Thumbs.db
 .htaccess
 /public/upload/
-
+*.sql
+/node_modules/

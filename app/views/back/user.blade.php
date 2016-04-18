@@ -37,10 +37,25 @@
         @endif
         @if(Auth::user()->roles_id==1 or Auth::user()->roles_id==3 )
             @if($user->roles_id==4)
-                <div class="material-card">
-                    {{Form::label('card','ENTREGAR TARJETA LILIPINK')}}
-                    {{form::text('card', $user->card ,array('class'=>' variableText1'))}}
-                    {{$errors->first('card')}}
+                <div class="material-header">
+                    <div class="material-item">
+                        <!-- Espacio reservado para generar paz y salvos -->
+                    </div>
+                    <div class="material-card">
+                        {{Form::label('card','ENTREGAR TARJETA LILIPINK')}}
+                        {{form::text('card', $user->card ,array('class'=>' variableText1'))}}
+                        {{$errors->first('card')}}
+                    </div>
+                    <div class="material-item fingerprint">
+                        <div id="dropzone">
+                            @if($user->fingerprint)
+                                <img src="{{url('users/' . $user->fingerprint)}}">
+                            @else
+                                <div>HUELLA</div>
+                            @endif
+                            {{form::file('fingerprint', ['accept' => 'image/jpeg, image/png'])}}
+                        </div>
+                    </div>
                 </div>
             @endif
         @endif
@@ -363,6 +378,37 @@
 @stop
 
 @section('javascript')
+
     {{ HTML::script('js/variables.js'); }}
     {{ HTML::script('js/credit.js'); }}
+    <script>
+        $(function() {
+            $('#dropzone input').on('change', function(e) {
+                var file = this.files[0];
+
+                if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
+                    return alert('Tipo de archivo no permitido.');
+                }
+
+                $('#dropzone img').remove();
+
+                if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
+                    var reader = new FileReader(file);
+
+                    reader.readAsDataURL(file);
+
+                    reader.onload = function(e) {
+                        var data = e.target.result,
+                                $img = $('<img />').attr('src', data).fadeIn();
+
+                        $('#dropzone div').html($img);
+                    };
+                } else {
+                    var ext = file.name.split('.').pop();
+
+                    $('#dropzone div').html(ext);
+                }
+            });
+        });
+    </script>
 @stop

@@ -29,6 +29,5 @@ class CardUserManager extends BaseManager
         $user = User::find($id);
         $user->update($data);
         return true;
-
     }
 }
