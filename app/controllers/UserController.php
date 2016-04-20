@@ -257,15 +257,14 @@ class UserController extends BaseController
 
                 // Getting all results
                 $reader->get();
-                Extract::insert($reader->toArray()[0]);
+                Extract::insert($reader->toArray());
         });
-        $extracts = Extract::all()->toArray();
-        echo('Se registraron ' . Extract::all()->count() . ' <br><br><br>');
 
-        foreach($extracts as $extract){
-
-            print_r(implode("___", $extract));echo('</br>');
+        if($data)
+        {
+            return Redirect::route('excel')->with('mensaje','Los extractos se guardaron correctamente');
         }
+        return Redirect::route('excel')->with('mensaje_error','Los extractos no pudieron ser guardados');
     }
 
     public function uploadExcelDaily()
@@ -279,14 +278,14 @@ class UserController extends BaseController
 
             // Getting all results
             $reader->get();
-            ExcelDaily::insert($reader->toArray()[0]);
+            ExcelDaily::insert($reader->toArray());
 
         });
         if($data)
         {
-            return Redirect::route('diario')->with('mensaje','el diario fue guardado correctamente');
+            return Redirect::route('diario')->with('mensaje','El diario fue guardado correctamente');
         }
-        return Redirect::route('diario')->with('mensaje_error','el diario no pudo ser guardado');
+        return Redirect::route('diario')->with('mensaje_error','El diario no pudo ser guardado');
     }
 
     public function showState()
