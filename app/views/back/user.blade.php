@@ -52,8 +52,8 @@
                                 <img src="{{url('users/' . $user->fingerprint)}}">
                             @else
                                 <div>HUELLA</div>
-                            @endif
                                 {{form::file('fingerprint', ['accept' => 'image/jpeg, image/png'])}}
+                            @endif
                         </div>
                     </div>
                 </div>

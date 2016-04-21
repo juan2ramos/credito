@@ -4,6 +4,7 @@ use Carbon\Carbon;
 
 class UploadUserManager extends BaseManager
 {
+    private $role_id;
 
     public function getRules()
     {
@@ -22,7 +23,7 @@ class UploadUserManager extends BaseManager
             'location'                  => 'required|numeric',
             'card'                      => 'numeric',
         ];
-
+        
         return  $rules;
     }
 

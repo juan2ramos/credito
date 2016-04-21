@@ -7,6 +7,7 @@ class NewUserManager extends BaseManager
 
     public function getRules()
     {
+
         $rules=[
             'name'                      => 'required',
             'last_name'                 => 'required',
@@ -16,9 +17,8 @@ class NewUserManager extends BaseManager
             'address'                   => 'required',
             'roles_id'                  => 'required|numeric',
             'location'                  => 'required|numeric'
-
-
         ];
+        
         return  $rules;
     }
 
@@ -39,7 +39,6 @@ class NewUserManager extends BaseManager
         $data=$this->prepareData($this->data);
         $user=new User($data);
         $user->save();
-
     }
 
 }

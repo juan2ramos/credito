@@ -58,7 +58,7 @@ class UserRepo extends BaseRepo
     {
         $users = $this->model->where(function ($query) {
             $query->where('roles_id', '=', '4');
-        })->paginate(20);
+        })->Paginate(20);
 
         return $users;
     }

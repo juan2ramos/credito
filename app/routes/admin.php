@@ -17,7 +17,10 @@ Route::get('eliminar-rol/{id}', ['before' => 'permissions:roles', 'as' => 'delet
 Route::post('rol/{id}', ['before' => 'permissions:roles', 'as' => 'updateRol','uses' => 'RolesController@updateRol' ]);
 Route::post('roles', ['before' => 'permissions:roles', 'as' => 'newRol','uses' => 'RolesController@newRol' ]);
 
-Route::post('uploadUser/{id}','UserController@updateUser');
+Route::post('uploadUser/{id}', [
+    'uses' => 'UserController@updateUser',
+    'as' => 'updateUser'
+]);
 Route::post('updateValueCredit/{id}','CreditController@updateValueCredit');
 
 Route::get('administradores', ['before' => 'permissions:users', 'as' => 'usersAdmin','uses' => 'UserController@showAllAdmin' ]);
