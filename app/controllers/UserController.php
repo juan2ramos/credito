@@ -56,14 +56,13 @@ class UserController extends BaseController
         $location=Location::where('id', '=', $user->location)->first();
         $points=Point::all();
         if($location)
-        {
             $location=$location->name;
-        }else{
+        else
             $location="No asignada";
-        }
-        $extracts=Extract::all();
-        $vencidos=0 ;
-        $debe=0;
+
+        $extracts = Extract::all();
+        $vencidos = 0 ;
+        $debe = 0;
         foreach($extracts as $extract)
         {
             if($extract->nit==$user->identification_card)
@@ -93,9 +92,8 @@ class UserController extends BaseController
         $UserManager=new NewUserManager(new User(),Input::all());
         $userValidator=$UserManager->isValid();
         if($userValidator)
-        {
             return Redirect::to('admin/nuevo-usuario')->withErrors($userValidator)->withInput();
-        }
+
         $UserManager->createUser();
         new LogRepo(
             [
@@ -118,9 +116,7 @@ class UserController extends BaseController
             foreach($locations as $location)
             {
                 if($user->location==$location->id)
-                {
                     $user->location=$location->name;
-                }
             }
         }
         Excel::create('usuarios', function($excel) use($data){
@@ -151,9 +147,7 @@ class UserController extends BaseController
             foreach($locations as $location)
             {
                 if($user->location==$location->id)
-                {
                     $user->location=$location->name;
-                }
             }
 
         }
@@ -202,9 +196,8 @@ class UserController extends BaseController
         $user=new cardUserManager(new User(),Input::only('card'));
         $userValidator=$user->isValid();
         if($userValidator)
-        {
             return Redirect::to('Actualizar/'.$id)->withErrors($userValidator)->withInput();
-        }
+
         $updateUser=$user->uploadUser($id,Auth::user()->roles_id);
 
         if($updateUser)
@@ -252,21 +245,10 @@ class UserController extends BaseController
         $file = Input::file('file');
 
         $data = Excel::load($file, function($reader)  {
-            ini_set('max_execution_time', 100000);
-                // Getting all results
-                $reader->get();
-                $data = [];
-                foreach($reader->toArray()[0] as $key => $value){
-                    if($key == '0') continue;
-                    $data[$key] = $value;
-                }
-                Extract::insert($data);
+            Extract::insert($this->excelLoad($reader));
         });
 
-        if($data)
-        {
-            return Redirect::route('excel')->with('mensaje','Los extractos se guardaron correctamente');
-        }
+        if($data) return Redirect::route('excel')->with('mensaje','Los extractos se guardaron correctamente');
         return Redirect::route('excel')->with('mensaje_error','Los extractos no pudieron ser guardados');
     }
 
@@ -276,20 +258,10 @@ class UserController extends BaseController
         DB::table('excelDaily')->truncate();
 
         $data = Excel::load($file, function($reader)  {
-            ini_set('max_execution_time', 100000);
-            $reader->get();
-            $data = [];
-            foreach($reader->toArray()[0] as $key => $value){
-                if($key == '0') continue;
-                elseif($key == 'nit') $data['cedula'] = $value;
-                else $data['pago_minimo'] = $value;
-            }
-            ExcelDaily::insert($data);
+            ExcelDaily::insert($this->excelLoad($reader));
         });
-        if($data)
-        {
-            return Redirect::route('diario')->with('mensaje','El diario fue guardado correctamente');
-        }
+
+        if($data) return Redirect::route('diario')->with('mensaje','El diario fue guardado correctamente');
         return Redirect::route('diario')->with('mensaje_error','El diario no pudo ser guardado');
     }
 
@@ -314,9 +286,24 @@ class UserController extends BaseController
 
     public function searchUsersCard()
     {
-        $users = User::where('card','=',0)->get();
-        $points=Point::all();
+        $users  = User::where('card','=',0)->get();
+        $points = Point::all();
         return View::make('back.userCard', compact('users','points'));
+    }
+
+    private function excelLoad($reader){
+        ini_set('max_execution_time', 100000);
+        $data = $reader->toArray()[0];
+        unset($data['0']);
+
+        if(count($data) < 3){
+            $data['cedula'] = $data['nit'];
+            $data['pago_minimo'] = $data['valor'];
+            unset($data['nit']);
+            unset($data['valor']);
+        }
+
+        return $data;
     }
 
 }
