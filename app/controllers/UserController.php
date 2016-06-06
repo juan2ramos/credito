@@ -66,7 +66,7 @@ class UserController extends BaseController
         $debe=0;
         foreach($extracts as $extract)
         {
-            if($extract->numero_documento==$user->identification_card)
+            if($extract->nit==$user->identification_card)
             {
                 if($extract->dias_vencidos>0)
                 {
@@ -248,16 +248,19 @@ class UserController extends BaseController
 
     public function uploadExcel()
     {
-
         DB::table('extracts')->truncate();
         $file = Input::file('file');
 
         $data = Excel::load($file, function($reader)  {
             ini_set('max_execution_time', 100000);
-
                 // Getting all results
                 $reader->get();
-                Extract::insert($reader->toArray());
+                $data = [];
+                foreach($reader->toArray()[0] as $key => $value){
+                    if($key == '0') continue;
+                    $data[$key] = $value;
+                }
+                Extract::insert($data);
         });
 
         if($data)
@@ -270,16 +273,18 @@ class UserController extends BaseController
     public function uploadExcelDaily()
     {
         $file = Input::file('file');
-
-
         DB::table('excelDaily')->truncate();
 
         $data = Excel::load($file, function($reader)  {
-
-            // Getting all results
+            ini_set('max_execution_time', 100000);
             $reader->get();
-            ExcelDaily::insert($reader->toArray());
-
+            $data = [];
+            foreach($reader->toArray()[0] as $key => $value){
+                if($key == '0') continue;
+                elseif($key == 'nit') $data['cedula'] = $value;
+                else $data['pago_minimo'] = $value;
+            }
+            ExcelDaily::insert($data);
         });
         if($data)
         {
@@ -292,7 +297,7 @@ class UserController extends BaseController
     {
         $users=User::all();
         $credit=CreditRequest::where('user_id','=',Auth::user()->id)->first();
-        $extracts=Extract::where('numero_documento','=',Auth::user()->identification_card)->get();
+        $extracts=Extract::where('nit','=',Auth::user()->identification_card)->get();
         $vencidos=0 ;
         $debe=0;
         foreach($extracts as $extract)

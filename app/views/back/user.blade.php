@@ -304,9 +304,9 @@
                 </thead>
                 <tbody>
                 @foreach ($extracts as $extract)
-                    @if($extract->numero_documento==$user->identification_card)
+                    @if($extract->nit==$user->identification_card)
                         <tr>
-                            <td>{{$extract->numero_documento}}</td>
+                            <td>{{$extract->nit}}</td>
                             <td>{{$extract->punto_venta}}</td>
                             <td>{{$extract->tasa_interes}}</td>
                             <td>{{$extract->valor_compra}}</td>

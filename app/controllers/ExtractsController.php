@@ -10,10 +10,12 @@ class ExtractsController extends \BaseController {
 	public function sendEmail($identification)
 	{
 		$users = DB::table('users')->whereRaw("roles_id = 4 and identification_card = {$identification}")->get();
-		$extracts = DB::table('extracts')->whereRaw("numero_documento = {$identification}")->get();
+		$extracts = DB::table('extracts')->whereRaw("nit = {$identification}")->get();
 		$minPay = DB::table('excelDaily')->whereRaw("cedula = {$identification}")->get();
+		$day = explode('-', date("y-m-d"));
 
 		foreach($users as $user) {
+			$totalPay = 0;
 				$html = "
 				<html>
 				<head>
@@ -44,19 +46,21 @@ class ExtractsController extends \BaseController {
 					<img width='200px' src='img/logocreditos.png'/>
 				  </td>
 				  <td>
-					<h1 style='margin: 10px 0'>ESTADO DE CUENTA</h1>
-					<h2 style='margin: 10px 0; border: 1px solid  #da0080; padding: 0 10px'>Interes de mora</h2>
+					<h1 style='opacity: 0; margin: 10px 0'>ESTADO DE CUENTA</h1>
+					<h2 style='opacity: 0; margin: 10px 0; border: 1px solid  #da0080; padding: 0 10px'>Interes de mora</h2>
 				  </td>
 				</tr>
 				<tr>
 				  <td>
 					Nombre: <span class='capitalize'>{$user->name} {$user->last_name}</span>
 				  </td>
-				  <td style=''>Feha de facturación
-					<div style='width: 195px; display: inline-block; text-align: center; font-size: 14px; '>
-					  <span style='display: inline-block;width:30px;'>P</span>
-					  <span style='display: inline-block;width:30px;'>P</span>
-					  <span style='display: inline-block;width:30px;'>P</span>
+				  <td style=''>Fecha de facturación
+					<div style='width: 195px; display: inline-block; text-align: center; font-size: 14px; '>";
+					  if($day[1] == '02') $html .= "<span style='display: inline-block;width:30px;'> 28 </span>";
+					  else $html .= "<span style='display: inline-block;width:30px;'> 30 </span>";
+					  $html .= "
+					  <span style='display: inline-block;width:30px;'> {$day[1]} </span>
+					  <span style='display: inline-block;width:30px;'> {$day[0]} </span>
 					</div>
 				  </td>
 				</tr>
@@ -86,15 +90,18 @@ class ExtractsController extends \BaseController {
 				<tr  class='back' valign='middle'>
 				  <td>
 				   PAGUE HASTA
-				   <span>P</span>
-				   <span>P</span>
-				   <span>P</span>
+				   <span> 05 </span>";
+				   if((intval($day[1]) + 1) < 10) $html .= "<span> 0" . (intval($day[1]) + 1) . " </span>";
+				   else $html .= "<span> " . (intval($day[1]) + 1) . " </span>";
+				   $html .= "<span> {$day[0]} </span>
 				  </td>
-				  <td>PAGO MINIMO
-					  <span>$ {$minPay[0]->pago_minimo}</span>
+				  <td>PAGO MINIMO";
+				  if($minPay){
+					$html .= "<span> $" . number_format($minPay[0]->pago_minimo, 0, '.', '.') . " </span>";
+				  }
+					$html .= "
 				  </td>
 				</tr>
-				
 				<tr class='back padding' valign='middle'>
 				  <td>
 				   PAGUE TOTAL
@@ -109,8 +116,8 @@ class ExtractsController extends \BaseController {
 						  <thead>
 						  	<tr style='text-align: center; font-size: 12px' valign='middle'>
 							  <th>COMPRA <br /> NÚMERO</th>
-							  <th>DD</th>
 							  <th>MM</th>
+							  <th>DD</th>
 							  <th>AA</th>
 							  <th>DETALLE</th>
 							  <th style='font-size: 8px'>TASA <br />INTERES</th>
@@ -122,17 +129,24 @@ class ExtractsController extends \BaseController {
 						  </thead>
 						  <tbody>";
 						  foreach($extracts as $extract) {
-							  $html .="
+							  $date = explode('_', $extract->fecha_contabilizacion);
+							  $month = $date[0];
+							  $html .= "
 							  <tr>
-								<td>{$extract->id}</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>{$extract->tasa_interes} %</td>
-								<td>$ {$extract->valor_compra}</td>
-								<td>$ {$extract->cargos_abonos}</td>
-								<td>$ {$extract->saldo_credito_diferido}</td>
+								<td>{$extract->id}</td>";
+							  	if($extract->fecha_contabilizacion) {
+									foreach ($date as $d) {
+									$html .= "<td>{$d}</td>"; }
+								}
+							  	else {
+									$html .= "<td></td><td></td><td></td>";
+								}
+							  $html .= "
+								<td>{$extract->punto_venta}</td>
+								<td>" . number_format($extract->tasa_interes, 0, '.', '.') . " %</td>
+								<td>$" . number_format($extract->valor_compra, 0, '.', '.') . "</td>
+								<td>$" . number_format($extract->cargos_abonos, 0, '.', '.') . "</td>
+								<td>$" . number_format($extract->saldo_credito_diferido, 0, '.', '.') . "</td>
 								<td>{$extract->cuotas}</td>
 							  </tr>";
 						  }
@@ -144,24 +158,19 @@ class ExtractsController extends \BaseController {
 				</tr>
 				<tr class='back'>
 				  <td> Saldo en mora <span>P</span> </td>
-				  <td> Gastos legales<span>P</span> </td>
+				  <td> Gastos legales <span> $0 </span> </td>
 				</tr>
 				
 				<tr class='back'>
 				  <td> Compras del mes <span>P</span> </td>
-				  <td> Cargos no diferidos<span>P</span> </td>
+				  <td> Cargos no diferidos <span> $0 </span> </td>
 				</tr>
 				
 				
 				<tr class='back'>
-				  <td> Intereses <span>P</span> </td>
-				  <td> Notas Crédito<span>P</span> </td>
-				</tr>
-				
-				<tr class='back'>
-				  <td colspan='2'> Honorarios <span>P</span> </td>
-				</tr>
-				
+				  <td> Intereses <span> 0% </span> </td>
+				  <td colspan='2'> Honorarios <span> $0 </span> </td>
+				</tr>				
 				<tr>
 				<td colspan='2'><p style='text-align: justify'>
 				
