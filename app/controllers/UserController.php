@@ -254,11 +254,11 @@ class UserController extends BaseController
 
     public function uploadExcelDaily()
     {
-        $file = Input::file('file');
         DB::table('excelDaily')->truncate();
+        $file = Input::file('file');
 
         $data = Excel::load($file, function($reader)  {
-            ExcelDaily::insert($this->excelLoad($reader));
+           ExcelDaily::insert($this->excelLoad($reader));
         });
 
         if($data) return Redirect::route('diario')->with('mensaje','El diario fue guardado correctamente');
@@ -267,17 +267,17 @@ class UserController extends BaseController
 
     public function showState()
     {
-        $users=User::all();
-        $credit=CreditRequest::where('user_id','=',Auth::user()->id)->first();
-        $extracts=Extract::where('nit','=',Auth::user()->identification_card)->get();
-        $vencidos=0 ;
-        $debe=0;
+        $users = User::all();
+        $credit = CreditRequest::where('user_id','=',Auth::user()->id)->first();
+        $extracts = Extract::where('nit','=',Auth::user()->identification_card)->get();
+        $vencidos = 0 ;
+        $debe = 0;
         foreach($extracts as $extract)
         {
             if($extract->dias_vencidos>0)
             {
-                $vencidos=$vencidos+$extract->dias_vencidos;
-                $debe=$debe+$extract->saldo_credito_diferido;
+                $vencidos = $vencidos + $extract->dias_vencidos;
+                $debe = $debe + $extract->saldo_credito_diferido;
             }
 
         }
@@ -292,18 +292,14 @@ class UserController extends BaseController
     }
 
     private function excelLoad($reader){
-        ini_set('max_execution_time', 100000);
-        $data = $reader->toArray()[0];
-        unset($data['0']);
-
-        if(count($data) < 3){
-            $data['cedula'] = $data['nit'];
-            $data['pago_minimo'] = $data['valor'];
-            unset($data['nit']);
-            unset($data['valor']);
+        ini_set('max_execution_time', 0);
+        ini_set('memory_limit', '-1');
+        $dataReader = $reader->toArray();
+        foreach($dataReader as $key => $data){
+            unset($dataReader[$key]['0']);
         }
-
-        return $data;
+        return $dataReader;
+        
     }
 
 }

@@ -434,6 +434,7 @@ img, .img-slider{
 }
 
 .Header-nav {
+    display : none;
     background: rgba(255, 255, 255, 0.96);
     height: 100%;
     left: 0;
