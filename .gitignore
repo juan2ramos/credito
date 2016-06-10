@@ -16,3 +16,4 @@ Thumbs.db
 /public/upload/
 *.sql
 /node_modules/
+/public/toUpload/

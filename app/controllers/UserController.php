@@ -243,26 +243,20 @@ class UserController extends BaseController
     {
         DB::table('extracts')->truncate();
         $file = Input::file('file');
+        $this->insertExcel($file, 'extracts');
+        shell_exec("cd /usr/share/nginx/html/credito/; php artisan insert:excel extracts");
 
-        $data = Excel::load($file, function($reader)  {
-            Extract::insert($this->excelLoad($reader));
-        });
-
-        if($data) return Redirect::route('excel')->with('mensaje','Los extractos se guardaron correctamente');
-        return Redirect::route('excel')->with('mensaje_error','Los extractos no pudieron ser guardados');
+        return Redirect::route('excel')->with('mensaje','Los extractos se están guardando en la base de datos');
     }
 
     public function uploadExcelDaily()
     {
         DB::table('excelDaily')->truncate();
         $file = Input::file('file');
+        $this->insertExcel($file, 'daily');
+        shell_exec("cd /usr/share/nginx/html/credito/; php artisan insert:excel daily");
 
-        $data = Excel::load($file, function($reader)  {
-           ExcelDaily::insert($this->excelLoad($reader));
-        });
-
-        if($data) return Redirect::route('diario')->with('mensaje','El diario fue guardado correctamente');
-        return Redirect::route('diario')->with('mensaje_error','El diario no pudo ser guardado');
+        return Redirect::route('diario')->with('mensaje','El diario se está guardando en la base de datos');
     }
 
     public function showState()
@@ -291,15 +285,11 @@ class UserController extends BaseController
         return View::make('back.userCard', compact('users','points'));
     }
 
-    private function excelLoad($reader){
-        ini_set('max_execution_time', 0);
-        ini_set('memory_limit', '-1');
-        $dataReader = $reader->toArray();
-        foreach($dataReader as $key => $data){
-            unset($dataReader[$key]['0']);
-        }
-        return $dataReader;
-        
-    }
+    private function insertExcel($file, $name){
+        $folder = $_SERVER['DOCUMENT_ROOT'] . "/toUpload";
+        if(!is_dir($folder)) mkdir($folder, 0777, true);
 
+        $fileName = $name . "." .  $file->getClientOriginalExtension();
+        $file->move($folder, $fileName);
+    }
 }

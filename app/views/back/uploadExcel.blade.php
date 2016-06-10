@@ -2,13 +2,11 @@
 @section('title') Solicitud de Credito @stop
 @section('content')
     {{ Session::get('mensaje') }}
-    {{ Session::get('mensaje_error') }}
-    @if($errors->first())
 
+    @if($errors->first())
             @if($errors->first('files'))
                 <p>Ingrese los archivos requeridos</p>
             @endif
-
     @endif
 
 

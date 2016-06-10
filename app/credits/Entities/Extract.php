@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: juan2ramos
- * Date: 11/03/15
- * Time: 6:17 PM
- */
 
 namespace credits\Entities;
-
 
 class Extract extends \Eloquent{
 

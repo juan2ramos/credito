@@ -3,7 +3,6 @@
 
 class ExcelDaily extends \Eloquent
 {
-
-    protected $table='excelDaily';
-    protected $fillable = array('cedula','Pago_Minimo');
+    protected $table = 'excelDaily';
+    protected $fillable = ['cedula','Pago_Minimo'];
 }
