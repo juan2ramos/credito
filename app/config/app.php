@@ -129,7 +129,7 @@ return array(
         'BrainSocket\BrainSocketServiceProvider',
 #	'Aws\Laravel\AwsServiceProvider',
         'Thujohn\Pdf\PdfServiceProvider',
-
+        //'Barryvdh\DomPDF\ServiceProvider',
         /* Custom */
 
         'credits\Components\ACL\ACLServiceProvider',
@@ -209,6 +209,7 @@ return array(
         'Date' => 'Jenssegers\Date\Date',
         'PDF' => 'Thujohn\Pdf\PdfFacade',
 #	 'AWS' => 'Aws\Laravel\AwsFacade',
+        //'PDF' => 'Barryvdh\DomPDF\Facade'
 
     ),
 

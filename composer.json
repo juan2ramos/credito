@@ -14,7 +14,7 @@
     "nesbot/carbon": "~1.15",
     "laravel/framework": "4.2.*",
     "maatwebsite/excel": "1.*",
-    "dompdf/dompdf" : "0.6.*",
+    "barryvdh/laravel-dompdf": "0.4.*",
     "brainboxlabs/brain-socket": "v1.0.0",
     "jenssegers/date": "~2.0",
     "thujohn/pdf": "dev-master"

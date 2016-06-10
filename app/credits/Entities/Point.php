@@ -3,5 +3,5 @@
 
 class Point extends \Eloquent
 {
-    protected $fillable = array('location_id','name');
+    protected $fillable = ['location_id','name'];
 }

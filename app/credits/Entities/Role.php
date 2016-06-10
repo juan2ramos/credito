@@ -3,5 +3,5 @@
 
 class Role extends \Eloquent
 {
-    protected $fillable = array('name','priority');
+    protected $fillable = ['name','priority'];
 }

@@ -50,32 +50,23 @@ class UserController extends BaseController
 
     public function userShow($id)
     {
-        $user = $this->userRepo->find($id);
+        $user = User::find($id);
         $credits = $user->CreditRequest()->get();
-        $locations= ['0'=>'Sin region']+Location::all()->lists('name','id');
-        $location=Location::where('id', '=', $user->location)->first();
-        $points=Point::all();
-        if($location)
-            $location=$location->name;
-        else
-            $location="No asignada";
+        $locations = ['0'=>'Sin region'] + Location::all()->lists('name','id');
 
-        $extracts = Extract::all();
-        $vencidos = 0 ;
+        $extracts = Extract::where('nit', $user->identification_card)->get();
+        $points = Point::all();
+        $vencidos = 0;
         $debe = 0;
         foreach($extracts as $extract)
         {
-            if($extract->nit==$user->identification_card)
-            {
-                if($extract->dias_vencidos>0)
-                {
-                    $vencidos=$vencidos+$extract->dias_vencidos;
-                    $debe=$debe+$extract->saldo_credito_diferido;
-                }
-            }
+            $vencidos += intval($extract->dias_vencidos);
+            $debe += intval($extract->saldo_credito_diferido);
         }
 
-       $disabled = (Auth::user()->roles_id == 3)?'disabled':'';
+        if($user->location) $location = Location::where('id', $user->location)->first();
+        else $location['name'] = 'No asignada';
+        $disabled = (Auth::user()->roles_id == 3)?'disabled':'';
 
         return View::make('back.user', compact('user', 'credits','location','locations','extracts','vencidos','debe','points','disabled'));
     }
@@ -108,21 +99,10 @@ class UserController extends BaseController
 
     public function usersExcel()
     {
-        $data= User::where('roles_id','=','4')->select('card as Tarjeta','identification_card as Cedula','name as Nombre 1', 'second_name as Nombre 2','last_name as Apellido 1','second_last_name as Apellido 2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->get();
-        $locations=Location::all();
+        $users = $this->exportUsers();
 
-        foreach($data as $user)
-        {
-            foreach($locations as $location)
-            {
-                if($user->location==$location->id)
-                    $user->location=$location->name;
-            }
-        }
-        Excel::create('usuarios', function($excel) use($data){
-
-            $excel->sheet('Excel sheet', function($sheet) use($data){
-
+        Excel::create('usuarios', function($excel) use($users){
+            $excel->sheet('Excel sheet', function($sheet) use($users){
                 $sheet->cells('A1:H1', function($cells) {
                     $cells->setFontWeight('bold');
                     $cells->setBackground('#e80e8a');
@@ -132,35 +112,15 @@ class UserController extends BaseController
                 });
                 $sheet->setHeight(1,20);
                 $sheet->setAutoSize(true);
-                $sheet->fromArray($data);
+                $sheet->fromArray($users);
                 $sheet->setOrientation('landscape');
             });
-
-        })->export('xls');
+        })->export('xlsx');
     }
     public function usersPdf()
     {
-        $data= User::where('roles_id','=','4')->select('identification_card','name', 'second_name','last_name','second_last_name','email','mobile_phone','location','created_at')->get();
-        $locations=Location::all();
-        foreach($data as $user)
-        {
-            foreach($locations as $location)
-            {
-                if($user->location==$location->id)
-                    $user->location=$location->name;
-            }
-
-        }
-        Excel::create('usuarios', function($excel) use($data){
-
-            $excel->sheet('Excel sheet', function($sheet) use($data){
-                $sheet->setAutoSize(true);
-                $sheet->fromArray($data, null, 'A1', true);
-                $sheet->setOrientation('landscape');
-
-            });
-
-        })->export('pdf');
+        $users = $this->exportUsers();
+        $this->usersExcel();
     }
 
     public function updateUser($id)
@@ -245,7 +205,6 @@ class UserController extends BaseController
         $file = Input::file('file');
         $this->insertExcel($file, 'extracts');
         shell_exec("cd /usr/share/nginx/html/credito/; php artisan insert:excel extracts");
-
         return Redirect::route('excel')->with('mensaje','Los extractos se están guardando en la base de datos');
     }
 
@@ -254,7 +213,7 @@ class UserController extends BaseController
         DB::table('excelDaily')->truncate();
         $file = Input::file('file');
         $this->insertExcel($file, 'daily');
-        shell_exec("cd /usr/share/nginx/html/credito/; php artisan insert:excel daily");
+            shell_exec("cd /usr/share/nginx/html/credito/; php artisan insert:excel daily");
 
         return Redirect::route('diario')->with('mensaje','El diario se está guardando en la base de datos');
     }
@@ -291,5 +250,18 @@ class UserController extends BaseController
 
         $fileName = $name . "." .  $file->getClientOriginalExtension();
         $file->move($folder, $fileName);
+    }
+
+    private function exportUsers(){
+        $users = User::where('roles_id','=','4')->select('card as Tarjeta','identification_card as Cedula','name as Nombre 1', 'second_name as Nombre 2','last_name as Apellido 1','second_last_name as Apellido 2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->get();
+        foreach($users as $key => $user){
+            if($user->Ciudad)
+                $city = Location::find($user->Ciudad)->name;
+            else
+                $city = 'Sin región';
+            $users[$key]['Ciudad'] = $city;
+        }
+
+        return $users;
     }
 }

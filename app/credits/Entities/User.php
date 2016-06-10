@@ -24,19 +24,22 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
      *
      * @var array
      */
-    protected $hidden = array('password', 'remember_token');
+    protected $hidden = ['password', 'remember_token'];
 
     public function setPasswordAttribute($value)
     {
         if (!empty ($value)) {
             $this->attributes['password'] = \Hash::make($value);
-
         }
     }
 
     public function CreditRequest()
     {
-        return $this->hasOne('credits\Entities\CreditRequest');
+        return $this->hasOne(CreditRequest::class);
+    }
+
+    public function location(){
+        return $this->hasOne(Location::class);
     }
 
 }

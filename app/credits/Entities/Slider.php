@@ -3,5 +3,5 @@
 
 class Slider extends \Eloquent
 {
-    protected $fillable = array('number_slider','files');
+    protected $fillable = ['number_slider','files'];
 }

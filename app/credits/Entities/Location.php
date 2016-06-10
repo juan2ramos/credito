@@ -3,7 +3,9 @@
 
 class Location extends \Eloquent
 {
-    protected $fillable = array('id','name');
+    protected $fillable = ['id','name'];
 
-
+    public function users(){
+        return $this->belongsTo(User::class);
+    }
 }
