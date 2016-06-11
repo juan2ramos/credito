@@ -33,10 +33,8 @@
                     <tr>
                         <td>{{$location->id}}</td>
                         <td>{{$location->name}}</td>
-                        <td>{{ HTML::link(URL::to('deleteLocation/'.$location->id), '',array('class'=>'icon-trash-empty','onClick'=>"return confirm('Estas seguro de eliminar el rol?')")) }}</td>
+                        <td><a href="{{route('deleteLocation', $location->id)}}" class="icon-trash-empty" onclick="return confirm('Estas seguro de eliminar la region?')"></a></td>
                     </tr>
-
-
                 @endforeach
                 </tbody>
             </table>
@@ -44,7 +42,7 @@
 
         <div class="Input-more">
 
-            {{Form::open(array('url'=>'Regiones','method'=>'POST'))}}
+            {{Form::open(['route'=>'location','method'=>'POST'])}}
             {{Form::text('name','',['id' => 'Input-more','placeholder' => 'Ingrese una nueva region'])}}
             <button class="u-more">+</button>
             {{Form::close()}}

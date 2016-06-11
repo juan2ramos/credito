@@ -26,89 +26,24 @@
             </tr>
             </thead>
             <tbody>
-            {{-- @foreach($showRequest as $credit)
-                 @foreach($showRequest as $user)
-                     @if($user->id==$credit->CreditRequest["user_id"])
-                         @if($credit->CreditRequest["priority"]==1)
-                             <tr style="background: rgba(223, 130, 130, 0.21)">
-                                 <td>{{$credit->user_name}}</td>
-                                 <td>{{$credit->identification_card}}</td>
-                                 <td>
-                                     @if($credit->CreditRequest["priority"]==1)
-                                         Alta
-                                     @else
-                                         Baja
-                                     @endif
-                                 </td>
-                                 <td>Pendiente por aprobar</td>
-                                 <td>
-                                     @foreach($locations as $location)
-                                         @if($credit->CreditRequest["location"]==$location->id)
-                                             {{$location->name}}
-                                         @endif
-                                     @endforeach
-                                 </td>
-                                 <td>{{$credit->email}}</td>
-                                 <td>{{ HTML::link(URL::to('showCreditRequest/'.$credit->id), '',array('class'=>'icon-folder-open')) }}</td>
-                             </tr>
-                         @endif
-                     @endif
-                 @endforeach
-             @endforeach
-             @foreach($showRequest as $credit)
-                 @foreach($showRequest as $user)
-                     @if($user->id==$credit->CreditRequest["user_id"])
-                         @if($credit->CreditRequest["priority"]==0)
-                             <tr>
-                                 <td>{{$credit->user_name}}</td>
-                                 <td>{{$credit->identification_card}}</td>
-                                 <td>
-                                     @if($credit->CreditRequest["priority"]==1)
-                                         Alta
-                                     @else
-                                         Baja
-                                     @endif
-                                 </td>
-                                 <td>Pendiente por aprobar</td>
-                                 <td>
-                                     @foreach($locations as $location)
-                                         @if($credit->CreditRequest["location"]==$location->id)
-                                             {{$location->name}}
-                                         @endif
-                                     @endforeach
-                                 </td>
-                                 <td>{{$credit->email}}</td>
-                                 <td>{{ HTML::link(URL::to('showCreditRequest/'.$credit->id), '',array('class'=>'icon-folder-open')) }}</td>
-                             </tr>
-                         @endif
-                     @endif
-                 @endforeach
-             @endforeach
- --}}
+
             @foreach($showRequest as $user)
-
-                        <tr>
-                            <td>{{$user->user_name}}</td>
-                            <td>{{$user->identification_card}}</td>
-                            <td>
-
-                                    Alta
-
-                            </td>
-                            <td>Pendiente por aprobar</td>
-                            <td>
-                                @foreach($locations as $location)
-                                    @if($user->location==$location->id)
-                                        {{$location->name}}
-                                    @endif
-                                @endforeach
-                            </td>
-                            <td>{{$user->email}}</td>
-                            <td>{{ HTML::link(URL::to('showCreditRequest/'.$user->id), '',array('class'=>'icon-folder-open')) }}</td>
-                        </tr>
-
+                 <tr>
+                     <td>{{$user->user_name}}</td>
+                     <td>{{$user->identification_card}}</td>
+                     <td> Alta </td>
+                     <td> Pendiente por aprobar </td>
+                     <td>
+                         @foreach($locations as $location)
+                             @if($user->location==$location->id)
+                                 {{$location->name}}
+                             @endif
+                         @endforeach
+                     </td>
+                     <td>{{$user->email}}</td>
+                     <td><a href="{{route('showCreditRequest', $user->id)}}" class="icon-folder-open"></a></td>
+                 </tr>
             @endforeach
-
             </tbody>
         </table>
     </div>

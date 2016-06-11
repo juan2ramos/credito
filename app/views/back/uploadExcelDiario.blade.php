@@ -26,7 +26,7 @@
         </div>
         <div class="pop-up ">
             <p>Excel Diario</p>
-            {{ HTML::image('img/image-file.svg','', array ('id' => 'image-file')) }}
+            {{ HTML::image('/img/image-file.svg','', array ('id' => 'image-file')) }}
             {{Form::file('file',array('id'=>'files','name'=>'file'))}}
         </div>
         <div id="request-xsl" > </div>
@@ -52,7 +52,7 @@
                 reader.onload = (function(theFile) {
                     return function(e) {
                         // Creamos la imagen.
-                        document.getElementById("request-xsl").innerHTML = ['<img src="img/xls.png" />'].join('');
+                        document.getElementById("request-xsl").innerHTML = ['<img src="/img/xls.png" />'].join('');
                     };
                 })(f);
 

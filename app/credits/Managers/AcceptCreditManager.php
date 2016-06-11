@@ -33,27 +33,15 @@ class AcceptCreditManager extends BaseManager
 
     public function saveCredit($id,$responsible)
     {
-        $credit=CreditRequest::where('user_id', '=', $id)->first();
-        $min=General_variables::where('name','=','min')->first();
-        $max=General_variables::where('name','=','max')->first();
+        $credit=CreditRequest::where('user_id', $id)->first();
+        $min=General_variables::where('name','min')->first();
+        $max=General_variables::where('name','max')->first();
 
         $data = $this->prepareData($this->data);
         $this->entity->fill($data);
         $this->entity->credit_id=$credit->id;
 
-        /*$i = $credit->monthly_income ; //ingresos
-        $e = $credit->monthly_expenses; // Egresos
-        $min=$min->value; //variable general de minimo valor que presta el credito
-        $max=$max->value;//variable general de maximo valor que presta el credito
-        $r = $i - $e;
-
-        if ($r > $max){
-            $credit->value = $min;
-        }else{
-
-            $credit->value = $this->roundValue($r);
-        }*/
-            $credit->value=300000;
+        $credit->value=300000;
         $credit->update();
         $this->save();
         $credit->state=1;

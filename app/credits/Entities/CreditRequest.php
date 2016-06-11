@@ -1,5 +1,6 @@
-<?php namespace credits\Entities;
+<?php
 
+namespace credits\Entities;
 
 class CreditRequest extends \Eloquent
 {
@@ -9,5 +10,4 @@ class CreditRequest extends \Eloquent
     public function user(){
         return $this->belongsTo(User::class);
     }
-
 }

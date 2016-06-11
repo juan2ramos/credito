@@ -21,7 +21,6 @@
             notify.querySelector('.text-notify').innerText = 'Los datos estan incorrectos {{$errors->first('identification_card')}} {{$errors->first('email')}}{{$errors->first('name')}} {{Session::get('message_error')}}';
         </script>
     @endif
-
     <div class="Back-content">
         {{ HTML::link(URL::to('admin/usuarios'), 'atras',array('class'=>'login-button')) }}
     </div>

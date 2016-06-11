@@ -23,27 +23,34 @@ class UserController extends BaseController
         $this->userRepo = $userRepo;
     }
 
-    public function signUp()
-    {
-        return View::make('front/sign-up');
-    }
-
     public function showAll()
     {
-        $users = $this->userRepo->userClients();
+        $users = User::where('roles_id', '4')->paginate(20);
         return View::make('back.users', compact('users'));
-
     }
+
     public function showAllAdmin()
     {
-        $users = $this->userRepo->userAdmin();
+        $users = User::where('roles_id', '<>', '4')->paginate(20);
         return View::make('back.users', compact('users'));
 
     }
 
     public function searchUsers()
     {
-        $users = $this->userRepo->searchUsers();
+        $search = \Input::get('search');
+        if(!$search)
+            return Redirect::back();
+
+        $users = User::where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('last_name', 'like', '%' . $search . '%')
+                  ->orWhere('email', '=', '%' . $search . '%')
+                  ->orWhere('second_name', 'like', '%' . $search . '%')
+                  ->orWhere('second_last_name', 'like', '%' . $search . '%')
+                  ->orWhere('identification_card', 'like', '%' . $search . '%');
+        })->paginate(10);
+
         return View::make('back.users', compact('users'));
     }
 
@@ -80,8 +87,8 @@ class UserController extends BaseController
 
     public function createUser()
     {
-        $UserManager=new NewUserManager(new User(),Input::all());
-        $userValidator=$UserManager->isValid();
+        $UserManager = new NewUserManager(new User(),Input::all());
+        $userValidator = $UserManager->isValid();
         if($userValidator)
             return Redirect::to('admin/nuevo-usuario')->withErrors($userValidator)->withInput();
 
@@ -119,22 +126,18 @@ class UserController extends BaseController
     }
     public function usersPdf()
     {
-        $users = $this->exportUsers();
         $this->usersExcel();
     }
 
     public function updateUser($id)
     {
-
-        $user=new UploadUserManager(new User(),Input::all());
-        $userValidator=$user->isValid();
-
+        $data = Input::all();
+        $user = new UploadUserManager($data);
+        $userValidator = $user->isValid(); 
         if($userValidator)
-        {
             return Redirect::to('/admin/usuarios/'.$id)->withErrors($userValidator)->withInput();
-
-        }
-        $updateUser=$user->uploadUser($id,Auth::user()->roles_id);
+        
+        $updateUser = $user->uploadUser($id , Auth::user()->roles_id);
         if($updateUser)
         {
             new LogRepo(
@@ -152,13 +155,12 @@ class UserController extends BaseController
 
     public function updateClient($id)
     {
-
-        $user=new cardUserManager(new User(),Input::only('card'));
-        $userValidator=$user->isValid();
+        $user = new cardUserManager(new User(),Input::only('card'));
+        $userValidator = $user->isValid();
         if($userValidator)
             return Redirect::to('Actualizar/'.$id)->withErrors($userValidator)->withInput();
 
-        $updateUser=$user->uploadUser($id,Auth::user()->roles_id);
+        $updateUser = $user->uploadUser($id,Auth::user()->roles_id);
 
         if($updateUser)
         {
@@ -221,28 +223,29 @@ class UserController extends BaseController
     public function showState()
     {
         $users = User::all();
-        $credit = CreditRequest::where('user_id','=',Auth::user()->id)->first();
-        $extracts = Extract::where('nit','=',Auth::user()->identification_card)->get();
-        $vencidos = 0 ;
+        $credit = CreditRequest::where('user_id' , Auth::user()->id)->first();
+        $extracts = Extract::where('nit' , Auth::user()->identification_card)->get();
+
+        $vencidos = 0;
         $debe = 0;
+
         foreach($extracts as $extract)
         {
-            if($extract->dias_vencidos>0)
-            {
-                $vencidos = $vencidos + $extract->dias_vencidos;
-                $debe = $debe + $extract->saldo_credito_diferido;
-            }
-
+            $vencidos += intval($extract->dias_vencidos);
+            $debe += intval($extract->saldo_credito_diferido);
         }
+
         return View::make('front.state',compact('extracts','vencidos','debe','users','credit'));
     }
 
     public function searchUsersCard()
     {
-        $users  = User::where('card','=',0)->get();
+        $users  = User::where('card', 0)->paginate(10);
         $points = Point::all();
         return View::make('back.userCard', compact('users','points'));
     }
+
+    /**************** Funciones privadas *****************/
 
     private function insertExcel($file, $name){
         $folder = $_SERVER['DOCUMENT_ROOT'] . "/toUpload";
@@ -261,7 +264,6 @@ class UserController extends BaseController
                 $city = 'Sin región';
             $users[$key]['Ciudad'] = $city;
         }
-
         return $users;
     }
 }

@@ -13,14 +13,14 @@ class SliderController extends BaseController
     public function showSlider()
     {
         $sliders = Slider::all();
-        $i=0;
-        $select=[0=>"no colocar"];
+        $i = 0;
+        $select = [ 0 => "no colocar"];
         if(count($sliders))
         {
             foreach($sliders as $slider)
             {
                 $i++;
-                $select=$select+[$i=>"".$i."°"];
+                $select = $select+[$i=>"".$i."°"];
             }
         }
         return View::make('front.slider',compact('sliders','select'));
@@ -59,11 +59,9 @@ class SliderController extends BaseController
 
     public function deleteSlider($id)
     {
-        $slider=Slider::find($id);
+        $slider = Slider::find($id);
         if($slider->delete())
-        {
             return Redirect::route('slider')->with(array('mensaje' => 'La imagen fue eliminada'));
-        }
         return Redirect::route('slider')->with(array('mensaje' => 'No se pudo eliminar la imagen'));
     }
 }

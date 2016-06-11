@@ -32,19 +32,18 @@
             {{Form::close()}}
         </section>
         <section  id="slider-edit">
-            {{ Form::open(array('name'=>'slider-form','route' => 'administratorSlider', 'method' => 'POST','class'=>'form-slider')) }}
-            <div class="hidden">{{$i=0;}}</div>
+            {{ Form::open(['name'=>'slider-form','route' => 'administratorSlider', 'method' => 'POST','class'=>'form-slider']) }}
+
             @if(count($sliders))
-                @foreach($sliders as $slider)
+                @foreach($sliders as $key => $slider)
                     <section>
-                        <img src="sliders/{{$slider->files}}" >
+                        <img src="{{url('sliders/' . $slider->files)}}" >
                         <span class="close-button-slider">
                             <span class="close-line-slider"></span>
                             <span class="close-line1-slider"></span>
                         </span>
-                        {{ HTML::link(URL::to('administratorSlider/'.$slider->id), 'del',array('id'=>'slider-delete')) }}
-                        {{ Form::select("$i", $select, $slider->number_slider, array('class' => 'number_slider')) }}
-                        <div class="hidden">{{$i++;}}</div>
+                        <a href="{{route('deleteSlider', $slider->id)}}" id="slider-delete">del</a>
+                        <div class="hidden">{{$key}}</div>
                     </section>
                 @endforeach
             @endif
@@ -53,9 +52,7 @@
             </button>
             {{Form::close()}}
         </section>
-
     </section>
-
 @stop
 
 @section('javascript')

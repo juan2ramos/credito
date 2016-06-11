@@ -14,8 +14,6 @@ abstract class BaseManager
     {
         $this->entity = $entity;
         $this->data = $data;
-        //$this->data = array_only($data, array_keys($this->getRules()));
-
     }
 
     abstract public function getRules();
@@ -27,11 +25,27 @@ abstract class BaseManager
         $validation = \Validator::make($this->data, $rules,$message);
         if ($validation->fails()) {
            return $validation->errors();
-            //throw new ValidationException ('Error en los datos', $validation->messages());
         }
         
         return false;
+    }
 
+    public function prepareData($data)
+    {
+        return $data;
+    }
+    public function getErrors(){
+        return $this->errors;
+    }
+
+
+    public function save()
+    {
+        !$this->isValid();
+        $this->entity->fill($this->prepareData($this->data));
+        $this->entity->save();
+
+        return true;
     }
 
     public function isValidFile(){
@@ -54,28 +68,6 @@ abstract class BaseManager
             $i++;
         }
         $this->errors = $messages;
-
-
         return $return;
     }
-
-    public function prepareData($data)
-    {
-        return $data;
-    }
-    public function getErrors(){
-        return $this->errors;
-    }
-
-    public function save()
-    {
-        !$this->isValid();
-        $this->entity->fill($this->prepareData($this->data));
-        $this->entity->save();
-
-        return true;
-
-    }
-
-
 }

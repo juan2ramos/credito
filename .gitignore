@@ -3,7 +3,6 @@
 /public/sliders/
 /public/users/
 /vendor
-public/sliders/
 app/config/database.php
 composer.phar
 composer.lock
@@ -16,3 +15,4 @@ Thumbs.db
 /public/upload/
 *.sql
 /node_modules/
+/public/sliders/

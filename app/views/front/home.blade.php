@@ -15,23 +15,18 @@
 
     <div class="Content-home">
         <div id="slider">
-                @for($i=0;$i<count($slidersArrays);$i++)
-                    @if($slidersArrays[$i]>0)
-
-                        <img class="img-slider" src="sliders/{{$slidersName[$i]}}" />
-
-                    @endif
-                @endfor
-                @for($i=0;$i<count($slidersArrays);$i++)
-                    @if($i==0)
-                        <span  class="slider sliderValid">0</span>
+                @foreach($sliders as $slider)
+                    <img class="img-slider" src="sliders/{{$slider['files']}}" />
+                @endforeach
+                @foreach($sliders as $key => $slider)
+                    @if($key == 0)
+                        <span class="slider sliderValid">0</span>
                     @else
-                        <span  class="slider ">{{$i}}</span>
+                        <span class="slider">{{$key}}</span>
                     @endif
-                @endfor
+                @endforeach
             <span id="back"><</span>
             <span id="next">></span>
-
         </div>
         <div class="content-sign-up">
             @if(Auth::user())
@@ -41,7 +36,7 @@
                     <section class="content-inf">
                         <figure>
                             <a href="">
-                                @if(Auth::user()->photo!="")
+                                @if(Auth::user()->photo != "")
                                 {{ HTML::image('users/'.Auth::user()->photo,'',array('id'=>'')) }}
                                 @else
                                 {{ HTML::image('users/profile-default.png','',array('id'=>'')) }}
@@ -54,18 +49,16 @@
                             <p class="title-body">{{Auth::user()->name}} {{Auth::user()->last_name}}</p>
                             <p class="title">Cedula de ciudadania:</p>
                             <p class="title-body">{{Auth::user()->identification_card}}</p>
-                            @if(Auth::user()->card!=0)
+                            @if(Auth::user()->card != 0)
                                 <p class="title">Ya tienes tarjeta</p>
                             @endif
                         </div>
                     </section>
-                    <!--
-                    <a class="button-edit" href="{{route('update',Auth::user()->id)}}">EDITAR PERFIL</a>-->
                 </section>
             @else
                 <section class="Login ">
                     <p>INICIAR SESION</p>
-                    {{ Form::open(['url' => 'login', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
+                    {{ Form::open(['route' => 'login', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
 
                     <div class="">
                         {{Form::label('email','Correo Electronico.',array('id'=>'email'))}}
@@ -89,18 +82,16 @@
             @endif
             <div class="content-creditRequest" style="background:rgba(13, 12, 12, 0.03) !important; border: 2px solid rgba(204, 204, 204, 0.53);">
                 @if(Auth::user())
-                    @if(Auth::user()->roles_id<4)
-                        @if(Auth::user()->roles_id==1)
+                    @if(Auth::user()->roles_id < 4)
+                        @if(Auth::user()->roles_id == 1)
                             <p class="type-account">Super administrador<p>
                         @endif
-                        @if(Auth::user()->roles_id==2)
+                        @if(Auth::user()->roles_id == 2)
                             <p class="type-account">Administrador</p>
                         @endif
-                        @if(Auth::user()->roles_id==3)
+                        @if(Auth::user()->roles_id == 3)
                             <p class="+">Punto de Venta</p>
                         @endif
-
-
                     @else
                         <section class="home-request">
                             <h2>PROXIMO PAGO</h2>
@@ -114,15 +105,11 @@
                                     <p>INMEDIATO</p>
                                     <p>$ {{$diario->pago_minimo}}</p>
                                     <div><p class="state-home">EN MORA.</p></div>
-
                                 @else
                                     <p>/-/-/</p>
                                     <p>$ 0</p>
                                     <div ><p class="state-home" style="background: #008000 !important;">ACTIVO.</p></div>
                                 @endif
-
-
-
                             </div>
                             <a href="{{route('state')}}">ESTADO DE CUENTA</a>
                         </section>
@@ -158,10 +145,7 @@
                 <img src="{{asset('img/footer.jpg')}}">
             </a>
         </div>
-
     </div>
-
-
 @stop
 
 @section('javascript')

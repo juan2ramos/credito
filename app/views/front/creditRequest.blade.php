@@ -8,7 +8,7 @@
 
         <h1>Solicitud de credito</h1>
 
-        {{Form::open(array('url'=>'credito','method'=>'POST','files'=>true,'class'=>"Credito-form",'enctype'=>'multipar/form-data'))}}
+        {{Form::open(array('route'=>'credit','method'=>'POST','files'=>true,'class'=>"Credito-form",'enctype'=>'multipar/form-data'))}}
 
         <section class="Credit-section u-CreditSection">
 

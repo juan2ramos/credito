@@ -2,10 +2,9 @@
 
 @section('content')
 
-
     @if($errors->first('accept'))
         <section class="accept-links">
-            <a href="reprobate/{{$user->id}}" class="u-button">Reprobar el credito</a>
+            <a href="{{route('reprobateCredit', $user->id)}}" class="u-button">Reprobar el credito</a>
         </section>
     @endif
 
@@ -17,7 +16,7 @@
 
     <section class="acceptSection">
         <h2>datos personales</h2>
-        {{Form::open(array('url'=>'showCreditRequest/'.$user->id,'method'=>'POST','class'=>""))}}
+        {{Form::open(['route'=> ['acceptCredit', $user->id],'method'=>'POST','class'=>""])}}
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>

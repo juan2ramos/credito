@@ -56,8 +56,12 @@ class insertExcel extends Command {
 		}
 
 		Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
-			$m->to('carterainnova@innova-quality.com.co', 'Creditos Lilipink')->subject('Notificación Lilipink');
+			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
 		});
+
+		/*Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
+			$m->to('carterainnova@innova-quality.com.co', 'Creditos Lilipink')->subject('Notificación Lilipink');
+		});*/
 
 		unlink($dir . $doc);
 		if(!is_dir($dir)) rmdir($dir);

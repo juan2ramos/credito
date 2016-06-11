@@ -29,12 +29,11 @@ class AuthController extends BaseController
     {
         $userRepo = new UserRepo();
         $validator = $userRepo->passwordRestart(Input::get('email'));
-        $data=['link'=>$validator['link']];
+        $data = ['link' => $validator['link']];
         if($validator['return'])
         {
             Mail::send('emails.password', $data, function ($message) {
                 $message->to(Input::get('email'), 'creditos lilipink')->subject('correo de restauracion de su password');
-
             });
         }
         new LogRepo(
@@ -45,9 +44,8 @@ class AuthController extends BaseController
                 'method' => 'password'
             ]
         );
-            return Response::json(['success' => $validator['return']]);
-
-
+        
+        return Response::json(['success' => $validator['return']]);
     }
 
     public function restorePassword($restore_password)

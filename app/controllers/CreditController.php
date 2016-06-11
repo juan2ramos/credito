@@ -23,20 +23,19 @@ class CreditController extends BaseController
 	//MOSTRAR FORMULARIO CREDIT REQUEST
 	public function index()
 	{
-
 		$points =  Point::all()->toArray();
 		$type = ["tipo de documento" => "Tipo de documento"] + [0 => "Cedula"] + [1 => "Cedula de extranjeria"];
 		$locations = ['location' => 'Seleccione una ciudad'] + Location::all()->lists('name', 'id');
 		return View::make('front.creditRequest', compact('type', 'locations', 'points'));
-
 	}
+
 	public function updateValueCredit($id)
 	{
-		$creditManager = new quotaCreditUploadManager(new CreditRequest(),Input::only('creditValue'));
+		$creditManager = new quotaCreditUploadManager(new CreditRequest(), Input::only('creditValue'));
 		$creditValidation = $creditManager->isValid();
-		if ($creditValidation) {
+		if ($creditValidation)
 			return Redirect::route('userShow', [$id])->withErrors($creditValidation)->withInput();
-		}
+		
 		$user = Auth::user();
 		if($creditManager->saveCredit($id)){
 			new LogRepo(
@@ -132,29 +131,11 @@ class CreditController extends BaseController
 	{
 
 		$locations = Location::all();
-		if (Auth::user()->roles_id > 1) {
-			$showRequest = DB::table('creditRequest')
-				->join('users', 'users.id', '=', 'creditRequest.user_id')
-				->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `state`=''")
-				->get();
-			/*
-            $showRequest = User::with(['CreditRequest' => function($query)
-            {
-                $query->where('state', '=','')
-                    ->where('location','=', Auth::user()->location );
-            }])->get();*/
-		} else {
-			$showRequest = DB::table('creditRequest')
-				->join('users', 'users.id', '=', 'creditRequest.user_id')
-				->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `state`=''")
-				->get();
-			/* User::with(['CreditRequest' => function($query)
-            {
-                $query->whereRaw('state = "" and created_at > "2015-10-15"');
-            #where('state', '=','')->
-            #where('created_at', '>','2015-11-15');
-            }])->take(100)->get();*/
-		}
+		$showRequest = DB::table('creditRequest')
+			->join('users', 'users.id', '=', 'creditRequest.user_id')
+			->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `state`=''")
+			->get();
+
 		foreach ($showRequest as $user) {
 			if (isset($user->CreditRequest)) {
 				$date = $this->date($user->CreditRequest["created_at"]);
@@ -163,8 +144,7 @@ class CreditController extends BaseController
 				}
 			}
 		}
-		#echo('<pre>');
-		#dd($showRequest);
+
 		return View::make('front.request', compact('showRequest', 'locations'));
 	}
 
@@ -190,9 +170,8 @@ class CreditController extends BaseController
 	{
 		$locationManager = new LocationManager(new Location(), Input::all());
 		$locationValidator = $locationManager->isValid();
-		if ($locationValidator) {
+		if ($locationValidator)
 			return Redirect::route('location')->withErrors($locationValidator)->withInput();
-		}
 
 		$message = $locationManager->saveLocation();
 		new LogRepo(
@@ -209,9 +188,8 @@ class CreditController extends BaseController
 	//BORRA LAS REGIONES QUE NO ESTAN SIENDO UTILIZADAS POR OTROS USUARIOS
 	public function deleteLocation($id)
 	{
-
-		$user = User::where('location', '=', $id)->first();
-		$credit = CreditRequest::where('location', '=', $id)->first();
+		$user = User::where('location', $id)->first();
+		$credit = CreditRequest::where('location', $id)->first();
 		if ($user or $credit) {
 			return Redirect::route('location')->with(array('messages' => "No se pudo eliminar la region por que esta siendo usada"));
 		}
@@ -238,7 +216,7 @@ class CreditController extends BaseController
 
 
 		if ($acceptCreditValidator) {
-			return Redirect::to('showCreditRequest/' . $id)->withErrors($acceptCreditValidator);
+			return Redirect::route('showCreditRequest', ['id' => $id])->withErrors($acceptCreditValidator);
 		}
 		$probabilityCredit = $acceptCredit->verificatorCredit($id);
 		if (isset($probabilityCredit['return']) == true) {
@@ -260,9 +238,9 @@ class CreditController extends BaseController
 
 			}
 
-			return Redirect::to('solicitud')->with(array('message' => "La solicitud de credito fue aprobada"));
+			return Redirect::route('request')->with(array('message' => "La solicitud de credito fue aprobada"));
 		}
-		return Redirect::to('showCreditRequest/' . $id)->with('message', $probabilityCredit)->withErrors($probabilityCredit)->withInput();
+		return Redirect::route('showCreditRequest', $id)->with('message', $probabilityCredit)->withErrors($probabilityCredit)->withInput();
 
 	}
 
@@ -277,14 +255,13 @@ class CreditController extends BaseController
 	//ACTUALIZAR LOS CAMBIOS DE LAS VARIABLES GENERALES DATA CREDITO Y OTROS
 	public function saveVariables($id)
 	{
-
 		$variableManager = new VariableManager(new General_variables(), Input::all());
 		$variableValidator = $variableManager->isValid();
 		if ($variableValidator) {
-			return Redirect::to('variables')->withErrors($variableValidator);
+			return Redirect::route('variables')->withErrors($variableValidator);
 		}
 		$variableManager->saveVariables($id);
-		return Redirect::to('variables')->with(array('message' => "Se actualizo correctamente"));
+		return Redirect::route('variables')->with(array('message' => "Se actualizo correctamente"));
 	}
 
 
@@ -302,7 +279,7 @@ class CreditController extends BaseController
 
 			});
 		}
-		return Redirect::to('solicitud')->with(array('message' => "el credito no fue aprobado"));
+		return Redirect::route('request')->with(array('message' => "el credito no fue aprobado"));
 	}
 
 	public static function notify()
@@ -326,8 +303,6 @@ class CreditController extends BaseController
 		if (count($dates) == 1) {
 			return false;
 		}
-
 		return true;
-		//echo $date->timespan();  // zondag 28 april 2013 21:58:16
 	}
 }

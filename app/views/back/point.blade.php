@@ -31,7 +31,7 @@
             @foreach ($points as $point)
                 <tr>
                     <td>{{$point->name}}</td>
-                    <td>{{ HTML::link(URL::to('puntos/'.$point->id), '',array('class'=>'icon-trash-empty','onClick'=>"return confirm('Estas seguro de eliminar el punto de venta?')")) }}</td>
+                    <td>{{ HTML::link(route('pointDelete', $point->id), '',array('class'=>'icon-trash-empty','onClick'=>"return confirm('Estas seguro de eliminar el punto de venta?')")) }}</td>
                 </tr>
 
             @endforeach

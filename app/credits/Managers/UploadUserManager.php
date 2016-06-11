@@ -4,7 +4,11 @@ use Carbon\Carbon;
 
 class UploadUserManager extends BaseManager
 {
-    private $role_id;
+
+    public function __construct($data)
+    {
+        parent::__construct(User::class, $data);
+    }
 
     public function getRules()
     {
@@ -40,12 +44,12 @@ class UploadUserManager extends BaseManager
         return $messages;
     }
 
-    public function uploadUser($id,$role)
+    public function uploadUser($id , $role)
     {
-        $data=$this->prepareData($this->data);
-        $user=User::find($id);
-        $photo=$data['photo'];
-        $fingerprint=$data['fingerprint'];
+        $data = $this->prepareData($this->data);
+        $user = User::find($id);
+        $photo = $data['photo'];
+        /*$fingerprint = $data['fingerprint'];
 
         if($photo || $fingerprint)
         {
@@ -60,8 +64,8 @@ class UploadUserManager extends BaseManager
         }else{
             $data["fingerprint"]=$user->fingerprint;
             $data["photo"]=$user->photo;
-        }
-        if($role==4)
+        }*/
+        if($role == 4)
         {
             if($this->date($user->updated_at))
             {
@@ -83,22 +87,16 @@ class UploadUserManager extends BaseManager
         $difference = ($created->diff($now)->days < 1)
             ? 'today'
             : $created->diffForHumans($now);
-        $dates=explode(" ",$difference);
+        $dates = explode(" ",$difference);
         if(count($dates)>1)
         {
-            if($dates[1]=="month" or $dates[1]=="months" )
+            if($dates[1] == "month" or $dates[1] == "months" )
             {
-                if($dates[0]>=1)
-                {
+                if($dates[0] >= 1)
                     return true;
-                }
-            }else{
+            } else
                 return false;
-            }
         }
         return false;
-        //echo $date->timespan();  // zondag 28 april 2013 21:58:16
     }
-
-
 }

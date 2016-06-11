@@ -73,15 +73,14 @@
                             @endif
                         </td>
                     </tr>
-
-
                 @endif
-
             @endforeach
             </tbody>
         </table>
     </div>
-    {{  $users->links(); }}
+
+    {{ $users->appends(['sort' => 'users'])->links() }}
+
     @if(Auth::user()->roles_id==1)
         <div class="wrap-content ">
             <a href="{{route('userNew')}}" class="u-more u-link">+</a>
