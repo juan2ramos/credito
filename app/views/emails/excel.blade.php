@@ -1,0 +1,1 @@
+<span style="font-size: 17px">{{$msn}}</span>

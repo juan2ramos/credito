@@ -42,14 +42,24 @@ class insertExcel extends Command {
 		$dir = $_SERVER['DOCUMENT_ROOT'] . "public/toUpload/";
 		$doc = $this->argument('table') . '.xlsx';
 
-		Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
-			if($this->argument('table') == 'extracts')
-				Extract::insert($this->validate($reader));
-			else
-				ExcelDaily::insert($this->validate($reader));
+		try {
+			Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
+				if($this->argument('table') == 'extracts')
+					Extract::insert($this->validate($reader));
+				else
+					ExcelDaily::insert($this->validate($reader));
+			});
+
+			$message = "El archivo " . $doc . " se ha guardado en la base de datos.";
+		} catch(Exception $e){
+			$message = "No se ha guardar " . $doc . ". Intenta subirlo de nuevo.";
+		}
+
+		Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
+			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
 		});
 
-		array_map('unlink', glob($dir . $doc));
+		unlink($dir . $doc);
 		if(!is_dir($dir)) rmdir($dir);
 	}
 

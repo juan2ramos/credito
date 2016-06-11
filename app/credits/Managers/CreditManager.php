@@ -58,15 +58,15 @@ class CreditManager extends BaseManager
         $data=$this->prepareData($this->data);
         if($user)
         {
-            $priority=Role::where('id', '=', $user->roles_id)->first();
-            $priority=$priority->priority;
+            $priority = Role::where('id', '=', $user->roles_id)->first();
+            $priority = $priority->priority;
             $this->entity->responsible=$user->id;
             $credit=CreditRequest::where('user_id', '=', $user->id)->first();
             if($credit)
                 return ["message"=>"no puedes solicitar mas creditos"]+["role"=>false];
 
         }else{
-            $priority=0;
+            $priority = 0;
         }
         
         $user = new User($data);

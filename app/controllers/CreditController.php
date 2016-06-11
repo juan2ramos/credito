@@ -108,6 +108,7 @@ class CreditController extends BaseController
 				}
 			}
 		}
+		
 		$messages = $message['message'];
 		$user = User::all()->last();
 		if($fingerprint){
@@ -116,7 +117,6 @@ class CreditController extends BaseController
 		}
 		$user->save();
 		return View::make('front.sendCredit', compact('messages'));
-
 	}
 
 	//SALVA LAS IMAGENES CARGADAS DEL FORMULARIO CREDIT REQUEST
