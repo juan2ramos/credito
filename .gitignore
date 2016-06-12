@@ -16,3 +16,4 @@ Thumbs.db
 *.sql
 /node_modules/
 /public/sliders/
+/app/config/app.php
