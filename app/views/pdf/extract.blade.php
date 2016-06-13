@@ -1,14 +1,36 @@
 <?php
 $due = 0;
 $lastMonth = 0;
+$todayDay = intval(date('d'));
+$todayMonth = intval(date('m'));
 ?>
+@if(intval(date('d')) == 31)
+    <?php $todayDay = 30; $todayMonth -= 1; ?>
+@endif
+
+@foreach($extracts as $extract)
+    <?php $date = explode('_', $extract->fecha_contabilizacion); ?>
+    @if($extract->fecha_contabilizacion)
+        @foreach($months as $key => $m)
+            @if(strtolower($key) == strtolower($date[0]))
+                @if($m == $todayMonth || ($m + 1 == $todayMonth && $todayDay <= 5))
+                    <?php $due += $extract->valor_compra ?>
+                @else
+                    <?php $lastMonth += $extract->valor_compra ?>
+                @endif
+            @endif
+        @endforeach
+    @endif
+@endforeach
+
+<?php $total = $due + $lastMonth ?>
 
 <html>
 <head>
     <style>
-        body{font-family: Georgia; font-weight: 100;color:#8d8d8d; font-size: 18px}
+        body{font-family: Georgia, sans-serif; font-weight: 100;color:#8d8d8d; font-size: 18px}
         .wrapper{padding: 10px 10px}
-        span{border: 1px solid #da0080; padding: 10px 0;text-align: right; text-align: center}
+        span{border: 1px solid #da0080; padding: 5px 0; text-align: center}
         table {  border-collapse: collapse;  border-spacing: 0;  }
         td, th {  vertical-align: top; height: 30px  }
         h1, h2,  th, td { font-weight:normal;margin: 0;padding: 0 }
@@ -41,7 +63,7 @@ $lastMonth = 0;
             Nombre: <span class='capitalize'>{{$user->name}} {{$user->last_name}}</span>
         </td>
         <td style=''>Fecha de facturación
-            <div style='width: 195px; display: inline-block; text-align: center; font-size: 14px; '>
+            <div style='padding-bottom:10px ;width: 195px; display: inline-block; text-align: center; font-size: 14px; '>
                 @if($day[1] == '02')
                     <span style='display: inline-block;width:30px;'> 28 </span>
                 @else
@@ -58,7 +80,7 @@ $lastMonth = 0;
             Dirección: <span class='capitalize'>{{$user->address}}</span>
         </td>
         <td>Cupo Total
-            <span> P </span>
+            <span> ${{number_format($quota, 0, '.', '.')}} </span>
         </td>
     </tr>
 
@@ -67,7 +89,7 @@ $lastMonth = 0;
             Cédula: {{$user->identification_card}}
         </td>
         <td>Cupo Disponible
-            <span> P </span>
+            <span> ${{number_format(($quota - $total), 0, '.', '.')}} </span>
         </td>
     </tr>
     <tr>
@@ -96,7 +118,7 @@ $lastMonth = 0;
     <tr class='back padding' valign='middle'>
         <td>
             PAGUE TOTAL
-            <span> ${{number_format($due + $lastMonth, 0, '.', '.')}} </span>
+            <span> ${{number_format($total, 0, '.', '.')}} </span>
         </td>
         <td>PAGO FAVOR
             <span> $0 </span>
@@ -120,7 +142,7 @@ $lastMonth = 0;
                 </thead>
                 <tbody>
                 @foreach($extracts as $extract)
-                    <?php $date = explode('_', $extract->fecha_contabilizacion); ?>
+                    <?php $date = explode('_', $extract->fecha_contabilizacion);?>
                 <tr>
                     <td>{{$extract->id}}</td>
                     @if($extract->fecha_contabilizacion)
@@ -151,7 +173,7 @@ $lastMonth = 0;
     <tr class='back'>
         <td>
             Saldo en mora
-            <span> P </span>
+            <span> ${{number_format($lastMonth, 0, '.', '.')}} </span>
         </td>
         <td>
             Gastos legales
@@ -162,7 +184,7 @@ $lastMonth = 0;
     <tr class='back'>
         <td>
             Compras del mes
-            <span> P </span>
+            <span> ${{number_format($due, 0, '.', '.')}} </span>
         </td>
         <td>
             Cargos no diferidos
