@@ -34,19 +34,20 @@ class ExtractsController extends \BaseController {
 		$user = User::whereRaw("roles_id = 4 and identification_card = {$identification}")->first();
 		$extracts = Extract::whereRaw("nit = {$identification}")->orderBy('id', 'DESC')->get();
 		$minPay = ExcelDaily::whereRaw("cedula = {$identification}")->get();
-		$quota = CreditRequest::where('user_id', $user->id)->first();
+		//$quota = CreditRequest::where('user_id', $user->id)->first();
 		
 		$day = explode('-', date("y-m-d"));
 		$data = [
 			'user' => $user,
 			'day' => $day,
 			'extracts' => $extracts,
-			'quota' => intval($quota->value),
+			//'quota' => intval($quota->value),
+			'quota' => 500000,
 			'minPay' => $minPay,
 			'months' => $this->getMonths()
 		];
 
 		if($user)
-			return PDF::load( View::make('pdf.extract', $data), 'A4', 'portrait')->show();
+			PDF::load( View::make('pdf.extract', $data), 'A4', 'portrait')->download('extracto');
 	}
 }
