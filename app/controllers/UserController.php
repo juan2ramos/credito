@@ -140,6 +140,11 @@ class UserController extends BaseController
         return Redirect::to('/admin/usuarios/'.$id)->with(array('message_error'=>"solo se puede actualizar una vez por mes"));
     }
 
+    public function peacePDF($id){
+
+        $user = User::find($id);
+        return View::make('pdf.peace')->with('user', $user);
+    }
     public function updateClient($id)
     {
         $user = new cardUserManager(new User(),Input::only('card'));

@@ -1,0 +1,1 @@
+El usuario {{$user->name}} se encuentra a paz y salvo

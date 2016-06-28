@@ -323,6 +323,11 @@
             <p>Dias vencidos: {{$vencidos}} dias</p>
 
             <p>Deuda pendiente por pagar: $ {{$debe}}</p>
+            @if(!$debe)
+                <form action="{{route('peace', $user->id)}}" method="post">
+                    <button class="u-button" style="cursor:pointer; width: 200px">Descargar paz y salvo</button>
+                </form>
+            @endif
         </section>
         @if(isset($credits[0]))
             <details style="text-align: center">

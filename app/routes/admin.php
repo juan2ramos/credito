@@ -209,3 +209,8 @@ Route::get('puntos/{id}', [
     'as' => 'pointDelete',
     'uses' => 'PointController@delete'
 ]);
+
+Route::post('paz-y-salvo/{id}', [
+    'as' => 'peace',
+    'uses' => 'UserController@peacePDF'
+]);
