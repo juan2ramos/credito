@@ -39,6 +39,14 @@ class downloadExcel extends Command {
 	 */
 	public function fire()
 	{
+		$dir = $_SERVER['DOCUMENT_ROOT'] . "public/exports/";
+		$doc = 'usuarios.xlsx';
+
+		if(is_dir($dir)){
+			unlink($dir . $doc);
+			rmdir($dir);
+		}
+
 		$users = $this->exportUsers();
 
 		Excel::create('usuarios', function($excel) use($users){
@@ -55,9 +63,9 @@ class downloadExcel extends Command {
 				$sheet->fromArray($users);
 				$sheet->setOrientation('landscape');
 			});
-		})->store('xlsx', $_SERVER['DOCUMENT_ROOT'] . 'public/exports', true);
+		})->store('xlsx', $dir, true);
 
-		$route = "exports/usuarios.xlsx";
+		$route = "exports/" . $doc;
 
 		Mail::send('emails.usersExcel', ['link' => $route], function ($m) use($route){
 			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
