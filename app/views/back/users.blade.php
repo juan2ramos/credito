@@ -3,7 +3,6 @@
 @section('content')
     @include('layout.notify')
     @if(Session::get('message'))
-
         <script>
             var notify = document.getElementById('notify');
             notify.classList.add('is-show');

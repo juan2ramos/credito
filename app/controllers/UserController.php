@@ -106,23 +106,10 @@ class UserController extends BaseController
 
     public function usersExcel()
     {
-        $users = $this->exportUsers();
+        shell_exec("cd " . $_SERVER['DOCUMENT_ROOT'] . "; cd ..; php artisan download:excel > /dev/null &");
+        $message = "Se esta creando el archivo. En unos momentos se enviara un link de descarga";
+        return Redirect::back()->with('message', $message);
 
-        Excel::create('usuarios', function($excel) use($users){
-            $excel->sheet('Excel sheet', function($sheet) use($users){
-                $sheet->cells('A1:H1', function($cells) {
-                    $cells->setFontWeight('bold');
-                    $cells->setBackground('#e80e8a');
-                    $cells->setFontColor('#ffffff');
-                    $cells->setAlignment('center');
-                    $cells->setValignment('middle');
-                });
-                $sheet->setHeight(1,20);
-                $sheet->setAutoSize(true);
-                $sheet->fromArray($users);
-                $sheet->setOrientation('landscape');
-            });
-        })->export('xlsx');
     }
     public function usersPdf()
     {
@@ -255,7 +242,7 @@ class UserController extends BaseController
     }
 
     private function exportUsers(){
-        $users = User::where('roles_id','=','4')->select('card as Tarjeta','identification_card as Cedula','name as Nombre 1', 'second_name as Nombre 2','last_name as Apellido 1','second_last_name as Apellido 2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->get();
+        $users = User::where('roles_id','4')->select('card as Tarjeta','identification_card as Cedula','name as Nombre 1', 'second_name as Nombre 2','last_name as Apellido 1','second_last_name as Apellido 2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->get();
         foreach($users as $key => $user){
             if($user->Ciudad)
                 $city = Location::find($user->Ciudad)->name;
