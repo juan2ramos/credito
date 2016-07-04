@@ -354,9 +354,9 @@
 
                 <h3>Referencia 2</h3>
 
-                <p>Nombre: {{$credits[0]->name_reference}}</p>
+                <p>Nombre: {{$credits[0]->name_reference2}}</p>
 
-                <p>Telefono: {{$credits[0]->phone_reference}}</p>
+                <p>Telefono: {{$credits[0]->phone_reference2}}</p>
 
             </details>
         @endif
