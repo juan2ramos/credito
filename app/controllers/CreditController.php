@@ -144,7 +144,6 @@ class CreditController extends BaseController
 				}
 			}
 		}
-
 		return View::make('front.request', compact('showRequest', 'locations'));
 	}
 

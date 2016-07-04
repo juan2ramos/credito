@@ -31,7 +31,13 @@
                  <tr>
                      <td>{{$user->user_name}}</td>
                      <td>{{$user->identification_card}}</td>
-                     <td> Alta </td>
+                     <td>
+                         @if($user->priority)
+                             Alta
+                         @else
+                             Baja
+                         @endif
+                     </td>
                      <td> Pendiente por aprobar </td>
                      <td>
                          @foreach($locations as $location)
