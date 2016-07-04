@@ -93,3 +93,7 @@ Route::get('pdf/{id}', [
     'as'    =>  'ExtractPdf'
 ]);
 
+/*Route::get('muestras', [
+    'as' => 'prueba',
+    'uses' => 'ExtractsController@prueba'
+]);*/

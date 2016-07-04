@@ -25,191 +25,306 @@ $todayMonth = intval(date('m'));
 
 <?php $total = $due + $lastMonth ?>
 
+<!--<td>
+    Compras del mes
+    <span> ${number_format($due, 0, '.', '.')}} </span>
+</td>-->
+
 <html>
 <head>
     <style>
-        body{font-family: Georgia, sans-serif; font-weight: 100;color:#8d8d8d; font-size: 18px}
-        .wrapper{padding: 10px 10px}
-        span{border: 1px solid #da0080; padding: 5px 0; text-align: center}
-        table {  border-collapse: collapse;  border-spacing: 0;  }
-        td, th {  vertical-align: top; height: 30px  }
-        h1, h2,  th, td { font-weight:normal;margin: 0;padding: 0 }
-        h1, h2{font-size: 16px}
-        img { border: 0;margin: 0;padding: 0 }
-        .back{ background: #ffe9f8}
-        .table {border-bottom: 1px solid #da0080;}
-        .table tbody{text-align: center;}
-        .table th{border: 1px solid #da0080;}
-        .table td{border-right: 1px solid #da0080;border-left: 1px solid #da0080;}
-        .table td, .table th {box-sizing: border-box;}
-        .capitalize{text-transform: capitalize; border:none;}
-        .uppercase{text-transform: uppercase; border:none;}
+
+        *{
+            padding: 0;
+        }
+        body{
+            width: 100%;
+            max-width: 100%;
+            padding: 94px;
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        thead th, tbody th{
+            font-weight: 100;
+        }
+        thead th{
+            font-size: .7rem;
+            padding: 3px 2px;
+        }
+        tbody th{
+            font-size: .65rem;
+            font-weight: 100;
+            padding: 5px 1px;
+        }
+        .Container{
+            padding: 5px 0;
+        }
+        .input{
+            height: 20px;
+            padding: 0 4px;
+            border: 2px solid #dc2386;
+        }
+        .table{
+            width: 100%;
+            position: relative;
+        }
+        .table.pink{
+            background: #FCE9F3;
+        }
+        .table.border td, .table.border th{
+            border: 2px solid #dc2386;
+        }
+        [class*="col-"]{
+            display: inline-block;
+            margin-right: -4px;
+        }
+        .col-6{
+            width: 50%;
+        }
+        .col-4{
+            width: 33.33%;
+        }
+        .gray{
+            color: #a2a0a5;
+        }
+        .center{
+            text-align: center;
+        }
+        .text{
+            font-size: 16px;
+            font-weight: 200;
+        }
     </style>
 </head>
 <body>
-<table width='530'  class='wrapper'>
-
-    <tr valign='middle'>
+<table class="table" style="table-layout:fixed">
+    <tr style="max-width: 50%">
         <td>
-            <img width='200px' src='img/logocreditos.png'/>
+            <img src="img/lilipinkPDF.png">
         </td>
         <td>
-            <h1 style='opacity: 0; margin: 10px 0'>ESTADO DE CUENTA</h1>
-            <h2 style='opacity: 0; margin: 10px 0; border: 1px solid  #da0080; padding: 0 10px'>Interes de mora</h2>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Nombre: <span class='capitalize'>{{$user->name}} {{$user->last_name}}</span>
-        </td>
-        <td style=''>Fecha de facturación
-            <div style='padding-bottom:10px ;width: 195px; display: inline-block; text-align: center; font-size: 14px; '>
-                @if($day[1] == '02')
-                    <span style='display: inline-block;width:30px;'> 28 </span>
-                @else
-                    <span style='display: inline-block;width:30px;'> 30 </span>
-                @endif
-
-                <span style='display: inline-block;width:30px;'> {{$day[1]}} </span>
-                <span style='display: inline-block;width:30px;'> {{$day[0]}} </span>
+            <div class="Container">
+                <span class="title">ESTADO DE CUENTA</span>
+                <div class="input text" style="margin-top: 14px">Otros cargos administrativos</div>
             </div>
         </td>
     </tr>
     <tr>
         <td>
-            Dirección: <span class='capitalize'>{{$user->address}}</span>
-        </td>
-        <td>Cupo Total
-            <span> ${{number_format($quota, 0, '.', '.')}} </span>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            Cédula: {{$user->identification_card}}
-        </td>
-        <td>Cupo Disponible
-            <span> ${{number_format(($quota - $total), 0, '.', '.')}} </span>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Ciudad: <span class='capitalize'>{{$user->residency_city}}</span>
-        </td>
-    </tr>
-
-    <tr  class='back' valign='middle'>
-        <td>
-            PAGUE HASTA
-            <span> 05 </span>
-            @if((intval($day[1]) + 1) < 10)
-                <span> 0{{(intval($day[1]) + 1)}} </span>
-            @else
-                <span> {{(intval($day[1]) + 1)}} </span>
-            @endif
-            <span> {{$day[0]}} </span>
-        </td>
-        <td>PAGO MINIMO
-            @if($minPay)
-                <span> $ {{number_format($minPay[0]->pago_minimo, 0, '.', '.')}} </span>
-            @endif
-        </td>
-    </tr>
-    <tr class='back padding' valign='middle'>
-        <td>
-            PAGUE TOTAL
-            <span> ${{number_format($total, 0, '.', '.')}} </span>
-        </td>
-        <td>PAGO FAVOR
-            <span> $0 </span>
-        </td>
-    <tr>
-        <td colspan='2'><br/>
-            <table class='table' width='100%'>
-                <thead>
-                <tr style='text-align: center; font-size: 12px' valign='middle'>
-                    <th>COMPRA <br /> NÚMERO</th>
-                    <th>DD</th>
-                    <th>MM</th>
-                    <th>AA</th>
-                    <th>DETALLE</th>
-                    <th style='font-size: 8px'>TASA <br />INTERES</th>
-                    <th>VALOR <br /> COMPRA</th>
-                    <th>CARGOS Y <br /> ABONOS</th>
-                    <th>SALDO <br /> CRÉDITO <br /> DIFERIDO </th>
-                    <th>CUOTAS</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($extracts as $extract)
-                    <?php $date = explode('_', $extract->fecha_contabilizacion);?>
-                <tr>
-                    <td>{{$extract->id}}</td>
-                    @if($extract->fecha_contabilizacion)
-                        <td> {{$date[1]}} </td>
-                        <td> {{$date[0]}} </td>
-                        <td> {{$date[2]}} </td>
-                    @else
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    @endif
-
-                    <td> {{$extract->punto_venta}} </td>
-                    <td> {{number_format($extract->tasa_interes, 0, '.', '.')}}% </td>
-                    <td> ${{number_format($extract->valor_compra, 0, '.', '.')}} </td>
-                    <td> ${{number_format($extract->cargos_abonos, 0, '.', '.')}} </td>
-                    <td> ${{number_format($extract->saldo_credito_diferido, 0, '.', '.')}} </td>
-                    <td> {{$extract->cuotas}} </td>
-                </tr>
-                @endforeach
-
-                </tbody>
-            </table>
-            <br/>
-        </td>
-    </tr>
-
-    <tr class='back'>
-        <td>
-            Saldo en mora
-            <span> ${{number_format($lastMonth, 0, '.', '.')}} </span>
+            <span class="title">Nombre : <span class='capitalize'>{{$user->name}} {{$user->last_name}}</span></span>
         </td>
         <td>
-            Gastos legales
-            <span> $0 </span>
-        </td>
-    </tr>
-
-    <tr class='back'>
-        <td>
-            Compras del mes
-            <span> ${{number_format($due, 0, '.', '.')}} </span>
-        </td>
-        <td>
-            Cargos no diferidos
-            <span> $0 </span>
-        </td>
-    </tr>
-    <tr class='back'>
-        <td>
-            Intereses
-            <span> 0% </span>
-        </td>
-        <td colspan='2'>
-            Honorarios
-            <span> $0 </span>
+            <div class="Container">
+                <span class="title col-6">Fecha Facturación</span>
+                <div class="gray center" style="position: absolute; right: 36px; width: 138px">
+                    <span class="input col-4" style="border-right: none;">
+                        @if($day[1] == '02')
+                            28
+                        @else
+                            30
+                        @endif
+                    </span>
+                    <span class="input col-4" style="border-right: none;">{{$day[1]}}</span>
+                    <span class="input col-4" >{{$day[0]}}</span>
+                </div>
+            </div>
         </td>
     </tr>
     <tr>
-        <td colspan='2'>
-            <p style='text-align: justify'>
-                Cualquier inconformidad favor comunicarla a creditos@innova-quality.com.co, puede enviar comunicación escrita a José Rubiano o Jeimmy Fonseca a la Carrera 20 No 164-13 en Bogotá o comunicarse al PBX: 670 2400 Ext 208 - 133, horario de atención: lunes a viernes de 8:00 a.m. a 5:00 p.m.
-                Innova Quality S.A.S. reporta a las centrales de riesgo el incumplimiento de su obligación. Apreciado cliente recuerde que de incurrir en mora se dara inicio a la gestión de cobranza que causara gastos correspondientes conforme a las politicas de Innova Quality S.A.S. que pueden ser consultadas en la pagina web:
-                www.creditos.lilipink.com
-            </p>
+        <td>
+            <span class="title">Dirección : {{$user->address}}</span>
+        </td>
+        <td>
+            <div class="Container">
+                <span class="title col-6">Cupo Total</span>
+                <div class="center" style="position: absolute; right: 36px; width: 138px">
+                    <span class="input col-6" style="width: 160px">${{number_format($quota, 0, '.', '.')}}</span>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class="title">Cédula : {{$user->identification_card}}</span>
+        </td>
+        <td>
+            <div class="Container">
+                <span class="title col-6">Cupo Disponible</span>
+                <div class="center" style="position: absolute; right: 36px; width: 138px">
+                    <span class="input col-6" style="width: 160px">${{number_format(($quota - $total), 0, '.', '.')}}</span>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class="title">Ciudad : <span style="text-transform: capitalize;">{{$user->residency_city}}</span></span>
+        </td>
+        <td>
+            <div class="Container" style="visibility: hidden; opacity: 0">
+                <span class="title col-6"></span>
+                <div class="center" style="position: absolute; right: 36px; width: 138px">
+                    <span class="input col-6" style="width: 160px">NO EXISTE</span>
+                </div>
+            </div>
         </td>
     </tr>
 </table>
+<table class="table pink" style="padding: 4px 20px">
+    <tr>
+        <td>
+            <div class="Container">
+                <span class="title col-6">PAGUE HASTA</span>
+                <div class="gray center" style="position: absolute; left: 166px; width: 138px">
+                    <span class="input col-4" style="border-right: none;">05</span>
+                    <span class="input col-4" style="border-right: none;">
+                        @if((intval($day[1]) + 1) < 10)
+                            0{{(intval($day[1]) + 1)}}
+                        @else
+                            {{(intval($day[1]) + 1)}}
+                        @endif
+                    </span>
+                    <span class="input col-4" >{{$day[0]}}</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="Container">
+                <span class="title col-6">PAGO MINIMO</span>
+                <div class="center" style="position: absolute; right: 56px; width: 138px">
+                    <span class="input col-6" style="width: 160px">
+                        @if($minPay)
+                            $ {{number_format($minPay[0]->pago_minimo, 0, '.', '.')}}
+                        @endif
+                    </span>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="Container">
+                <span class="title col-6">PAGO TOTAL</span>
+                <div class="center" style="position: absolute; left: 166px; width: 138px">
+                    <span class="input col-6" style="width: 160px">${{number_format($total, 0, '.', '.')}}</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="Container">
+                <span class="title col-6">SALDO A FAVOR</span>
+                <div class="center" style="position: absolute; right: 56px; width: 138px">
+                    <span class="input col-6" style="width: 160px">$0</span>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<table class="table border" style="margin-top: 10px; text-align: center;">
+    <thead>
+    <tr>
+        <th>COMPRA<br>NUMERO</th>
+        <th>DD</th>
+        <th>MM</th>
+        <th>AA</th>
+        <th>DETALLE</th>
+        <th>% OTROS <br> CARGOS</th>
+        <th>VALOR <br> COMPRA</th>
+        <th>CARGOS <br> Y ABONOS</th>
+        <th>SALDO <br> CREDITO <br> DIFERIDO</th>
+        <th>CUOTAS</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($extracts as $extract)
+        <?php $date = explode('_', $extract->fecha_contabilizacion);?>
+        <tr>
+            <td>{{$extract->id}}</td>
+            @if($extract->fecha_contabilizacion)
+                <td> {{$date[1]}} </td>
+                <td> {{$date[0]}} </td>
+                <td> {{$date[2]}} </td>
+            @else
+                <td></td>
+                <td></td>
+                <td></td>
+            @endif
+
+            <td> {{$extract->punto_venta}} </td>
+            <td> {{number_format($extract->tasa_interes, 0, '.', '.')}}% </td>
+            <td> ${{number_format($extract->valor_compra, 0, '.', '.')}} </td>
+            <td> ${{number_format($extract->cargos_abonos, 0, '.', '.')}} </td>
+            <td> ${{number_format($extract->saldo_credito_diferido, 0, '.', '.')}} </td>
+            <td> {{$extract->cuotas}} </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+<table class="table pink" style="padding: 4px 20px; margin-top: 18px">
+    <tr>
+        <td>
+            <div class="Container">
+                <span class="title col-6">Saldo en mora</span>
+                <div class="center" style="position: absolute; left: 166px; width: 138px">
+                    <span class="input col-6" style="width: 160px">${{number_format($lastMonth, 0, '.', '.')}}</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="Container">
+                <span class="title col-6">Gastos Legales</span>
+                <div class="center" style="position: absolute; right: 56px; width: 138px">
+                    <span class="input col-6" style="width: 160px">$0</span>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="Container">
+                <span class="title col-6">Otros cargos</span>
+                <div class="center" style="position: absolute; left: 166px; width: 138px">
+                    <span class="input col-6" style="width: 160px">$0</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="Container">
+                <span class="title col-6">Cargos no diferidos</span>
+                <div class="center" style="position: absolute; right: 56px; width: 138px">
+                    <span class="input col-6" style="width: 160px">$0</span>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="Container">
+                <span class="title col-6">Honorarios</span>
+                <div class="center" style="position: absolute; left: 166px; width: 138px">
+                    <span class="input col-6" style="width: 160px">$0</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="Container">
+                <span class="title col-6">Notas de crédito</span>
+                <div class="center" style="position: absolute; right: 56px; width: 138px">
+                    <span class="input col-6" style="width: 160px"></span>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="leyend">
+    <p style='text-align: justify'>
+        Cualquier inconformidad favor comunicarla a creditos@innova-quality.com.co, puede enviar comunicación escrita a Jeimmy Fonseca o José Rubiano a la Carrera 19a No 196 - 23 sector Canaima en Bogotá o comunicarse al PBX: 670 2400 Ext 208 - 133, horario de atención: lunes a viernes de 8:00 a.m. a 5:00 p.m.
+        Innova Quality S.A.S. reporta a las centrales de riesgo el incumplimiento de su obligación. Apreciado cliente recuerde que de incurrir en mora se dara inicio a la gestión de cobranza que causara gastos correspondientes conforme a las politicas de Innova Quality S.A.S.
+    </p>
+</div>
 </body>
 </html>
