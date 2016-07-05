@@ -5,6 +5,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use credits\Entities\User;
 use credits\Entities\Location;
+use credits\Entities\CreditRequest;
 
 class downloadExcel extends Command {
 
@@ -51,15 +52,16 @@ class downloadExcel extends Command {
 
 		Excel::create('usuarios', function($excel) use($users){
 			$excel->sheet('Excel sheet', function($sheet) use($users){
-				$sheet->cells('A1:H1', function($cells) {
+				$sheet->cells('A1:Q1', function($cells) {
 					$cells->setFontWeight('bold');
 					$cells->setBackground('#e80e8a');
 					$cells->setFontColor('#ffffff');
 					$cells->setAlignment('center');
 					$cells->setValignment('middle');
 				});
-				$sheet->setHeight(1,20);
+				$sheet->setHeight([1 => 20, 2 => 15]);
 				$sheet->setAutoSize(true);
+				$sheet->setWidth('A',0);
 				$sheet->fromArray($users);
 				$sheet->setOrientation('landscape');
 			});
@@ -77,13 +79,20 @@ class downloadExcel extends Command {
 	}
 
 	private function exportUsers(){
-		$users = User::where('roles_id','4')->select('card as Tarjeta','identification_card as Cedula','name as Nombre 1', 'second_name as Nombre 2','last_name as Apellido 1','second_last_name as Apellido 2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->get();
+		$users = User::where('roles_id','4')->select('id', 'card as Tarjeta','identification_card as Cedula','name as Nombre1', 'second_name as Nombre2','last_name as Apellido1','second_last_name as Apellido2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->get();
 		foreach($users as $key => $user){
-			if($user->Ciudad)
-				$city = Location::find($user->Ciudad)->name;
-			else
-				$city = 'Sin región';
-			$users[$key]['Ciudad'] = $city;
+			$credit = CreditRequest::where('user_id', $user->id)->first();
+			$users[$key]['Ciudad'] = $user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región';
+			if($credit){
+				$users[$key]['Cupo_Credito']      = $credit->value;
+				$users[$key]['Referencia1']       = $credit->name_reference;
+				$users[$key]['Tel_Referencia1']   = $credit->phone_reference;
+				$users[$key]['Referencia2']       = $credit->name_reference2;
+				$users[$key]['Tel_Referencia2']   = $credit->phone_reference2;
+				$users[$key]['Responsable']       = 'Usuario';
+				if($credit->responsible)
+					$users[$key]['Responsable']   = User::find($credit->responsible)->user_name;
+			}
 		}
 		return $users;
 	}

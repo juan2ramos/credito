@@ -245,16 +245,4 @@ class UserController extends BaseController
         $fileName = $name . "." .  $file->getClientOriginalExtension();
         $file->move($folder, $fileName);
     }
-
-    private function exportUsers(){
-        $users = User::where('roles_id','4')->select('card as Tarjeta','identification_card as Cedula','name as Nombre 1', 'second_name as Nombre 2','last_name as Apellido 1','second_last_name as Apellido 2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->get();
-        foreach($users as $key => $user){
-            if($user->Ciudad)
-                $city = Location::find($user->Ciudad)->name;
-            else
-                $city = 'Sin región';
-            $users[$key]['Ciudad'] = $city;
-        }
-        return $users;
-    }
 }
