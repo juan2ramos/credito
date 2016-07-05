@@ -37,7 +37,7 @@ class ExtractsController extends \BaseController {
 		$quota = CreditRequest::where('user_id', $user->id)->first();
 
 		$day = explode('-', date("y-m-d"));
-		$q = $quota->value ? $quota->value : 300000;
+		$q = $quota ? $quota->value : 300000;
 		$data = [
 			'user' => $user,
 			'day' => $day,
