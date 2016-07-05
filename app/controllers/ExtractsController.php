@@ -37,17 +37,18 @@ class ExtractsController extends \BaseController {
 		$quota = CreditRequest::where('user_id', $user->id)->first();
 
 		$day = explode('-', date("y-m-d"));
+		$q = $quota->value ? $quota->value : 300000;
 		$data = [
 			'user' => $user,
 			'day' => $day,
 			'extracts' => $extracts,
-			'quota' => intval($quota->value),
+			'quota' => intval($q),
 			'minPay' => $minPay,
 			'months' => $this->getMonths()
 		];
 
 		if($user)
-			PDF::load( View::make('pdf.extract', $data), 'A4', 'portrait')->download('extracto');
+			PDF::load( View::make('pdf.extract', $data)->render(), 'A4', 'portrait')->download('extracto');
 	}
 	
 	/*public function prueba(){
