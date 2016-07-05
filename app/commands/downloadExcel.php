@@ -61,7 +61,7 @@ class downloadExcel extends Command {
 				});
 				$sheet->setHeight([1 => 20, 2 => 15]);
 				$sheet->setAutoSize(true);
-				$sheet->setWidth('A',0);
+				$sheet->setWidth('A', 1);
 				$sheet->fromArray($users);
 				$sheet->setOrientation('landscape');
 			});
@@ -83,16 +83,11 @@ class downloadExcel extends Command {
 		foreach($users as $key => $user){
 			$credit = CreditRequest::where('user_id', $user->id)->first();
 			$users[$key]['Ciudad'] = $user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región';
-			if($credit){
-				$users[$key]['Cupo_Credito']      = $credit->value;
-				$users[$key]['Referencia1']       = $credit->name_reference;
-				$users[$key]['Tel_Referencia1']   = $credit->phone_reference;
-				$users[$key]['Referencia2']       = $credit->name_reference2;
-				$users[$key]['Tel_Referencia2']   = $credit->phone_reference2;
-				$users[$key]['Responsable']       = 'Usuario';
-				if($credit->responsible)
-					$users[$key]['Responsable']   = User::find($credit->responsible)->user_name;
-			}
+			$users[$key]['Cupo_Credito']    = $credit ? $credit->value : null;
+			$users[$key]['Referencia1']     = $credit ? $credit->name_reference : null;
+			$users[$key]['Tel_Referencia1'] = $credit ? $credit->phone_reference : null;
+			$users[$key]['Referencia2']     = $credit ? $credit->name_reference2 : null;
+			$users[$key]['Tel_Referencia2'] = $credit ? $credit->phone_reference2 : null;
 		}
 		return $users;
 	}
