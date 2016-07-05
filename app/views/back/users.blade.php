@@ -54,16 +54,15 @@
                                 </td>
                             </tr>
                         @endif
-
                     @endif
                 @else
 
                     <tr>
                         <td>{{$user->identification_card}}</td>
                         <td>{{$user->name}}</td>
+                        <td>{{$user->second_name}}</td>
                         <td>{{$user->last_name}}</td>
-                        <td>{{$user->user_name}}</td>
-                        <td>{{$user->user_name}}</td>
+                        <td>{{$user->second_last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>
                             <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
