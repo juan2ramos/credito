@@ -197,8 +197,10 @@ $todayMonth = intval(date('m'));
                 <span class="title col-6">PAGO MINIMO</span>
                 <div class="center" style="position: absolute; right: 56px; width: 138px">
                     <span class="input col-6" style="width: 160px">
-                        @if($minPay)
+                        @if(count($minPay))
                             $ {{number_format($minPay[0]->pago_minimo, 0, '.', '.')}}
+                        @else
+                            $ 0
                         @endif
                     </span>
                 </div>
