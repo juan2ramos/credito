@@ -214,3 +214,12 @@ Route::post('paz-y-salvo/{id}', [
     'as' => 'peace',
     'uses' => 'UserController@peacePDF'
 ]);
+
+Route::get('database', [
+    'uses' => 'UpdateController@index'
+]);
+
+Route::post('database', [
+    'uses' => 'UpdateController@update',
+    'as' => 'updateDatabase'
+]);
