@@ -140,10 +140,34 @@ class UserController extends BaseController
         return Redirect::to('/admin/usuarios/'.$id)->with(array('message_error'=>"solo se puede actualizar una vez por mes"));
     }
 
+    private function getMonth($number){
+        $months = [
+            '01' => 'Enero',
+            '02' => 'Febrero',
+            '03' => 'Marzo',
+            '04' => 'Abril',
+            '05' => 'Mayo',
+            '06' => 'Junio',
+            '07' => 'Julio',
+            '08' => 'Agosto',
+            '09' => 'Septiembre',
+            '10' => 'Octubre',
+            '11' => 'Noviembre',
+            '12' => 'Diciembre'
+        ];
+
+        foreach($months as $key => $month){
+            if($key == $number)
+                return $month;
+        }
+    }
+
     public function peacePDF($id){
 
         $user = User::find($id);
-        return View::make('pdf.peace')->with('user', $user);
+        $month = $this->getMonth(date('m'));
+        //return View::make('pdf.peace')->render();
+        PDF::load( View::make('pdf.peace', compact('user', 'month'))->render(), 'A4', 'portrait')->download('paz_y_salvo');
     }
     public function updateClient($id)
     {
