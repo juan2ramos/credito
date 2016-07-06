@@ -245,7 +245,7 @@ $todayMonth = intval(date('m'));
     @foreach($extracts as $extract)
         <?php $date = explode('_', $extract->fecha_contabilizacion);?>
         <tr>
-            <td>{{$extract->id}}</td>
+            <td>{{$extract->numero_documento}}</td>
             @if($extract->fecha_contabilizacion)
                 <td> {{$date[1]}} </td>
                 <td> {{$date[0]}} </td>
@@ -324,7 +324,7 @@ $todayMonth = intval(date('m'));
 </table>
 <div class="leyend">
     <p style='text-align: justify'>
-        Cualquier inconformidad favor comunicarla a creditos@innova-quality.com.co, puede enviar comunicación escrita a Jeimmy Fonseca o José Rubiano a la Carrera 19a No 196 - 23 sector Canaima en Bogotá o comunicarse al PBX: 670 2400 Ext 208 - 133, horario de atención: lunes a viernes de 8:00 a.m. a 5:00 p.m.
+        Cualquier inconformidad favor comunicarla a creditos@innova-quality.com.co, puede enviar comunicación escrita a Jeimmy Fonseca o José Rubiano a la Carrera 19a No 196 - 23 sector Canaima en Bogotá o comunicarse al PBX: 6702400 Ext 208 - 133, horario de atención: Lunes a Viernes de 8:00 a.m. a 5:00 p.m.
         Innova Quality S.A.S. reporta a las centrales de riesgo el incumplimiento de su obligación. Apreciado cliente recuerde que de incurrir en mora se dara inicio a la gestión de cobranza que causara gastos correspondientes conforme a las politicas de Innova Quality S.A.S.
     </p>
 </div>
