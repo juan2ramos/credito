@@ -198,9 +198,9 @@ $todayMonth = intval(date('m'));
                 <div class="center" style="position: absolute; right: 56px; width: 138px">
                     <span class="input col-6" style="width: 160px">
                         @if(count($minPay))
-                            $ {{number_format($minPay[0]->pago_minimo, 0, '.', '.')}}
+                            ${{number_format($minPay[0]->pago_minimo, 0, '.', '.')}}
                         @else
-                            $ 0
+                            $0
                         @endif
                     </span>
                 </div>
@@ -272,7 +272,13 @@ $todayMonth = intval(date('m'));
             <div class="Container">
                 <span class="title col-6">Saldo en mora</span>
                 <div class="center" style="position: absolute; left: 166px; width: 138px">
-                    <span class="input col-6" style="width: 160px">${{number_format($lastMonth, 0, '.', '.')}}</span>
+                    <span class="input col-6" style="width: 160px">
+                        @if(count($minPay))
+                            ${{number_format($minPay[0]->pago_minimo, 0, '.', '.')}}
+                        @else
+                            $0
+                        @endif
+                    </span>
                 </div>
             </div>
         </td>
