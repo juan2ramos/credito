@@ -324,8 +324,10 @@ $todayMonth = intval(date('m'));
 </table>
 <div class="leyend">
     <p style='text-align: justify'>
-        Cualquier inconformidad favor comunicarla a carterainnova@innova-quality.com.co, puede enviar comunicación escrita a Jeimmy Fonseca o José Rubiano a la Carrera 19a No 196 - 23 sector Canaima en Bogotá o comunicarse al PBX: 6702400 Ext 208 - 133, horario de atención: Lunes a Viernes de 8:00 a.m. a 5:00 p.m.
-        Innova Quality S.A.S. reporta a las centrales de riesgo el incumplimiento de su obligación. Apreciado cliente recuerde que de incurrir en mora se dara inicio a la gestión de cobranza que causara gastos correspondientes conforme a las politicas de Innova Quality S.A.S.
+        Cualquier inconformidad favor comunicarla a carterainnova@innova-quality.com.co, puede enviar comunicación escrita al departamento de Crédito y Cartera en la Carrera 19a No 196 - 23 en Bogotá o comunicarse al PBX: 670 2400 Ext. 219, 208, 218, 133, horario de atención: Lunes a Viernes de 7:00 a.m. a 7:00 p.m.
+    </p>
+    <p style='text-align: justify'>
+        Innova Quality S.A.S. De acuerdo con el articulo 12 de la ley 1266 reporta a las centrales de riesgo el incumplimiennto de su obligación. Apreciado cliente recuerde que de incurrir en mora se dará inicio a la gestión de cobranza que causara gastos correspondientes conforme a las politicas de innova Quality S.A.S, que pueden ser consultadas en la pagina web: www.creditoslilipink.com.
     </p>
 </div>
 </body>
