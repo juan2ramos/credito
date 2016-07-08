@@ -327,6 +327,8 @@
                 <form action="{{route('peace', $user->id)}}" method="post">
                     <button class="u-button" style="cursor:pointer; width: 200px">Descargar paz y salvo</button>
                 </form>
+            @else
+                <a href="{{route('ExtractPdf', $user->identification_card)}}" class="u-button" style="display:block; text-align: center; margin-top: 10px; cursor:pointer; width: 200px">Descargar Extracto</a>
             @endif
         </section>
         @if(isset($credits[0]))

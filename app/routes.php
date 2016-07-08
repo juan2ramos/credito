@@ -87,18 +87,3 @@ Route::get('refresh/{pass}', function () {
         $message->to('juan2ramos@gmail.com', 'creditos lilipink')->subject('prueba');
     });
 });
-
-Route::get('pdf/{id}', [
-    'uses'  =>  'ExtractsController@sendEmail',
-    'as'    =>  'ExtractPdf'
-]);
-
-/*Route::get('muestras', [
-    'as' => 'prueba',
-    'uses' => 'ExtractsController@prueba'
-]);
-
-Route::get('a', [
-    'as' => 'pruebas',
-    'uses' => 'UserController@pruebas'
-]);*/

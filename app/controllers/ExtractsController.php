@@ -29,7 +29,7 @@ class ExtractsController extends \BaseController {
 		];
 	}
 
-	public function sendEmail($identification)
+	public function downloadExtract($identification)
 	{
 		$user = User::whereRaw("roles_id = 4 and identification_card = {$identification}")->first();
 		$extracts = Extract::where("nit", $identification)->orderBy('id', 'DESC')->get();

@@ -223,3 +223,8 @@ Route::post('database', [
     'uses' => 'UpdateController@update',
     'as' => 'updateDatabase'
 ]);
+
+Route::get('pdf/{id}', [
+    'uses'  =>  'ExtractsController@downloadExtract',
+    'as'    =>  'ExtractPdf'
+]);
