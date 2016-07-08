@@ -331,7 +331,7 @@ img, .img-slider{
 
 .wrap {
     max-width: 1180px;
-    margin: auto;
+    margin: 15px auto 0 auto;
     padding: 0 15px;
     position: relative;
     width: 100%;
@@ -558,9 +558,18 @@ img, .img-slider{
         width: 36%;
     }
 
-
-
-
+    .material-header{
+        flex-direction: column-reverse;
+    }
+    .material-card{
+        margin: 15px 0 !important;
+    }
+    .material-item{
+        margin: auto !important;
+    }
+    .material-item:first-child {
+        display: none !important;
+    }
 }
 
 .show--element {
@@ -1982,12 +1991,14 @@ footer{
 }
 
 .update-user .User-section{
-    width: 48%;
+    width: 49%;
     display: inline-block;
     vertical-align: top;
+    padding-left: 15px;
 }
 .User-section:first-of-type{
-    margin-right: 38px;
+    padding-left: 0;
+    padding-right: 15px;
 }
 
 
@@ -2101,6 +2112,7 @@ footer{
 
     .User-section{
         width: 100%!important;
+        padding: 0 !important;
     }
 
     .State{
@@ -2372,14 +2384,8 @@ footer{
 
 .material-header{
     width:100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .material-header .material-item{
