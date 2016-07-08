@@ -334,6 +334,7 @@ img, .img-slider{
 .wrap {
     max-width: 1180px;
     margin: 28px auto;
+    padding: 0 20px;
     position: relative;
     width: 100%;
 
@@ -1273,7 +1274,7 @@ a.icon-logout {
     overflow: auto;
     box-shadow: 0 1px 5px 0;
     max-width: 1000px;
-    margin: 25px;
+    margin: auto;
 }
 .Back-content {
     overflow: auto;
@@ -1350,35 +1351,47 @@ table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .ta
     border-bottom-left-radius: 4px;
 }
 .search{
-    margin: 10px auto 20px;
-    max-width: 1000px;
     text-align: right;
     position: relative;
+    height: 35px;
 }
 button.icon-search{
     background: #e80e8a;
     border: none;
-    border-radius: 5px 0 0 5px;
     color: white;
     font-size: 1.2em;
     position: absolute;
-    right: 30px;
+    left: 0;
     top:0;
-    transition: all 0.2s cubic-bezier(0.2, 0, 0.03, 1)
+    height: 100%;
+    width: 35px;
 }
 .search-input{
-    border: none;
-    border-radius: 5px;
-    height: 25px;
-    padding-left: 35px ;
-    width: 50px;
-    transition: all 0.2s cubic-bezier(0.2, 0, 0.03, 1)
+    border: solid 1px #ddd;
+    height: 35px;
+    padding-left: 50px;
+    width: 100%;
+    max-width: 250px;
 }
-.search.is-open button.icon-search{
-    right: 171px;
+
+.SearchBar{
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
-.search.is-open .search-input{
-    width: 200px;
+
+.SearchBar .Button >a{
+    text-align: center;
+    width: 250px;
 }
 
 .hidden{
@@ -1670,11 +1683,6 @@ button.icon-search{
     max-width: 1000px;
     width: 100%;
 }
-.wrap-content1{
-    margin: 10px auto 0;
-    max-width: 1000px;
-    width: 100%;
-}
 #Input-more {
     height: 40px;
     margin: 10px;
@@ -1781,7 +1789,6 @@ button.icon-search{
     display: block;
 }
 .icon-file-excel,.icon-file-pdf, .icon-file-word{
-    margin-bottom: 20px;
     display: inline-block;
     font-size: 2rem;
 }
@@ -2047,10 +2054,6 @@ footer{
     #slider-edit section{
         width: 100%;
         margin-left: 0;
-    }
-
-    .Table-content{
-        width: 95%;
     }
 
     .Table-content th{
@@ -2467,4 +2470,26 @@ footer{
 .files-container .fingerprint:hover{
     border-style: dashed;
     border-left: none;
+}
+
+@media all and (min-width: 30px)  and (max-width: 650px){
+    .SearchBar{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .SearchBar .wrap-content1{
+        display: none;
+    }
+    .SearchBar div {
+        margin: 15px auto;
+    }
+
+    .SearchBar .search{
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
 }

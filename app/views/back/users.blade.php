@@ -12,16 +12,20 @@
     @endif
 
     <h1 xmlns="http://www.w3.org/1999/html">Administración de usuarios</h1>
-    <a style="  color: #666;" href="{{route('searchUsersCard')}}" class="">usuario que faltan por tarjeta</a>
-    <div class="search">
-        {{ Form::open(['route' => 'searchUsers', 'method' => 'POST']) }}
-        <button class="icon-search"></button>
-        {{Form::input('text','search','',['class' => 'search-input'])}}
-        {{Form::close()}}
-    </div>
-    <div class="wrap-content1">
-        <a href="{{route('usersExcel')}}" class="icon-file-excel"></a>
-        <a href="{{route('usersPdf')}}" class="icon-file-pdf"></a>
+    <div class="SearchBar">
+        <div class="Button">
+            <a style="padding: 10px 15px;" class="u-button" href="{{route('searchUsersCard')}}">Usuarios que faltan por tarjeta</a>
+        </div>
+        <div class="wrap-content1">
+            <a href="{{route('usersExcel')}}" class="icon-file-excel"></a>
+            <!--<a href="{route('usersPdf')}}" class="icon-file-pdf"></a>-->
+        </div>
+        <div class="search">
+            {{ Form::open(['route' => 'searchUsers', 'method' => 'POST']) }}
+            <button class="icon-search"></button>
+            {{Form::input('text','search','',['class' => 'search-input'])}}
+            {{Form::close()}}
+        </div>
     </div>
     <div class="Table-content">
         <table class="table table-striped table-hover ">
