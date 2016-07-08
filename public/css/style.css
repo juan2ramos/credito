@@ -533,8 +533,8 @@ img, .img-slider{
     }
 
     .Header-line1, .u-line{
-        margin-top: 0px!important;
-        margin-left: 0px!important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
     }
 
     #header-menu{
@@ -723,7 +723,7 @@ img, .img-slider{
 
 .content-sign-up{
     display: inline-block;
-    margin-left: 27px;
+    margin-left: 15px;
     vertical-align: top;
 }
 
@@ -1538,7 +1538,6 @@ button.icon-search{
 #slider{
     display: inline-block;
     height: 452px;
-    margin-left: 15px;
     max-width: 762px;
     text-align: center;
 }
