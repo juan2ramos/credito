@@ -331,8 +331,8 @@ img, .img-slider{
 
 .wrap {
     max-width: 1180px;
-    margin: 28px auto;
-    padding: 0 20px;
+    margin: auto;
+    padding: 0 15px;
     position: relative;
     width: 100%;
 
@@ -717,8 +717,7 @@ img, .img-slider{
 /* Login */
 
 .Content-home{
-    margin-top: 20px;
-    margin-bottom: 139px;
+    text-align: center;
 }
 
 .content-sign-up{
@@ -779,8 +778,9 @@ img, .img-slider{
 
 .Login section figure img{
     position: absolute;
+    left: 0;
     width: 100px;
-    height: 90px;
+    height: 100px;
 }
 
 .Login section div{
@@ -1537,7 +1537,6 @@ button.icon-search{
 
 #slider{
     display: inline-block;
-    height: 452px;
     max-width: 762px;
     text-align: center;
 }
@@ -1934,8 +1933,7 @@ button.icon-search{
 }
 
 .content-Request{
-    margin-left: 15px;
-    width: 1149px;
+    padding-top: 15px;
 }
 
 /* LAYOU REDES SOCIALES */
@@ -1943,27 +1941,28 @@ button.icon-search{
 .content-social{
     background: rgba(165, 165, 165, 0.21);
     color: rgba(0, 0, 0, 0.69);
-    padding-top: 6px;
     text-align: center;
+    padding: 5px;
+    margin-top: 15px;
 }
 
+.social-text a{
+    width: 30px;
+    height: 30px;
+}
 .content-social .social-text a {
     border: 1px solid rgba(0, 0, 0, 0.69);
     border-radius: 19px;
     color: rgba(0, 0, 0, 0.69);
     display: inline-block;
     font-size: 12px;
-    height: 30px;
-    margin-top: -13px;
     padding-top: 8px;
-    vertical-align: middle;
-    width: 30px;
 }
 
 .content-social .social-text p{
     display: inline-block;
     position: relative;
-    top: -4px;
+    top: 0;
 }
 
 /* FOOTER */
@@ -2026,11 +2025,6 @@ footer{
     }
 
 }
-@media all and (min-width: 200px)  and (max-width: 400px){
-    .content-sign-up{
-        width: 91%!important;
-    }
-}
 
 @media all and (min-width: 320px)  and (max-width: 900px){
 
@@ -2050,29 +2044,13 @@ footer{
         display: none;
     }
 
-    .Content-home{
-        text-align: center;
-        width: 100%;
-        margin: 0;
-    }
-
-    .content-Request{
-        height: 0px;
-        width: 100%;
-        margin: 22px 0 78px;
-    }
-
-    .content-Request img{
-        width: 94%;
-    }
-
     .notify{
         width: 100%;
     }
 
     .content-sign-up{
         text-align: left;
-        margin-left: 0;
+        margin: 0;
     }
 
     .Header-contentNav .icon-logout{
@@ -2085,18 +2063,12 @@ footer{
 
     }
 
-    .content-social{
-        padding-top: 0px;
-    }
-
     .content-social .social-text p{
         display: block;
-        top:8px;
     }
 
     .content-social .social-text a{
-        margin-top: 0;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
 
     #slider-edit section{
@@ -2146,8 +2118,6 @@ footer{
 
     .Login section figure img{
         position: relative;
-        width: 70%;
-        height: 100px;
     }
 
     .content-creditRequest, .Login, .material-card , .material-card input{
@@ -2162,25 +2132,23 @@ footer{
         padding: 8px 27%;
     }
 
+    .Login,
+    .content-creditRequest,
+    .content-Request
+    {
+        min-width: 327px !important;
+    }
+
 }
 
 @media all and (min-width: 900px)  and (max-width: 1179px){
     #header-menu ul li{
         margin: 13px 12px 20px 7px;
     }
-
-    .Content-home{
-        text-align: center;
-    }
 }
 
-@media all and (min-width: 1145px)  and (max-width: 1179px){
-    .content-sign-up{
-        margin: 0;
-    }
-}
 
-@media all and (min-width: 900px)  and (max-width: 1144px){
+@media all and (min-width: 900px)  and (max-width: 1190px){
 
     .Login{
         display: inline-block;
@@ -2190,14 +2158,10 @@ footer{
     .content-creditRequest{
         display: inline-block;
         height: 245px;
-        margin-top: 0px;
+        margin-top: 0;
         margin-left: 33px;
         vertical-align: top;
         padding-top: 36px;
-    }
-
-    .content-sign-up{
-        margin: 10px;
     }
 
     .wrap-content{
