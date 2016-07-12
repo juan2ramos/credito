@@ -48,6 +48,7 @@ class UploadUserManager extends BaseManager
     {
         $data = $this->prepareData($this->data);
         $user = User::find($id);
+        $user->card = $this->data['card'];
         $photo = $data['photo'];
         /*$fingerprint = $data['fingerprint'];
 
