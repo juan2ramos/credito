@@ -58,7 +58,10 @@ class UserController extends BaseController
     public function userShow($id)
     {
         $user = User::find($id);
-        $credits = $user->CreditRequest()->get();
+        $credits = $user->CreditRequest()->first();
+        if($credits->value == 0)
+            return Redirect::back();
+
         $locations = ['0'=>'Sin region'] + Location::all()->lists('name','id');
 
         $extracts = Extract::where('nit', $user->identification_card)->get();
