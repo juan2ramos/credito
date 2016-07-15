@@ -18,7 +18,10 @@ Route::group(['before' => 'guest'], function () {
         'uses' => 'AuthController@login'
     ]);
 
-    Route::get('sign-up', ['as' => 'sign-up']);
+    Route::get('sign-up', [
+        'as' => 'sign-up',
+        'uses' => 'AuthController@register'
+    ]);
 });
 
 /************ Routes Front *************/

@@ -39,8 +39,6 @@ class UserController extends BaseController
     public function searchUsers()
     {
         $search = \Input::get('search');
-        if(!$search)
-            return Redirect::back();
 
         $users = User::where(function ($query) use ($search) {
             $query->where('name', 'like', '%' . $search . '%')

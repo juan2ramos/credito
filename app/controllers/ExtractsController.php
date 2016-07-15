@@ -12,6 +12,7 @@ class ExtractsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	private $data;
 	private function getMonths(){
 		return [
 			'ene' => 1,
@@ -29,28 +30,39 @@ class ExtractsController extends \BaseController {
 		];
 	}
 
+	private function setData($identification)
+	{
+		$extracts = Extract::where("nit", $identification)->orderBy('id', 'DESC')->get();
+		if ($extracts){
+			$user = User::whereRaw("roles_id = 4 and identification_card = {$identification}")->first();
+			$minPay = ExcelDaily::where("cedula", $identification)->get();
+			$quota = CreditRequest::where('user_id', $user->id)->first();
+
+			$day = explode('-', date("y-m-d"));
+			$q = $quota ? $quota->value : 300000;
+			$this->data = [
+				'user' => $user,
+				'day' => $day,
+				'extracts' => $extracts,
+				'quota' => intval($q),
+				'minPay' => $minPay,
+				'months' => $this->getMonths()
+			];
+
+			return true;
+		}
+
+		return false;
+	}
+
 	public function downloadExtract($identification)
 	{
-		$user = User::whereRaw("roles_id = 4 and identification_card = {$identification}")->first();
-		$extracts = Extract::where("nit", $identification)->orderBy('id', 'DESC')->get();
-		$minPay = ExcelDaily::where("cedula", $identification)->get();
-		$quota = CreditRequest::where('user_id', $user->id)->first();
-
-		$day = explode('-', date("y-m-d"));
-		$q = $quota ? $quota->value : 300000;
-		$data = [
-			'user' => $user,
-			'day' => $day,
-			'extracts' => $extracts,
-			'quota' => intval($q),
-			'minPay' => $minPay,
-			'months' => $this->getMonths()
-		];
-
-		if($user)
-			PDF::load( View::make('pdf.extract', $data)->render(), 'A4', 'portrait')->download('extracto');
+		if($this->setData($identification))
+			PDF::load( View::make('pdf.extract', $this->data)->render(), 'A4', 'portrait')->download('extracto');
 	}
-	
+
+
+
 	/*public function prueba(){
 		PDF::load(View::make('pdf.extractoprueba'), 'A4', 'portrait')->download('extract');
 	} */

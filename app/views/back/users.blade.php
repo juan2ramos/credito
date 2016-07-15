@@ -68,11 +68,7 @@
                         <td>{{$user->second_last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>
-                            @if($user->creditRequest()->first()->value)
-                                <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
-                            @else
-                                <a href="#" style="color:gray; cursor: default" class="icon-folder-open " onclick="return false"></a>
-                            @endif
+                            <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
                             @if(Auth::user()->roles_id==1)
                                 <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
                             @endif
