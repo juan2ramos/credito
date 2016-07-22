@@ -1,7 +1,7 @@
 <?php
 use credits\Repositories\UserRepo;
 use credits\Repositories\LogRepo;
-use credits\Managers\UserManager;
+use credits\Managers\NewUserManager;
 use credits\Entities\User;
 
 class AuthController extends BaseController
@@ -44,13 +44,12 @@ class AuthController extends BaseController
                 'method' => 'password'
             ]
         );
-        
+
         return Response::json(['success' => $validator['return']]);
     }
 
     public function restorePassword($restore_password)
     {
-
         $userRepo = new UserRepo();
         $validator = $userRepo->validatorUser($restore_password);
         if($validator)
@@ -63,26 +62,27 @@ class AuthController extends BaseController
 
     public function changePassword($restore_password)
     {
-        $dataUser =  Input::all();
-        $userManager= new UserManager(new User(),$dataUser);
-        $userValidation = $userManager->isValid();
+        $data =  Input::all();
+        $user = User::where('restore_password', $restore_password)->first();
 
-        if ($userValidation) {
-            return Redirect::to('restaurar/'.$restore_password)->withErrors($userValidation)->withInput();
+        if($data["confirmar_password"] ==  $data["password"]){
+            $user->password = $data["password"];
+            $user->save();
         }
-
-        $userName=$userManager->savePassword($restore_password);
+        else{
+            return Redirect::to('restaurar/'.$restore_password)->withErrors(['password' => 'La confirmación de la contraseña no coincide'])->withInput();
+        }
 
         new LogRepo(
             [
-                'responsible'=> $userName,
+                'responsible'=> $user->name,
                 'action' => 'restauro la contraseña',
                 'affected_entity' => '',
                 'method' => 'savePassword'
             ]
         );
 
-        return Redirect::route('home')->with(array('mensaje' => 'El usuario ha sido creado correctamente.'));
+        return Redirect::route('home')->with(array('mensaje' => 'La contaseña ha sido cambiada.'));
     }
 
 }
