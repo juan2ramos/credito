@@ -306,12 +306,12 @@
                         <tr>
                             <td>{{$extract->nit}}</td>
                             <td>{{$extract->punto_venta}}</td>
-                            <td>{{$extract->tasa_interes}}</td>
-                            <td>{{$extract->valor_compra}}</td>
+                            <td>{{$extract->tasa_interes}}%</td>
+                            <td>${{number_format($extract->valor_compra, 0, '.', '.')}}</td>
                             <td>{{$extract->cargos_abonos}}</td>
-                            <td>{{$extract->saldo_credito_diferido}}</td>
+                            <td>${{number_format($extract->saldo_credito_diferido, 0, '.', '.')}}</td>
                             <td>{{$extract->cuotas}}</td>
-                            <td>{{$extract->saldo_sin_vencer}}</td>
+                            <td>${{number_format($extract->saldo_sin_vencer, 0, '.', '.')}}</td>
                         </tr>
                     @endif
                 @endforeach
@@ -321,7 +321,7 @@
         <section style="  margin: 26px;  padding: 10px;">
             <p>Dias vencidos: {{$vencidos}} dias</p>
 
-            <p>Deuda pendiente por pagar: $ {{$debe}}</p>
+            <p>Deuda pendiente por pagar: ${{number_format($debe, 0, '.', '.')}}</p>
             @if(!$debe)
                 <form action="{{route('peace', $user->id)}}" method="post">
                     <button class="u-button" style="cursor:pointer; width: 200px">Descargar paz y salvo</button>
