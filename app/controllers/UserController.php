@@ -241,9 +241,9 @@ class UserController extends BaseController
 
     public function showState()
     {
-        $users = User::all();
-        $credit = CreditRequest::where('user_id' , Auth::user()->id)->first();
-        $extracts = Extract::where('nit' , Auth::user()->identification_card)->get();
+        $user = Auth::user();
+        $credit = CreditRequest::where('user_id' , $user->id)->first();
+        $extracts = Extract::where('nit' , $user->identification_card)->get();
 
         $vencidos = 0;
         $debe = 0;
@@ -254,7 +254,7 @@ class UserController extends BaseController
             $debe += intval($extract->saldo_credito_diferido);
         }
 
-        return View::make('front.state',compact('extracts','vencidos','debe','users','credit'));
+        return View::make('front.state',compact('extracts','vencidos','debe', 'user', 'credit'));
     }
 
     public function searchUsersCard()
