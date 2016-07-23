@@ -17,7 +17,9 @@
             <a style="padding: 10px 15px;" class="u-button" href="{{route('searchUsersCard')}}">Usuarios que faltan por tarjeta</a>
         </div>
         <div class="wrap-content1">
-            <a href="{{route('usersExcel')}}" class="icon-file-excel"></a>
+            @if(Auth::user()->roles_id == 1)
+                <a href="{{route('usersExcel')}}" class="icon-file-excel"></a>
+            @endif
             <!--<a href="{route('usersPdf')}}" class="icon-file-pdf"></a>-->
         </div>
         <div class="search">
@@ -42,39 +44,20 @@
             </thead>
             <tbody>
             @foreach ($users as $user)
-                @if(Auth::user()->roles_id==3 )
-                    @if(Auth::user()->location==$user->location and $user->roles_id==4)
-                        @if($user->roles_id==4)
-                            <tr>
-                                <td>{{$user->identification_card}}</td>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->second_name}}</td>
-                                <td>{{$user->last_name}}</td>
-                                <td>{{$user->second_last_name}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>
-                                    <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
-                                    <!--<a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>-->
-                                </td>
-                            </tr>
+                <tr>
+                    <td>{{$user->identification_card}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->second_name}}</td>
+                    <td>{{$user->last_name}}</td>
+                    <td>{{$user->second_last_name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>
+                        <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
+                        @if(Auth::user()->roles_id==1)
+                            <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
                         @endif
-                    @endif
-                @else
-                    <tr>
-                        <td>{{$user->identification_card}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->second_name}}</td>
-                        <td>{{$user->last_name}}</td>
-                        <td>{{$user->second_last_name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>
-                            <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
-                            @if(Auth::user()->roles_id==1)
-                                <a href="{{route('userDelete',$user->id)}}" class="icon-trash-empty "></a>
-                            @endif
-                        </td>
-                    </tr>
-                @endif
+                    </td>
+                </tr>
             @endforeach
             </tbody>
         </table>

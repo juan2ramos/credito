@@ -25,7 +25,10 @@ class UserController extends BaseController
 
     public function showAll()
     {
-        $users = User::where('roles_id', '4')->paginate(20);
+        if(Auth::user()->roles_id == 3)
+            $users = User::whereRaw('roles_id = 4 and location = ' . Auth::user()->location)->paginate(20);
+        else
+            $users = User::where('roles_id', '4')->paginate(20);
         return View::make('back.users', compact('users'));
     }
 
