@@ -59,10 +59,7 @@ class UserController extends BaseController
     public function userShow($id)
     {
         $user = User::find($id);
-        $credits = $user->CreditRequest()->first();
-        if($credits->value == 0)
-            return Redirect::back();
-
+        $credits = CreditRequest::where('user_id', $id)->get();
         $locations = ['0'=>'Sin region'] + Location::all()->lists('name','id');
 
         $extracts = Extract::where('nit', $user->identification_card)->get();
@@ -78,7 +75,7 @@ class UserController extends BaseController
         if($user->location) $location = Location::where('id', $user->location)->first();
         else $location['name'] = 'No asignada';
         $disabled = (Auth::user()->roles_id == 3)?'disabled':'';
-
+        
         return View::make('back.user', compact('user', 'credits','location','locations','extracts','vencidos','debe','points','disabled'));
     }
 
