@@ -29,7 +29,7 @@
 
         <h1>Datos del usuario</h1>
         @if(Auth::user()->roles_id>1)
-            {{Form::open(array('url'=>'Actualizar/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
+            {{Form::open(array('url'=>'admin/Actualizar/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
         @else
             {{Form::open(array('url'=>'admin/uploadUser/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
         @endif

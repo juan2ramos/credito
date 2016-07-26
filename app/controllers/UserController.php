@@ -175,7 +175,7 @@ class UserController extends BaseController
         $user = new cardUserManager(new User(),Input::only('card'));
         $userValidator = $user->isValid();
         if($userValidator)
-            return Redirect::to('Actualizar/'.$id)->withErrors($userValidator)->withInput();
+            return Redirect::to('admin/usuarios/'.$id)->withErrors($userValidator)->withInput();
 
         $updateUser = $user->uploadUser($id,Auth::user()->roles_id);
 
@@ -189,9 +189,9 @@ class UserController extends BaseController
                     'method' => 'updateUser'
                 ]
             );
-            return Redirect::to('Actualizar/'.$id)->with(array('message'=>"El usuario se actualizo correctamente"));
+            return Redirect::to('admin/usuarios/'.$id)->with(array('message'=>"El usuario se actualizo correctamente"));
         }
-        return Redirect::to('Actualizar/'.$id)->with(array('message_error'=>"solo se puede actualizar una vez por mes"));
+        return Redirect::to('admin/usuarios/'.$id)->with(array('message_error'=>"solo se puede actualizar una vez por mes"));
     }
 
     public function userDelete($id)
