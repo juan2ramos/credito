@@ -90,3 +90,8 @@ Route::get('refresh/{pass}', function () {
         $message->to('juan2ramos@gmail.com', 'creditos lilipink')->subject('prueba');
     });
 });
+Route::get('emprendedoras/', ['as'=>'enterprising','uses'=>'EnterprisingController@index']);
+Route::get('se_emprendedora/', ['as'=>'isEnterprising','uses'=>'EnterprisingController@isEnterprising']);
+Route::get('donde_comprar/', ['as'=>'buy','uses'=>'EnterprisingController@buy']);
+Route::get('como_pagar/', ['as'=>'pay','uses'=>'EnterprisingController@pay']);
+Route::get('magazine/', ['as'=>'magazine','uses'=>'EnterprisingController@magazine']);
