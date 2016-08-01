@@ -1,5 +1,9 @@
 <?php
 
+use credits\Entities\User;
+use credits\Entities\CreditRequest;
+use credits\Repositories\ImageRepo;
+
 class EnterprisingController extends Controller {
 
 
@@ -24,4 +28,39 @@ class EnterprisingController extends Controller {
 		return View::make('front.magazine');
 	}
 
+	protected function getRegister(){
+		return View::make('front.enterprisingRegister');
+	}
+
+	protected function simpleRegister(){
+		$input = Input::all();
+		$user = User::create($input);
+
+		$user->update([
+			'user_name' => str_replace(' ', '.', $input['name'] . '.' . $input['last_name']),
+			'roles_id' 	=> 5,
+			'birth_city' => $input['instead_expedition']
+		]);
+
+		return Redirect::route('enterprisingSimple');
+	}
+
+	protected function creditRegister(){
+
+		$input = Input::all();
+
+		$user = User::create($input);
+		$user->update([
+			'user_name' => str_replace(' ', '.', $input['name'] . '.' . $input['last_name']),
+			'roles_id' 	=> 5,
+			'birth_city' => $input['instead_expedition']
+		]);
+
+		$creditRequest = CreditRequest::create($input);
+		$creditRequest->files = $input['files'];
+		$creditRequest->user_id = $user['id'];
+		$creditRequest->save();
+
+		return Redirect::route('enterprisingSimple');
+	}
 }

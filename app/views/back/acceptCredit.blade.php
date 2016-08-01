@@ -17,6 +17,7 @@
     <section class="acceptSection">
         <h2>datos personales</h2>
         {{Form::open(['route'=> ['acceptCredit', $user->id],'method'=>'POST','class'=>""])}}
+
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -42,9 +43,11 @@
                     <td>{{$user->address}}</td>
                     <td>{{$user->CreditRequest->monthly_expenses}}</td>
                     <td>{{$user->CreditRequest->monthly_income}}</td>
-                    <td>{{$point->name}}</td>
-
-
+                    @if(isset($point->name))
+                        <td>{{$point->name}}</td>
+                    @else
+                        <td>Emprendedora</td>
+                    @endif
                 </tr>
                 </tbody>
             </table>
@@ -82,7 +85,8 @@
                 </div>
             @endif
         </div>
-        @if(strtolower($locations->name)=="medellin")
+
+        @if(isset($locations->name) && strtolower($locations->name)=="medellin")
             <label class="accpt-checkbox">
                 <h2>Fenalco</h2>
             </label>

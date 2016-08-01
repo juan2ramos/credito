@@ -25,7 +25,7 @@
             tienda emprendedora por compras superiores a $300.000; obtendrás el 25% de ganancias
             por compras superiores a $600.000 y el 30% de ganancias por compras superiores a $1´000.000
         </p>
-        <a href="" class="">DILIGENCIAR FORMULARIO</a>
+        <a href="{{route('enterprisingRegister')}}" class="">DILIGENCIAR FORMULARIO</a>
         <div class="isEnterprising-contact">
             <h3>TIENES ALGUNA DUDA <span>CONTACTANOS</span></h3>
             <div>
