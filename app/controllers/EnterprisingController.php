@@ -42,7 +42,7 @@ class EnterprisingController extends Controller {
 			'birth_city' => $input['instead_expedition']
 		]);
 
-		return Redirect::route('enterprisingSimple');
+		return Redirect::route('enterprisingRegister');
 	}
 
 	protected function creditRegister(){
@@ -61,6 +61,6 @@ class EnterprisingController extends Controller {
 		$creditRequest->user_id = $user['id'];
 		$creditRequest->save();
 
-		return Redirect::route('enterprisingSimple');
+		return Redirect::route('enterprisingRegister');
 	}
 }
