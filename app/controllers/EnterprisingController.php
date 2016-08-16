@@ -2,6 +2,8 @@
 
 use credits\Entities\User;
 use credits\Entities\CreditRequest;
+use credits\Entities\Point;
+use credits\Entities\Location;
 use credits\Repositories\ImageRepo;
 
 class EnterprisingController extends Controller {
@@ -29,7 +31,9 @@ class EnterprisingController extends Controller {
 	}
 
 	protected function getRegister(){
-		return View::make('front.enterprisingRegister');
+		$locations = ['location' => 'Seleccione una ciudad'] + Location::all()->lists('name', 'id');
+		$points =  Point::all()->toArray();
+		return View::make('front.enterprisingRegister', compact('locations', 'points'));
 	}
 
 	protected function simpleRegister(){
@@ -42,7 +46,7 @@ class EnterprisingController extends Controller {
 			'birth_city' => $input['instead_expedition']
 		]);
 
-		return Redirect::route('enterprisingRegister');
+		return Redirect::route('enterprisingRegister')->with(['mensaje'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
 	}
 
 	protected function creditRegister(){
@@ -59,8 +63,10 @@ class EnterprisingController extends Controller {
 		$creditRequest = CreditRequest::create($input);
 		$creditRequest->files = $input['files'];
 		$creditRequest->user_id = $user['id'];
+		$creditRequest->location = $input['location'];
+		$creditRequest->point = $input['point'];
 		$creditRequest->save();
 
-		return Redirect::route('enterprisingRegister');
+		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
 	}
 }

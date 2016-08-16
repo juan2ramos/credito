@@ -373,33 +373,27 @@
 @section('javascript')
     {{ HTML::script('js/credit.js'); }}
     <script>
-        $(function() {
-            $('#dropzone input').on('change', function(e) {
-                var file = this.files[0];
+        $('#dropzone input').on('change', function(e) {
+            var file = this.files[0];
 
-                if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
-                    return alert('Tipo de archivo no permitido.');
-                }
+            if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
+                return alert('Tipo de archivo no permitido.');
+            }
 
-                $('#dropzone img').remove();
+            $('#dropzone img').remove();
 
-                if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
-                    var reader = new FileReader(file);
-
-                    reader.readAsDataURL(file);
-
-                    reader.onload = function(e) {
-                        var data = e.target.result,
-                                $img = $('<img />').attr('src', data).fadeIn();
-
+            if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
+                var reader = new FileReader(file);
+                reader.readAsDataURL(file);
+                reader.onload = function(e) {
+                    var data = e.target.result,
+                        $img = $('<img />').attr('src', data).fadeIn();
                         $('#dropzone div').html($img);
                     };
                 } else {
                     var ext = file.name.split('.').pop();
-
                     $('#dropzone div').html(ext);
                 }
             });
-        });
     </script>
 @stop

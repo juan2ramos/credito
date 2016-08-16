@@ -53,8 +53,8 @@ class AcceptCreditManager extends BaseManager
 
     public function verificatorCredit($id)
     {
-        $credit=CreditRequest::where('user_id', '=', $id)->first();
-        $locations=Location::where('id', '=', $credit->location)->first();
+        $credit=CreditRequest::where('user_id', $id)->first();
+        $locations=Location::where('id', $credit->location)->first();
         $variables=General_variables::all();
         $data = $this->prepareData($this->data);
         $message=[];
@@ -63,9 +63,9 @@ class AcceptCreditManager extends BaseManager
         {
             $countCredit++;
         }else{
-
             $message=$message+['data_credit'=>'no superado datacredito'];
         }
+
         if($variables[1]->value<$data['data_monthly'])
         {
             $countCredit++;
@@ -73,6 +73,7 @@ class AcceptCreditManager extends BaseManager
 
             $message=$message+['data_monthly'=>'no superado datos mensuales'];
         }
+
         if($variables[2]->value<$data['value_monthly'])
         {
             $countCredit++;
@@ -93,13 +94,14 @@ class AcceptCreditManager extends BaseManager
         }else{
             $message=$message+['reference'=>'no tienen ninguna referencia confirmada'];
         }
+
         if(isset($data['files']))
         {
             $countCredit++;
         }else{
             $message=$message+['files'=>'Los archivos no estan correctos'];
         }
-
+        
         if(strtolower($locations->name)=="medellin")
         {
             if($data['fenalco']>0)

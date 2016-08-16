@@ -2,7 +2,14 @@
 
 @section('content')
     @include('partial.submenu')
-    {{ Session::get('mensaje') }}
+
+    @if(Session::get('message'))
+        <div style="width: calc( 100% - 30px )" id="notify" class="notify is-show success">
+            <strong>Mensaje</strong>
+            <span class="text-notify">{{Session::get('message')}}</span>
+            <span class="close-notify">x</span>
+        </div>
+    @endif
 
     <section class="Credit u-shadow-5">
         @extends('layout/notify')
@@ -13,7 +20,7 @@
         <input class="Tab" id="tab1" type="radio" name="tabs" checked>
         <input class="Tab" id="tab2" type="radio" name="tabs">
         <label style="margin-left:-150px" class="u-button" for="tab1">Pagos de contado</label>
-        <label style="" class="u-button" for="tab2">Pagos a credito</label>
+        <label style="" class="u-button" for="tab2">Pagos a crédito</label>
         <br>
         <article class="TabContainer" id="simpleForm">
 
@@ -169,7 +176,7 @@
                     </div>
                 @endif
 
-                <div>
+                <div style="margin: 43px 0;">
                     <label>
                         ¿Actualmente vendes por catálogo?
                         {{Form::radio('isWorking', 1, null, ['class' => 'radio','required'])}}
@@ -415,6 +422,39 @@
             </section>
 
             <section class="Credit-section u-CreditSection">
+                <div class="material-input">
+                    <div>
+                        {{ Form::select('location', $locations,'',array('class'=>'Credit-select','id'=>'location')) }}
+                        <span></span>
+                    </div>
+
+                    @if($errors->first('location'))
+                        <div class="errors">
+                            *{{$errors->first('location')}}
+                        </div>
+                    @endif
+                </div>
+            </section>
+
+            <section class="Credit-section">
+                <div class="material-input">
+                    <select class="Credit-select" name="point" id="point">
+                        <option value="" selected="selected">seleccione un punto de venta</option>
+                        @foreach ($points as $point)
+                            <option data-city="{{$point['location_id']}}" value="{{$point['id']}}">{{$point['name']}}</option>
+                        @endforeach
+                    </select>
+                    <span></span>
+                </div>
+
+                @if($errors->first('point'))
+                    <div class="errors">
+                        *{{$errors->first('point')}}
+                    </div>
+                @endif
+            </section>
+
+            <section class="Credit-section u-CreditSection">
 
                 <p class="titleReference">Referencia Personal 1</p>
 
@@ -474,7 +514,7 @@
                 {{Form::text('files','',['id'=>'form-files'])}}
             </div>
 
-            <div class="files-container">
+            <div style="margin:40px 0" class="files-container">
                 <div class="pop-up ">
                     <p>Sube tus documentos <br>
                         <span>Fotocopia de la cedula 150%</span>
@@ -534,34 +574,32 @@
 
 @section('javascript')
     {{ HTML::script('js/credit.js'); }}
+
     <script>
-        $(function() {
-            $('#dropzone input').on('change', function(e) {
-                var file = this.files[0];
+        $('#dropzone input').on('change', function(e) {
+            var file = this.files[0];
 
-                if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
-                    return alert('Tipo de archivo no permitido.');
-                }
+            if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
+                return alert('Tipo de archivo no permitido.');
+            }
 
-                $('#dropzone img').remove();
+            $('#dropzone img').remove();
+            if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
+                var reader = new FileReader(file);
+                reader.readAsDataURL(file);
+                reader.onload = function(e) {
+                var data = e.target.result,
+                    $img = $('<img />').attr('src', data).fadeIn();
+                    $('#dropzone div').html($img);
+                };
+            } else {
+                var ext = file.name.split('.').pop();
+                $('#dropzone div').html(ext);
+            }
+        });
 
-                if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
-                    var reader = new FileReader(file);
-
-                    reader.readAsDataURL(file);
-
-                    reader.onload = function(e) {
-                        var data = e.target.result,
-                                $img = $('<img />').attr('src', data).fadeIn();
-
-                        $('#dropzone div').html($img);
-                    };
-                } else {
-                    var ext = file.name.split('.').pop();
-
-                    $('#dropzone div').html(ext);
-                }
-            });
+        $('.close-notify').on('click', function(){
+            $(this).parent().slideToggle();
         });
     </script>
 @stop

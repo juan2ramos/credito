@@ -203,7 +203,6 @@ class CreditController extends BaseController
 			]
 		);
 		return Redirect::route('location')->with(array('message' => "La region ha sido eliminada"));
-
 	}
 
 
@@ -213,11 +212,12 @@ class CreditController extends BaseController
 		$acceptCredit = new AcceptCreditManager(new Accept_credit(), Input::all());
 		$acceptCreditValidator = $acceptCredit->isValid();
 
-
 		if ($acceptCreditValidator) {
 			return Redirect::route('showCreditRequest', ['id' => $id])->withErrors($acceptCreditValidator);
 		}
+
 		$probabilityCredit = $acceptCredit->verificatorCredit($id);
+		
 		if (isset($probabilityCredit['return']) == true) {
 			$mailCredit = $acceptCredit->saveCredit($id, Auth::user()->id);
 			new LogRepo(
