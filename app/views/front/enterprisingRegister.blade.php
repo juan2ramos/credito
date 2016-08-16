@@ -153,7 +153,7 @@
                 @endif
 
                 <div class="material-input">
-                    {{Form::text('mobile_phone','',['id' => 'mobile_phone','required'])}}
+                    {{Form::text('mobile_phone','',['id' => 'mobile_phone'])}}
                     {{Form::label('mobile_phone','Número de celular')}}
                     <span></span>
                 </div>
@@ -165,7 +165,7 @@
                 @endif
 
                 <div class="material-input">
-                    {{Form::text('phone','',['id' => 'phone','required'])}}
+                    {{Form::text('phone','',['id' => 'phone'])}}
                     {{Form::label('phone','Número fijo')}}
                     <span></span>
                 </div>
@@ -179,15 +179,15 @@
                 <div style="margin: 43px 0;">
                     <label>
                         ¿Actualmente vendes por catálogo?
-                        {{Form::radio('isWorking', 1, null, ['class' => 'radio','required'])}}
+                        {{Form::radio('isWorking', 1, null, ['class' => 'radio'])}}
                         {{Form::label('isWorking','Si')}}
-                        {{Form::radio('isWorking', 2, true, ['class' => 'radio','required'])}}
+                        {{Form::radio('isWorking', 2, true, ['class' => 'radio'])}}
                         {{Form::label('isWorking','No')}}
                     </label>
                 </div>
 
                 <div class="material-input">
-                    {{Form::text('whereIsWorking','',['id' => 'phone','required'])}}
+                    {{Form::text('whereIsWorking','',['id' => 'whereIsWorking'])}}
                     {{Form::label('whereIsWorking','¿Cuáles catálogos?')}}
                     <span></span>
                 </div>
@@ -350,7 +350,7 @@
                 @endif
 
                 <div class="material-input">
-                    {{Form::text('mobile_phone','',['id' => 'mobile_phone','required'])}}
+                    {{Form::text('mobile_phone','',['id' => 'mobile_phone'])}}
                     {{Form::label('mobile_phone','Número de celular')}}
                     <span></span>
                 </div>
@@ -362,7 +362,7 @@
                 @endif
 
                 <div class="material-input">
-                    {{Form::text('phone','',['id' => 'phone','required'])}}
+                    {{Form::text('phone','',['id' => 'phone'])}}
                     {{Form::label('phone','Número fijo')}}
                     <span></span>
                 </div>
@@ -376,15 +376,15 @@
                 <div>
                     <label>
                         ¿Actualmente vendes por catálogo?
-                        {{Form::radio('isWorking', 1, null, ['class' => 'radio','required'])}}
+                        {{Form::radio('isWorking', 1, null, ['class' => 'radio'])}}
                         {{Form::label('isWorking','Si')}}
-                        {{Form::radio('isWorking', 2, true, ['class' => 'radio','required'])}}
+                        {{Form::radio('isWorking', 2, true, ['class' => 'radio'])}}
                         {{Form::label('isWorking','No')}}
                     </label>
                 </div>
 
                 <div class="material-input">
-                    {{Form::text('whereIsWorking','',['id' => 'phone','required'])}}
+                    {{Form::text('whereIsWorking','',['id' => 'whereIsWorking'])}}
                     {{Form::label('whereIsWorking','¿Cuáles catálogos?')}}
                     <span></span>
                 </div>
@@ -422,8 +422,8 @@
             </section>
 
             <section class="Credit-section u-CreditSection">
-                <div class="material-input">
-                    <div>
+                <div>
+                    <div class="material-input">
                         {{ Form::select('location', $locations,'',array('class'=>'Credit-select','id'=>'location')) }}
                         <span></span>
                     </div>

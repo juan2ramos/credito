@@ -38,6 +38,11 @@ class EnterprisingController extends Controller {
 
 	protected function simpleRegister(){
 		$input = Input::all();
+		$validator = $this->validate($input);
+		if($validator->fails()){
+			return Redirect::back()->with(['errors' => $validator->messages()]);
+		}
+
 		$user = User::create($input);
 
 		$user->update([
@@ -52,6 +57,11 @@ class EnterprisingController extends Controller {
 	protected function creditRegister(){
 
 		$input = Input::all();
+
+		$validator = $this->validate($input);
+		if($validator->fails()){
+			return Redirect::back()->with(['errors' => $validator->messages()]);
+		}
 
 		$user = User::create($input);
 		$user->update([
@@ -69,5 +79,34 @@ class EnterprisingController extends Controller {
 		$creditRequest->save();
 
 		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
+	}
+
+	private function validate($request){
+		return Validator::make(
+			$request,
+			[
+				'name' => 'required',
+				'last_name' => 'required',
+				'email' => 'required',
+				'password' => 'required',
+				'password_confirm' => 'required',
+				'identification_card' => 'required',
+				'instead_expedition' => 'required',
+				'date_expedition' => 'required',
+				'residency_city' => 'required',
+				'address' => 'required',
+				'mobile_phone' => 'required',
+				'phone' => 'required',
+				'monthly_income' => 'required',
+				'monthly_expenses' => 'required',
+				'location' => 'required',
+				'point' => 'required',
+				'name_reference' => 'required',
+				'name_reference2' => 'required',
+				'phone_reference' => 'required',
+				'phone_reference2' => 'required',
+				'file' => 'required'
+			]
+		);
 	}
 }
