@@ -96,7 +96,7 @@ class EnterprisingController extends Controller {
 		$rules = [
 			'name' => 'required',
 			'last_name' => 'required',
-			'email' => 'required|email',
+			'email' => 'required|email|unique:users,email',
 			'password' => 'required|min:8',
 			'password_confirm' => 'required|same:password',
 			'identification_card' => 'required|numeric',
