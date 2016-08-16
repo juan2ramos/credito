@@ -87,9 +87,9 @@
                     <span></span>
                 </div>
 
-                @if($errors->first('second_last_name'))
+                @if($errors->first('password_confirm'))
                     <div class="errors">
-                        *{{$errors->first('second_last_name')}}
+                        *{{$errors->first('password_confirm')}}
                     </div>
                 @endif
 
@@ -186,13 +186,13 @@
                         ¿Actualmente vendes por catálogo?
                         {{Form::radio('isWorking', 1, null, ['class' => 'radio'])}}
                         {{Form::label('isWorking','Si')}}
-                        {{Form::radio('isWorking', 2, true, ['class' => 'radio'])}}
+                        {{Form::radio('isWorking', 0, true, ['class' => 'radio'])}}
                         {{Form::label('isWorking','No')}}
                     </label>
                 </div>
 
-                <div class="material-input">
-                    {{Form::text('whereIsWorking','',['id' => 'whereIsWorking'])}}
+                <div class="material-input whereIsWorking" style="display:none">
+                    {{Form::text('whereIsWorking',' ',['id' => 'whereIsWorking'])}}
                     {{Form::label('whereIsWorking','¿Cuáles catálogos?')}}
                     <span></span>
                 </div>
@@ -383,13 +383,13 @@
                         ¿Actualmente vendes por catálogo?
                         {{Form::radio('isWorking', 1, null, ['class' => 'radio'])}}
                         {{Form::label('isWorking','Si')}}
-                        {{Form::radio('isWorking', 2, true, ['class' => 'radio'])}}
+                        {{Form::radio('isWorking', 0, true, ['class' => 'radio'])}}
                         {{Form::label('isWorking','No')}}
                     </label>
                 </div>
 
-                <div class="material-input">
-                    {{Form::text('whereIsWorking','',['id' => 'whereIsWorking'])}}
+                <div class="material-input whereIsWorking" style="display:none">
+                    {{Form::text('whereIsWorking',' ',['id' => 'whereIsWorking'])}}
                     {{Form::label('whereIsWorking','¿Cuáles catálogos?')}}
                     <span></span>
                 </div>
@@ -605,6 +605,10 @@
 
         $('.close-notify').on('click', function(){
             $(this).parent().slideToggle();
+        });
+
+        $('[name="isWorking"]').on('change', function(){
+            $(this).parent().parent().siblings('.whereIsWorking').toggle();
         });
     </script>
 @stop

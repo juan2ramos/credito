@@ -8,7 +8,6 @@ use credits\Repositories\ImageRepo;
 
 class EnterprisingController extends Controller {
 
-
 	protected function index()
 	{
 		return View::make('front.enterprising');
@@ -38,38 +37,26 @@ class EnterprisingController extends Controller {
 
 	protected function simpleRegister(){
 		$input = Input::all();
-		$validator = $this->validate($input);
-		if($validator->fails()){
-			return Redirect::back()->with(['errors' => $validator->messages()])->withInput();
-		}
+		$rules = $this->getRules(false);
+		$validator = $this->validate($input, $rules);
 
-		$user = User::create($input);
+		if($validator->fails())
+			return Redirect::back()->withErrors($validator)->withInput();
 
-		$user->update([
-			'user_name' => str_replace(' ', '.', $input['name'] . '.' . $input['last_name']),
-			'roles_id' 	=> 5,
-			'birth_city' => $input['instead_expedition']
-		]);
-
-		return Redirect::route('enterprisingRegister')->with(['mensaje'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
+		$this->createUser($input);
+		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
 	}
 
 	protected function creditRegister(){
 
 		$input = Input::all();
+		$rules = $this->getRules(true);
+		$validator = $this->validate($input, $rules);
 
-		$validator = $this->validate($input);
-		if($validator->fails()){
-			return Redirect::back()->with(['errors' => $validator->messages(), 'isCredit' => true])->withInput();
-		}
+		if($validator->fails())
+			return Redirect::back()->withErrors($validator)->withInput()->with(['isCredit' => true]);
 
-		$user = User::create($input);
-		$user->update([
-			'user_name' => str_replace(' ', '.', $input['name'] . '.' . $input['last_name']),
-			'roles_id' 	=> 5,
-			'birth_city' => $input['instead_expedition']
-		]);
-
+		$user = $this->createUser($input);
 		$creditRequest = CreditRequest::create($input);
 		$creditRequest->files = $input['files'];
 		$creditRequest->user_id = $user['id'];
@@ -78,35 +65,60 @@ class EnterprisingController extends Controller {
 		$creditRequest->point = $input['point'];
 		$creditRequest->save();
 
-		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
+		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación", 'isCredit' => true]);
 	}
 
-	private function validate($request){
-		return Validator::make(
-			$request,
-			[
-				'name' => 'required',
-				'last_name' => 'required',
-				'email' => 'required',
-				'password' => 'required',
-				'password_confirm' => 'required',
-				'identification_card' => 'required',
-				'instead_expedition' => 'required',
-				'date_expedition' => 'required',
-				'residency_city' => 'required',
-				'address' => 'required',
-				'mobile_phone' => 'required',
-				'phone' => 'required',
-				'monthly_income' => 'required',
-				'monthly_expenses' => 'required',
-				'location' => 'required',
-				'point' => 'required',
-				'name_reference' => 'required',
-				'name_reference2' => 'required',
-				'phone_reference' => 'required',
-				'phone_reference2' => 'required',
-				'file' => 'required'
-			]
-		);
+	private function validate($request, $rules){
+
+		$messages = [
+			'same' => 'La contraseña no coincide',
+			'required' => 'Este campo es requerido',
+			'email' => 'Formato de email incorrecto',
+			'numeric' => 'Este campo solo recibe números'
+		];
+
+		return Validator::make($request, $rules, $messages);
+	}
+
+	private function createUser($input){
+		$user = User::create($input);
+		$user->user_name = str_replace(' ', '.', $input['name'] . '.' . $input['last_name']);
+		$user->roles_id = 5;
+		$user->birth_city = $input['instead_expedition'];
+		$user->whereIsWorking = $input['whereIsWorking'];
+		$user->isWorking = $input['isWorking'];
+		$user->save();
+
+		return $user;
+	}
+
+	private function getRules($isCredit){
+		$rules = [
+			'name' => 'required',
+			'last_name' => 'required',
+			'email' => 'required|email',
+			'password' => 'required|min:8',
+			'password_confirm' => 'required|same:password',
+			'identification_card' => 'required|numeric',
+			'instead_expedition' => 'required',
+			'date_expedition' => 'required',
+			'residency_city' => 'required',
+			'address' => 'required',
+			'mobile_phone' => 'required|numeric|min:7',
+			'phone' => 'required|numeric|min:7'
+		];
+
+		if($isCredit){
+			$rules['monthly_income'] = 'required|numeric';
+			$rules['monthly_expenses'] = 'required|numeric';
+			$rules['location'] = 'required';
+			$rules['point'] = 'required';
+			$rules['name_reference'] = 'required';
+			$rules['name_reference2'] = 'required';
+			$rules['phone_reference'] = 'required|numeric|min:7';
+			$rules['phone_reference2'] = 'required|numeric|min:7';
+		}
+
+		return $rules;
 	}
 }
