@@ -40,7 +40,7 @@ class EnterprisingController extends Controller {
 		$input = Input::all();
 		$validator = $this->validate($input);
 		if($validator->fails()){
-			return Redirect::back()->with(['errors' => $validator->messages()]);
+			return Redirect::back()->with(['errors' => $validator->messages()])->withInput();
 		}
 
 		$user = User::create($input);
@@ -60,7 +60,7 @@ class EnterprisingController extends Controller {
 
 		$validator = $this->validate($input);
 		if($validator->fails()){
-			return Redirect::back()->with(['errors' => $validator->messages()]);
+			return Redirect::back()->with(['errors' => $validator->messages(), 'isCredit' => true])->withInput();
 		}
 
 		$user = User::create($input);

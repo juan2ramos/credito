@@ -17,8 +17,13 @@
         <h1>SE UNA EMPRENDEDORA LILIPINK</h1>
 
         <br>
-        <input class="Tab" id="tab1" type="radio" name="tabs" checked>
-        <input class="Tab" id="tab2" type="radio" name="tabs">
+        @if(Session::get('isCredit'))
+            <input class="Tab" id="tab1" type="radio" name="tabs">
+            <input class="Tab" id="tab2" type="radio" name="tabs" checked>
+        @else
+            <input class="Tab" id="tab1" type="radio" name="tabs" checked>
+            <input class="Tab" id="tab2" type="radio" name="tabs">
+        @endif
         <label style="margin-left:-150px" class="u-button" for="tab1">Pagos de contado</label>
         <label style="" class="u-button" for="tab2">Pagos a crédito</label>
         <br>
@@ -29,7 +34,7 @@
             <section class="Credit-section u-CreditSection">
 
                 <div class="material-input">
-                    {{Form::text('name','',['id' => 'name'])}}
+                    {{Form::text('name', '',['id' => 'name'])}}
                     {{Form::label('name','Nombre')}}
                     <span></span>
                 </div>
