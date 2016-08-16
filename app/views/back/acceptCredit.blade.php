@@ -15,7 +15,8 @@
     <h1>Aceptacion del credito</h1>
 
     <section class="acceptSection">
-        <h2>datos personales</h2>
+        {{Session::get('enterprising')}}
+        <h2>Datos personales @if($priority == 2) (Emprendedora) @endif</h2>
         {{Form::open(['route'=> ['acceptCredit', $user->id],'method'=>'POST','class'=>""])}}
 
         <div class="Table-content">
@@ -46,7 +47,7 @@
                     @if(isset($point->name))
                         <td>{{$point->name}}</td>
                     @else
-                        <td>Emprendedora</td>
+                        <td>No tiene punto asignado</td>
                     @endif
                 </tr>
                 </tbody>

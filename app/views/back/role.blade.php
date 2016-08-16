@@ -12,7 +12,7 @@
     @endif
     <div class="Back-content"><a href="{{ route('roles') }}" class="login-button">Atras</a></div>
     {{Form::model($role, array('route' => array('updateRol', $role->id)))}}
-    <div class="wrap-content">
+    <div class="wrap-content" style="margin-bottom: 25px">
         {{Form::text('name',$nameRol,['class' => 'Input-title'])}}
     </div>
     <div class="Table-content">
@@ -48,11 +48,35 @@
         </table>
     </div>
     <div class="wrap-content">
-        {{Form::label('priority','Prioridad de envio de solicitud de crédito',['class' => 'Label-priority'])}}
-        {{Form::checkbox('priority', 1, 1, ['class' => 'checkbox',])}}
+        <input type="hidden" id="priority" value="{{$role->priority}}">
+        <label for="high">
+            Prioridad Alta
+            <input type="radio" name="priority" id="high" value="1">
+        </label>
+        <label for="medium">
+            | Prioridad Media
+            <input type="radio" name="priority" id="medium" value="2">
+        </label>
+        <label for="low">
+            | Prioridad Baja
+            <input type="radio" name="priority" id="low" value="0">
+        </label>
+
     </div>
     <div class="button-update">
         <button class="u-button">Actualizar Rol</button>
     </div>
     {{Form::close()}}
+@stop
+
+@section('javascript')
+    <script>
+        var $priority = $('[name="priority"]');
+        for(var i = 0; i < $priority.length; i++){
+            if($priority.eq(i).val() == $('#priority').val()){
+                $priority.eq(i).attr('checked', true);
+                break;
+            }
+        }
+    </script>
 @stop

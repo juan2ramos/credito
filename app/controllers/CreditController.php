@@ -151,10 +151,11 @@ class CreditController extends BaseController
 	public function showCreditRequest($id)
 	{
 		$user = User::find($id);
-		$locations = Location::where('id', '=', $user->CreditRequest->location)->first();
-		$point = Point::where('id', '=', $user->CreditRequest->point)->first();
+		$locations = Location::where('id', $user->CreditRequest->location)->first();
+		$point = Point::where('id', $user->CreditRequest->point)->first();
 		$images = explode(",", $user->CreditRequest->files);
-		return View::make('back.acceptCredit', compact('user', 'credit', 'images', 'locations','point'));
+		$priority = $user->CreditRequest->priority;
+		return View::make('back.acceptCredit', compact('user', 'credit', 'images', 'locations','point', 'priority'));
 	}
 
 	//MUESTRA LA TABLA DONDE ESTAN TODAS LAS REGIONES

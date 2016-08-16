@@ -41,7 +41,13 @@
                         @endif
                     </td>
                     <td>
-                        @if($role->priority) Si @else No @endif
+                        @if($role->priority == 1)
+                            Alta
+                        @elseif($role->priority == 2)
+                            Media
+                        @else
+                            Baja
+                        @endif
                     </td>
                     <td>
                         <a href="{{route('rol', $role->id)}}" class="icon-folder-open"></a>

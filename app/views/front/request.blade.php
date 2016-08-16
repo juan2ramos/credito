@@ -32,8 +32,10 @@
                      <td>{{$user->user_name}}</td>
                      <td>{{$user->identification_card}}</td>
                      <td>
-                         @if($user->priority)
+                         @if($user->priority == 1)
                              Alta
+                         @elseif($user->priority == 2)
+                             Media
                          @else
                              Baja
                          @endif
