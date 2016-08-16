@@ -63,6 +63,7 @@ class EnterprisingController extends Controller {
 		$creditRequest = CreditRequest::create($input);
 		$creditRequest->files = $input['files'];
 		$creditRequest->user_id = $user['id'];
+		$creditRequest->priority = 3;
 		$creditRequest->location = $input['location'];
 		$creditRequest->point = $input['point'];
 		$creditRequest->save();
