@@ -47,7 +47,7 @@
             </tbody>
         </table>
     </div>
-    <div class="wrap-content">
+    <div class="wrap-content" style="margin: 40px auto">
         <input type="hidden" id="priority" value="{{$role->priority}}">
         <label for="high">
             Prioridad Alta
@@ -63,7 +63,7 @@
         </label>
 
     </div>
-    <div class="button-update">
+    <div class="button-update" style="margin: 40px auto">
         <button class="u-button">Actualizar Rol</button>
     </div>
     {{Form::close()}}

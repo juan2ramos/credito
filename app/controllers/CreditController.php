@@ -76,7 +76,7 @@ class CreditController extends BaseController
 						'action' => 'ha solicitado un credito para: ',
 						'affected_entity' => $user_name['user_name'],
 						'method' => 'updateCredit'
-					]
+						]
 				);
 				$data = Input::all() + ["link" => "solicitud"];
 				if (Input::get('email')) {
