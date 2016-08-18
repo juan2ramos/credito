@@ -545,7 +545,10 @@ img, .img-slider {
     .Header-contentNav {
         margin-left: -30px;
     }
-
+    .Buy article {
+        padding: 0 20px;
+        width: 100% !important;
+    }
     .Header-logoLilipink {
         padding: 10px 2px 8px;
         width: 20%;
@@ -2648,8 +2651,8 @@ footer {
     vertical-align: top;
     text-align: center;
     width: 49%;
-
 }
+
 .tienda img{
     max-width: 300px;
 }
