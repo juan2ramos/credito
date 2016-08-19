@@ -38,20 +38,19 @@
                 <li><span class="point"><img src="{{asset('img/point.png')}}" alt=""> </span>Los pagos los puedes hacer en: <br>
                     <span style="color: #BA007C">* TIENDAS LILI PINK:</span><br>
 
+
+
                     En las cajas indicas que vas a pagar un
 
                     pedido hecho en línea del sistema
 
                     emprendedoras <br>
-                    Formato recaudo empresarial<br>
-                    a nombre de Innova Quality S.A.S.<br>
-                    Cuenta de ahorros 16862920931<br>
                     <span style="color: #BA007C">* BANCOLOMBIA:</span><br>
-                    Formato recaudo empresarial
+                    Formato recaudo empresarial <br>
 
-                    a nombre de Innova Quality S.A.S.
+                    a nombre de Innova Quality S.A.S. <br>
 
-                    Cuenta de ahorros 16862920931
+                    Cuenta de ahorros 16862920931 <br>
 
                     Colocar el Referencia el número de pedido<br>
                      <span style="color: #BA007C">* EFECTY</span><br>
