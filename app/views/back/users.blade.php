@@ -12,7 +12,7 @@
     @endif
 
     <h1 xmlns="http://www.w3.org/1999/html">Administración de usuarios</h1>
-    <div class="SearchBar">
+    <div class="SearchBar" style="margin: 0 auto 20px;">
         <div class="Button">
             <a style="padding: 10px 15px;" class="u-button" href="{{route('searchUsersCard')}}">Usuarios que faltan por tarjeta</a>
         </div>
@@ -29,7 +29,8 @@
             {{Form::close()}}
         </div>
     </div>
-    <div class="Table-content">
+
+    <div class="Table-content TabContainer" style="margin: 40px auto 0;">
         <table class="table table-striped table-hover ">
             <thead>
             <tr>
@@ -61,9 +62,8 @@
             @endforeach
             </tbody>
         </table>
+        {{ $users->appends(['sort' => 'users'])->links() }}
     </div>
-
-    {{ $users->appends(['sort' => 'users'])->links() }}
 
     @if(Auth::user()->roles_id==1)
         <div class="wrap-content ">

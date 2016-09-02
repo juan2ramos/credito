@@ -2677,3 +2677,16 @@ footer {
 .pedidos{
     max-width: 265px;
 }
+
+.Tabs-Buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.Tabs-Buttons label{
+    width: inherit;
+    margin: 0 5px;
+}

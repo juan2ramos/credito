@@ -57,6 +57,8 @@ class EnterprisingController extends Controller {
 			return Redirect::back()->withErrors($validator)->withInput()->with(['isCredit' => true]);
 
 		$user = $this->createUser($input);
+		$user->hasCredit = 1;
+		$user->save();
 		$creditRequest = CreditRequest::create($input);
 		$creditRequest->files = $input['files'];
 		$creditRequest->user_id = $user['id'];

@@ -64,7 +64,6 @@
     </figure>
     <div id="header-menu" >
         {{Menus::create('principal',[ 'class'=>''])}}
-
     </div>
 </header>
 <div class="wrap">

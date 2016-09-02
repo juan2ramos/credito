@@ -53,7 +53,7 @@ class downloadExcel extends Command {
 
 		Excel::create('usuarios', function($excel) use($users){
 			$excel->sheet('Excel sheet', function($sheet) use($users){
-				$sheet->cells('C1:S1', function($cells) {
+				$sheet->cells('C1:T1', function($cells) {
 					$cells->setFontWeight('bold');
 					$cells->setBackground('#e80e8a');
 					$cells->setFontColor('#ffffff');
@@ -64,6 +64,8 @@ class downloadExcel extends Command {
 				$sheet->setAutoSize(false);
 				$sheet->setWidth('A', 1);
 				$sheet->setWidth('B', 1);
+				$sheet->setWidth('R', 15);
+				$sheet->setWidth('S', 16);
 				$sheet->fromArray($users);
 				$sheet->setOrientation('landscape');
 			});
@@ -91,6 +93,7 @@ class downloadExcel extends Command {
 			$users[$key]['Ciudad'] 			= $user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región';
 			$users[$key]['Tienda'] 			= $credit ? Point::find($credit->point)['name'] : 'Sin punto';
 			$users[$key]['Cupo_Credito']    = $credit ? $credit->value : null;
+			$users[$key]['¿Tiene credito?'] = $credit ? 'Si' : 'No';
 			$users[$key]['Emprend'] 		= $user->roles_id == 5 ? 'Si' : 'No';
 		}
 		return $users;

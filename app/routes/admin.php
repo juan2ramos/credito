@@ -10,6 +10,18 @@ Route::get('usuarios', [
     'uses' => 'UserController@showAll'
 ]);
 
+Route::get('emprendedoras-contado', [
+    'before' => 'permissions:users',
+    'as' => 'showEnterpricingSimple',
+    'uses' => 'UserController@showEnterpricingSimple'
+]);
+
+Route::get('emprendedoras-credito', [
+    'before' => 'permissions:users',
+    'as' => 'showEnterpricingCredit',
+    'uses' => 'UserController@showEnterpricingCredit'
+]);
+
 Route::get('eliminar-usuario/{id}', [
     'before' => 'permissions:users',
     'as' => 'userDelete',
