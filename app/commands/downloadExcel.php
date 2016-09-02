@@ -66,6 +66,7 @@ class downloadExcel extends Command {
 				$sheet->setWidth('B', 1);
 				$sheet->setWidth('R', 15);
 				$sheet->setWidth('S', 16);
+				$sheet->setWidth('T', 16);
 				$sheet->fromArray($users);
 				$sheet->setOrientation('landscape');
 			});
@@ -93,8 +94,8 @@ class downloadExcel extends Command {
 			$users[$key]['Ciudad'] 			= $user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región';
 			$users[$key]['Tienda'] 			= $credit ? Point::find($credit->point)['name'] : 'Sin punto';
 			$users[$key]['Cupo_Credito']    = $credit ? $credit->value : null;
-			$users[$key]['¿Tiene credito?'] = $credit ? 'Si' : 'No';
 			$users[$key]['Emprend'] 		= $user->roles_id == 5 ? 'Si' : 'No';
+			$users[$key]['¿Empr. credito?'] = $credit && $user->roles_id == 5 ? 'Si' : ($user->roles_id == 5) ? 'No' : 'N/A';
 		}
 		return $users;
 	}
