@@ -25,7 +25,7 @@
                     cédula en el punto de pago
                 </li>
             </ul>
-            <a href="">LISTADO TIENDAS EMPRENDEDORAS</a>
+            <a target="_blank" href="{{url('img/LiliPinkEmprendedoras.xlsx')}}">LISTADO TIENDAS EMPRENDEDORAS</a>
         </article>
         <article>
             <img class="pedidos" src="{{asset('img/pedidos.png')}}" alt="">
@@ -49,7 +49,7 @@
                     hábiles
                 </li>
             </ul>
-            <a href="">INSTRUCTIVO PEDIDO EN LINEA</a>
+            <a target="_blank" href="{{url('img/LiliPinkEmprendedoras.xlsx')}}">INSTRUCTIVO PEDIDO EN LINEA</a>
         </article>
     </section>
 @stop
