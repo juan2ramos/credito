@@ -4,6 +4,6 @@
         <li><a href="{{route('buy')}}">DONDE COMPRAR</a></li>
         <li><a href="{{route('pay')}}">COMO PAGAR</a></li>
         <li><a href="{{route('magazine')}}">CATÁLOGO</a></li>
-       {{-- <li><a href="">PEDIDO EN LINEA</a></li>--}}
+       <li><a href="http://emprendedoraslilipink.com/okonemovil/index.php" target="_blank">PEDIDO EN LINEA</a></li>
     </ul>
 </div>
