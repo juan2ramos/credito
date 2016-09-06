@@ -142,7 +142,7 @@
 
         <div class="content-Request">
             <a href="{{asset('credito')}}">
-                <img src="{{asset('img/footer.jpg')}}">
+                <img src="{{asset('img/footer2.jpg')}}">
             </a>
         </div>
     </div>

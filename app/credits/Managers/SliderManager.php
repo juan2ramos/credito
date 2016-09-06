@@ -6,7 +6,7 @@ class SliderManager extends BaseManager
     public function getRules()
     {
         $rules=[
-            'files'         => 'image|required'
+            'files' => 'image|required'
 
         ];
 
@@ -20,6 +20,10 @@ class SliderManager extends BaseManager
         ];
         return $messages;
     }
+
+    /************ Utilizado directamente en SliderController ***************************/
+    /// Sin nadie más lo utiliza, borrar clase.
+
     public function saveSlider()
     {
         $data=$this->prepareData($this->data);
@@ -29,7 +33,6 @@ class SliderManager extends BaseManager
         $slider->files=$fileName;
         if($slider->save())
         {
-
             $file->move("sliders",$fileName);
             return true;
         }

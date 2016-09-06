@@ -28,33 +28,30 @@ class SliderController extends BaseController
 
     public function saveSlider()
     {
-        $SliderManager = new sliderManager(new slider(), Input::all());
-        $validator=$SliderManager->isValid();
-        if($validator){
-            return Redirect::route('slider')->withErrors($validator)->withInput();
-        }
-        $SliderManager->saveSlider();
-        new LogRepo(
-            [
-                'responsible'=> 'administrador por definir',
-                'action' => 'ha subido un slider',
-                'affected_entity' => 'home',
-                'method' => 'saveSlider'
-            ]
-        );
-        return Redirect::route('slider')->with(array('mensaje' => 'Los slider estan guardados'));
+        $inputs = Input::all();
+        $file = $inputs['files'];
+
+        $filename = sha1(time()) . $file->getClientOriginalName();
+        $slider = Slider::create(['files' => $filename]);
+        if(!$slider)
+            return Redirect::route('slider')->with(['mensaje' => 'Los slider no pudieron ser guardados. Initente de nuevo']);
+        $file->move("sliders" , $filename);
+        return Redirect::route('slider')->with(['mensaje' => 'Los slider estan guardados']);
     }
 
     public function uploadSlider()
     {
-        $sliders = Slider::all();
-        $numberSlider=Input::all();
-        $slider=new SliderRepo();
-        for($i=0;$i<count($sliders);$i++)
-        {
-            $slider->uploadSlider($sliders[$i]->id,$numberSlider[$i]);
+        $inputs = Input::all();
+
+        foreach ($inputs as $key => $input){
+            if (strpos($key, 'position') !== false) {
+                $data = explode(",", $input);
+                $slider = Slider::find($data[0]);
+                $slider->update(['number_slider' => $data[1]]);
+            }
         }
-        return Redirect::route('slider')->with(array('mensaje' => 'Los slider estan guardados'));
+
+        return Redirect::route('slider')->with(['message' => 'Los slider estan guardados']);
     }
 
     public function deleteSlider($id)

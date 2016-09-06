@@ -82,9 +82,10 @@ function nuevo()
     nuevo.classList.remove('hidden');
     nuevo.classList.add('up');
 }
+
 function editar()
 {
-    var nuevo =document.getElementById('slider-new');
+    var nuevo = document.getElementById('slider-new');
     nuevo.classList.add('hidden');
     nuevo.classList.remove('up');
 }
