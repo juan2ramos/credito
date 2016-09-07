@@ -24,6 +24,7 @@
             <thead>
             <tr>
                 <th>Nombre</th>
+                <th>Emprendedoras</th>
                 <th>Eliminar</th>
             </tr>
             </thead>
@@ -31,6 +32,7 @@
             @foreach ($points as $point)
                 <tr>
                     <td>{{$point->name}}</td>
+                    <td><input name="isEnterpricing" type="checkbox" value="{{$point->id}}" @if($point->isEnterpricingShop) checked @endif class="isEnterpricing"></td>
                     <td>{{ HTML::link(route('pointDelete', $point->id), '',array('class'=>'icon-trash-empty','onClick'=>"return confirm('Estas seguro de eliminar el punto de venta?')")) }}</td>
                 </tr>
 
@@ -62,4 +64,23 @@
 
 @section('javascript')
     {{ HTML::script('js/slider.js'); }}
+    <script>
+        $('.isEnterpricing').on('click', function(){
+
+            var checked = $(this).is(':checked') ? "1" : "0";
+            var params = {
+                _token : "prueba",
+                id : $(this).val(),
+                check : checked
+            };
+
+            $.get( "/admin/updatepoint", params )
+                .done(function(data) {
+                    console.log( "actualizado");
+                })
+                .error(function(){
+                    alert("ha ocurrido un error");
+                });
+        });
+    </script>
 @stop

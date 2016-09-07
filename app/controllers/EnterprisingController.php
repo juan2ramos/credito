@@ -31,7 +31,7 @@ class EnterprisingController extends Controller {
 
 	protected function getRegister(){
 		$locations = ['location' => 'Seleccione una ciudad'] + Location::all()->lists('name', 'id');
-		$points =  Point::all()->toArray();
+		$points =  Point::where('isEnterpricingShop', 1)->get();
 		return View::make('front.enterprisingRegister', compact('locations', 'points'));
 	}
 
@@ -70,22 +70,31 @@ class EnterprisingController extends Controller {
 		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación", 'isCredit' => true]);
 	}
 
+	public function enterpricingCreditList(){
+		if(Auth::user()->roles_id == 3)
+			$users = User::join('creditRequest', 'users.id', '=', 'creditRequest.user_id')->whereRaw('users.roles_id = 5 and creditRequest.state = 1 users.location = ' . Auth::user()->location)->paginate(20);
+		else
+			$users = User::join('creditRequest', 'users.id', '=', 'creditRequest.user_id')->whereRaw('users.roles_id = 5 and creditRequest.state = 1')->paginate(20);
+		return View::make('back.enterpricingCreditList', compact('users'));
+	}
+
+	public function enterpricingSimpleList(){
+		if(Auth::user()->roles_id == 3)
+			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and users.location = ' . Auth::user()->location . " and (user_state is null or user_state < 2)")->orderBy('user_state')->paginate(20);
+		else
+			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and (user_state is null or user_state < 2)')->orderBy('user_state')->paginate(20);
+		return View::make('back.enterpricingList', compact('users'));
+	}
+
 	private function validate($request, $rules){
-
-		$messages = [
-			'same' => 'La contraseña no coincide',
-			'required' => 'Este campo es requerido',
-			'email' => 'Formato de email incorrecto',
-			'numeric' => 'Este campo solo recibe números'
-		];
-
-		return Validator::make($request, $rules, $messages);
+		return Validator::make($request, $rules);
 	}
 
 	private function createUser($input){
 		$user = User::create($input);
 		$user->user_name = str_replace(' ', '.', $input['name'] . '.' . $input['last_name']);
 		$user->roles_id = 5;
+		$user->user_state = 1;
 		$user->birth_city = $input['instead_expedition'];
 		$user->whereIsWorking = $input['whereIsWorking'];
 		$user->isWorking = $input['isWorking'];

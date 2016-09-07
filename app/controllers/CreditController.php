@@ -129,11 +129,10 @@ class CreditController extends BaseController
 	//MUESTRA LA TABLA DONDE SE CONTIENEN TODAS LAS SOLICITUDES PENDIENTES
 	public function showRequest()
 	{
-
 		$locations = Location::all();
 		$showRequest = DB::table('creditRequest')
 			->join('users', 'users.id', '=', 'creditRequest.user_id')
-			->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `state`=''")
+			->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `creditRequest`.`state`=''")
 			->get();
 
 		foreach ($showRequest as $user) {
@@ -272,6 +271,8 @@ class CreditController extends BaseController
 		$credit = CreditRequest::where('user_id', '=', $id)->first();
 		$credit->state = 2;
 		$credit->save();
+		$user->user_state = 2;
+		$user->save();
 		if ($user->email) {
 			$data = ["link" => 1];
 			Mail::send('emails.rejected', $data, function ($message) use ($user) {

@@ -13,13 +13,13 @@ Route::get('usuarios', [
 Route::get('emprendedoras-contado', [
     'before' => 'permissions:users',
     'as' => 'showEnterpricingSimple',
-    'uses' => 'UserController@showEnterpricingSimple'
+    'uses' => 'EnterprisingController@enterpricingSimpleList'
 ]);
 
 Route::get('emprendedoras-credito', [
     'before' => 'permissions:users',
     'as' => 'showEnterpricingCredit',
-    'uses' => 'UserController@showEnterpricingCredit'
+    'uses' => 'EnterprisingController@enterpricingCreditList'
 ]);
 
 Route::get('eliminar-usuario/{id}', [
@@ -240,3 +240,25 @@ Route::get('pdf/{id}', [
     'uses'  =>  'ExtractsController@downloadExtract',
     'as'    =>  'ExtractPdf'
 ]);
+
+Route::get('updatepoint', [
+    'as' => 'update.point',
+    'uses' => 'PointController@update'
+]);
+
+Route::group(['namespace' => 'admin'], function(){
+    Route::get('activate/user/{id}', [
+        'as' => 'admin.activate.user',
+        'uses' => 'UserController@activate'
+    ]);
+
+    Route::get('destroy/user/{id}', [
+        'as' => 'admin.destroy.user',
+        'uses' => 'UserController@destroy'
+    ]);
+
+    Route::get('disable/user/{id}', [
+        'as' => 'admin.disable.user',
+        'uses' => 'UserController@disable'
+    ]);
+});

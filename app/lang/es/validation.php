@@ -95,11 +95,31 @@ return array(
 	*/
 
 	'attributes' => array(
-		'full_name' => 'nombre completo',
+		'name' => 'nombre',
+		'last_name' => 'apellido',
+		'full_name' => 'nombre',
         'email'     => 'correo electronico',
         'password'  => 'clave',
         'password_confirmation' => 'repita su clave',
-        'category_id' => 'Categoría'
+		'password_confirm' => 'confirmar clave',
+        'category_id' => 'Categoría',
+		'phone' => 'teléfono',
+		'mobile_phone' => 'celular',
+		'address' => 'dirección',
+		'residency_city' => 'ciudad de residencia',
+		'date_expedition' => 'fecha de expedición',
+		'instead_expedition' => 'lugar de expedición',
+		'identification_card' => 'número de identificación',
+		'monthly_income' => 'ingresos mensuales',
+		'monthly_expenses' => 'egresos mensuales',
+		'location' => 'ubicación',
+		'point' => 'punto',
+		'name_reference' => 'nombre referencia 1',
+		'name_reference2' => 'nombre referencia 2',
+		'phone_reference' => 'teléfono referencia 1',
+		'phone_reference2' => 'teléfono referencia 2',
+
+
 	),
 
 );
