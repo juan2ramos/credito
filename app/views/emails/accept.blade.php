@@ -3,15 +3,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Creditos Lilipink - Intimasecret</title>
-
     <link rel="shortcut icon" href="http://lilipink.com/wp-content/uploads/2014/10/favicon1.ico">
 </head>
 
 <body>
 
 <div id="contenedor" style=" margin:auto;width:800px;">
-
-
 
     <div id="logo1" style="height:55px;
             text-align:center;
@@ -41,7 +38,6 @@
             font-family:Arial, Helvetica, sans-serif;
             font-size:12px;
             text-decoration:none;" href="http://lilipink.com/categoria-producto/trajes-de-bano/" target="_blank">TRAJES DE BAÑO</a></li>
-
             <li style="display:inline-block;
             margin:10px 30px 10px 30px;"><a style="color: #666;
             font-family:Arial, Helvetica, sans-serif;
@@ -57,8 +53,8 @@
     </div>
 
     <div id="imagen1" style="height:385px;text-align:center;">
-        <a href="{{asset('sign-up')}}">
-            <img  src="http://creditos.lilipink.com/img/aprobada.jpg" width="800" alt="creditoslilipink">
+        <a href="http://creditoslilipink.com/">
+            <img  src="http://creditoslilipink.com/img/aprobada.jpg" width="800" alt="creditoslilipink">
         </a>
     </div>
     <div id="textocre" style="color: #999;
@@ -66,7 +62,7 @@
             font-size:16px;
             font-family:Arial, Helvetica, sans-serif;
             padding-bottom: 10px;">
-       Lilipink le informa que su solicitud de credito fue aprobada. dale <a href="{{asset('sign-up')}}">aqui</a> para iniciar session </div>
+       Lilipink le informa que su solicitud de credito fue aprobada. dale <a href="http://creditoslilipink.com/">aqui</a> para iniciar session </div>
     <div id="redes" style="height:40px;
             font-family:Arial, Helvetica, sans-serif;
             color: #999;

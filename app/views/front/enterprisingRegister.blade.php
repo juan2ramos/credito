@@ -225,11 +225,10 @@
             {{Form::close()}}
         </article>
         <article class="TabContainer col-12" id="creditForm">
-
             {{Form::open(['route'=>'enterprisingCredit','method'=>'POST','files'=>true,'class'=>"Credito-form",'enctype'=>'multipar/form-data'])}}
 
+            <span style="text-align:center; color:#b9007d; display: block; padding: 20px 5px">El credito lilipink emprendedora, difiere tus pedidos y compras a una sola cuota - para pago 5 dias después de la fecha de facturación.</span>
             <section class="Credit-section u-CreditSection">
-
                 <div class="material-input">
                     {{Form::text('name','',['id' => 'name'])}}
                     {{Form::label('name','Nombre')}}
@@ -426,9 +425,10 @@
 
             </section>
 
-            <section class="Credit-section u-CreditSection">
+            <span style="text-align:center; color:#b9007d; display: block; padding: 20px 5px; margin-top: 20px;">Selecciona la ciudad y la tienda para reclamar tu tarjeta en 15 dias.</span>
+            <section class="Credit-section u-CreditSection" style="margin-bottom: 0 !important">
                 <div>
-                    <div class="material-input">
+                    <div style="margin: 0;" class="material-input">
                         {{ Form::select('location', $locations,'',array('class'=>'Credit-select','id'=>'location')) }}
                         <span></span>
                     </div>
@@ -442,7 +442,7 @@
             </section>
 
             <section class="Credit-section">
-                <div class="material-input">
+                <div style="margin: 0;" class="material-input">
                     <select class="Credit-select" name="point" id="point">
                         <option value="" selected="selected">seleccione un punto de venta</option>
                         @foreach ($points as $point)

@@ -110,10 +110,7 @@
                                 @else
                                     <p>/-/-/</p>
                                     <p>$ 0</p>
-<<<<<<< HEAD
-                                    <div><p class="state-home" style="background: #008000 !important;">ACTIVO.</p></div>
-=======
-                                    <div >
+                                    <div>
                                         @if(Auth::user()->user_state == 1)
                                             <p class="state-home" style="background: #008000 !important;">ACTIVO.</p>
                                         @elseif(Auth::user()->user_state == 2)
@@ -124,7 +121,6 @@
                                             <p class="state-home" style="background: #c3c3c3 !important;">EN ESPERA DE APROBACIÓN</p>
                                         @endif
                                     </div>
->>>>>>> bbf486915b3d93562309dd92908f7cbb90eb8eaf
                                 @endif
                             </div>
                             @if(Auth::user()->user_state == 1)
