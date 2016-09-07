@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "laravel-elixir": "*"
+  },
+  "name": "resources",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juan2ramos/credito.git"
+  },
+  "author": "santo52",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juan2ramos/credito/issues"
+  },
+  "homepage": "https://github.com/juan2ramos/credito#readme"
+}

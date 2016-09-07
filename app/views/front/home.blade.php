@@ -108,10 +108,28 @@
                                 @else
                                     <p>/-/-/</p>
                                     <p>$ 0</p>
-                                    <div ><p class="state-home" style="background: #008000 !important;">ACTIVO.</p></div>
+                                    <div >
+                                        @if(Auth::user()->user_state == 1)
+                                            <p class="state-home" style="background: #008000 !important;">ACTIVO.</p>
+                                        @elseif(Auth::user()->user_state == 2)
+                                            <p class="state-home" style="background: indianred !important;">RECHAZADO</p>
+                                        @elseif(Auth::user()->user_state == 0)
+                                            <p class="state-home" style="background: #c3c3c3 !important;">DESACTIVADO</p>
+                                        @else
+                                            <p class="state-home" style="background: #c3c3c3 !important;">EN ESPERA DE APROBACIÓN</p>
+                                        @endif
+                                    </div>
                                 @endif
                             </div>
-                            <a href="{{route('state')}}">ESTADO DE CUENTA</a>
+                            @if(Auth::user()->user_state == 1)
+                                <a href="{{route('state')}}">ESTADO DE CUENTA</a>
+                            @elseif(Auth::user()->user_state == 2)
+                                @if(Auth::user()->roles_id == 4)
+                                    <a href="{{url('credito')}}" style="width: 100%">SOLICITAR NUEVAMENTE</a>
+                                @elseif(Auth::user()->roles_id == 5)
+                                    <a href="{{url('formulario-emprendedoras')}}" style="width: 100%">SOLICITAR NUEVAMENTE</a>
+                                @endif
+                            @endif
                         </section>
                     @endif
 

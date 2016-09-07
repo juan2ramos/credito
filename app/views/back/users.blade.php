@@ -71,4 +71,3 @@
         </div>
     @endif
 @stop
-@endsection
