@@ -16,8 +16,13 @@
     <div class="Content-home">
         <div id="slider">
 
-            @foreach($sliders as $slider)
-                <img class="img-slider" src="sliders/{{$slider['files']}}"/>
+            @foreach($sliders as $key =>$slider)
+                @if($key == 0)
+                    <a href="https://www.youtube.com/watch?v=b2AkFRyohT8" target="_blank"><img class="img-slider" src="sliders/{{$slider['files']}}"/></a>
+                @else
+                    <img class="img-slider" src="sliders/{{$slider['files']}}"/>
+                @endif
+
             @endforeach
             @foreach($sliders as $key => $slider)
                 @if($key == 0)
