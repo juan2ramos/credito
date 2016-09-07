@@ -24,8 +24,12 @@
 
                     cédula en el punto de pago
                 </li>
+                <li>
+                    <span class="point"><img src="{{asset('img/point.png')}}" alt=""></span>
+                    Recuerda que para acceder al 25% de descuento tus compras mínimas deben ser de $300.000
+                </li>
             </ul>
-            <a target="_blank" href="{{url('img/LiliPinkEmprendedoras.xlsx')}}">LISTADO TIENDAS EMPRENDEDORAS</a>
+            <a target="_blank" href="{{url('img/tiendasemprendedoras.pdf')}}">LISTADO TIENDAS EMPRENDEDORAS</a>
         </article>
         <article>
             <img class="pedidos" src="{{asset('img/pedidos.png')}}" alt="">
@@ -48,8 +52,13 @@
 
                     hábiles
                 </li>
+
+                <li>
+                    <span class="point"><img src="{{asset('img/point.png')}}" alt=""></span>
+                    Recuerda que para acceder al 25% de descuento tus compras mínimas deben ser de $300.000
+                </li>
             </ul>
-            <a target="_blank" href="{{url('img/LiliPinkEmprendedoras.xlsx')}}">INSTRUCTIVO PEDIDO EN LINEA</a>
+            <a target="_blank" href="{{url('img/tiendasemprendedoras.pdf')}}">INSTRUCTIVO PEDIDO EN LINEA</a>
         </article>
     </section>
 @stop

@@ -7,13 +7,15 @@
         <p>Convirtiéndote en una EMPRENDEDORA LILI PINK podrás adquirir nuestros productos para tu propia red de ventas a través de un catálogo o nuestras tiendas con una ganancia del 25% sobre el valor de tus pedidos</p>
         <h2>COMO FUNCIONA?</h2>
         <p>Una vez te inscribas en el formulario que encontrarás en la parte inferior en un plazo de un día recibirás un e-mail confirmando tu registro como EMPRENDEDORA LILIPINK; el catálogo lo podrás encontrar cada dos meses en nuestras tiendas por un costo de $3.000 ó publicado en línea, el pedido de los productos que estén vigentes en el catálogo lo puedes hacer en la sección PEDIDO EN LINEA de esta pagina web.</p>
-        <p>También podrás dirigirte a cualquiera de nuestras tiendas para comprar los productos que estén disponibles en tu visita -así no se encuentren en el catálogo vigente-, solamente identifi- candote como EMPRENDEDORA LILI PINK antes de facturar tu compra.  </p>
+        <p>También podrás dirigirte a cualquiera de nuestras tiendas para comprar los productos que estén disponibles en tu visita así no se encuentren en el catálogo vigente, solamente identificandote como EMPRENDEDORA LILI PINK antes de facturar tu compra.  </p>
         <h2>A TENER EN CUENTA</h2>
         <p>
 
             * La inscripción es gratuita <br>
             * La vigencia de cada catálogo es de 2 meses <br>
             * Puedes solicitar crédito emprendedora sin codeudor <br>
+            * Para acceder a los beneficios de lili pink emprendedora en tiendas, tus compras mínimas deben ser de $300.000
+            <br>- c
             * Podrás realizar varios pedidos dentro de una campaña <br>
             * El pedido mínimo es de $300.000 valor catálogo <br>
             * El envío de tu pedido es gratuito <br>
