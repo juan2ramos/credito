@@ -15,7 +15,7 @@
             * La vigencia de cada catálogo es de 2 meses <br>
             * Puedes solicitar crédito emprendedora sin codeudor <br>
             * Para acceder a los beneficios de lili pink emprendedora en tiendas, tus compras mínimas deben ser de $300.000
-            <br>- c
+            <br>
             * Podrás realizar varios pedidos dentro de una campaña <br>
             * El pedido mínimo es de $300.000 valor catálogo <br>
             * El envío de tu pedido es gratuito <br>

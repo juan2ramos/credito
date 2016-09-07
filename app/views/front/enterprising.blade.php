@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partial.submenu')
-    <a href="{{route('isEnterprising')}}"><img src="{{asset('img/emprendedoras-slide.png')}}" alt=""></a>
+    <a href="{{route('isEnterprising')}}"><img src="{{asset('img/principalEmprendedoras.jpg')}}" alt=""></a>
 @stop
 
 @section('javascript')

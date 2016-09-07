@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layout.notify')
+    @include('layout.notify')
 
     @if(Session::has('login_error'))
         <script>
@@ -15,16 +15,18 @@
 
     <div class="Content-home">
         <div id="slider">
-                @foreach($sliders as $slider)
-                    <img class="img-slider" src="sliders/{{$slider['files']}}" />
-                @endforeach
-                @foreach($sliders as $key => $slider)
-                    @if($key == 0)
-                        <span class="slider sliderValid">0</span>
-                    @else
-                        <span class="slider">{{$key}}</span>
-                    @endif
-                @endforeach
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/b2AkFRyohT8" frameborder="0"
+                    allowfullscreen></iframe>
+            @foreach($sliders as $slider)
+                <img class="img-slider" src="sliders/{{$slider['files']}}"/>
+            @endforeach
+            @foreach($sliders as $key => $slider)
+                @if($key == 0)
+                    <span class="slider sliderValid">0</span>
+                @else
+                    <span class="slider">{{$key}}</span>
+                @endif
+            @endforeach
             <span id="back"><</span>
             <span id="next">></span>
         </div>
@@ -37,9 +39,9 @@
                         <figure>
                             <a href="">
                                 @if(Auth::user()->photo != "")
-                                {{ HTML::image('users/'.Auth::user()->photo,'',array('id'=>'')) }}
+                                    {{ HTML::image('users/'.Auth::user()->photo,'',array('id'=>'')) }}
                                 @else
-                                {{ HTML::image('users/profile-default.png','',array('id'=>'')) }}
+                                    {{ HTML::image('users/profile-default.png','',array('id'=>'')) }}
                                 @endif
                             </a>
 
@@ -80,7 +82,8 @@
                     {{ Form::close() }}
                 </section>
             @endif
-            <div class="content-creditRequest" style="background:rgba(13, 12, 12, 0.03) !important; border: 2px solid rgba(204, 204, 204, 0.53);">
+            <div class="content-creditRequest"
+                 style="background:rgba(13, 12, 12, 0.03) !important; border: 2px solid rgba(204, 204, 204, 0.53);">
                 @if(Auth::user())
                     @if(Auth::user()->roles_id < 4)
                         @if(Auth::user()->roles_id == 1)
@@ -108,7 +111,7 @@
                                 @else
                                     <p>/-/-/</p>
                                     <p>$ 0</p>
-                                    <div ><p class="state-home" style="background: #008000 !important;">ACTIVO.</p></div>
+                                    <div><p class="state-home" style="background: #008000 !important;">ACTIVO.</p></div>
                                 @endif
                             </div>
                             <a href="{{route('state')}}">ESTADO DE CUENTA</a>
@@ -149,5 +152,5 @@
 @stop
 
 @section('javascript')
-        {{ HTML::script('js/slider.js'); }}
+    {{ HTML::script('js/slider.js'); }}
 @stop
