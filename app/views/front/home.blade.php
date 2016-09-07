@@ -15,8 +15,7 @@
 
     <div class="Content-home">
         <div id="slider">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/b2AkFRyohT8" frameborder="0"
-                    allowfullscreen></iframe>
+
             @foreach($sliders as $slider)
                 <img class="img-slider" src="sliders/{{$slider['files']}}"/>
             @endforeach
