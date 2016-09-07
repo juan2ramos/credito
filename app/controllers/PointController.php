@@ -14,6 +14,13 @@ class PointController extends BaseController {
         return View::make('back.point',compact('points','locations'));
     }
 
+    public function update(){
+        $point = Point::find(Input::get('id'));
+        $point->isEnterpricingShop = Input::get('check');
+        $point->save();
+        return ['data' => Input::get('check')];
+    }
+
     public function create()
     {
         $pointManager = new PointManager(new Point(),Input::all());

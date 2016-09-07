@@ -31,7 +31,7 @@ class EnterprisingController extends Controller {
 
 	protected function getRegister(){
 		$locations = ['location' => 'Seleccione una ciudad'] + Location::all()->lists('name', 'id');
-		$points =  Point::all()->toArray();
+		$points =  Point::where('isEnterpricingShop', 1)->get();
 		return View::make('front.enterprisingRegister', compact('locations', 'points'));
 	}
 

@@ -241,6 +241,11 @@ Route::get('pdf/{id}', [
     'as'    =>  'ExtractPdf'
 ]);
 
+Route::get('updatepoint', [
+    'as' => 'update.point',
+    'uses' => 'PointController@update'
+]);
+
 Route::group(['namespace' => 'admin'], function(){
     Route::get('activate/user/{id}', [
         'as' => 'admin.activate.user',
