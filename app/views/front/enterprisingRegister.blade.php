@@ -227,7 +227,7 @@
         <article class="TabContainer col-12" id="creditForm">
             {{Form::open(['route'=>'enterprisingCredit','method'=>'POST','files'=>true,'class'=>"Credito-form",'enctype'=>'multipar/form-data'])}}
 
-            <span style="text-align:center; color:#b9007d; display: block; padding: 20px 5px">El credito lilipink emprendedora, difiere tus pedidos y compras a una sola cuota - para pago 5 dias después de la fecha de facturación.</span>
+            <span style="text-align:center; color:#b9007d; display: block; padding: 20px 5px">El crédito lilipink emprendedora, difiere tus pedidos y compras a una sola cuota - para pago 5 días después de la fecha de facturación.</span>
             <section class="Credit-section u-CreditSection">
                 <div class="material-input">
                     {{Form::text('name','',['id' => 'name'])}}
