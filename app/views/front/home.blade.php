@@ -123,7 +123,7 @@
                                     </div>
                                 @endif
                             </div>
-                            @if(Auth::user()->user_state == 1)
+                            @if(Auth::user()->user_state == 1 && Auth::user()->hasCredit)
                                 <a href="{{route('state')}}">ESTADO DE CUENTA</a>
                             @elseif(Auth::user()->user_state == 2)
                                 @if(Auth::user()->roles_id == 4)
