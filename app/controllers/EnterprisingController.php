@@ -94,7 +94,6 @@ class EnterprisingController extends Controller {
 		$user = User::create($input);
 		$user->user_name = str_replace(' ', '.', $input['name'] . '.' . $input['last_name']);
 		$user->roles_id = 5;
-		$user->user_state = 1;
 		$user->birth_city = $input['instead_expedition'];
 		$user->whereIsWorking = $input['whereIsWorking'];
 		$user->isWorking = $input['isWorking'];

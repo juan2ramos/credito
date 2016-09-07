@@ -48,6 +48,8 @@ class AcceptCreditManager extends BaseManager
         $credit->responsible=$responsible;
         $credit->save();
         $user=User::find($id);
+        $user->user_state = 1;
+        $user->save();
         return ['return'=>true]+['mail'=>$user->email];
     }
 
