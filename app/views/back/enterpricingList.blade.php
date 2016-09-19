@@ -59,15 +59,14 @@
                     <td>
                         <!--<a href="{route('userShow',$user->id)}}" class="icon-folder-open "></a>-->
                         @if(Auth::user()->roles_id == 1)
-                            @if(!$user->hasCredit && $user->user_state == null)
-                                <a href="{{route('admin.activate.user',$user->id)}}" class="icon-thumbs-up-alt"></a>
-                                <a href="{{route('admin.destroy.user', $user->id)}}" class="icon-thumbs-down-alt"></a>
-                            @elseif($user->user_state == 1)
-                                <span style="font-size: 1.2rem" class="disabled icon-ok"></span>
-                                <a href="{{route('admin.disable.user', $user->id)}}" class="icon-cancel"></a>
-                            @else
-                                <a href="{{route('admin.activate.user',$user->id)}}" class="icon-ok"></a>
-                                <span style="font-size: 1.2rem" class="disabled icon-cancel"></span>
+                            @if(!$user->hasCredit)
+                                @if($user->user_state == 1)
+                                    <span style="font-size: 1.2rem" class="disabled icon-ok"></span>
+                                    <a href="{{route('admin.disable.user', $user->id)}}" class="icon-cancel"></a>
+                                @else
+                                    <a href="{{route('admin.activate.user',$user->id)}}" class="icon-ok"></a>
+                                    <span style="font-size: 1.2rem" class="disabled icon-cancel"></span>
+                                @endif
                             @endif
                         @endif
                     </td>

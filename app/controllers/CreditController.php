@@ -129,7 +129,16 @@ class CreditController extends BaseController
 	//MUESTRA LA TABLA DONDE SE CONTIENEN TODAS LAS SOLICITUDES PENDIENTES
 	public function showRequest()
 	{
+		if(Auth::user()->roles_id == 4)
+			return Redirect::to('/');
+
 		$locations = Location::all();
+		if(Auth::user()->roles_id == 3)
+			$showRequest = DB::table('creditRequest')
+				->join('users', 'users.id', '=', 'creditRequest.user_id')
+				->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `creditRequest`.`state`='' and users.location = " . Auth::user()->location)
+				->get();
+		else
 		$showRequest = DB::table('creditRequest')
 			->join('users', 'users.id', '=', 'creditRequest.user_id')
 			->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `creditRequest`.`state`=''")

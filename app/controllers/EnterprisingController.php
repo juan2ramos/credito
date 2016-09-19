@@ -71,6 +71,8 @@ class EnterprisingController extends Controller {
 	}
 
 	public function enterpricingCreditList(){
+		if(Auth::user()->roles_id == 4)
+			return Redirect::to('/');
 		if(Auth::user()->roles_id == 3)
 			$users = User::join('creditRequest', 'users.id', '=', 'creditRequest.user_id')->whereRaw('users.roles_id = 5 and creditRequest.state = 1 and users.location = ' . Auth::user()->location)->paginate(20);
 		else
@@ -79,10 +81,12 @@ class EnterprisingController extends Controller {
 	}
 
 	public function enterpricingSimpleList(){
+		if(Auth::user()->roles_id == 4)
+			return Redirect::to('/');
 		if(Auth::user()->roles_id == 3)
-			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and users.location = ' . Auth::user()->location . " and (user_state is null or user_state < 2)")->orderBy('user_state')->paginate(20);
+			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and users.location = ' . Auth::user()->location . " and user_state < 2")->orderBy('user_state')->paginate(20);
 		else
-			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and (user_state is null or user_state < 2)')->orderBy('user_state')->paginate(20);
+			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and user_state < 2')->orderBy('user_state')->paginate(20);
 		return View::make('back.enterpricingList', compact('users'));
 	}
 
