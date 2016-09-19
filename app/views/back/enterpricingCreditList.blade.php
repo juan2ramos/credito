@@ -11,8 +11,7 @@
         </script>
     @endif
 
-    <h1>Emprendedoras con credito aprobado</h1>
-
+    <h1>Usuarios Activos</h1>
     <div class="SearchBar" style="margin: 0 auto 20px;">
         <div class="search">
             {{ Form::open(['route' => 'searchUsers', 'method' => 'POST']) }}
@@ -21,6 +20,14 @@
             {{Form::close()}}
         </div>
     </div>
+
+    <nav class="UsersMenu">
+        <ul>
+            <li><a href="{{url('/admin/usuarios')}}">Creditos Lilipink</a></li>
+            <li><a href="{{url('/admin/emprendedoras-contado')}}">Emprendedoras Contado</a></li>
+            <li><a href="{{url('/admin/emprendedoras-credito')}}" class="active">Emprendedoras Credito</a></li>
+        </ul>
+    </nav>
 
     <div class="Table-content TabContainer" style="margin: 40px auto 0;">
         <table class="table table-striped table-hover ">
@@ -32,7 +39,7 @@
                 <th>Apellido</th>
                 <th>Segundo Apellido</th>
                 <th>E-mail</th>
-                <th>Acciones</th>
+                <!--<th>Acciones</th>-->
             </tr>
             </thead>
             <tbody>
@@ -44,9 +51,10 @@
                     <td>{{$user->last_name}}</td>
                     <td>{{$user->second_last_name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>
-                        <a href="{{route('userShow',$user['user_id'])}}" class="icon-folder-open "></a>
-                    </td>
+
+                    <!--<td>
+                        <a href="{{url('/admin/showCreditRequest/' . $user->user_id)}}" class="icon-folder-open "></a>
+                    </td>-->
                 </tr>
             @endforeach
             </tbody>

@@ -11,11 +11,7 @@
         </script>
     @endif
 
-    @if(isset($users[0]) && $users[0]->hasCredit)
-        <h1>Emprendedoras a credito</h1>
-    @else
-        <h1>Emprendedoras de contado</h1>
-    @endif
+    <h1>Usuarios Activos</h1>
 
     <div class="SearchBar" style="margin: 0 auto 20px;">
         <div class="search">
@@ -25,6 +21,14 @@
             {{Form::close()}}
         </div>
     </div>
+
+    <nav class="UsersMenu">
+        <ul>
+            <li><a href="{{url('/admin/usuarios')}}">Creditos Lilipink</a></li>
+            <li><a href="{{url('/admin/emprendedoras-contado')}}" class="active">Emprendedoras Contado</a></li>
+            <li><a href="{{url('/admin/emprendedoras-credito')}}">Emprendedoras Credito</a></li>
+        </ul>
+    </nav>
 
     <div class="Table-content TabContainer" style="margin: 40px auto 0;">
         <table class="table table-striped table-hover ">
@@ -37,7 +41,9 @@
                 <th>Segundo Apellido</th>
                 <th>E-mail</th>
                 <th>Estado</th>
+                @if(Auth::user()->roles_id == 1)
                 <th>Acciones</th>
+                @endif
             </tr>
             </thead>
             <tbody>
@@ -51,7 +57,7 @@
                     <td>{{$user->email}}</td>
                     <td>@if($user->user_state == 1)<span style="font-size: 1rem;color: #2ac52a;" class="icon-ok-circled big-icon"></span> @else <span style="font-size: 1rem;color: #e05151;" class="icon-cancel-circled"></span>@endif </td>
                     <td>
-                        <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
+                        <!--<a href="{route('userShow',$user->id)}}" class="icon-folder-open "></a>-->
                         @if(Auth::user()->roles_id == 1)
                             @if(!$user->hasCredit && $user->user_state == null)
                                 <a href="{{route('admin.activate.user',$user->id)}}" class="icon-thumbs-up-alt"></a>

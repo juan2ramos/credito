@@ -2693,3 +2693,36 @@ footer {
     width: inherit;
     margin: 0 5px;
 }
+
+.UsersMenu{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.UsersMenu ul {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #dedede;
+}
+
+.UsersMenu li{
+    text-align: center;
+    display: block;
+    width: 100%;
+    border-right: 1px solid #dedede;
+}
+.UsersMenu li:last-child{
+    border: none;
+}
+
+.UsersMenu a{
+    display: block;
+    width: 100%;
+    line-height: 40px;
+    color: #686868;
+}
+
+.UsersMenu a.active{
+    background: #dedede;
+}

@@ -143,7 +143,8 @@ class CreditController extends BaseController
 				}
 			}
 		}
-		return View::make('front.request', compact('showRequest', 'locations'));
+		$simpleEnterpricings = User::whereRaw('roles_id = 5 and hasCredit = 0 and user_state is null')->get();
+		return View::make('front.request', compact('showRequest', 'locations', 'simpleEnterpricings'));
 	}
 
 	//SE VISUALIZAN LOS DATOS Y DOCUMENTOS DEL USUARIO QUE SOLICITO EL CREDITO PARA DAR EL PROCESO DE SU APROBACION
