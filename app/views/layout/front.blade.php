@@ -89,7 +89,7 @@
 
     </div>
     <footer>
-        <p>®Lilipink Todos los derechos reservados - 2014 -  Diseño Web - Agencia de Publicidad <a href="http://mi-martinez.com" target="_blank" class="icon-logoblanco:before"><img src="{{asset('img/logomim.png')}}" style="width: 100px; opacity: 0.5;" alt=""/></a></p>
+        <p>®Lilipink Todos los derechos reservados - 2016 -  Diseño Web - Ártico Digital S.A.S</p>
     </footer>
 
 <div id="modal">
