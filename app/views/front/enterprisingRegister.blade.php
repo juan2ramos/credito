@@ -443,10 +443,10 @@
 
             <section class="Credit-section">
                 <div style="margin: 0;" class="material-input">
-                    <select class="Credit-select" name="point" id="point">
+                    <select class="Credit-select" name="point" id="shop">
                         <option value="" selected="selected">seleccione un punto de venta</option>
                         @foreach ($points as $point)
-                            <option data-city="{{$point['location_id']}}" value="{{$point['id']}}">{{$point['name']}}</option>
+                            <option data-city="{{$point['location_id']}}" style="display:none" value="{{$point['point_id']}}">{{$point['point_name']}}</option>
                         @endforeach
                     </select>
                     <span></span>
@@ -581,6 +581,21 @@
     {{ HTML::script('js/credit.js'); }}
 
     <script>
+        $('#location').on('change', function(){
+            var city = $(this).find(":selected").val();
+            var options = $('#shop').children('option');
+            for(var i = 1; i < options.length; i++){
+                var option = options.eq(i);
+                if(option.attr('data-city') == city){
+                    option.show();
+                }
+                else{
+                    option.removeAttr('selected');
+                    option.hide();
+                }
+            }
+            options.eq(0).attr('selected', 'selected');
+        });
         $('#dropzone input').on('change', function(e) {
             var file = this.files[0];
 
