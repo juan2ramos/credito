@@ -14,7 +14,7 @@
             {{Form::open(array('route'=>'slider','method'=>'POST','files'=>true,'class'=>"Slider-form",'enctype'=>'multipar/form-data'))}}
 
             <div class="">
-                {{Form::text('number_slider','',['id' => 'number_slider'])}}
+                {{Form::hidden('number_slider','',['id' => 'number_slider'])}}
             </div>
 
             <div class="pop-up ">
@@ -45,9 +45,9 @@
                         <a href="{{route('deleteSlider', $slider->id)}}" id="slider-delete">del</a>
                         <div class="hidden">{{$key}}</div>
                         <select name="position{{$key}}" id="position" style="background: white; margin-left: 10px;">
-                        @foreach($select as $k => $s)
-                            <option value="{{$slider->id}},{{$k}}" @if($slider->number_slider == $k) selected @endif >{{$s}}</option>
-                        @endforeach
+                            @foreach($select as $k => $s)
+                                <option value="{{$slider->id}},{{$k}}" @if($slider->number_slider == $k) selected @endif >{{$s}}</option>
+                            @endforeach
                         </select>
                     </section>
                 @endforeach
