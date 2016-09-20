@@ -63,10 +63,6 @@
         <article class="Popup-window">
             <span class="close"></span>
             <table id="reload"></table>
-            <div class="options" id="options">
-                <a href='#' route='' class='Button' id='activeUser'>Aprobar</a>
-                <a href='#' route='' class='Button' id='destroyUser'>Desaprobar</a>
-            </div>
         </article>
     </section>
 @stop
