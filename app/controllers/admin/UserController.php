@@ -2,6 +2,7 @@
 
 namespace admin;
 
+use credits\Entities\CreditRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
@@ -45,9 +46,13 @@ class UserController extends \BaseController {
 	}
 
 	public function getDataEnterpricing($id){
+		if(Input::get('type') == 'credit')
+			$id = CreditRequest::find($id)->user_id;
+
 		$user = User::find($id);
 		return [
 			'user' => $user,
+			'type' => Input::get('type'),
 			'routes' => [
 				'enable' => Input::get('enable'),
 				'disable' => Input::get('disable')

@@ -56,24 +56,26 @@
                     <td>{{$user->second_last_name}}</td>
                     <td>{{$user->email}}</td>
                     <td>@if($user->user_state == 1)<span style="font-size: 1rem;color: #2ac52a;" class="icon-ok-circled big-icon"></span> @else <span style="font-size: 1rem;color: #e05151;" class="icon-cancel-circled"></span>@endif </td>
-                    <td>
-                        <!--<a href="{route('userShow',$user->id)}}" class="icon-folder-open "></a>-->
-                        @if(Auth::user()->roles_id == 1)
-                            @if(!$user->hasCredit)
-                                @if($user->user_state == 1)
-                                    <span style="font-size: 1.2rem" class="disabled icon-ok"></span>
-                                    <a href="{{route('admin.disable.user', $user->id)}}" class="icon-cancel"></a>
-                                @else
-                                    <a href="{{route('admin.activate.user',$user->id)}}" class="icon-ok"></a>
-                                    <span style="font-size: 1.2rem" class="disabled icon-cancel"></span>
-                                @endif
-                            @endif
-                        @endif
-                    </td>
+                    <td><a href="#" type="user" enable="{{route('admin.activate.user',$user->id)}}" disable="{{route('admin.disable.user', $user->id)}}" route="{{route('getDataEnterpricing', $user->id)}}" class="icon-folder-open openPopup"></a></td>
                 </tr>
             @endforeach
             </tbody>
         </table>
         {{ $users->appends(['sort' => 'users'])->links() }}
     </div>
+
+    <section id="DataUser" class="Popup" style="display: none">
+        <article class="Popup-window">
+            <span class="close"></span>
+            <table id="reload"></table>
+            <div class="options" id="options">
+                <a href='#' route='' class='Button' id='activeUser'>Aprobar</a>
+                <a href='#' route='' class='Button' id='destroyUser'>Desaprobar</a>
+            </div>
+        </article>
+    </section>
 @stop
+
+@section('javascript')
+    <script src="{{asset('js/user-list.js')}}"></script>
+@endsection
