@@ -68,10 +68,12 @@
         <article class="Popup-window">
             <span class="close"></span>
             <table id="reload"></table>
+            @if(Auth::user()->roles_id == 1)
             <div class="options" id="options">
                 <a href='#' route='' class='Button' id='activeUser'>Aprobar</a>
                 <a href='#' route='' class='Button' id='destroyUser'>Desaprobar</a>
             </div>
+            @endif
         </article>
     </section>
 @stop
