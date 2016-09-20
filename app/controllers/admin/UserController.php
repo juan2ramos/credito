@@ -44,6 +44,17 @@ class UserController extends \BaseController {
 		return Redirect::back()->with('message', 'El usuario se ha desactivado');
 	}
 
+	public function getDataEnterpricing($id){
+		$user = User::find($id);
+		return [
+			'user' => $user,
+			'routes' => [
+				'enable' => Input::get('enable'),
+				'disable' => Input::get('disable')
+			]
+		];
+	}
+
 	private function validateUser(){
 		if(Auth::user()->roles_id != 1)
 			return Redirect::back();

@@ -129,6 +129,7 @@
 
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/menu.js')}}"></script>
 @yield('javascript')
 </html>

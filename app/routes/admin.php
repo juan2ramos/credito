@@ -261,4 +261,9 @@ Route::group(['namespace' => 'admin'], function(){
         'as' => 'admin.disable.user',
         'uses' => 'UserController@disable'
     ]);
+
+    Route::get('getDataEnterpricing/{id}', [
+        'as' => 'getDataEnterpricing',
+        'uses' => 'UserController@getDataEnterpricing'
+    ]);
 });
