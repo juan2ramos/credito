@@ -105,6 +105,7 @@
                     }
                 });
             }
+            return false;
         });
 
         $('.openPopup').on('click', function(){
@@ -155,6 +156,7 @@
                     $('#DataUser').show();
                 }
             });
+            return false;
         });
     </script>
 @endsection
