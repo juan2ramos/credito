@@ -41,7 +41,7 @@
                          @endif
                      </td>
                      <td> Pendiente por aprobar </td>
-                     <td>
+                     <td style="text-transform: capitalize;">
                          @foreach($locations as $location)
                              @if($user->location==$location->id)
                                  {{$location->name}}
@@ -61,7 +61,7 @@
                         Emp. Contado
                     </td>
                     <td> Pendiente por aprobar </td>
-                    <td>{{$user->residency_city}}</td>
+                    <td style="text-transform: capitalize;">{{$user->residency_city}}</td>
                     <td>{{$user->email}}</td>
                     <td><a href="#" enable="{{route('admin.activate.user',$user->id)}}" disable="{{route('admin.destroy.user', $user->id)}}" route="{{route('getDataEnterpricing', $user->id)}}" class="icon-folder-open openPopup"></a></td>
                 </tr>
