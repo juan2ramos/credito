@@ -240,10 +240,15 @@ class CreditController extends BaseController
 			);
 			if ($mailCredit['mail']) {
 				$data = $mailCredit;
-				Mail::send('emails.accept', $data, function ($message) use ($mailCredit) {
-					$message->to($mailCredit['mail'], 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
-
-				});
+				if(User::find($id)->roles_id == 4)
+					Mail::send('emails.accept', $data, function ($message) use ($mailCredit) {
+						$message->to($mailCredit['mail'], 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
+					});
+				else
+					Mail::send('emails.ECreditDelivery', ['email' => 'email'], function ($m) use($mailCredit){
+						//$m->to($mailCredit['mail'], 'Creditos Lilipink')->subject('Notificación Lilipink');
+						$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+					});
 
 			}
 

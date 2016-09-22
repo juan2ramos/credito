@@ -49,6 +49,7 @@ class EnterprisingController extends Controller {
 			return Redirect::back()->withErrors($validator)->withInput();
 
 		$this->createUser($input);
+
 		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
 	}
 
