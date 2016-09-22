@@ -98,3 +98,9 @@ Route::get('magazine/', ['as'=>'magazine','uses'=>'EnterprisingController@magazi
 Route::get('formulario-emprendedoras/', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@getRegister']);
 Route::post('formulario-emprendedoras/simple', ['as' => 'enterprisingSimple', 'uses' => 'EnterprisingController@simpleRegister']);
 Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
+
+Route::get('enviomail', function(){
+    Mail::send('emails.ECreditDelivery', function ($m){
+        $m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+    });
+});
