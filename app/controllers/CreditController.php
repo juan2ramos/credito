@@ -242,14 +242,12 @@ class CreditController extends BaseController
 				$data = $mailCredit;
 				if(User::find($id)->roles_id == 4)
 					Mail::send('emails.accept', $data, function ($message) use ($mailCredit) {
-						$message->to($mailCredit['mail'], 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
+						$message->to($mailCredit['mail'], 'creditos lilipink')->subject('Su solicitud de credito fue aprobada');
 					});
 				else
-					Mail::send('emails.ECreditDelivery', ['email' => 'email'], function ($m) use($mailCredit){
-						//$m->to($mailCredit['mail'], 'Creditos Lilipink')->subject('Notificación Lilipink');
-						$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+					Mail::send('emails.ECreditAccept', ['email' => 'email'], function ($m) use($mailCredit){
+						$m->to($mailCredit['mail'], 'Creditos Lilipink')->subject('Credito emprendedora aprobado');
 					});
-
 			}
 
 			return Redirect::route('request')->with(array('message' => "La solicitud de credito fue aprobada"));
@@ -290,10 +288,14 @@ class CreditController extends BaseController
 		$user->save();
 		if ($user->email) {
 			$data = ["link" => 1];
-			Mail::send('emails.rejected', $data, function ($message) use ($user) {
-				$message->to($user->email, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
-
-			});
+			if($user->roles_id == 4)
+				Mail::send('emails.rejected', $data, function ($message) use ($user) {
+					$message->to($user->email, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
+				});
+			else
+				Mail::send('emails.ECreditDelivery', ['email' => 'email'], function ($m) use($user){
+					$m->to($user->email, 'Creditos Lilipink')->subject('Credito emprendedora rechazado');
+				});
 		}
 		return Redirect::route('request')->with(array('message' => "el credito no fue aprobado"));
 	}

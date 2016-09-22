@@ -23,6 +23,11 @@ class UserController extends \BaseController {
 		$this->validateUser();
 		$user = User::find($id);
 		$user->update(['user_state' => 1]);
+
+		Mail::send('emails.ESimpleAccept', ['email' => 'email'], function ($m) use($user){
+			$m->to($user->email, 'Creditos Lilipink')->subject('Eres una emprendedora Lilipink');
+		});
+
 		return Redirect::back()->with('message', 'El usuario se ha activado');
 	}
 

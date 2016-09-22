@@ -179,7 +179,6 @@ Route::post('showCreditRequest/{id}', [
     'uses' => 'CreditController@acceptCredit'
 ]);
 
-
 //Variables generales
 
 Route::get('variables', [
