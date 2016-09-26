@@ -12,7 +12,6 @@ $('#activeUser, #destroyUser, #disableUser').on('click', function(){
             }
         });
     }
-    return false;
 });
 
 $('.openPopup').on('click', function(){

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use credits\Entities\User;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends \BaseController {
 
