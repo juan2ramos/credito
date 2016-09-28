@@ -129,7 +129,16 @@ class CreditController extends BaseController
 	//MUESTRA LA TABLA DONDE SE CONTIENEN TODAS LAS SOLICITUDES PENDIENTES
 	public function showRequest()
 	{
+		if(Auth::user()->roles_id == 4)
+			return Redirect::to('/');
+
 		$locations = Location::all();
+		if(Auth::user()->roles_id == 3)
+			$showRequest = DB::table('creditRequest')
+				->join('users', 'users.id', '=', 'creditRequest.user_id')
+				->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `creditRequest`.`state`='' and users.location = " . Auth::user()->location)
+				->get();
+		else
 		$showRequest = DB::table('creditRequest')
 			->join('users', 'users.id', '=', 'creditRequest.user_id')
 			->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `creditRequest`.`state`=''")
@@ -143,7 +152,8 @@ class CreditController extends BaseController
 				}
 			}
 		}
-		return View::make('front.request', compact('showRequest', 'locations'));
+		$simpleEnterpricings = User::whereRaw('roles_id = 5 and hasCredit = 0 and user_state is null')->get();
+		return View::make('front.request', compact('showRequest', 'locations', 'simpleEnterpricings'));
 	}
 
 	//SE VISUALIZAN LOS DATOS Y DOCUMENTOS DEL USUARIO QUE SOLICITO EL CREDITO PARA DAR EL PROCESO DE SU APROBACION
@@ -230,11 +240,14 @@ class CreditController extends BaseController
 			);
 			if ($mailCredit['mail']) {
 				$data = $mailCredit;
-				Mail::send('emails.accept', $data, function ($message) use ($mailCredit) {
-					$message->to($mailCredit['mail'], 'creditos lilipink')->subject('su solicitud de credito fue aprobada');
-
-				});
-
+				if(User::find($id)->roles_id == 4)
+					Mail::send('emails.accept', $data, function ($message) use ($mailCredit) {
+						$message->to($mailCredit['mail'], 'creditos lilipink')->subject('Su solicitud de credito fue aprobada');
+					});
+				else
+					Mail::send('emails.ECreditAccept', ['email' => 'email'], function ($m) use($mailCredit){
+						$m->to($mailCredit['mail'], 'Creditos Lilipink')->subject('Credito emprendedora aprobado');
+					});
 			}
 
 			return Redirect::route('request')->with(array('message' => "La solicitud de credito fue aprobada"));
@@ -275,10 +288,14 @@ class CreditController extends BaseController
 		$user->save();
 		if ($user->email) {
 			$data = ["link" => 1];
-			Mail::send('emails.rejected', $data, function ($message) use ($user) {
-				$message->to($user->email, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
-
-			});
+			if($user->roles_id == 4)
+				Mail::send('emails.rejected', $data, function ($message) use ($user) {
+					$message->to($user->email, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
+				});
+			else
+				Mail::send('emails.ECreditDelivery', ['email' => 'email'], function ($m) use($user){
+					$m->to($user->email, 'Creditos Lilipink')->subject('Credito emprendedora rechazado');
+				});
 		}
 		return Redirect::route('request')->with(array('message' => "el credito no fue aprobado"));
 	}

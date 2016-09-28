@@ -227,7 +227,7 @@
         <article class="TabContainer col-12" id="creditForm">
             {{Form::open(['route'=>'enterprisingCredit','method'=>'POST','files'=>true,'class'=>"Credito-form",'enctype'=>'multipar/form-data'])}}
 
-            <span style="text-align:center; color:#b9007d; display: block; padding: 20px 5px">El crédito lilipink emprendedora, difiere tus pedidos y compras a una sola cuota - para pago 5 días después de la fecha de facturación.</span>
+            <span style="text-align:center; color:#b9007d; display: block; padding: 20px 5px">El crédito lilipink emprendedora, difiere tus pedidos y compras a una sola cuota - para pago a 15 días después de la fecha de facturación.</span>
             <section class="Credit-section u-CreditSection">
                 <div class="material-input">
                     {{Form::text('name','',['id' => 'name'])}}
@@ -443,10 +443,10 @@
 
             <section class="Credit-section">
                 <div style="margin: 0;" class="material-input">
-                    <select class="Credit-select" name="point" id="point">
+                    <select class="Credit-select" name="point" id="shop">
                         <option value="" selected="selected">seleccione un punto de venta</option>
                         @foreach ($points as $point)
-                            <option data-city="{{$point['location_id']}}" value="{{$point['id']}}">{{$point['name']}}</option>
+                            <option data-city="{{$point['location_id']}}" style="display:none" value="{{$point['point_id']}}">{{$point['point_name']}}</option>
                         @endforeach
                     </select>
                     <span></span>
@@ -581,6 +581,21 @@
     {{ HTML::script('js/credit.js'); }}
 
     <script>
+        $('#location').on('change', function(){
+            var city = $(this).find(":selected").val();
+            var options = $('#shop').children('option');
+            for(var i = 1; i < options.length; i++){
+                var option = options.eq(i);
+                if(option.attr('data-city') == city){
+                    option.show();
+                }
+                else{
+                    option.removeAttr('selected');
+                    option.hide();
+                }
+            }
+            options.eq(0).attr('selected', 'selected');
+        });
         $('#dropzone input').on('change', function(e) {
             var file = this.files[0];
 

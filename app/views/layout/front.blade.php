@@ -89,7 +89,7 @@
 
     </div>
     <footer>
-        <p>®Lilipink Todos los derechos reservados - 2014 -  Diseño Web - Agencia de Publicidad <a href="http://mi-martinez.com" target="_blank" class="icon-logoblanco:before"><img src="{{asset('img/logomim.png')}}" style="width: 100px; opacity: 0.5;" alt=""/></a></p>
+        <p>®Lilipink Todos los derechos reservados - 2016 -  Diseño Web - Ártico Digital S.A.S</p>
     </footer>
 
 <div id="modal">
@@ -129,6 +129,7 @@
 
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/menu.js')}}"></script>
 @yield('javascript')
 </html>

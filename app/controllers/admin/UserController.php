@@ -2,10 +2,12 @@
 
 namespace admin;
 
+use credits\Entities\CreditRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use credits\Entities\User;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends \BaseController {
 
@@ -22,6 +24,11 @@ class UserController extends \BaseController {
 		$this->validateUser();
 		$user = User::find($id);
 		$user->update(['user_state' => 1]);
+
+		Mail::send('emails.ESimpleAccept', ['email' => 'email'], function ($m) use($user){
+			$m->to($user->email, 'Creditos Lilipink')->subject('Eres una emprendedora Lilipink');
+		});
+
 		return Redirect::back()->with('message', 'El usuario se ha activado');
 	}
 
@@ -42,6 +49,21 @@ class UserController extends \BaseController {
 		$user = User::find($id);
 		$user->update(['user_state' => 2]);
 		return Redirect::back()->with('message', 'El usuario se ha desactivado');
+	}
+
+	public function getDataEnterpricing($id){
+		if(Input::get('type') == 'credit')
+			$id = CreditRequest::find($id)->user_id;
+
+		$user = User::find($id);
+		return [
+			'user' => $user,
+			'type' => Input::get('type'),
+			'routes' => [
+				'enable' => Input::get('enable'),
+				'disable' => Input::get('disable')
+			]
+		];
 	}
 
 	private function validateUser(){

@@ -2693,3 +2693,120 @@ footer {
     width: inherit;
     margin: 0 5px;
 }
+
+.UsersMenu{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.UsersMenu ul {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #dedede;
+}
+
+.UsersMenu li{
+    text-align: center;
+    display: block;
+    width: 100%;
+    border-right: 1px solid #dedede;
+}
+.UsersMenu li:last-child{
+    border: none;
+}
+
+.UsersMenu a{
+    display: block;
+    width: 100%;
+    line-height: 40px;
+    color: #686868;
+}
+
+.UsersMenu a.active{
+    background: #dedede;
+}
+
+.Popup{
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.Popup .Popup-window{
+    border-radius: 5px;
+    background: white;
+    box-shadow: 5px 5px 15px 11px rgba(84, 84, 84, 0.47);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+}
+
+.Popup .Popup-window table{
+    margin: 40px 5px 5px 5px;
+    width: 300px;
+}
+
+.Popup .Popup-window tr{
+
+    height: 35px;
+    padding: 10px;
+}
+
+.Popup .Popup-window td, .Popup .Popup-window th{
+    text-align: left;
+    padding: 10px;
+}
+
+.Popup .Popup-window .close{
+    cursor: pointer;
+    display: block;
+    background: gray;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+.Popup .Popup-window .close:after,
+.Popup .Popup-window .close:before {
+    content: "";
+    display: block;
+    background: #fff;
+    width: 70%;
+    height: 2px;
+    border-radius: 1px;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    left: 50%;
+    margin-left: -35%;
+    transform: rotate(45deg);
+}
+
+.Popup .Popup-window .close:before{
+    transform: rotate(-45deg);
+}
+
+.Popup .options{
+    margin: 10px;
+}
+.Button{
+    background: #e80e8a;
+    display: inline-block;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}

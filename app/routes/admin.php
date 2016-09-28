@@ -179,7 +179,6 @@ Route::post('showCreditRequest/{id}', [
     'uses' => 'CreditController@acceptCredit'
 ]);
 
-
 //Variables generales
 
 Route::get('variables', [
@@ -260,5 +259,10 @@ Route::group(['namespace' => 'admin'], function(){
     Route::get('disable/user/{id}', [
         'as' => 'admin.disable.user',
         'uses' => 'UserController@disable'
+    ]);
+
+    Route::get('getDataEnterpricing/{id}', [
+        'as' => 'getDataEnterpricing',
+        'uses' => 'UserController@getDataEnterpricing'
     ]);
 });

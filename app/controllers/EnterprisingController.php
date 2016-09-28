@@ -30,8 +30,13 @@ class EnterprisingController extends Controller {
 	}
 
 	protected function getRegister(){
-		$locations = ['location' => 'Seleccione una ciudad'] + Location::all()->lists('name', 'id');
-		$points =  Point::where('isEnterpricingShop', 1)->get();
+		$locations[0] = 'Seleccione una ciudad';
+		$points = Location::join('points', 'locations.id', '=', 'points.location_id')->select('locations.id as location_id', 'locations.name as location_name', 'points.id as point_id', 'points.name as point_name')->where('isEnterpricingShop', 1)->get();
+		foreach ($points as $point) {
+			if (!in_array($point['location_name'], $locations)){
+				$locations[$point['location_id']] = $point['location_name'];
+			}
+		}
 		return View::make('front.enterprisingRegister', compact('locations', 'points'));
 	}
 
@@ -44,6 +49,7 @@ class EnterprisingController extends Controller {
 			return Redirect::back()->withErrors($validator)->withInput();
 
 		$this->createUser($input);
+
 		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
 	}
 
@@ -71,18 +77,22 @@ class EnterprisingController extends Controller {
 	}
 
 	public function enterpricingCreditList(){
+		if(Auth::user()->roles_id == 4)
+			return Redirect::to('/');
 		if(Auth::user()->roles_id == 3)
-			$users = User::join('creditRequest', 'users.id', '=', 'creditRequest.user_id')->whereRaw('users.roles_id = 5 and creditRequest.state = 1 users.location = ' . Auth::user()->location)->paginate(20);
+			$users = User::join('creditRequest', 'users.id', '=', 'creditRequest.user_id')->whereRaw('users.roles_id = 5 and creditRequest.state = 1 and users.location = ' . Auth::user()->location)->paginate(20);
 		else
 			$users = User::join('creditRequest', 'users.id', '=', 'creditRequest.user_id')->whereRaw('users.roles_id = 5 and creditRequest.state = 1')->paginate(20);
 		return View::make('back.enterpricingCreditList', compact('users'));
 	}
 
 	public function enterpricingSimpleList(){
+		if(Auth::user()->roles_id == 4)
+			return Redirect::to('/');
 		if(Auth::user()->roles_id == 3)
-			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and users.location = ' . Auth::user()->location . " and (user_state is null or user_state < 2)")->orderBy('user_state')->paginate(20);
+			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and users.location = ' . Auth::user()->location . " and user_state < 2")->orderBy('user_state')->paginate(20);
 		else
-			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and (user_state is null or user_state < 2)')->orderBy('user_state')->paginate(20);
+			$users = User::whereRaw('users.roles_id = 5 and users.hasCredit = 0 and user_state < 2')->orderBy('user_state')->paginate(20);
 		return View::make('back.enterpricingList', compact('users'));
 	}
 

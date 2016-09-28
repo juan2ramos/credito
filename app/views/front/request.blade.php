@@ -32,16 +32,16 @@
                      <td>{{$user->user_name}}</td>
                      <td>{{$user->identification_card}}</td>
                      <td>
-                         @if($user->priority == 1)
+                         @if($user->priority == 0)
+                             Baja
+                         @elseif($user->priority == 1)
                              Alta
                          @elseif($user->priority == 2)
-                             Media
-                         @else
-                             Baja
+                             Emp. Credito
                          @endif
                      </td>
                      <td> Pendiente por aprobar </td>
-                     <td>
+                     <td style="text-transform: capitalize;">
                          @foreach($locations as $location)
                              @if($user->location==$location->id)
                                  {{$location->name}}
@@ -52,7 +52,36 @@
                      <td><a href="{{route('showCreditRequest', $user->id)}}" class="icon-folder-open"></a></td>
                  </tr>
             @endforeach
+
+            @foreach($simpleEnterpricings as $user)
+                <tr>
+                    <td>{{$user->user_name}}</td>
+                    <td>{{$user->identification_card}}</td>
+                    <td>
+                        Emp. Contado
+                    </td>
+                    <td> Pendiente por aprobar </td>
+                    <td style="text-transform: capitalize;">{{$user->residency_city}}</td>
+                    <td>{{$user->email}}</td>
+                    <td><a href="#" type="user" enable="{{route('admin.activate.user',$user->id)}}" disable="{{route('admin.destroy.user', $user->id)}}" route="{{route('getDataEnterpricing', $user->id)}}" class="icon-folder-open openPopup"></a></td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
+
+    <section id="DataUser" class="Popup" style="display: none">
+        <article class="Popup-window">
+            <span class="close"></span>
+            <table id="reload"></table>
+            <div class="options" id="options">
+                <a href='#' route='' class='Button' id='activeUser'>Aprobar</a>
+                <a href='#' route='' class='Button' id='destroyUser'>Desaprobar</a>
+            </div>
+        </article>
+    </section>
 @stop
+
+@section('javascript')
+    <script src="{{asset('js/user-list.js')}}"></script>
+@endsection

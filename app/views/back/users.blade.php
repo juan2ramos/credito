@@ -11,7 +11,8 @@
         </script>
     @endif
 
-    <h1 xmlns="http://www.w3.org/1999/html">Administración de usuarios</h1>
+    <h1>Usuarios Activos</h1>
+    <!--<h1 xmlns="http://www.w3.org/1999/html">Administración de usuarios</h1>-->
     <div class="SearchBar" style="margin: 0 auto 20px;">
         <div class="Button">
             <a style="padding: 10px 15px;" class="u-button" href="{{route('searchUsersCard')}}">Usuarios que faltan por tarjeta</a>
@@ -30,6 +31,13 @@
         </div>
     </div>
 
+    <nav class="UsersMenu">
+        <ul>
+            <li><a href="{{url('/admin/usuarios')}}" class="active">Creditos Lilipink</a></li>
+            <li><a href="{{url('/admin/emprendedoras-contado')}}">Emprendedoras Contado</a></li>
+            <li><a href="{{url('/admin/emprendedoras-credito')}}">Emprendedoras Credito</a></li>
+        </ul>
+    </nav>
     <div class="Table-content TabContainer" style="margin: 40px auto 0;">
         <table class="table table-striped table-hover ">
             <thead>
