@@ -101,7 +101,7 @@
 
                 @if($errors->first('identification_card'))
                     <div class="errors">
-                        *{{$errors->first('identification_card')}}
+                        *Ya estas registrada en creditos Lilipink, comunicate con emprendedoras@innova-quality.com.co
                     </div>
                 @endif
 
@@ -321,7 +321,7 @@
 
                 @if($errors->first('identification_card'))
                     <div class="errors">
-                        *{{$errors->first('identification_card')}}
+                        *Ya estas registrada en creditos Lilipink, comunicate con emprendedoras@innova-quality.com.co
                     </div>
                 @endif
 
