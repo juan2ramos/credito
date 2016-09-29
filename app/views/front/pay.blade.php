@@ -58,7 +58,7 @@
                 </li>
             </ul>
         </article>
-<p style="color=#ac0f74; text-align:center">* Recuerda que al ser Crédito Emprendedora solo podrás hacer tus pagos en nuestras tiendas Lili Pink</p>
+<p style="color: #ac0f74; text-align:center">* Recuerda que al ser Crédito Emprendedora solo podrás hacer tus pagos en nuestras tiendas Lili Pink</p>
     </section>
 @stop
 
