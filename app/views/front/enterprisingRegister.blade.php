@@ -204,8 +204,20 @@
                 @endif
 
                 <div class="material-input">
-                    {{Form::text('referred_document','',['id' => 'referred_document'])}}
-                    {{Form::label('referred_document','Cedula de quien refiere')}}
+                    {{Form::text('referred_name','',['id' => 'referred_name'])}}
+                    {{Form::label('referred_name','Nombre de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_name'))
+                    <div class="errors">
+                        *{{$errors->first('referred_name')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::number('referred_document','',['id' => 'referred_document'])}}
+                    {{Form::label('referred_document','Cedula de quien refiere (Opcional)')}}
                     <span></span>
                 </div>
 
@@ -432,6 +444,30 @@
                 @if($errors->first('monthly_expenses'))
                     <div class="errors">
                         *{{$errors->first('monthly_expenses')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::text('referred_name','',['id' => 'referred_name'])}}
+                    {{Form::label('referred_name','Nombre de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_name'))
+                    <div class="errors">
+                        *{{$errors->first('referred_name')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::number('referred_document','',['id' => 'referred_document'])}}
+                    {{Form::label('referred_document','Cedula de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_document'))
+                    <div class="errors">
+                        *{{$errors->first('referred_document')}}
                     </div>
                 @endif
 
