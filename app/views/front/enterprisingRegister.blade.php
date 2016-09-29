@@ -203,6 +203,18 @@
                     </div>
                 @endif
 
+                <div class="material-input">
+                    {{Form::text('referred_document','',['id' => 'referred_document'])}}
+                    {{Form::label('referred_document','Cedula de quien refiere')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_document'))
+                    <div class="errors">
+                        *{{$errors->first('referred_document')}}
+                    </div>
+                @endif
+
             </section>
 
             <div style="margin-top: 20px">
