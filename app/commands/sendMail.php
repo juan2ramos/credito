@@ -37,13 +37,17 @@ class sendMail extends Command {
 	 */
 	public function fire()
 	{
-		$users = \credits\Entities\User::whereRaw('roles_id = 5 and hasCredit = 0')->get();
+		$users = \credits\Entities\User::whereRaw('roles_id = 5 and hasCredit = 0 and user_state = 1')->get();
 		foreach($users as $user){
 			$email = $user->email;
 			Mail::send('emails.ESimpleAccept', ['msn' => 'prueba'], function ($m) use($email){
 				$m->to($email, 'Creditos Lilipink')->subject('Notificación Lilipink');
 			});
 		}
+
+		Mail::send('emails.ESimpleAccept', ['msn' => 'prueba'], function ($m){
+			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+		});
 	}
 
 	/**
