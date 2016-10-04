@@ -35,7 +35,7 @@
         <article>
             <img class="pedidos" src="{{asset('img/pedidos.png')}}" alt="">
             <ul>
-                <li><span class="point"><img src="{{asset('img/point.png')}}" alt=""> </span>Los pagos los puedes hacer en: <br>
+                <li><span class="point"><img src="{{asset('img/point.png')}}" alt=""> </span><b>PAGO CREDITO EMPRENDEDORA: </b><br>
                     <span style="color: #BA007C">* TIENDAS LILI PINK:</span><br>
 
 
@@ -44,7 +44,8 @@
 
                     pedido hecho en línea del sistema
 
-                    emprendedoras <br>
+                    emprendedoras <br><br>
+                    <b>PAGO CONTADO: </b><br>
                     <span style="color: #BA007C">* BANCOLOMBIA:</span><br>
                     Formato recaudo empresarial <br>
 
@@ -52,7 +53,7 @@
 
                     Cuenta de ahorros 16862920931 <br>
 
-                    Colocar el Referencia el número de pedido<br>
+                    Colocar el Referencia el número de cédula de la emprendedora.<br>
                      <span style="color: #BA007C">* EFECTY</span><br>
                     Convenio 110064<br>
                 </li>
