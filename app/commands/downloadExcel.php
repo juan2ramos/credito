@@ -44,16 +44,16 @@ class downloadExcel extends Command {
 		$dir = $_SERVER['DOCUMENT_ROOT'] . "public/exports/";
 		$doc = 'usuarios.xlsx';
 
-		if(is_dir($dir)){
+		/*if(is_dir($dir)){
 			unlink($dir . $doc);
 			rmdir($dir);
-		}
+		}*/
 
 		$users = $this->exportUsers();
 
 		Excel::create('usuarios', function($excel) use($users){
 			$excel->sheet('Excel sheet', function($sheet) use($users){
-				$sheet->cells('C1:T1', function($cells) {
+				$sheet->cells('C1:V1', function($cells) {
 					$cells->setFontWeight('bold');
 					$cells->setBackground('#e80e8a');
 					$cells->setFontColor('#ffffff');
@@ -67,6 +67,8 @@ class downloadExcel extends Command {
 				$sheet->setWidth('R', 15);
 				$sheet->setWidth('S', 16);
 				$sheet->setWidth('T', 16);
+				$sheet->setWidth('U', 16);
+				$sheet->setWidth('V', 16);
 				$sheet->fromArray($users);
 				$sheet->setOrientation('landscape');
 			});
@@ -96,6 +98,8 @@ class downloadExcel extends Command {
 			$users[$key]['Cupo_Credito']    = $credit ? $credit->value : null;
 			$users[$key]['Emprend'] 		= $user->roles_id == 5 ? 'Si' : 'No';
 			$users[$key]['¿Empr. credito?'] = $credit && $user->roles_id == 5 ? 'Si' : ($user->roles_id == 5) ? 'No' : 'N/A';
+			$users[$key]['Nombre referido'] = $user->roles_id == 5 ? $user['referred_name'] : 'N/A';
+			$users[$key]['Cedula referido'] = $user->roles_id == 5 ? $user['referred_document'] : 'N/A';
 		}
 		return $users;
 	}

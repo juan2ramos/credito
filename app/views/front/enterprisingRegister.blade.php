@@ -101,7 +101,7 @@
 
                 @if($errors->first('identification_card'))
                     <div class="errors">
-                        *{{$errors->first('identification_card')}}
+                        *Ya estas registrada en creditos Lilipink, comunicate con emprendedoras@innova-quality.com.co
                     </div>
                 @endif
 
@@ -203,6 +203,30 @@
                     </div>
                 @endif
 
+                <div class="material-input">
+                    {{Form::text('referred_name','',['id' => 'referred_name'])}}
+                    {{Form::label('referred_name','Nombre de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_name'))
+                    <div class="errors">
+                        *{{$errors->first('referred_name')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::number('referred_document','',['id' => 'referred_document'])}}
+                    {{Form::label('referred_document','Cedula de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_document'))
+                    <div class="errors">
+                        *{{$errors->first('referred_document')}}
+                    </div>
+                @endif
+
             </section>
 
             <div style="margin-top: 20px">
@@ -297,7 +321,7 @@
 
                 @if($errors->first('identification_card'))
                     <div class="errors">
-                        *{{$errors->first('identification_card')}}
+                        *Ya estas registrada en creditos Lilipink, comunicate con emprendedoras@innova-quality.com.co
                     </div>
                 @endif
 
@@ -420,6 +444,30 @@
                 @if($errors->first('monthly_expenses'))
                     <div class="errors">
                         *{{$errors->first('monthly_expenses')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::text('referred_name','',['id' => 'referred_name'])}}
+                    {{Form::label('referred_name','Nombre de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_name'))
+                    <div class="errors">
+                        *{{$errors->first('referred_name')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::number('referred_document','',['id' => 'referred_document'])}}
+                    {{Form::label('referred_document','Cedula de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_document'))
+                    <div class="errors">
+                        *{{$errors->first('referred_document')}}
                     </div>
                 @endif
 
