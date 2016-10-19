@@ -58,7 +58,7 @@
                     Recuerda que para acceder al 25% de descuento tus compras mínimas deben ser de $300.000
                 </li>
             </ul>
-            <a target="_blank" href="{{url('img/tiendasemprendedoras.pdf')}}">INSTRUCTIVO PEDIDO EN LINEA</a>
+            <a target="_blank" href="{{url('img/pedidos-en-linea-lilipink.pdf')}}">INSTRUCTIVO PEDIDO EN LINEA</a>
         </article>
     </section>
 @stop
