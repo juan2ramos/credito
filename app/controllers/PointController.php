@@ -16,7 +16,10 @@ class PointController extends BaseController {
 
     public function update(){
         $point = Point::find(Input::get('id'));
-        $point->isEnterpricingShop = Input::get('check');
+        Input::get('type') == 1
+            ? $point->isEnterpricingShop = Input::get('check')
+            : $point->isCreditShop = Input::get('check');
+
         $point->save();
         return ['data' => Input::get('check')];
     }

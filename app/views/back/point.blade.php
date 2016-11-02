@@ -24,6 +24,7 @@
             <thead>
             <tr>
                 <th>Nombre</th>
+                <th>Creditos</th>
                 <th>Emprendedoras</th>
                 <th>Eliminar</th>
             </tr>
@@ -32,6 +33,7 @@
             @foreach ($points as $point)
                 <tr>
                     <td>{{$point->name}}</td>
+                    <td><input name="isCredit" type="checkbox" value="{{$point->id}}" @if($point->isCreditShop) checked @endif class="isCredit"></td>
                     <td><input name="isEnterpricing" type="checkbox" value="{{$point->id}}" @if($point->isEnterpricingShop) checked @endif class="isEnterpricing"></td>
                     <td>{{ HTML::link(route('pointDelete', $point->id), '',array('class'=>'icon-trash-empty','onClick'=>"return confirm('Estas seguro de eliminar el punto de venta?')")) }}</td>
                 </tr>
@@ -71,7 +73,8 @@
             var params = {
                 _token : "prueba",
                 id : $(this).val(),
-                check : checked
+                check : checked,
+                type : 1
             };
 
             $.get( "/admin/updatepoint", params )
@@ -81,6 +84,25 @@
                 .error(function(){
                     alert("ha ocurrido un error");
                 });
+        });
+
+        $('.isCredit').on('click', function(){
+
+            var checked = $(this).is(':checked') ? "1" : "0";
+            var params = {
+                _token : "prueba",
+                id : $(this).val(),
+                check : checked,
+                type : 2
+            };
+
+            $.get( "/admin/updatepoint", params )
+                    .done(function(data) {
+                        console.log( "actualizado");
+                    })
+                    .error(function(){
+                        alert("ha ocurrido un error");
+                    });
         });
     </script>
 @stop

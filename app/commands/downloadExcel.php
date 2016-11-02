@@ -44,6 +44,13 @@ class downloadExcel extends Command {
 		$dir = $_SERVER['DOCUMENT_ROOT'] . "public/exports/";
 		$doc = 'usuarios.xlsx';
 
+		$myfile = fopen($dir."log.txt", "w") or die("Unable to open file!");
+		$txt = $dir."\n";
+		fwrite($myfile, $txt);
+		$txt = $doc."\n";
+		fwrite($myfile, $txt);
+		fclose($myfile);
+
 		/*if(is_dir($dir)){
 			unlink($dir . $doc);
 			rmdir($dir);
