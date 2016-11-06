@@ -35,9 +35,8 @@
                     <td>{{$point->name}}</td>
                     <td><input name="isCredit" type="checkbox" value="{{$point->id}}" @if($point->isCreditShop) checked @endif class="isCredit"></td>
                     <td><input name="isEnterpricing" type="checkbox" value="{{$point->id}}" @if($point->isEnterpricingShop) checked @endif class="isEnterpricing"></td>
-                    <td>{{ HTML::link(route('pointDelete', $point->id), '',array('class'=>'icon-trash-empty','onClick'=>"return confirm('Estas seguro de eliminar el punto de venta?')")) }}</td>
+                    <td><a href="{{route('pointDelete', [$point->id])}}" class="icon-trash-empty"></a></td>
                 </tr>
-
             @endforeach
             </tbody>
         </table>

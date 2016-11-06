@@ -31,7 +31,7 @@ class EnterprisingController extends Controller {
 
 	protected function getRegister(){
 		$locations[0] = 'Seleccione una ciudad';
-		$points = Location::join('points', 'locations.id', '=', 'points.location_id')->select('locations.id as location_id', 'locations.name as location_name', 'points.id as point_id', 'points.name as point_name')->where('isEnterpricingShop', 1)->get();
+		$points = Location::join('points', 'locations.id', '=', 'points.location_id')->select('locations.id as location_id', 'locations.name as location_name', 'points.id as point_id', 'points.name as point_name')->whereRaw('isEnterpricingShop = 1 and state > 0')->get();
 		foreach ($points as $point) {
 			if (!in_array($point['location_name'], $locations)){
 				$locations[$point['location_id']] = $point['location_name'];

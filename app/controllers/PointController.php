@@ -10,7 +10,7 @@ class PointController extends BaseController {
     public function show()
     {
         $locations = [''=>'seleccione una region'] + Location::all()->lists('name','id');
-        $points = Point::all();
+        $points = Point::where('state', '>', 0)->get();
         return View::make('back.point',compact('points','locations'));
     }
 
@@ -38,13 +38,8 @@ class PointController extends BaseController {
 
     public function delete($id)
     {
-        $credit = CreditRequest::where('point',$id)->first();
-        if($credit)
-            return Redirect::route('point')->with('message_error','el punto de venta no se puede eliminar por que esta siendo utilizado');
-
         $point = Point::find($id);
-        $point->delete();
-        return Redirect::route('point')->with('message','el punto de venta se elimino exitosamente');
-
+        $point->update(['state' => -2]);
+        return Redirect::route('point')->with('message','El punto de venta se elimino exitosamente');
     }
 }
