@@ -23,9 +23,9 @@ class CreditController extends BaseController
 	//MOSTRAR FORMULARIO CREDIT REQUEST
 	public function index()
 	{
-		$points =  Point::where('isCreditShop', 1)->get()->toArray();
+		$points =  Point::where('isCreditShop', 1)->get();
 		$type = ["tipo de documento" => "Tipo de documento"] + [0 => "Cedula"] + [1 => "Cedula de extranjeria"];
-		$locations = ['location' => 'Seleccione una ciudad'] + Location::all()->lists('name', 'id');
+		$locations = Location::all(['name', 'id']);
 		return View::make('front.creditRequest', compact('type', 'locations', 'points'));
 	}
 

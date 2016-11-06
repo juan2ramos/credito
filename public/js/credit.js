@@ -2,16 +2,14 @@ var countImage = 0, aux = 0;
 var name = "";
 $(function () {
 
-
     $('#location').on('change', function () {
-        $(this).val();
-        $("#point ").children('option').hide();
-        var $optionShow = $("#point").children("option[data-city^=" + $(this).val() + "]"),
-            value = $optionShow.first().val();
-        $('#point option[value='+ value +']').prop('selected', true);
-
-        $("#point").children("option[data-city^=" + $(this).val() + "]").show()
+        var $point = $("#point ");
+        $point.children('option').hide();
+        $point.children("option[data-city^='0']").show().prop('selected', true);
+        $point.children("option[data-city^=" + $(this).val() + "]").show()
     }).change();
+
+
     var $files = $('#files');
     $files.on('change', function () {
         for (var i = 0; i < this.files.length; i++) {
