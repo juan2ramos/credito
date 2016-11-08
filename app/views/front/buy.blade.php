@@ -43,7 +43,6 @@
                     cupo si eres parte de Crédito Emprendedora,
 
                     si tu pago es de contado el envio se hará una
-
                     vez se registre el pago que hagas en
 
                     las entidades con las que tenemos convenio
