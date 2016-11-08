@@ -127,7 +127,9 @@
 </body>
 <!-- JavaScript -->
 
-<script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
+<script src="https://code.jquery.com/jquery-2.0.0.min.js" integrity="sha256-1IKHGl6UjLSIT6CXLqmKgavKBXtr0/jJlaGMEkh+dhw=" crossorigin="anonymous"></script>
+<!--<script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>-->
+
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/menu.js')}}"></script>
