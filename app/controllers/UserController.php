@@ -222,7 +222,7 @@ class UserController extends BaseController
         DB::table('extracts')->truncate();
         $file = Input::file('file');
         $this->insertExcel($file, 'extracts');
-        shell_exec("cd " . $_SERVER['DOCUMENT_ROOT'] . "; cd ..; php artisan insert:excel extracts  > /dev/null &");
+        shell_exec("cd " . base_path() . "; php artisan insert:excel extracts > /dev/null &");
         return Redirect::route('excel')->with('mensaje','Los extractos se están guardando en la base de datos. Se enviara un email cuando acabe el proceso');
     }
 
@@ -231,7 +231,7 @@ class UserController extends BaseController
         DB::table('excelDaily')->truncate();
         $file = Input::file('file');
         $this->insertExcel($file, 'daily');
-        shell_exec("cd " . $_SERVER['DOCUMENT_ROOT'] ."; cd ..; php artisan insert:excel daily > /dev/null &");
+        shell_exec("cd " . base_path() . "; php artisan insert:excel daily > /dev/null &");
         return Redirect::route('diario')->with('mensaje','El diario se está guardando en la base de datos. Se enviara un email cuando acabe el proceso');
     }
 

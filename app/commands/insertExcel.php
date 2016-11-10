@@ -39,11 +39,11 @@ class insertExcel extends Command {
 	 */
 	public function fire()
 	{
-		$dir = $_SERVER['DOCUMENT_ROOT'] . "public/toUpload/";
+		$dir = base_path() . "/public/toUpload/";
 		$doc = $this->argument('table') . '.xlsx';
 
 		try {
-			Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
+			Excel::filter('chunk')->load($dir . $doc)->chunk(10, function ($reader) {
 				if($this->argument('table') == 'extracts')
 					Extract::insert($this->validate($reader));
 				else
@@ -55,16 +55,16 @@ class insertExcel extends Command {
 			$message = "No se ha guardar " . $doc . ". Intenta subirlo de nuevo.";
 		}
 
-		/*Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
+		Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
 			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
-		});*/
+		});
 
 		Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
 			$m->to('carterainnova@innova-quality.com.co', 'Creditos Lilipink')->subject('Notificación Lilipink');
 		});
 
-		unlink($dir . $doc);
-		if(!is_dir($dir)) rmdir($dir);
+		//unlink($dir . $doc);
+		//if(!is_dir($dir)) rmdir($dir);
 	}
 
 	private function validate($reader){
