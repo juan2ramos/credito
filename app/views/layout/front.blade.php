@@ -125,6 +125,7 @@
 </div>
 <!-- Smartsupp Live Chat script -->
 <script type="text/javascript">
+
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = 'b2fe573e2c5287ed5885c923481b93c16a88fae6';
     window.smartsupp||(function(d) {
@@ -133,6 +134,16 @@
         c.type='text/javascript';c.charset='utf-8';c.async=true;
         c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
     })(document);
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-68442702-4', 'auto');
+    ga('send', 'pageview');
+
 </script>
 </body>
 <!-- JavaScript -->
