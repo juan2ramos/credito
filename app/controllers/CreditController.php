@@ -110,6 +110,7 @@ class CreditController extends BaseController
 		
 		$messages = $message['message'];
 		$user = User::all()->last();
+        $user->hasCredit = 1;
 		if($fingerprint){
 			$user->fingerprint =sha1(time()).$fingerprint->getClientOriginalName();
 			$fingerprint->move("users",sha1(time()).$fingerprint->getClientOriginalName());

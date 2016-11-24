@@ -1,7 +1,27 @@
 <?php
 
+use credits\Entities\User;
+
 Route::get('/', function () {
     return Redirect::route('home');
+});
+
+Route::get('modificar-user-state-en-usuarios', function(){
+    $users = User::where('roles_id', 4)->get();
+    foreach ($users as $user){
+        $user->hasCredit = 1;
+        $user->save();
+    }
+
+    $users = User::where('hasCredit', 1)->get();
+    foreach ($users as $user){
+        $credits = \credits\Entities\CreditRequest::whereRaw('user_id = ' . $user->id . ' and state = 1')->get();
+        if(count($credits))
+            $user->user_state = 1;
+        else
+            $user->user_state = 2;
+        $user->save();
+    }
 });
 
 Route::get('usuarios', [
