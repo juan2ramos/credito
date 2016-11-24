@@ -43,7 +43,7 @@ class insertExcel extends Command {
 		$doc = $this->argument('table') . '.xlsx';
 
 		try {
-			Excel::filter('chunk')->load($dir . $doc)->chunk(10, function ($reader) {
+			Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
 				if($this->argument('table') == 'extracts')
 					Extract::insert($this->validate($reader));
 				else
@@ -69,6 +69,7 @@ class insertExcel extends Command {
 
 	private function validate($reader){
 		$dataReader = $reader->toArray();
+		dd($dataReader);
 		foreach($dataReader as $key => $data){
 			unset($dataReader[$key]['0']);
 		}

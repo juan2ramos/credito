@@ -48,8 +48,6 @@ class AcceptCreditManager extends BaseManager
         $credit->responsible=$responsible;
         $credit->save();
         $user=User::find($id);
-        $user->user_state = 1;
-        $user->save();
         return ['return'=>true]+['mail'=>$user->email];
     }
 
@@ -114,15 +112,27 @@ class AcceptCreditManager extends BaseManager
             }
             if($countCredit==7)
             {
+                $u = User::find($id);
+                $u->user_state = 1;
+                $u->save();
                 return ['return'=>true];
             }else{
+                $u = User::find($id);
+                $u->user_state = 2;
+                $u->save();
                 return $message+['accept'=>'1'];
             }
         }else{
             if($countCredit==6)
             {
+                $u = User::find($id);
+                $u->user_state = 1;
+                $u->save();
                 return ['return'=>true];
             }else{
+                $u = User::find($id);
+                $u->user_state = 2;
+                $u->save();
                 return $message+['accept'=>'1'];
             }
         }
