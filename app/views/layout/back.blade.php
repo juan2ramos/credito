@@ -24,6 +24,7 @@
 
     <!-- Humans -->
     <link type="text/plain" rel="author" href="{{asset('humans.txt')}}"/>
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
 
 </head>
 <body>

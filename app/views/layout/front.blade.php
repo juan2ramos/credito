@@ -20,6 +20,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{asset('css/normalize.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
     @yield('styles')
 
     <script src="{{asset('js/prefixfree.min.js')}}"></script>

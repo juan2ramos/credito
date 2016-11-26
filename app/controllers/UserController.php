@@ -220,8 +220,6 @@ class UserController extends BaseController
     public function uploadExcel()
     {
         DB::table('extracts')->truncate();
-        $file = Input::file('file');
-        $this->insertExcel($file, 'extracts');
         shell_exec("cd " . base_path() . "; php artisan insert:excel extracts > /dev/null &");
         return Redirect::route('excel')->with('mensaje','Los extractos se están guardando en la base de datos. Se enviara un email cuando acabe el proceso');
     }

@@ -4,6 +4,7 @@ use \credits\Entities\ExcelDaily;
 use \credits\Entities\Extract;
 use \credits\Entities\CreditRequest;
 use \credits\Entities\User;
+use Maatwebsite\Excel;
 
 class ExtractsController extends \BaseController {
 
@@ -62,6 +63,20 @@ class ExtractsController extends \BaseController {
 	}
 
 
+	public function uploadTempFiles(){
+        if(!Request::ajax())
+            return Redirect::back();
+
+        $names = [];
+        $files = Input::file();
+        foreach ($files as $file){
+            $fileName = str_random(5) . '**extract**' . $file->getClientOriginalName();
+            $file->move(public_path('toUpload/extracts/'), $fileName);
+            array_push($names, $fileName);
+        }
+
+        return $names;
+    }
 
 	/*public function prueba(){
 		PDF::load(View::make('pdf.extractoprueba'), 'A4', 'portrait')->download('extract');

@@ -39,29 +39,49 @@ class insertExcel extends Command {
 	 */
 	public function fire()
 	{
-		$dir = base_path() . "/public/toUpload/";
-		$doc = $this->argument('table') . '.xlsx';
+        $doc = null;
+        $dir = null;
+        $message = null;
 
-		try {
-			Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
-				if($this->argument('table') == 'extracts')
-					Extract::insert($this->validate($reader));
-				else
-					ExcelDaily::insert($this->validate($reader));
-			});
+        try{
+            if($this->argument('table') == 'extracts'){
+                $dir = public_path('toUpload/extracts/');
+                foreach (scandir($dir) as $file){
+                    if(strpos($file, '**extract**') !== false) {
+                        Excel::filter('chunk')->load($dir . $file)->chunk(250, function ($reader) {
+                            Extract::insert($this->validate($reader));
+                        });
+                        unlink($dir.$file);
+                    }
+                }
 
-			$message = "El archivo " . $doc . " se ha guardado en la base de datos.";
-		} catch(Exception $e){
-			$message = "No se ha guardar " . $doc . ". Intenta subirlo de nuevo.";
-		}
+            } else {
+                $dir = base_path() . "/public/toUpload/";
+                $doc = $this->argument('table') . '.xlsx';
 
-		Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
-			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
-		});
+                Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
+                    if($this->argument('table') == 'extracts')
+                        Extract::insert($this->validate($reader));
+                    else
+                        ExcelDaily::insert($this->validate($reader));
+                });
+            }
 
-		Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
-			$m->to('carterainnova@innova-quality.com.co', 'Creditos Lilipink')->subject('Notificación Lilipink');
-		});
+            $message = "El archivo " . $doc . " se ha guardado en la base de datos.";
+
+        } catch (Exception $e){
+
+            $message = "No se ha guardar " . $doc . ". Intenta subirlo de nuevo.";
+        }
+
+
+        Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
+            $m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+        });
+
+        Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
+            $m->to('carterainnova@innova-quality.com.co', 'Creditos Lilipink')->subject('Notificación Lilipink');
+        });
 
 		//unlink($dir . $doc);
 		//if(!is_dir($dir)) rmdir($dir);
@@ -69,7 +89,6 @@ class insertExcel extends Command {
 
 	private function validate($reader){
 		$dataReader = $reader->toArray();
-		dd($dataReader);
 		foreach($dataReader as $key => $data){
 			unset($dataReader[$key]['0']);
 		}

@@ -9,59 +9,99 @@
             @endif
     @endif
 
-
     <section class="Credit u-shadow-5">
         @extends('layout/notify')
 
         <h1>Subir Excel</h1>
 
-        {{Form::open(array('route'=>'excel','method'=>'POST','files'=>true,'class'=>"Credito-form",'enctype'=>'multipar/form-data'))}}
+        <form action="{{route('excel')}}" method="POST" accept-charset="UTF-8" class="Credito-form" enctype="multipart/form-data">
+            <input id="token" name="_token" type="hidden" value="{{csrf_token()}}">
+            <input id="url" type="hidden" value="{{route('uploadTempFiles')}}">
+            <input id="form-files" name="files" type="hidden" value="">
 
+            <div class="pop-up">
+                <p>Subir Extractos</p>
+                <input id="files" type="file" multiple >
+            </div>
 
-
-        <div class="hidden">
-            {{Form::text('files','',['id'=>'form-files'])}}
-        </div>
-        <div class="pop-up ">
-            <p>Excel</p>
-            {{ HTML::image('/img/image-file.svg','', array ('id' => 'image-file')) }}
-            {{Form::file('file',array('id'=>'files','name'=>'file'))}}
-        </div>
-        <div id="request-xsl" > </div>
-
-        <button class="u-button">
-            Enviar Solicitud
-        </button>
-
-        {{Form::close()}}
+            <div id="request-xsl"></div>
+            <button class="u-button"> Enviar Solicitud </button>
+        </form>
     </section>
-    <script>
-        //subir imagenes para el sliders
-        function archivo(evt) {
-            var files = evt.target.files; // FileList object
-
-            //Obtenemos la imagen del campo "file".
-            for (var i = 0, f; f = files[i]; i++) {
-                //Solo admitimos imágenes.
-
-
-                var reader = new FileReader();
-
-                reader.onload = (function(theFile) {
-                    return function(e) {
-                        // Creamos la imagen.
-                        document.getElementById("request-xsl").innerHTML = ['<img src="/img/xls.png" />'].join('');
-                    };
-                })(f);
-
-                reader.readAsDataURL(f);
-            }
-        }
-
-        document.getElementById('files').addEventListener('change', archivo, false);
-    </script>
-
+    <section id="preload" class="hidden">
+        <div class="loader">Cargando...</div>
+    </section>
 @stop
 
 @section('javascript')
+    <script>
+
+        function loadFiles(fileInput, maxSize){
+            var files = fileInput.files,
+                error = null,
+                fd = new FormData();
+
+            $.each(files, function(index, file){
+                if(file.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || file.type == 'application/vnd.ms-excel'){
+                    if(file.size < maxSize){
+                        fd.append("file" + index, file);
+                    } else {
+                        error = {'error' : 'El archivo "' + file.name + '" es demasiado grande.'};
+                    }
+                } else {
+                    error = {'error' : 'Tipo de archivo no permitido : ' + file.name + '.'};
+                }
+            });
+
+            return error ? error : fd;
+        }
+
+        $('#files').on('change', function(){
+            var inputFile = document.getElementById('files'),
+                token = document.getElementById('token'),
+                maxSize = 4000000,
+                url = $('#url').val(),
+                formData = loadFiles(inputFile, maxSize);
+
+            if(formData.error){
+                alert(formData.error);
+                return false;
+            }
+
+            formData.append("_token", token);
+            $.ajax({
+                url: url,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                beforeSend: function() {
+                    $('#preload').removeClass("hidden");
+                },
+                success: function (files) {
+                    var html = '';
+
+                    $.each(files, function(index, name){
+                        html += '<div class="imageFile">' +
+                                    '<span class="close">x</span>' +
+                                    '<input type="hidden" name="file' + index + '" value="' + name + '">' +
+                                    '<img src="/img/xls.png"/>' +
+                                    '<span>' + name + '</span>' +
+                                '</div>';
+                    });
+
+                    $('#request-xsl').append(html);
+                    $('#preload').addClass("hidden");
+                    $('.imageFile .close').on('click', function(){
+                        $(this).parent().remove();
+                    });
+                },
+                error: function () {
+                    alert('No se ha podido subir este archivo. Intenta nuevamente');
+                    $('#preload').addClass("hidden");
+                }
+            });
+        });
+    </script>
 @stop
