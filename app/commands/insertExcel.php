@@ -47,9 +47,13 @@ class insertExcel extends Command {
             if(strpos($this->argument('table'), 'extract') !== false){
                 $dir = public_path('toUpload/extracts/');
                 $doc = $this->argument('table');
+
                 Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
                     Extract::insert($this->validate($reader));
                 });
+
+                unlink($dir . $doc);
+
                 /*foreach (scandir($dir) as $file){
                     if(strpos($file, '**extract**') !== false) {
                         Excel::filter('chunk')->load($dir . $file)->chunk(250, function ($reader) {
@@ -87,9 +91,9 @@ class insertExcel extends Command {
             $m->to('carterainnova@innova-quality.com.co', 'Creditos Lilipink')->subject('Notificación Lilipink');
         });
 
-        $dir = [public_path('toUpload/extracts/'), public_path('toUpload/')];
-        $this->cleanDirectory($dir[0]);
-        $this->cleanDirectory($dir[1]);
+        //$dir = [public_path('toUpload/extracts/'), public_path('toUpload/')];
+        //$this->cleanDirectory($dir[0]);
+        //$this->cleanDirectory($dir[1]);
 	}
 
 	private function validate($reader){
