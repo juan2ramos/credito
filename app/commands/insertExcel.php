@@ -54,6 +54,9 @@ class insertExcel extends Command {
                     }
                 }
 
+                $dir = public_path('toUpload/extracts/');
+                $this->cleanDirectory($dir);
+
             } else {
                 $dir = base_path() . "/public/toUpload/";
                 $doc = $this->argument('table') . '.xlsx';
@@ -93,6 +96,14 @@ class insertExcel extends Command {
 		}
 		return $dataReader;
 	}
+
+    private function cleanDirectory($dir){
+        foreach (scandir($dir) as $file){
+            if($file !== '.' && $file !== '..')
+                unlink($dir . $file);
+        }
+    }
+
 	/**
 	 * Get the console command arguments.
 	 *
