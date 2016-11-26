@@ -51,6 +51,7 @@ class insertExcel extends Command {
                         Excel::filter('chunk')->load($dir . $file)->chunk(250, function ($reader) {
                             Extract::insert($this->validate($reader));
                         });
+                        unlink($dir . $file);
                     }
                 }
 
