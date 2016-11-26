@@ -117,8 +117,6 @@ class EnterprisingController extends Controller {
 			'name' => 'required',
 			'last_name' => 'required',
 			'email' => 'required|email|unique:users,email',
-			'password' => 'required|min:8',
-			'password_confirm' => 'required|same:password',
 			'identification_card' => 'required|numeric|unique:users,identification_card',
 			'instead_expedition' => 'required',
 			'date_expedition' => 'required',

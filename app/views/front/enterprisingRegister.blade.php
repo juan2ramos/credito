@@ -70,30 +70,6 @@
                 @endif
 
                 <div class="material-input">
-                    {{Form::password('password','',['id' => 'password'])}}
-                    {{Form::label('password','Contraseña')}}
-                    <span></span>
-                </div>
-
-                @if($errors->first('password'))
-                    <div class="errors">
-                        *{{$errors->first('password')}}
-                    </div>
-                @endif
-
-                <div class="material-input">
-                    {{Form::password('password_confirm','',['id' => 'password_confirm'])}}
-                    {{Form::label('password_confirm','Confirmar Contraseña')}}
-                    <span></span>
-                </div>
-
-                @if($errors->first('password_confirm'))
-                    <div class="errors">
-                        *{{$errors->first('password_confirm')}}
-                    </div>
-                @endif
-
-                <div class="material-input">
                     {{Form::number('identification_card','',['id' => 'identification_card'])}}
                     {{Form::label('identification_card','Cedula')}}
                     <span></span>
@@ -114,6 +90,30 @@
                 @if($errors->first('instead_expedition'))
                     <div class="errors">
                         *{{$errors->first('instead_expedition')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::text('referred_name','',['id' => 'referred_name'])}}
+                    {{Form::label('referred_name','Nombre de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_name'))
+                    <div class="errors">
+                        *{{$errors->first('referred_name')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::number('referred_document','',['id' => 'referred_document'])}}
+                    {{Form::label('referred_document','Cedula de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_document'))
+                    <div class="errors">
+                        *{{$errors->first('referred_document')}}
                     </div>
                 @endif
 
@@ -203,30 +203,6 @@
                     </div>
                 @endif
 
-                <div class="material-input">
-                    {{Form::text('referred_name','',['id' => 'referred_name'])}}
-                    {{Form::label('referred_name','Nombre de quien refiere (Opcional)')}}
-                    <span></span>
-                </div>
-
-                @if($errors->first('referred_name'))
-                    <div class="errors">
-                        *{{$errors->first('referred_name')}}
-                    </div>
-                @endif
-
-                <div class="material-input">
-                    {{Form::number('referred_document','',['id' => 'referred_document'])}}
-                    {{Form::label('referred_document','Cedula de quien refiere (Opcional)')}}
-                    <span></span>
-                </div>
-
-                @if($errors->first('referred_document'))
-                    <div class="errors">
-                        *{{$errors->first('referred_document')}}
-                    </div>
-                @endif
-
             </section>
 
             <div style="margin-top: 20px">
@@ -290,30 +266,6 @@
                 @endif
 
                 <div class="material-input">
-                    {{Form::password('password','',['id' => 'password'])}}
-                    {{Form::label('password','Contraseña')}}
-                    <span></span>
-                </div>
-
-                @if($errors->first('password'))
-                    <div class="errors">
-                        *{{$errors->first('password')}}
-                    </div>
-                @endif
-
-                <div class="material-input">
-                    {{Form::password('password_confirm','',['id' => 'password_confirm'])}}
-                    {{Form::label('password_confirm','Confirmar Contraseña')}}
-                    <span></span>
-                </div>
-
-                @if($errors->first('second_last_name'))
-                    <div class="errors">
-                        *{{$errors->first('second_last_name')}}
-                    </div>
-                @endif
-
-                <div class="material-input">
                     {{Form::number('identification_card','',['id' => 'identification_card'])}}
                     {{Form::label('identification_card','Cedula')}}
                     <span></span>
@@ -346,6 +298,30 @@
                 @if($errors->first('date_expedition'))
                     <div class="errors">
                         *{{$errors->first('date_expedition')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::text('referred_name','',['id' => 'referred_name'])}}
+                    {{Form::label('referred_name','Nombre de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_name'))
+                    <div class="errors">
+                        *{{$errors->first('referred_name')}}
+                    </div>
+                @endif
+
+                <div class="material-input">
+                    {{Form::number('referred_document','',['id' => 'referred_document'])}}
+                    {{Form::label('referred_document','Cedula de quien refiere (Opcional)')}}
+                    <span></span>
+                </div>
+
+                @if($errors->first('referred_document'))
+                    <div class="errors">
+                        *{{$errors->first('referred_document')}}
                     </div>
                 @endif
 
@@ -444,30 +420,6 @@
                 @if($errors->first('monthly_expenses'))
                     <div class="errors">
                         *{{$errors->first('monthly_expenses')}}
-                    </div>
-                @endif
-
-                <div class="material-input">
-                    {{Form::text('referred_name','',['id' => 'referred_name'])}}
-                    {{Form::label('referred_name','Nombre de quien refiere (Opcional)')}}
-                    <span></span>
-                </div>
-
-                @if($errors->first('referred_name'))
-                    <div class="errors">
-                        *{{$errors->first('referred_name')}}
-                    </div>
-                @endif
-
-                <div class="material-input">
-                    {{Form::number('referred_document','',['id' => 'referred_document'])}}
-                    {{Form::label('referred_document','Cedula de quien refiere (Opcional)')}}
-                    <span></span>
-                </div>
-
-                @if($errors->first('referred_document'))
-                    <div class="errors">
-                        *{{$errors->first('referred_document')}}
                     </div>
                 @endif
 
