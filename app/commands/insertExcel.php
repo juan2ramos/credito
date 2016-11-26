@@ -39,7 +39,7 @@ class insertExcel extends Command {
 	 */
 	public function fire()
 	{
-        $doc = null;
+        $doc = 'extractos';
         $dir = null;
         $message = null;
 
@@ -70,7 +70,7 @@ class insertExcel extends Command {
 
         } catch (Exception $e){
 
-            $message = "No se ha guardar " . $doc . ". Intenta subirlo de nuevo.";
+            $message = "No se ha guardado " . $doc . ". Intenta subirlo de nuevo.";
         }
 
 
