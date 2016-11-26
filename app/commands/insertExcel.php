@@ -54,9 +54,6 @@ class insertExcel extends Command {
                     }
                 }
 
-                $dir = public_path('toUpload/extracts/');
-                $this->cleanDirectory($dir);
-
             } else {
                 $dir = base_path() . "/public/toUpload/";
                 $doc = $this->argument('table') . '.xlsx';
@@ -85,8 +82,9 @@ class insertExcel extends Command {
             $m->to('carterainnova@innova-quality.com.co', 'Creditos Lilipink')->subject('Notificación Lilipink');
         });
 
-		//unlink($dir . $doc);
-		//if(!is_dir($dir)) rmdir($dir);
+        $dir = [public_path('toUpload/extracts/'), public_path('toUpload/')];
+        $this->cleanDirectory($dir[0]);
+        $this->cleanDirectory($dir[1]);
 	}
 
 	private function validate($reader){
@@ -99,7 +97,7 @@ class insertExcel extends Command {
 
     private function cleanDirectory($dir){
         foreach (scandir($dir) as $file){
-            if($file !== '.' && $file !== '..')
+            if($file !== '.' && $file !== '..' && strpos($file, '.') !== false)
                 unlink($dir . $file);
         }
     }
