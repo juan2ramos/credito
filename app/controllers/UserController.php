@@ -221,11 +221,15 @@ class UserController extends BaseController
     {
         DB::table('extracts')->truncate();
         $dir = public_path('toUpload/extracts/');
+        $command = "";
         foreach (scandir($dir) as $file){
             if(strpos($file, '**extract**') !== false) {
-                shell_exec("cd " . base_path() . "; php artisan insert:excel " . $file . " > /dev/null &");
+                //shell_exec("cd " . base_path() . "; php artisan insert:excel " . $file . " > /dev/null & ");
+                $command .= "php artisan insert:excel " . $file . " > /dev/null & wait; ";
             }
         }
+
+        shell_exec("cd " . base_path() . "; " . $command);
 
         return Redirect::route('excel')->with('mensaje','Los extractos se están guardando en la base de datos. Se enviara un email cuando acabe el proceso');
     }
