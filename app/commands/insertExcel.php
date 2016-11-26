@@ -44,16 +44,20 @@ class insertExcel extends Command {
         $message = null;
 
         try{
-            if($this->argument('table') == 'extracts'){
+            if(strpos($this->argument('table'), 'extract') !== false){
                 $dir = public_path('toUpload/extracts/');
-                foreach (scandir($dir) as $file){
+                $doc = $this->argument('table');
+                Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
+                    Extract::insert($this->validate($reader));
+                });
+                /*foreach (scandir($dir) as $file){
                     if(strpos($file, '**extract**') !== false) {
                         Excel::filter('chunk')->load($dir . $file)->chunk(250, function ($reader) {
                             Extract::insert($this->validate($reader));
                         });
                         unlink($dir . $file);
                     }
-                }
+                }*/
 
             } else {
                 $dir = base_path() . "/public/toUpload/";
