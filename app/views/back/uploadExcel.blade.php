@@ -20,7 +20,7 @@
             <input id="form-files" name="files" type="hidden" value="">
 
             <div class="pop-up">
-                <p>Subir Extractos</p>
+                <p><b>Suba Varios Excel</b><br><span style="margin-top: 1.2rem; font-size: .83rem; display: block;">Los extractos deben ser divididos en varios archivos de 1MB o menos.</span></p>
                 <input id="files" type="file" multiple >
             </div>
 
