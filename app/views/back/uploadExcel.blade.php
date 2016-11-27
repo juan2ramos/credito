@@ -59,7 +59,7 @@
         $('#files').on('change', function(){
             var inputFile = document.getElementById('files'),
                 token = document.getElementById('token'),
-                maxSize = 1500000,
+                maxSize = 1000000,
                 url = $('#url').val(),
                 formData = loadFiles(inputFile, maxSize);
 
