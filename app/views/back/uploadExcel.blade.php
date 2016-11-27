@@ -46,7 +46,7 @@
                     if(file.size < maxSize){
                         fd.append("file" + index, file);
                     } else {
-                        error = {'error' : 'El archivo "' + file.name + '" es demasiado grande.'};
+                        error = {'error' : 'El archivo "' + file.name + '" es demasiado grande. El tamaño debe ser menor a 1MB'};
                     }
                 } else {
                     error = {'error' : 'Tipo de archivo no permitido : ' + file.name + '.'};
