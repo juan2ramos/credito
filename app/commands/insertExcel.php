@@ -51,18 +51,7 @@ class insertExcel extends Command {
                 Excel::filter('chunk')->load($dir . $doc)->chunk(250, function ($reader) {
                     Extract::insert($this->validate($reader));
                 });
-
                 unlink($dir . $doc);
-
-                /*foreach (scandir($dir) as $file){
-                    if(strpos($file, '**extract**') !== false) {
-                        Excel::filter('chunk')->load($dir . $file)->chunk(250, function ($reader) {
-                            Extract::insert($this->validate($reader));
-                        });
-                        unlink($dir . $file);
-                    }
-                }*/
-
             } else {
                 $dir = base_path() . "/public/toUpload/";
                 $doc = $this->argument('table') . '.xlsx';

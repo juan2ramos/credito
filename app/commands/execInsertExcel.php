@@ -42,7 +42,6 @@ class execInsertExcel extends Command {
         $command = "";
         for( $i = 0; $i < count($files); $i++){
             if(strpos($files[$i], '**extract**') !== false) {
-                //shell_exec("cd " . base_path() . "; php artisan insert:excel " . $file . " > /dev/null & ");
                 $command .= "php artisan insert:excel " . $files[$i] . " > /dev/null & ";
                 $command .= $i < count($files) - 1 ? 'wait;' : '';
             }

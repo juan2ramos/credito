@@ -15,9 +15,10 @@
         <h1>Subir Excel</h1>
 
         <form action="{{route('excel')}}" method="POST" accept-charset="UTF-8" class="Credito-form" enctype="multipart/form-data">
+            <input type="hidden" id="quantity" value="">
             <input id="token" name="_token" type="hidden" value="{{csrf_token()}}">
             <input id="url" type="hidden" value="{{route('uploadTempFiles')}}">
-            <input id="form-files" name="files" type="hidden" value="">
+            <!--<input id="form-files" name="files" type="hidden" value="1">-->
 
             <div class="pop-up">
                 <p><b>Suba Varios Excel</b><br><span style="margin-top: 1.2rem; font-size: .83rem; display: block;">Los extractos deben ser divididos en varios archivos de 1MB o menos.</span></p>
@@ -39,12 +40,15 @@
         function loadFiles(fileInput, maxSize){
             var files = fileInput.files,
                 error = null,
+                quantity = $('#quantity'),
                 fd = new FormData();
 
             $.each(files, function(index, file){
                 if(file.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || file.type == 'application/vnd.ms-excel'){
                     if(file.size < maxSize){
                         fd.append("file" + index, file);
+                        var val = Number(quantity.val()) + 1;
+                        quantity.val(val);
                     } else {
                         error = {'error' : 'El archivo "' + file.name + '" es demasiado grande. El tamaño debe ser menor a 1MB'};
                     }
@@ -61,6 +65,7 @@
                 token = document.getElementById('token'),
                 maxSize = 1000000,
                 url = $('#url').val(),
+                quantity = $('#quantity').val(),
                 formData = loadFiles(inputFile, maxSize);
 
             if(formData.error){
@@ -85,7 +90,7 @@
                     $.each(files, function(index, name){
                         html += '<div class="imageFile">' +
                                     '<span class="close">x</span>' +
-                                    '<input type="hidden" name="file' + index + '" value="' + name + '">' +
+                                    '<input type="hidden" name="file' + (index +  Number(quantity)) + '" value="' + name + '">' +
                                     '<img src="/img/xls.png"/>' +
                                     '<span>' + name + '</span>' +
                                 '</div>';
