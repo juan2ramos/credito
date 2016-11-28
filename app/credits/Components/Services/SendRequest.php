@@ -40,6 +40,7 @@ class SendRequest {
 
         } elseif($role == 'emprendedora_contado'){
 
+            return 'sendMail2';
             Mail::send('emails.ESimpleAccept', ['email' => 'email'], function ($m) use($user){
                 $m->to($user->email, 'Creditos Lilipink')->subject('Eres una emprendedora Lilipink');
             });
