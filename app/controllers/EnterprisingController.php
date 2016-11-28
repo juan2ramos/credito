@@ -63,41 +63,6 @@ class EnterprisingController extends Controller {
 
         return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación", 'isCredit' => $isCredit]);
     }
-	/*protected function simpleRegister(){
-		$input = Input::all();
-		$rules = $this->getRules(false);
-		$validator = $this->validate($input, $rules);
-
-		if($validator->fails())
-			return Redirect::back()->withErrors($validator)->withInput();
-
-		$this->createUser($input);
-
-		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
-	}
-
-	protected function creditRegister(){
-
-		$input = Input::all();
-		$rules = $this->getRules(true);
-		$validator = $this->validate($input, $rules);
-
-		if($validator->fails())
-			return Redirect::back()->withErrors($validator)->withInput()->with(['isCredit' => true]);
-
-		$user = $this->createUser($input);
-		$user->hasCredit = 1;
-		$user->save();
-		$creditRequest = CreditRequest::create($input);
-		$creditRequest->files = $input['files'];
-		$creditRequest->user_id = $user['id'];
-		$creditRequest->priority = 2;
-		$creditRequest->location = $input['location'];
-		$creditRequest->point = $input['point'];
-		$creditRequest->save();
-
-		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación", 'isCredit' => true]);
-	}*/
 
 	public function enterpricingCreditList(){
 		if(Auth::user()->roles_id == 4)
