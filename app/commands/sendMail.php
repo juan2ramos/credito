@@ -41,7 +41,7 @@ class sendMail extends Command {
 	 */
 	public function fire()
 	{
-        $users = User::select('identification_card')->where('roles_id', 4)->orWhere('roles_id', 5)->limit(2)->get();
+        $users = User::where('roles_id', 4)->orWhere('roles_id', 5)->get();
         foreach ($users as $user){
             $document = $user->identification_card;
             $extracts = Extract::where("nit", $document)->orderBy('id', 'DESC')->get();
@@ -86,13 +86,13 @@ class sendMail extends Command {
         $dompdf ->set_paper("A4", "portrait");
         $dompdf->load_html($html);
         $dompdf->render();
-        $dompdf->get_canvas()->get_cpdf()->setEncryption($data->user->identification_card, $data->user->identification_card);
+        $dompdf->get_canvas()->get_cpdf()->setEncryption($data["user"]["identification_card"], $data["user"]["identification_card"]);
         $output = $dompdf->output();
         $pdfPath = 'extracto.pdf';
         File::put($pdfPath, $output);
 
-        Mail::send('emails.accept', ['email' => 'email'], function ($message) use ($pdfPath, $data) {
-            $message->to('sanruiz1003@gmail.com', 'creditos lilipink')->subject('Envio de extracto ' . $data->user->email);
+        Mail::send('emails.sendExtracts', ['email' => 'email'], function ($message) use ($pdfPath, $data) {
+            $message->to($data["user"]["email"], 'creditos lilipink')->subject('Envio de extracto');
             $message->attach($pdfPath);
         });
     }
