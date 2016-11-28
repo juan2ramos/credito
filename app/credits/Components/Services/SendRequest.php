@@ -36,7 +36,9 @@ class SendRequest {
 
         if($role == 'credito_personal'){
 
-            return 'sendMail1';
+            Mail::send('emails.accept', ['email' => 'email'], function ($message) use ($user) {
+                $message->to($user->email, 'creditos lilipink')->subject('Su solicitud de credito fue aprobada');
+            });
 
         } elseif($role == 'emprendedora_contado'){
 
@@ -46,7 +48,9 @@ class SendRequest {
 
         } elseif($role == 'emprendedora_credito'){
 
-            return 'sendMail3';
+            Mail::send('emails.ECreditAccept', ['email' => 'email'], function ($m) use($user){
+                $m->to($user->email, 'Creditos Lilipink')->subject('Credito emprendedora aprobado');
+            });
         }
     }
 

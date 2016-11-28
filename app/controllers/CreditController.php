@@ -241,14 +241,28 @@ class CreditController extends BaseController
 			);
 			if ($mailCredit['mail']) {
 				$data = $mailCredit;
-				if(User::find($id)->roles_id == 4)
-					Mail::send('emails.accept', $data, function ($message) use ($mailCredit) {
-						$message->to($mailCredit['mail'], 'creditos lilipink')->subject('Su solicitud de credito fue aprobada');
-					});
-				else
-					Mail::send('emails.ECreditAccept', ['email' => 'email'], function ($m) use($mailCredit){
-						$m->to($mailCredit['mail'], 'Creditos Lilipink')->subject('Credito emprendedora aprobado');
-					});
+                $user = User::find($id);
+                $role = $user->roles_id == 4 ? 'credito_personal' : 'emprendedora_credito';
+                $userName = strtolower($user->name . '.' . $user->last_name);
+                $service = \credits\Components\Services\SendRequest::create();
+                $response = null;
+
+                try{
+                    $response = $service->postRequest('http://emprendedoras.lilipink.com/wp-json/wp/v2/users', [
+                        'roles' => $role,
+                        "username" => $user->email,
+                        "password" => $userName . "123",
+                        "email" => $user->email
+                    ]);
+
+                    if($response) {
+                        $user->update(['user_state' => 1, 'user_name' => $userName, 'password' => $userName . '123', 'page_id' => json_decode($response)->id]);
+                        $service->getAction($role, $user);
+                    }
+
+                } catch (Exception $e){
+                    $service->getError($e->getCode());
+                }
 			}
 
 			return Redirect::route('request')->with(array('message' => "La solicitud de credito fue aprobada"));

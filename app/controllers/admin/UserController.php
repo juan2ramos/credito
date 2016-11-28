@@ -19,31 +19,6 @@ class UserController extends \BaseController {
 	 * @return Response
 	 */
 
-	public function prueba(){
-        $service = \credits\Components\Services\SendRequest::create();
-        $response = null;
-
-        try{
-            $response = $service->postRequest('http://emprendedoras.lilipink.com/wp-json/wp/v2/users', [
-                'roles' => 'emprendedora_contado',
-                "username" => 'sanruiz33@gmail.com',
-                "password" => 'santiagouiz' . "123",
-                "email" => 'sanruiz33@gmail.com'//$user->email
-            ]);
-
-            dd($response);
-
-            if($response) {
-                //    $service->getAction('emprendedora_contado', $user);
-                //    $user->update(['user_state' => 1, 'user_name' => $userName, 'password' => $userName . '123', 'page_id' => json_decode($response)->id]);
-            }
-
-        } catch (Exception $e){
-            dd($e->getMessage());
-            $service->getError($e->getCode());
-        }
-    }
-
 	public function activate($id){
 		$this->validateUser();
 		$user = User::find($id);

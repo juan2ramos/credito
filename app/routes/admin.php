@@ -270,8 +270,4 @@ Route::group(['namespace' => 'admin'], function(){
         'as' => 'getDataEnterpricing',
         'uses' => 'UserController@getDataEnterpricing'
     ]);
-
-    Route::get('prueba', [
-        'uses' => 'UserController@prueba'
-    ]);
 });
