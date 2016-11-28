@@ -51,24 +51,28 @@ class ExtractsController extends \BaseController {
 
 			return true;
 		}
-
 		return false;
 	}
 
 	public function downloadExtract($identification)
 	{
 		if($this->setData($identification)){
-            require_once base_path('vendor/thujohn/pdf/src/Thujohn/Pdf/dompdf/dompdf_config.inc.php');
-            $html = View::make('pdf.extract', $this->data)->render();
-            $dompdf = new DOMPDF();
-            $dompdf ->set_paper("A4", "portrait");
-            $dompdf->load_html($html);
-            $dompdf->render();
-            $dompdf->get_canvas()->get_cpdf()->setEncryption($identification, $identification);
-            $dompdf->stream('extracto.pdf');
+            $this->PDFGen($identification)->stream('extracto.pdf');
         }
 	}
 
+	public function sendPDF($identification){
+        if($this->setData($identification)) {
+            $output = $this->PDFGen($identification)->output();
+            $pdfPath = 'extracto.pdf';
+            File::put($pdfPath, $output);
+
+            Mail::send('emails.accept', ['email' => 'email'], function ($message) use ($pdfPath, $user) {
+                $message->to($user->email, 'creditos lilipink')->subject('Envio de extracto');
+                $message->attach($pdfPath);
+            });
+        }
+    }
 
 	public function uploadTempFiles(){
         if(!Request::ajax())
@@ -85,7 +89,14 @@ class ExtractsController extends \BaseController {
         return $names;
     }
 
-	/*public function prueba(){
-		PDF::load(View::make('pdf.extractoprueba'), 'A4', 'portrait')->download('extract');
-	} */
+	private function PDFGen($identification){
+        require_once base_path('vendor/thujohn/pdf/src/Thujohn/Pdf/dompdf/dompdf_config.inc.php');
+        $html = View::make('pdf.extract', $this->data)->render();
+        $dompdf = new DOMPDF();
+        $dompdf ->set_paper("A4", "portrait");
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->get_canvas()->get_cpdf()->setEncryption($identification, $identification);
+        return $dompdf;
+    }
 }

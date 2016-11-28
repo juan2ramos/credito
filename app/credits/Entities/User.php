@@ -42,4 +42,8 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
         return $this->hasOne(Location::class);
     }
 
+    public function extracts(){
+        return Extract::where('extracts.nit', $this->identification_card)->get();
+    }
+
 }

@@ -3,6 +3,10 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use credits\Entities\User;
+use credits\Entities\Extract;
+use credits\Entities\CreditRequest;
+use credits\Entities\ExcelDaily;
 
 class sendMail extends Command {
 
@@ -18,7 +22,7 @@ class sendMail extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description.';
+	protected $description = 'Enviar extractos a emprendedoras y creditos lilipink.';
 
 	/**
 	 * Create a new command instance.
@@ -37,18 +41,61 @@ class sendMail extends Command {
 	 */
 	public function fire()
 	{
-		$users = \credits\Entities\User::whereRaw('roles_id = 5 and hasCredit = 0 and user_state = 1')->get();
-		foreach($users as $user){
-			$email = $user->email;
-			Mail::send('emails.ESimpleAccept', ['msn' => 'prueba'], function ($m) use($email){
-				$m->to($email, 'Creditos Lilipink')->subject('Notificación Lilipink');
-			});
-		}
-
-		Mail::send('emails.ESimpleAccept', ['msn' => 'prueba'], function ($m){
-			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
-		});
+        $users = User::select('identification_card')->where('roles_id', 4)->orWhere('roles_id', 5)->limit(2)->get();
+        foreach ($users as $user){
+            $document = $user->identification_card;
+            $extracts = Extract::where("nit", $document)->orderBy('id', 'DESC')->get();
+            if(count($extracts)){
+                $minPay = ExcelDaily::where("cedula", $document)->get();
+                $quota = CreditRequest::where('user_id', $user->id)->first();
+                $day = explode('-', date("y-m-d"));
+                $q = $quota ? $quota->value : 300000;
+                $this->PDFGen([
+                    'user' => $user,
+                    'day' => $day,
+                    'extracts' => $extracts,
+                    'quota' => intval($q),
+                    'minPay' => $minPay,
+                    'months' => $this->getMonths()
+                ]);
+            }
+        }
 	}
+
+    private function getMonths(){
+        return [
+            'ene' => 1,
+            'feb' => 2,
+            'mar' => 3,
+            'abr' => 4,
+            'may' => 5,
+            'jun' => 6,
+            'jul' => 7,
+            'ago' => 8,
+            'sep' => 9,
+            'oct' => 10,
+            'nov' => 11,
+            'dic' => 12,
+        ];
+    }
+
+    private function PDFGen($data){
+        require_once base_path('vendor/thujohn/pdf/src/Thujohn/Pdf/dompdf/dompdf_config.inc.php');
+        $html = View::make('pdf.extract', $data)->render();
+        $dompdf = new DOMPDF();
+        $dompdf ->set_paper("A4", "portrait");
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->get_canvas()->get_cpdf()->setEncryption($data->user->identification_card, $data->user->identification_card);
+        $output = $dompdf->output();
+        $pdfPath = 'extracto.pdf';
+        File::put($pdfPath, $output);
+
+        Mail::send('emails.accept', ['email' => 'email'], function ($message) use ($pdfPath, $data) {
+            $message->to('sanruiz1003@gmail.com', 'creditos lilipink')->subject('Envio de extracto ' . $data->user->email);
+            $message->attach($pdfPath);
+        });
+    }
 
 	/**
 	 * Get the console command arguments.
