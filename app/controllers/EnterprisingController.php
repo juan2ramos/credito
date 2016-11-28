@@ -40,7 +40,30 @@ class EnterprisingController extends Controller {
 		return View::make('front.enterprisingRegister', compact('locations', 'points'));
 	}
 
-	protected function simpleRegister(){
+	function postRegister(){
+        $inputs = Input::all();
+        $isCredit = Input::has('isCredit');
+        $rules = $this->getRules($isCredit);
+        $validator = $this->validate($inputs, $rules);
+        if($validator->fails())
+            return Redirect::back()->withErrors($validator)->withInput();
+
+        $user = $this->createUser($inputs);
+        if($isCredit){
+            $user->hasCredit = 1;
+            $user->save();
+            $creditRequest = CreditRequest::create($inputs);
+            $creditRequest->files = $inputs['files'];
+            $creditRequest->user_id = $user['id'];
+            $creditRequest->priority = 2;
+            $creditRequest->location = $inputs['location'];
+            $creditRequest->point = $inputs['point'];
+            $creditRequest->save();
+        }
+
+        return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación", 'isCredit' => $isCredit]);
+    }
+	/*protected function simpleRegister(){
 		$input = Input::all();
 		$rules = $this->getRules(false);
 		$validator = $this->validate($input, $rules);
@@ -74,7 +97,7 @@ class EnterprisingController extends Controller {
 		$creditRequest->save();
 
 		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación", 'isCredit' => true]);
-	}
+	}*/
 
 	public function enterpricingCreditList(){
 		if(Auth::user()->roles_id == 4)
@@ -122,8 +145,8 @@ class EnterprisingController extends Controller {
 			'date_expedition' => 'required',
 			'residency_city' => 'required',
 			'address' => 'required',
-			'mobile_phone' => 'required|numeric|min:7',
-			'phone' => 'required|numeric|min:7'
+			'mobile_phone' => 'required|numeric|digits:10',
+			'phone' => 'required|numeric|digits_between:7,10'
 		];
 
 		if($isCredit){
@@ -133,8 +156,8 @@ class EnterprisingController extends Controller {
 			$rules['point'] = 'required';
 			$rules['name_reference'] = 'required';
 			$rules['name_reference2'] = 'required';
-			$rules['phone_reference'] = 'required|numeric|min:7';
-			$rules['phone_reference2'] = 'required|numeric|min:7';
+			$rules['phone_reference'] = 'required|numeric|digits_between:7,10';
+			$rules['phone_reference2'] = 'required|numeric|digits_between:7,10';
 		}
 
 		return $rules;

@@ -95,6 +95,6 @@ Route::get('se_emprendedora/', ['as'=>'isEnterprising','uses'=>'EnterprisingCont
 Route::get('donde_comprar/', ['as'=>'buy','uses'=>'EnterprisingController@buy']);
 Route::get('como_pagar/', ['as'=>'pay','uses'=>'EnterprisingController@pay']);
 Route::get('magazine/', ['as'=>'magazine','uses'=>'EnterprisingController@magazine']);
-Route::get('formulario-emprendedoras/', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@getRegister']);
-Route::post('formulario-emprendedoras/simple', ['as' => 'enterprisingSimple', 'uses' => 'EnterprisingController@simpleRegister']);
-Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
+Route::get('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@getRegister']);
+Route::post('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@postRegister']);
+//Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
