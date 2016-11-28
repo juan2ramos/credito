@@ -50,8 +50,8 @@
 
     </div>
 
-    <span>Su usuario es {{$email}}</span><br>
-    <span>Su contraseña es {{$password}}</span><br>
+    <span style="font-size: 16px;display: block;">Su usuario es {{$email}}</span><br>
+    <span style="font-size: 16px;display: block;">Su contraseña es {{$password}}</span><br>
     <div id="imagen1" style="height:385px;text-align:center;">
         <a href="http://creditoslilipink.com/">
             <img  src="http://creditoslilipink.com/img/aprobada.jpg" width="800" alt="creditoslilipink">
