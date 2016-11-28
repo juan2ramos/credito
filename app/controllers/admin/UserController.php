@@ -29,7 +29,7 @@ class UserController extends \BaseController {
         try{
             $response = $service->postRequest('http://emprendedoras.lilipink.com/wp-json/wp/v2/users', [
                 'roles' => 'emprendedora_contado',
-                "username" => $userName,
+                "username" => $user->email,
                 "password" => $userName . "123",
                 "email" => $user->email
             ]);
@@ -42,8 +42,6 @@ class UserController extends \BaseController {
         } catch (Exception $e){
             $service->getError($e->getCode());
         }
-
-		return Redirect::back()->with('message', 'El usuario se ha activado');
 	}
 
 

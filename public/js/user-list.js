@@ -7,8 +7,12 @@ $('#activeUser, #destroyUser, #disableUser').on('click', function(){
         $.ajax({
             url : $(this).attr('route'),
             type : 'GET',
-            success : function(){
-                location.reload();
+            success : function(data){
+                console.log(data);
+                //location.reload();
+            }, error : function(e){
+                alert('Hubo un error');
+                console.log(e);
             }
         });
     }
