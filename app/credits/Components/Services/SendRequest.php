@@ -32,23 +32,23 @@ class SendRequest {
         return $response->getBody()->getContents();
     }
 
-    public function getAction($role, $user){
+    public function getAction($role, $user, $password){
 
         if($role == 'credito_personal'){
 
-            Mail::send('emails.accept', ['email' => 'email'], function ($message) use ($user) {
+            Mail::send('emails.accept', ['email' => $user->email, 'password' => $password], function ($message) use ($user) {
                 $message->to($user->email, 'creditos lilipink')->subject('Su solicitud de credito fue aprobada');
             });
 
         } elseif($role == 'emprendedora_contado'){
 
-            Mail::send('emails.ESimpleAccept', ['email' => 'email'], function ($m) use($user){
+            Mail::send('emails.ESimpleAccept', ['email' => $user->email, 'password' => $password], function ($m) use($user){
                 $m->to($user->email, 'Creditos Lilipink')->subject('Eres una emprendedora Lilipink');
             });
 
         } elseif($role == 'emprendedora_credito'){
 
-            Mail::send('emails.ECreditAccept', ['email' => 'email'], function ($m) use($user){
+            Mail::send('emails.ECreditAccept', ['email' => $user->email, 'password' => $password], function ($m) use($user){
                 $m->to($user->email, 'Creditos Lilipink')->subject('Credito emprendedora aprobado');
             });
         }

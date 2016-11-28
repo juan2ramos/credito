@@ -257,7 +257,7 @@ class CreditController extends BaseController
 
                     if($response) {
                         $user->update(['user_state' => 1, 'user_name' => $userName, 'password' => $userName . '123', 'page_id' => json_decode($response)->id]);
-                        $service->getAction($role, $user);
+                        $service->getAction($role, $user, $userName . '123');
                     }
 
                 } catch (Exception $e){
