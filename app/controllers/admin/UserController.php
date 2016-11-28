@@ -35,8 +35,8 @@ class UserController extends \BaseController {
             ]);
 
             if($response) {
-                $service->getAction('emprendedora_contado', $user);
                 $user->update(['user_state' => 1, 'user_name' => $userName, 'password' => $userName . '123', 'page_id' => json_decode($response)->id]);
+                $service->getAction('emprendedora_contado', $user);
             }
 
         } catch (Exception $e){

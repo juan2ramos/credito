@@ -2,6 +2,7 @@
 
 namespace credits\Components\Services;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Mail;
 
 class SendRequest {
 
