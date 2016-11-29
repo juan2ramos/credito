@@ -4,6 +4,7 @@ namespace admin;
 
 use credits\Entities\CreditRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use credits\Entities\User;
@@ -18,18 +19,29 @@ class UserController extends \BaseController {
 	 * @return Response
 	 */
 
-	//ALTER TABLE creditos.users ADD user_state INT NULL;
-
 	public function activate($id){
 		$this->validateUser();
 		$user = User::find($id);
-		$user->update(['user_state' => 1]);
+        $userName = strtolower($user->name . '.' . $user->last_name);
+        $service = \credits\Components\Services\SendRequest::create();
+        $response = null;
 
-		Mail::send('emails.ESimpleAccept', ['email' => 'email'], function ($m) use($user){
-			$m->to($user->email, 'Creditos Lilipink')->subject('Eres una emprendedora Lilipink');
-		});
+        try{
+            $response = $service->postRequest('http://emprendedoras.lilipink.com/wp-json/wp/v2/users', [
+                'roles' => 'emprendedora_contado',
+                "username" => $user->email,
+                "password" => $userName . "123",
+                "email" => $user->email
+            ]);
 
-		return Redirect::back()->with('message', 'El usuario se ha activado');
+            if($response) {
+                $user->update(['user_state' => 1, 'user_name' => $userName, 'password' => $userName . '123', 'page_id' => json_decode($response)->id]);
+                $service->getAction('emprendedora_contado', $user, $userName . "123");
+            }
+
+        } catch (Exception $e){
+            $service->getError($e->getCode());
+        }
 	}
 
 

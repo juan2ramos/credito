@@ -240,6 +240,11 @@ Route::get('pdf/{id}', [
     'as'    =>  'ExtractPdf'
 ]);
 
+Route::post('uploadTempFiles', [
+    'uses' => 'ExtractsController@uploadTempFiles',
+    'as' => 'uploadTempFiles'
+]);
+
 Route::get('updatepoint', [
     'as' => 'update.point',
     'uses' => 'PointController@update'

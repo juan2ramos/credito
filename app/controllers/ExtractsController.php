@@ -4,6 +4,7 @@ use \credits\Entities\ExcelDaily;
 use \credits\Entities\Extract;
 use \credits\Entities\CreditRequest;
 use \credits\Entities\User;
+use Maatwebsite\Excel;
 
 class ExtractsController extends \BaseController {
 
@@ -34,10 +35,9 @@ class ExtractsController extends \BaseController {
 	{
 		$extracts = Extract::where("nit", $identification)->orderBy('id', 'DESC')->get();
 		if ($extracts){
-			$user = User::whereRaw("roles_id = 4 and identification_card = {$identification}")->first();
+			$user = User::whereRaw("identification_card = {$identification}")->first();
 			$minPay = ExcelDaily::where("cedula", $identification)->get();
 			$quota = CreditRequest::where('user_id', $user->id)->first();
-
 			$day = explode('-', date("y-m-d"));
 			$q = $quota ? $quota->value : 300000;
 			$this->data = [
@@ -51,19 +51,52 @@ class ExtractsController extends \BaseController {
 
 			return true;
 		}
-
 		return false;
 	}
 
 	public function downloadExtract($identification)
 	{
-		if($this->setData($identification))
-			PDF::load( View::make('pdf.extract', $this->data)->render(), 'A4', 'portrait')->download('extracto');
+		if($this->setData($identification)){
+            $this->PDFGen($identification)->stream('extracto.pdf');
+        }
 	}
 
+	public function sendPDF($identification){
+        if($this->setData($identification)) {
+            $output = $this->PDFGen($identification)->output();
+            $pdfPath = 'extracto.pdf';
+            File::put($pdfPath, $output);
 
+            Mail::send('emails.accept', ['email' => 'email'], function ($message) use ($pdfPath, $user) {
+                $message->to($user->email, 'creditos lilipink')->subject('Envio de extracto');
+                $message->attach($pdfPath);
+            });
+        }
+    }
 
-	/*public function prueba(){
-		PDF::load(View::make('pdf.extractoprueba'), 'A4', 'portrait')->download('extract');
-	} */
+	public function uploadTempFiles(){
+        if(!Request::ajax())
+            return Redirect::back();
+
+        $names = [];
+        $files = Input::file();
+        foreach ($files as $file){
+            $fileName = str_random(5) . '**extract**' . $file->getClientOriginalName();
+            $file->move(public_path('toUpload/extracts/temp/'), $fileName);
+            array_push($names, $fileName);
+        }
+
+        return $names;
+    }
+
+	private function PDFGen($identification){
+        require_once base_path('vendor/thujohn/pdf/src/Thujohn/Pdf/dompdf/dompdf_config.inc.php');
+        $html = View::make('pdf.extract', $this->data)->render();
+        $dompdf = new DOMPDF();
+        $dompdf ->set_paper("A4", "portrait");
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->get_canvas()->get_cpdf()->setEncryption($identification, $identification);
+        return $dompdf;
+    }
 }

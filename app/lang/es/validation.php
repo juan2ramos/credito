@@ -77,7 +77,22 @@ return array(
 	|
 	*/
 
-	'custom' => array(),
+	'custom' => [
+        'phone' => [
+            'digits' => 'El campo teléfono debe tener 7 dígitos.',
+            'digits_between' => 'El campo teléfono debe tener entre 7 y 10 dígitos.',
+        ],
+        'mobile_phone' => [
+            'digits' => 'El campo teléfono debe tener 10 dígitos.',
+            'digits_between' => 'El campo teléfono debe tener entre 7 y 10 dígitos.'
+        ],
+        'phone_reference' => [
+            'digits_between' => 'El campo teléfono debe tener entre 7 y 10 dígitos.',
+        ],
+        'phone_reference2' => [
+            'digits_between' => 'El campo teléfono debe tener entre 7 y 10 dígitos.',
+        ]
+    ],
 
 	/*
 	|--------------------------------------------------------------------------

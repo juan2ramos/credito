@@ -13,8 +13,6 @@
     <div id="logo1" style="height:55px;
             text-align:center;
             margin-top:20px;"> <a href="http://lilipink.com/"><img src="http://lilipink.com/wp-content/uploads/2015/02/lilipink.png" target="_blank" width="480"></a></div>
-
-
     <div id="menu" style="height:50px;
             margin:10px 0 0 0;">
 
@@ -52,6 +50,8 @@
 
     </div>
 
+    <span style="font-size: 16px;display: block;">Su usuario es {{$email}}</span><br>
+    <span style="font-size: 16px;display: block;">Su contraseña es {{$password}}</span><br>
     <div id="imagen1" style="height:385px;text-align:center;">
         <a href="http://creditoslilipink.com/">
             <img  src="http://creditoslilipink.com/img/aprobada.jpg" width="800" alt="creditoslilipink">

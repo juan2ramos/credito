@@ -23,4 +23,7 @@ class Extract extends \Eloquent{
                             'mas_tres'
                           ];
 
+    public function user(){
+        return $this->join('users', 'users.identification_card', '=', 'extracts.nit')->first();
+    }
 }

@@ -40,41 +40,29 @@ class EnterprisingController extends Controller {
 		return View::make('front.enterprisingRegister', compact('locations', 'points'));
 	}
 
-	protected function simpleRegister(){
-		$input = Input::all();
-		$rules = $this->getRules(false);
-		$validator = $this->validate($input, $rules);
+	function postRegister(){
+        $inputs = Input::all();
+        $isCredit = Input::has('isCredit');
+        $rules = $this->getRules($isCredit);
+        $validator = $this->validate($inputs, $rules);
+        if($validator->fails())
+            return Redirect::back()->withErrors($validator)->withInput();
 
-		if($validator->fails())
-			return Redirect::back()->withErrors($validator)->withInput();
+        $user = $this->createUser($inputs);
+        if($isCredit){
+            $user->hasCredit = 1;
+            $user->save();
+            $creditRequest = CreditRequest::create($inputs);
+            $creditRequest->files = $inputs['files'];
+            $creditRequest->user_id = $user['id'];
+            $creditRequest->priority = 2;
+            $creditRequest->location = $inputs['location'];
+            $creditRequest->point = $inputs['point'];
+            $creditRequest->save();
+        }
 
-		$this->createUser($input);
-
-		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación"]);
-	}
-
-	protected function creditRegister(){
-
-		$input = Input::all();
-		$rules = $this->getRules(true);
-		$validator = $this->validate($input, $rules);
-
-		if($validator->fails())
-			return Redirect::back()->withErrors($validator)->withInput()->with(['isCredit' => true]);
-
-		$user = $this->createUser($input);
-		$user->hasCredit = 1;
-		$user->save();
-		$creditRequest = CreditRequest::create($input);
-		$creditRequest->files = $input['files'];
-		$creditRequest->user_id = $user['id'];
-		$creditRequest->priority = 2;
-		$creditRequest->location = $input['location'];
-		$creditRequest->point = $input['point'];
-		$creditRequest->save();
-
-		return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación", 'isCredit' => true]);
-	}
+        return Redirect::route('enterprisingRegister')->with(['message'=>"Te has registrado satisfactoriamente. Espera aprobación", 'isCredit' => $isCredit]);
+    }
 
 	public function enterpricingCreditList(){
 		if(Auth::user()->roles_id == 4)
@@ -117,15 +105,13 @@ class EnterprisingController extends Controller {
 			'name' => 'required',
 			'last_name' => 'required',
 			'email' => 'required|email|unique:users,email',
-			'password' => 'required|min:8',
-			'password_confirm' => 'required|same:password',
 			'identification_card' => 'required|numeric|unique:users,identification_card',
 			'instead_expedition' => 'required',
 			'date_expedition' => 'required',
 			'residency_city' => 'required',
 			'address' => 'required',
-			'mobile_phone' => 'required|numeric|min:7',
-			'phone' => 'required|numeric|min:7'
+			'mobile_phone' => 'required|numeric|digits:10',
+			'phone' => 'required|numeric|digits_between:7,10'
 		];
 
 		if($isCredit){
@@ -135,8 +121,8 @@ class EnterprisingController extends Controller {
 			$rules['point'] = 'required';
 			$rules['name_reference'] = 'required';
 			$rules['name_reference2'] = 'required';
-			$rules['phone_reference'] = 'required|numeric|min:7';
-			$rules['phone_reference2'] = 'required|numeric|min:7';
+			$rules['phone_reference'] = 'required|numeric|digits_between:7,10';
+			$rules['phone_reference2'] = 'required|numeric|digits_between:7,10';
 		}
 
 		return $rules;

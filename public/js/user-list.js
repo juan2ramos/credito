@@ -7,8 +7,12 @@ $('#activeUser, #destroyUser, #disableUser').on('click', function(){
         $.ajax({
             url : $(this).attr('route'),
             type : 'GET',
-            success : function(){
+            success : function(data){
+                console.log(data);
                 location.reload();
+            }, error : function(e){
+                alert('El usuario ya existe!');
+                console.log(e);
             }
         });
     }
