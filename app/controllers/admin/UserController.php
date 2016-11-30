@@ -28,7 +28,7 @@ class UserController extends \BaseController {
 
         try{
             $response = $service->postRequest('http://emprendedoras.lilipink.com/wp-json/wp/v2/users', [
-                'roles' => 'emprendedora_contado',
+                'roles' => '["emprendedora_contado"]',
                 "username" => $user->email,
                 "password" => $userName . "123",
                 "email" => $user->email
@@ -36,7 +36,7 @@ class UserController extends \BaseController {
 
             if($response) {
                 $user->update(['user_state' => 1, 'user_name' => $userName, 'password' => $userName . '123', 'page_id' => json_decode($response)->id]);
-                $service->getAction('emprendedora_contado', $user, $userName . "123");
+                $service->getAction('["emprendedora_contado"]', $user, $userName . "123");
             }
 
         } catch (Exception $e){
