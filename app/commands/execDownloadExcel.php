@@ -38,7 +38,7 @@ class execDownloadExcel extends Command {
 	 */
 	public function fire()
 	{
-        $nUsers = User::where('roles_id', '>=', '4')->count();
+        $nUsers = User::where('roles_id', '>=', '4')->select('id', 'roles_id')->orderBy('id', 'DESC')->first()->id;
         $max = 10000;
         $nTimes = $nUsers / $max;
         $round = round($nTimes);
