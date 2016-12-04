@@ -39,7 +39,9 @@ class execDownloadExcel extends Command {
 	public function fire()
 	{
         $nUsers = User::where('roles_id', '>=', '4')->count();
-        $nTimes = $nUsers / 10000;
+        $nUsers = 65000;
+        $max = 10000;
+        $nTimes = $nUsers / $max;
         $round = round($nTimes);
 
         $nTimes = $round < $nTimes
@@ -47,9 +49,12 @@ class execDownloadExcel extends Command {
                 : $round;
 
         $command = '';
-        for($i = 1; $i <= $nTimes; $i++){
-            $command .= "php artisan download:excel " . $i ." 10000 usuarios" .$i . " > /dev/null &";
+        for($i = 1, $from = 1, $to = 10000; $i <= $nTimes;){
+            $command .= "php artisan download:excel " . $from ." " . $to . " usuarios" .$i . " > /dev/null &";
             $command .= $i == $nTimes - 1 ? 'wait;' : '';
+            $i++;
+            $from = $to + 1;
+            $to = $max * $i;
         }
 
         shell_exec("cd " . base_path() . "; " . $command);
