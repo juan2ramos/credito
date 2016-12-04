@@ -42,21 +42,11 @@ class downloadExcel extends Command {
 	public function fire()
 	{
 		$dir = $_SERVER['DOCUMENT_ROOT'] . "public/exports/";
-		$doc = 'usuarios.xlsx';
+		$doc = $this->argument('name') . '.xlsx';
+        $from = $this->argument('from');
+        $to = $this->argument('to');
 
-		$myfile = fopen($dir."log.txt", "w") or die("Unable to open file!");
-		$txt = $dir."\n";
-		fwrite($myfile, $txt);
-		$txt = $doc."\n";
-		fwrite($myfile, $txt);
-		fclose($myfile);
-
-		/*if(is_dir($dir)){
-			unlink($dir . $doc);
-			rmdir($dir);
-		}*/
-
-		$users = $this->exportUsers();
+		$users = $this->exportUsers($from, $to);
 
 		Excel::create('usuarios', function($excel) use($users){
 			$excel->sheet('Excel sheet', function($sheet) use($users){
@@ -92,8 +82,9 @@ class downloadExcel extends Command {
 		});
 	}
 
-	private function exportUsers(){
-		$users = User::where('roles_id', '>=', '4')->select('id', 'roles_id','card as Tarjeta','identification_card as Cedula','name as Nombre1', 'second_name as Nombre2','last_name as Apellido1','second_last_name as Apellido2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->orderBy('roles_id', 'DESC')->get();
+	private function exportUsers($from, $to){
+		$users = User::where('roles_id', '>=', '4')->whereBetween('id', [$from, $to])->select('id', 'roles_id','card as Tarjeta','identification_card as Cedula','name as Nombre1', 'second_name as Nombre2','last_name as Apellido1','second_last_name as Apellido2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->orderBy('roles_id', 'DESC')->get();
+
 		foreach($users as $key => $user){
 			$credit = CreditRequest::where('user_id', $user->id)->first();
 			$users[$key]['Referencia1']     = $credit ? $credit->name_reference : null;
@@ -118,7 +109,15 @@ class downloadExcel extends Command {
 	 */
 	protected function getArguments()
 	{
-		return [];
+        return [
+            [
+                'from', InputArgument::REQUIRED, 'Desde el id que se va a buscar'
+            ],[
+                'to', InputArgument::REQUIRED, 'Hasta el id que se va a buscar'
+            ],[
+                'name', InputArgument::REQUIRED, 'Nombre del archivo a descargar'
+            ]
+        ];
 	}
 
 	/**

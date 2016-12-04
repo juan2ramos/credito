@@ -16,3 +16,4 @@ Artisan::add(new execInsertExcel);
 Artisan::add(new downloadExcel);
 Artisan::add(new sendMail);
 Artisan::add(new cargar);
+Artisan::add(new execDownloadExcel);

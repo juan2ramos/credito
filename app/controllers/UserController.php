@@ -106,7 +106,7 @@ class UserController extends BaseController
 
     public function usersExcel()
     {
-        shell_exec("cd " . base_path() . "; php artisan download:excel > /dev/null &");
+        shell_exec("cd " . base_path() . "; php artisan execDownloadExcel > /dev/null &");
         $message = "Se esta creando el archivo. En unos momentos se enviara un link de descarga";
         return Redirect::back()->with('message', $message);
 
