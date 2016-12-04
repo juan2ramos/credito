@@ -48,7 +48,7 @@ class downloadExcel extends Command {
 
 		$users = $this->exportUsers($from, $to);
 
-		Excel::create('usuarios', function($excel) use($users){
+		Excel::create($this->argument('name'), function($excel) use($users){
 			$excel->sheet('Excel sheet', function($sheet) use($users){
 				$sheet->cells('C1:V1', function($cells) {
 					$cells->setFontWeight('bold');
