@@ -39,7 +39,6 @@ class execDownloadExcel extends Command {
 	public function fire()
 	{
         $nUsers = User::where('roles_id', '>=', '4')->count();
-        $nUsers = 65000;
         $max = 10000;
         $nTimes = $nUsers / $max;
         $round = round($nTimes);
