@@ -242,7 +242,7 @@ class CreditController extends BaseController
 			if ($mailCredit['mail']) {
 				$data = $mailCredit;
                 $user = User::find($id);
-                $role = $user->roles_id == 4 ? '["credito_personal"]' : '["emprendedora_credito"]';
+                $role = $user->roles_id == 4 ? ['credito_personal'] : ['emprendedora_credito'];
                 $userName = strtolower($user->name . '.' . $user->last_name);
                 $service = \credits\Components\Services\SendRequest::create();
                 $response = null;
