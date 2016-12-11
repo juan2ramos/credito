@@ -3,65 +3,32 @@
 @section('content')
     @include('partial.submenu')
     <section class="Buy">
-        <article class="tienda" >
-            <img src="{{asset('img/tiendas.png')}}" alt="">
-            <ul>
-                <li><span class="point"><img src="{{asset('img/point.png')}}" alt=""></span>
-                    Tendrás acceso a todo el portafolio
-
-                    de productos que estén en la tienda
-
-                    emprendedora -no solamente los
-
-                    que se encuentren publicados en
-
-                    el catálogo-
-                </li>
-                <li><span class="point"><img src="{{asset('img/point.png')}}" alt=""></span>
-                    Antes de facturar indica que eres una
-
-                    EMPRENDEDORA LILIPINK y presenta tu
-
-                    cédula en el punto de pago
-                </li>
-                <li>
-                    <span class="point"><img src="{{asset('img/point.png')}}" alt=""></span>
-                    Recuerda que para acceder al 25% de descuento tus compras mínimas deben ser de $300.000
-                </li>
-            </ul>
-            <a target="_blank" href="{{url('img/tiendasemprendedoras.pdf')}}">LISTADO TIENDAS EMPRENDEDORAS</a>
+        <article class="tienda">
+            <figure><img src="{{asset('img/2.png')}}"></figure>
+            <div class="text">
+                <h3>TIENDAS LILI PINK EMPRENDEDORAS</h3>
+                <p>Una vez te llegue el e-mail de confirmación puedes ir a cualquiera de nuestras tiendas Lili Pink Emprendedoras, hacer compras y obtener el 25%
+                    de dcto por compras superiores a $300.000. </p>
+                <a href="http://creditoslilipink.com/img/tiendasemprendedoras.pdf" target="_blank" class="link">TIENDAS LILIPINK EMPRENDEDORAS</a>
+            </div>
         </article>
-        <article>
-            <img class="pedidos" src="{{asset('img/pedidos.png')}}" alt="">
-            <ul>
-                <li><span class="point"><img src="{{asset('img/point.png')}}" alt=""></span>Podrás montar en línea el pedido de los
-
-                    productos del catálogo vigente</li>
-                <li><span class="point"><img src="{{asset('img/point.png')}}" alt=""></span>
-                    Tu pedido será enviado una vez se verifique tu
-
-                    cupo si eres parte de Crédito Emprendedora,
-
-                    si tu pago es de contado el envio se hará una
-                    vez se registre el pago que hagas en
-
-                    las entidades con las que tenemos convenio
-
-                    de pago o en nuestras propias tiendas, el
-
-                    tiempo estimado de respuesta es de 5 días
-
-                    hábiles
-                </li>
-
-                <li>
-                    <span class="point"><img src="{{asset('img/point.png')}}" alt=""></span>
-                    Recuerda que para acceder al 25% de descuento tus compras mínimas deben ser de $300.000
-                </li>
-            </ul>
-            <a target="_blank" href="{{url('img/pedidos-en-linea-lilipink.pdf')}}">INSTRUCTIVO PEDIDO EN LINEA</a>
+        <article class="tienda">
+            <figure><img src="{{asset('img/1.png')}}"></figure>
+            <div class="text">
+                <h3>CATÁLOGO VIRTUAL</h3>
+                <p>
+                    Compra desde la comodidad de tu casa, solamente seleccionas los productos y los añades a tu carrito de compras; en el momento de finalizar
+                    la compra te identificas como emprendedora ingresando el e-mail que registraste en el formulario y la contraseña que te enviamos de acceso
+                </p>
+                <a href="http://emprendedoras.lilipink.com/" class="link">COMPRAR AHORA</a>
+            </div>
         </article>
     </section>
+    <div style="text-align: center; margin:10px 0 30px;line-height: 1.3;">
+        <b>QUIERES MÁS INFORMACIÓN?</b> <br>
+        <a style="color: #000;" href="tel:0316702400">PBX: (571) 670 2400 Ext: 114</a>  <a style="color: #000;" href="tel:3105756438">// Whatsapp: 310 575 6438</a>  <br>
+        <a style="color: #000;" href="mailto:emprendedoras@i-q.com.co">emprendedoras@i-q.com.co</a> //Cra 19A No 196-23 Bogotá
+    </div>
 @stop
 
 @section('javascript')
