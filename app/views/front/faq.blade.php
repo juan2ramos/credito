@@ -1,7 +1,6 @@
 @extends('layout/front')
 
 @section('content')
-    @include('partial.submenu')
     <section class="Buy">
         <article class="tienda faqs">
 
