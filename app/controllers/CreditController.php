@@ -171,7 +171,7 @@ class CreditController extends BaseController
 	//MUESTRA LA TABLA DONDE ESTAN TODAS LAS REGIONES
 	public function showLocations()
 	{
-		$locations = Location::all();
+		$locations = Location::orderBy('name' )->get();
 		return View::make('back.location', compact('locations'));
 	}
 

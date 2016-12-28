@@ -9,8 +9,8 @@ class PointController extends BaseController {
 
     public function show()
     {
-        $locations = [''=>'seleccione una region'] + Location::all()->lists('name','id');
-        $points = Point::where('state', '>', 0)->get();
+        $locations = [''=>'seleccione una region'] + Location::orderBy('name' )->lists('name','id');
+        $points = Point::where('state', '>', 0)->orderBy('name' )->get();
         return View::make('back.point',compact('points','locations'));
     }
 
