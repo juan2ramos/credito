@@ -137,9 +137,8 @@
 
             <div class="material-input">
                 <select name="location" id="location" class="Credit-select">
-                    <option value="">Seleccione una ciudad</option>
-                    @foreach($locations as $location)
-                        <option value="{{$location->id}}">{{$location->name}}</option>
+                    @foreach($locations as  $key => $location)
+                        <option value="{{ $key}}">{{$location}}</option>
                     @endforeach
                 </select>
                 <span></span>
