@@ -4,36 +4,41 @@
     @include('partial.submenu')
     <section class="isEnterprising">
         <h2>QUÉ ES EL SISTEMA EMPRENDEDORA LILI PINK?</h2>
-        <p>Convirtiéndote en una EMPRENDEDORA LILI PINK podrás adquirir nuestros productos para tu propia red de ventas a través de un catálogo o nuestras tiendas con una ganancia del 25% sobre el valor de tus pedidos</p>
+        <p>Convirtiéndote en una EMPRENDEDORA LILI PINK podrás adquirir nuestros productos para tu propia red de ventas a través de un catálogo o nuestras tiendas con una  <span> ganancia del 25% </span>sobre el valor de tus pedidos</p>
         <h2>COMO FUNCIONA?</h2>
-        <p>Una vez te inscribas en el formulario que encontrarás en la parte inferior en un plazo de un día recibirás un e-mail confirmando tu registro como EMPRENDEDORA LILIPINK; el catálogo lo podrás encontrar cada dos meses en nuestras tiendas por un costo de $3.000 ó publicado en línea, el pedido de los productos que estén vigentes en el catálogo lo puedes hacer en la sección PEDIDO EN LINEA de esta pagina web.</p>
-        <p>También podrás dirigirte a cualquiera de nuestras tiendas para comprar los productos que estén disponibles en tu visita así no se encuentren en el catálogo vigente, solamente identificandote como EMPRENDEDORA LILI PINK antes de facturar tu compra.  </p>
+        <p>Una vez diligencias el formulario de inscripción recibirás un e-mail de confirmación en un plazo de un día, luego podrás acceder a comprar en nuestro catálogo digital y en nuestras tiendas Lili Pink Emprendedoras con el beneficio del  <span>25% de ganancia</span> por compras minimas de $300.000</p>
+        <h2>PAGOS DE CONTADO Y A CRÉDITO EMPRENDEDORA</h2>
+        <p>Tenemos dos modalidades de pago, selecciona en el formulario la que más te convenga:<br>
+            * Contado: si compras en el catálogo virtual, debes pagar en efecty o bancolombia para hacerte el envio; si compras en tiendas Lili Pink Emprendedora, te presentas como emprendedora y haces tu pago para retirar los productos<br>
+            * Crédito: tanto tus compras virtuales como en tiendas Lili Pink Emprendedora se difieren a 1 cuota para pago a 15 días en nuestras tiendas </p>
         <h2>A TENER EN CUENTA</h2>
         <p>
 
-            * La inscripción es gratuita <br>
-            * La vigencia de cada catálogo es de 2 meses <br>
-            * Puedes solicitar crédito emprendedora sin codeudor <br>
-            * Para acceder a los beneficios de lili pink emprendedora en tiendas, tus compras mínimas deben ser de $300.000
-            <br>
-            * Podrás realizar varios pedidos dentro de una campaña <br>
-            * El pedido mínimo es de $300.000 valor catálogo <br>
-            * El envío de tu pedido es gratuito <br>
-            * Cuando recibas la caja con el pedido de cada campaña, recuerda verificar que ésta haya llegado completa y en buen estado; de lo contrario, debes notificar a la líneas que se encuentran en la parte inferior con un plazo máximo de un día <br>
-            * Invita a nuevas emprendedoras y gana un bono lili pink de $30.000 por su primera compra <br>
+            * La inscripción es gratuita<br>
+            * Puedes solicitar el crédito Lili Pink Emprendedora SIN CODEUDOR  <br>
+            * El catálogo virtual se actualiza mensualmente <br>
+            * El beneficio del 25% de dcto en catálogo virtual y tiendas Lili Pink Emprendedoras tienen como compra minima $300.000<br>
+            * El envio GRATUITO de tu pedido desde nuestro catálogo virtual tiene como compra minima $300.000, el resto de compras tienen un costo de envio de $10.000  <br>
+            * Una vez recibas tu pedido del catálogo virtual, revisa que haya llegado completo y en perfecto estado; de lo contrario debes notificar en las lineas que se encuentran  en la parte inferior en un plazo máximo de 1 día <br>
 
         </p>
-        <a href="{{route('enterprisingRegister')}}" class="">DILIGENCIAR FORMULARIO</a>
-        <div class="isEnterprising-contact">
-            <h3>TIENES ALGUNA DUDA <span>CONTACTANOS</span></h3>
-            <div>
-                <p>PBX: (571) 670 2400 Ext: 114 </p>
-                <p>Whatsapp: 310 575 6438</p>
-                <p>emprendedoras@i-q.com.co</p>
-                <p>Cra 19A No 196-23 Bogotá </p>
-            </div>
-        </div>
+        <h2>CAMBIOS Y DEVOLUCIONES</h2>
+        <p>Por razones de higiene no se aceptan cambios o devoluciones de prendas intimas como panties, conjuntos, fajas o vestidos de baño excepto cuando hayan defectos
+            de fabricación, que serán evaluados por nuestro departamento de calidad, previa presentación del caso y autorización al correo emprendedoras@i-q.com.co.
+        </p>
+        <p>Puedes realizar cambio de  brasieres o tops en un plazo máximo de 5 días, tras recibir  el pedido. Los artículos que vas a cambiar deben estar en perfectas condiciones,
+            con las etiquetas aún puestas y en su empaque original. </p>
+        <p>En la realización de los cambios, los costos de envío serán asumidos por el usuario exceptuando los casos previamente comprobados en los que se haya registrado
+            algún defecto de fabricación. </p>
     </section>
+    <section class="welcome">
+        <a href="{{route('enterprisingRegister')}}" > <img src="{{asset('img/bienvenida.png')}}"></a>
+    </section>
+    <div style="text-align: center; margin:10px 0 30px;line-height: 1.3;">
+        <b>QUIERES MÁS INFORMACIÓN?</b> <br>
+        <a style="color: #000;" href="tel:0316702400">PBX: (571) 670 2400 Ext: 114</a>  <a style="color: #000;" href="tel:3105756438">// Whatsapp: 310 575 6438</a>  <br>
+        <a style="color: #000;" href="mailto:emprendedoras@i-q.com.co">emprendedoras@i-q.com.co</a> //Cra 19A No 196-23 Bogotá
+    </div>
 @stop
 
 @section('javascript')

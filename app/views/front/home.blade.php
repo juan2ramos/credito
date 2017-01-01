@@ -67,7 +67,7 @@
                     {{ Form::open(['route' => 'login', 'method' => 'POST', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
 
                     <div class="">
-                        {{Form::label('email','Correo Electronico.',array('id'=>'email'))}}
+                        {{Form::label('email','Email.',array('id'=>'email'))}}
                         {{Form::text('email','',['id' => 'emailInput'])}}
                     </div>
 
@@ -87,7 +87,7 @@
                 </section>
             @endif
             <div class="content-creditRequest"
-                 style="background:rgba(13, 12, 12, 0.03) !important; border: 2px solid rgba(204, 204, 204, 0.53);">
+                 style="background:rgba(13, 12, 12, 0.03) !important; ">
                 @if(Auth::user())
                     @if(Auth::user()->roles_id < 4)
                         @if(Auth::user()->roles_id == 1)
@@ -142,10 +142,10 @@
 
                 @else
                     <section class="Home-request ">
-                        <p>SOLICITAR CREDITO</p>
+                        <p>SOLICITAR CRÉDITO PERSONAL</p>
                         {{ Form::open(['route' => 'credit', 'method' => 'post', 'role' => 'form', 'class'=>'Login-form','id'=>'loginForm']) }}
                         <div class="">
-                            {{Form::label('identification_card','Numero de Cedula.',array('id'=>'email'))}}
+                            {{Form::label('identification_card','Número de Cédula.',array('id'=>'email'))}}
                             {{Form::text('identification_card','',['id' => 'identification_card'])}}
                         </div>
 
@@ -165,11 +165,11 @@
             </div>
         </div>
 
-        <div class="content-Request">
+       {{-- <div class="content-Request">
             <a href="{{asset('credito')}}">
                 <img src="{{asset('img/footer2.jpg')}}">
             </a>
-        </div>
+        </div>--}}
     </div>
 @stop
 
