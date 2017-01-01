@@ -220,6 +220,9 @@ class UserController extends BaseController
     public function uploadExcel()
     {
         DB::table('extracts')->truncate();
+
+        shell_exec("cd " . public_path('toUpload/extracts') . "; rm *.*");
+
         foreach (Input::all() as $key => $file){
             if(strpos($key, 'file') !== false){
                 rename(public_path('toUpload/extracts/temp/') . $file, public_path('toUpload/extracts/') . $file);
