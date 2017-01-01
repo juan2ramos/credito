@@ -82,6 +82,7 @@ class ExtractsController extends \BaseController {
         $files = Input::file();
         foreach ($files as $file){
             $fileName = str_random(5) . '**extract**' . $file->getClientOriginalName();
+            $fileName = str_replace(' ', '', $fileName);
             $file->move(public_path('toUpload/extracts/temp/'), $fileName);
             array_push($names, $fileName);
         }
