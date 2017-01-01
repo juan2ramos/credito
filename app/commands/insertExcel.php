@@ -80,6 +80,10 @@ class insertExcel extends Command {
             $m->to('carterainnova@innova-quality.com.co', 'Creditos Lilipink')->subject('Notificación Lilipink');
         });
 
+        Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
+            $m->to('juan2ramos@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+        });
+
         //$dir = [public_path('toUpload/extracts/'), public_path('toUpload/')];
         //$this->cleanDirectory($dir[0]);
         //$this->cleanDirectory($dir[1]);

@@ -91,6 +91,10 @@ class cargar extends Command {
 			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Archivos actualizados');
 		});
 
+        Mail::send('emails.excel', ['msn' => $message], function ($m) use($message){
+            $m->to('juan2ramos@gmail.com', 'Creditos Lilipink')->subject('Archivos actualizados');
+        });
+
 		array_map('unlink', glob($_SERVER['DOCUMENT_ROOT'] . "/toUpload/*"));
 	}
 

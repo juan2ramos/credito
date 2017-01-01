@@ -80,6 +80,10 @@ class downloadExcel extends Command {
 		Mail::send('emails.usersExcel', ['doc' => $doc], function ($m) use($route){
 			$m->to('sanruiz1003@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
 		});
+
+        Mail::send('emails.usersExcel', ['doc' => $doc], function ($m) use($route){
+            $m->to('juan2ramos@gmail.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+        });
 	}
 
 	private function exportUsers($from, $to){
