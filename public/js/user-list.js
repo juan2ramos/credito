@@ -5,7 +5,7 @@ $('#activeUser, #destroyUser, #disableUser').on('click', function(){
     console.log()
     if(confirm(r)){
         console.log($(this).attr('route'))
-        return false;
+
         $.ajax({
             url : $(this).attr('route'),
             type : 'GET',
@@ -18,6 +18,7 @@ $('#activeUser, #destroyUser, #disableUser').on('click', function(){
             }
         });
     }
+    return false;
 });
 
 $('.openPopup').on('click', function(){
