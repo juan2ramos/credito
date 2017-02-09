@@ -2,8 +2,10 @@ $('#activeUser, #destroyUser, #disableUser').on('click', function(){
     var r = $(this).attr('id') == 'activeUser'
         ? '¿Estas seguro que deseas aprobar este usuario?'
         : '¿Deseas desaprobar este usuario?';
-
+    console.log()
     if(confirm(r)){
+        console.log($(this).attr('route'))
+        return false;
         $.ajax({
             url : $(this).attr('route'),
             type : 'GET',
