@@ -29,6 +29,7 @@ class SendRequest {
             'body' => json_encode($body)
         ];
         $response = $this->client->post($url, $data);
+        dd($response);exit;
         return $response->getBody()->getContents();
     }
 
