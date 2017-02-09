@@ -11,14 +11,14 @@ $('#activeUser, #destroyUser, #disableUser').on('click', function(){
             type : 'GET',
             success : function(data){
                 console.log(data);
-               // location.reload();
+                location.reload();
             }, error : function(e){
                 alert('El usuario ya existe!');
                 console.log(e);
             }
         });
     }
-    return false;
+
 });
 
 $('.openPopup').on('click', function(){
