@@ -25,6 +25,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
+                    <th>Estado</th>
                     <th>Eliminar</th>
                 </tr>
                 </thead>
@@ -33,6 +34,7 @@
                     <tr>
                         <td>{{$location->id}}</td>
                         <td>{{$location->name}}</td>
+                        <td><input type="checkbox" checked></td>
                         <td><a href="{{route('deleteLocation', $location->id)}}" class="icon-trash-empty" onclick="return confirm('Estas seguro de eliminar la region?')"></a></td>
                     </tr>
                 @endforeach
