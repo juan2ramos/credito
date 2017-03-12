@@ -221,6 +221,15 @@ Route::get('puntos/{id}', [
     'uses' => 'PointController@delete'
 ]);
 
+Route::get('editar/puntos/{id}', [
+    'as' => 'editPoint',
+    'uses' => 'PointController@editPoint'
+]);
+Route::post('editar/puntos/{id}', [
+    'as' => 'pointUpdate',
+    'uses' => 'PointController@editPointUpdate'
+]);
+
 Route::post('paz-y-salvo/{id}', [
     'as' => 'peace',
     'uses' => 'UserController@peacePDF'

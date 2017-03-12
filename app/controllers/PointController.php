@@ -42,4 +42,16 @@ class PointController extends BaseController {
         $point->update(['state' => -2]);
         return Redirect::route('point')->with('message','El punto de venta se elimino exitosamente');
     }
+    public function editPoint($id)
+    {
+        $point = Point::find($id);
+        return View::make('back.pointUpdate',compact('point'));
+
+    } public function editPointUpdate()
+    {
+        $point = Point::find(Input::get('id'));
+        $point->update(['name' => Input::get('name')]);
+        return Redirect::route('editPoint',Input::get('id'))->with('message','Nombre actualizado');
+
+    }
 }

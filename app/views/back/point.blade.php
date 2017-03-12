@@ -26,6 +26,7 @@
                 <th>Nombre</th>
                 <th>Creditos</th>
                 <th>Emprendedoras</th>
+                <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
             </thead>
@@ -36,6 +37,7 @@
                     <td><input name="isCredit" type="checkbox" value="{{$point->id}}" @if($point->isCreditShop) checked @endif class="isCredit"></td>
                     <td><input name="isEnterpricing" type="checkbox" value="{{$point->id}}" @if($point->isEnterpricingShop) checked @endif class="isEnterpricing"></td>
                     <td><a href="{{route('pointDelete', [$point->id])}}" class="icon-trash-empty"></a></td>
+                    <td><a href="{{route('editPoint', [$point->id])}}" class="">Editar</a></td>
                 </tr>
             @endforeach
             </tbody>
@@ -59,7 +61,7 @@
             </div>
         @endif
         <button class="u-more">+</button>
-        {{Form::close()}}
+            {{Form::close()}}
     </div>
 @stop
 
