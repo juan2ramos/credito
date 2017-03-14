@@ -46,10 +46,17 @@ class SendRequest {
             Mail::send('emails.ESimpleAccept', ['email' => $user->email, 'password' => $password], function ($m) use($user){
                 $m->to($user->email, 'Creditos Lilipink')->subject('Eres una emprendedora Lilipink');
             });
+            Mail::send('emails.ESimpleAccept', ['diana.barragan@innova-quality.com.co',  'password' => $password], function ($m) use($user){
+                $m->to($user->email, 'Creditos Lilipink')->subject('Eres una emprendedora Lilipink');
+            });
 
         } elseif($role[0] == 'emprendedora_credito'){
 
             Mail::send('emails.ECreditAccept', ['email' => $user->email, 'password' => $password], function ($m) use($user){
+                $m->to($user->email, 'Creditos Lilipink')->subject('Credito emprendedora aprobado');
+            });
+
+            Mail::send('emails.ECreditAccept', ['email' => 'diana.barragan@innova-quality.com.co', 'password' => $password], function ($m) use($user){
                 $m->to($user->email, 'Creditos Lilipink')->subject('Credito emprendedora aprobado');
             });
         }
