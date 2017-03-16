@@ -154,7 +154,14 @@ Route::get('deleteLocation/{id}', [
     'uses' => 'CreditController@deleteLocation',
     'as' => 'deleteLocation'
 ]);
-
+Route::get('editar/regiones/{id}', [
+    'uses' => 'CreditController@editLocation',
+    'as' => 'editLocation'
+]);
+Route::post('editar/regiones/{id}', [
+    'as' => 'locationUpdate',
+    'uses' => 'CreditController@editLocationUpdate'
+]);
 //actualizar usuario
 
 Route::post('Actualizar/{id}', ['as' => 'update', 'uses' => 'UserController@updateClient']);

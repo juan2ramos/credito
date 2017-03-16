@@ -138,7 +138,7 @@
             <div class="material-input">
                 <select name="location" id="location" class="Credit-select">
                     @foreach($locations as  $key => $location)
-                        <option value="{{ $key}}">{{$location}}</option>
+                        <option value="{{$key}}">{{$location}}</option>
                     @endforeach
                 </select>
                 <span></span>

@@ -4,9 +4,14 @@ $(function () {
 
     $('#location').on('change', function () {
         var $point = $("#point ");
+        console.log($(this).val())
+
         $point.children('option').hide();
         $point.children("option[data-city^='0']").show().prop('selected', true);
-        $point.children("option[data-city^=" + $(this).val() + "]").show()
+        //$point.children("option[data-city^=" + $(this).val() + "]").show();
+        $point.children( "option[data-city=" + $(this).val() + "]" ).show()
+
+
     }).change();
 
 

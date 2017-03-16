@@ -45,12 +45,13 @@ class PointController extends BaseController {
     public function editPoint($id)
     {
         $point = Point::find($id);
-        return View::make('back.pointUpdate',compact('point'));
+        $locations = Location::all();
+        return View::make('back.pointUpdate',compact('point','locations'));
 
     } public function editPointUpdate()
     {
         $point = Point::find(Input::get('id'));
-        $point->update(['name' => Input::get('name')]);
+        $point->update(['name' => Input::get('name'),'location_id' => Input::get('location_id') ]);
         return Redirect::route('editPoint',Input::get('id'))->with('message','Nombre actualizado');
 
     }
