@@ -206,7 +206,7 @@ class CreditController extends BaseController
 
     public function editLocationUpdate()
     {
-        $point = Point::find(Input::get('id'));
+        $point = Location::find(Input::get('id'));
         $point->update(['name' => Input::get('name')]);
         return Redirect::route('editPoint', Input::get('id'))->with('message', 'Nombre actualizado');
 
