@@ -208,7 +208,7 @@ class CreditController extends BaseController
     {
         $point = Location::find(Input::get('id'));
         $point->update(['name' => Input::get('name')]);
-        return Redirect::route('back.locationUpdate', Input::get('id'))->with('message', 'Nombre actualizado');
+        return Redirect::route('locationUpdate', Input::get('id'))->with('message', 'Nombre actualizado');
 
     }
     //BORRA LAS REGIONES QUE NO ESTAN SIENDO UTILIZADAS POR OTROS USUARIOS
