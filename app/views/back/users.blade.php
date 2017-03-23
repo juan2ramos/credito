@@ -48,6 +48,7 @@
                 <th>Apellido</th>
                 <th>Segundo Apellido</th>
                 <th>E-mail</th>
+                <th>Fecha de solicitud</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -60,6 +61,7 @@
                     <td>{{$user->last_name}}</td>
                     <td>{{$user->second_last_name}}</td>
                     <td>{{$user->email}}</td>
+                    <td>{{$user->created_at}}</td>
                     <td>
                         <a href="{{route('userShow',$user->id)}}" class="icon-folder-open "></a>
                         @if(Auth::user()->roles_id==1)
