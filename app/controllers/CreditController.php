@@ -264,7 +264,7 @@ class CreditController extends BaseController
                 $response = null;
 
                 try {
-                    $response = $service->postRequest('http://emprendedoras.lilipink.com/wp-json/wp/v2/users', [
+                    $response = $service->postRequest('http://lilipink.com/wp-json/wp/v2/users', [
                         'roles' => $role,
                         "username" => $user->email,
                         "password" => $userName . "123",
