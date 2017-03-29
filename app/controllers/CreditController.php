@@ -262,7 +262,9 @@ class CreditController extends BaseController
                 $userName = strtolower($user->name . '.' . $user->last_name);
                 $service = \credits\Components\Services\SendRequest::create();
                 $response = null;
-
+                $user->update(['user_state' => 1, 'user_name' => $userName, 'password' => $userName . '123', 'page_id' => '']);
+                $service->getAction($role, $user, $userName . '123');
+/*
                 try {
                     $response = $service->postRequest('http://lilipink.com/wp-json/wp/v2/users', [
                         'roles' => $role,
@@ -278,7 +280,7 @@ class CreditController extends BaseController
 
                 } catch (Exception $e) {
                     $service->getError($e->getCode());
-                }
+                }*/
             }
 
             return Redirect::route('request')->with(array('message' => "La solicitud de credito fue aprobada"));
