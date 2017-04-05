@@ -102,17 +102,13 @@ class downloadExcel extends Command {
             $users[$key]['Ciudad'] 			= Location::find($user->Ciudad)?
                 ($user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región'):
                 'Sin región';
-
-
 			$users[$key]['Tienda'] 			= $credit ? Point::find($credit->point)['name'] : 'Sin punto';
 			$users[$key]['Cupo_Credito']    = $credit ? $credit->value : null;
-            print_r($users[$key]['Cupo_Credito'] . '<br>' );
 			$users[$key]['Emprend'] 		= $user->roles_id == 5 ? 'Si' : 'No';
 			$users[$key]['¿Empr. credito?'] = $credit && $user->roles_id == 5 ? 'Si' : ($user->roles_id == 5) ? 'No' : 'N/A';
 			$users[$key]['Nombre referido'] = $user->roles_id == 5 ? $user['referred_name'] : 'N/A';
 			$users[$key]['Cedula referido'] = $user->roles_id == 5 ? $user['referred_document'] : 'N/A';
 		}
-        dd($users->count());
 		return $users;
 	}
 
