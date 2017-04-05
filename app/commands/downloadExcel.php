@@ -94,7 +94,7 @@ class downloadExcel extends Command {
 			$users[$key]['Tel_Referencia1'] = $credit ? $credit->phone_reference : null;
 			$users[$key]['Referencia2']     = $credit ? $credit->name_reference2 : null;
 			$users[$key]['Tel_Referencia2'] = $credit ? $credit->phone_reference2 : null;
-			$users[$key]['Ciudad'] 			= $user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región';
+			//$users[$key]['Ciudad'] 			= $user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región';
 			$users[$key]['Tienda'] 			= $credit ? Point::find($credit->point)['name'] : 'Sin punto';
 			$users[$key]['Cupo_Credito']    = $credit ? $credit->value : null;
             print_r($users[$key]['Cupo_Credito'] . '<br>' );
