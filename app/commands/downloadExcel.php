@@ -85,7 +85,12 @@ class downloadExcel extends Command {
         });
 	}
 
-	private function exportUsers($from, $to){
+    /**
+     * @param $from
+     * @param $to
+     * @return mixed
+     */
+    private function exportUsers($from, $to){
 		$users = User::where('roles_id', '>=', '4')->whereBetween('id', [$from, $to])->select('id', 'roles_id','card as Tarjeta','identification_card as Cedula','name as Nombre1', 'second_name as Nombre2','last_name as Apellido1','second_last_name as Apellido2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->orderBy('roles_id', 'DESC')->get();
 
 		foreach($users as $key => $user){
@@ -94,7 +99,11 @@ class downloadExcel extends Command {
 			$users[$key]['Tel_Referencia1'] = $credit ? $credit->phone_reference : null;
 			$users[$key]['Referencia2']     = $credit ? $credit->name_reference2 : null;
 			$users[$key]['Tel_Referencia2'] = $credit ? $credit->phone_reference2 : null;
-			//$users[$key]['Ciudad'] 			= $user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región';
+            $users[$key]['Ciudad'] 			= Location::find($user->Ciudad)?
+                ($user->Ciudad ? Location::find($user->Ciudad)->name : 'Sin región'):
+                'Sin región';
+
+
 			$users[$key]['Tienda'] 			= $credit ? Point::find($credit->point)['name'] : 'Sin punto';
 			$users[$key]['Cupo_Credito']    = $credit ? $credit->value : null;
             print_r($users[$key]['Cupo_Credito'] . '<br>' );
