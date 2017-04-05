@@ -87,7 +87,7 @@ class downloadExcel extends Command {
 
 	private function exportUsers($from, $to){
 		$users = User::where('roles_id', '>=', '4')->whereBetween('id', [$from, $to])->select('id', 'roles_id','card as Tarjeta','identification_card as Cedula','name as Nombre1', 'second_name as Nombre2','last_name as Apellido1','second_last_name as Apellido2','email as Email','mobile_phone as Celular','location as Ciudad','created_at as Fecha de creación')->orderBy('roles_id', 'DESC')->get();
-        dd($users->count());
+
 		foreach($users as $key => $user){
 			$credit = CreditRequest::where('user_id', $user->id)->first();
 			$users[$key]['Referencia1']     = $credit ? $credit->name_reference : null;
@@ -102,6 +102,7 @@ class downloadExcel extends Command {
 			$users[$key]['Nombre referido'] = $user->roles_id == 5 ? $user['referred_name'] : 'N/A';
 			$users[$key]['Cedula referido'] = $user->roles_id == 5 ? $user['referred_document'] : 'N/A';
 		}
+        dd($users->count());
 		return $users;
 	}
 
