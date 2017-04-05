@@ -48,6 +48,7 @@ class downloadExcel extends Command {
 
 		$users = $this->exportUsers($from, $to);
 
+
 		Excel::create($this->argument('name'), function($excel) use($users){
 			$excel->sheet('Excel sheet', function($sheet) use($users){
 				$sheet->cells('C1:V1', function($cells) {
@@ -70,7 +71,7 @@ class downloadExcel extends Command {
 				$sheet->setOrientation('landscape');
 			});
 		})->store('xlsx', $dir, true);
-
+        dd($users->count());
 		$route = "exports/" . $doc;
 
 		Mail::send('emails.usersExcel', ['doc' => $doc], function ($m) use($route){
