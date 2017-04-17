@@ -15,7 +15,7 @@ class CreditManager extends BaseManager
             'monthly_income'        => 'required',
             'monthly_expenses'      => 'required',
             'name_reference'        => 'required',
-            'email'                 => 'email|unique:users',
+            'email'                 => 'required|email|unique:users',
             'phone_reference'       => 'required|numeric|digits_between:6,11',
             'name_reference2'       => 'required',
             'phone_reference2'      => 'required|numeric|digits_between:6,11',

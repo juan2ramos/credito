@@ -61,7 +61,7 @@
             </div>
 
             @if($errors->first('email'))
-                <div class="errors">
+                <div class="errors" style="margin-top: 6px">
                     *{{$errors->first('email')}}
                 </div>
             @endif
