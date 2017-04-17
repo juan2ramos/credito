@@ -34,11 +34,30 @@
                     *{{$errors->first('identification_card')}}
                 </div>
             @endif
-
-            <div class="material-input">
-                {{Form::text('email','',['id' => 'mail'])}}
-                {{Form::label('email','Correo')}}
-                <span></span>
+            <div>
+                <div style="width: 49%;display: inline-block">
+                    <div class="material-input" style="margin: 0">
+                        {{Form::text('correo','',['id' => 'bMail'])}}
+                        {{Form::hidden('email','',['id' => 'email'])}}
+                        {{Form::label('bMail','Correo')}}
+                        <span></span>
+                    </div>
+                </div>
+                <span>@</span>
+                <select style="width: 45%;vertical-align: bottom; margin: 0" id="aMail" class="">
+                    <option value="0">seleccione correo</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="hotmail.com">hotmail.com</option>
+                    <option value="mail.com">mail.com</option>
+                    <option value="outlook.com">outlook.com</option>
+                    <option value="yahoo.es">yahoo.es</option>
+                    <option value="yahoo.com">yahoo.com</option>
+                    <option value="otro">otro</option>
+                </select>
+                {{Form::text('','',['id' => 'aMailText',
+                'style' => 'width: 45%; display:none;margin: 10px 0; float: right;',
+                'placeholder' => 'ejemplo.com'
+                ])}}
             </div>
 
             @if($errors->first('email'))
@@ -250,7 +269,8 @@
                 <select class="Credit-select" name="point" id="point">
                     <option data-city="0" value="" selected="selected">Seleccione un punto de venta</option>
                     @foreach ($points as $point)
-                        <option data-city="{{$point['location_id']}}" value="{{$point['id']}}">{{$point['name']}}</option>
+                        <option data-city="{{$point['location_id']}}"
+                                value="{{$point['id']}}">{{$point['name']}}</option>
                     @endforeach
                 </select>
                 <span></span>
@@ -339,7 +359,7 @@
         <div>
             <div class="request-image" style="display: inline-block"></div>
             <div style="display: inline-block;vertical-align: top">
-                <div class="preload hidden "  >
+                <div class="preload hidden ">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -358,9 +378,11 @@
         <div>
             <label class="label--checkbox">
                 {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-                - Acepto las politicas de uso del sitio de Innova Quality SAS  {{ HTML::link(URL::to('img/usoSitio.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}<br>
+                - Acepto las politicas de uso del sitio de Innova Quality
+                SAS {{ HTML::link(URL::to('img/usoSitio.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}<br>
                 {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-                - Acepto las politicas de privacidad de datos de la tarjeta recargable.  {{ HTML::link(URL::to('img/politicasTratamiento.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}
+                - Acepto las politicas de privacidad de datos de la tarjeta
+                recargable. {{ HTML::link(URL::to('img/politicasTratamiento.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}
             </label>
         </div>
 
@@ -377,7 +399,17 @@
 @section('javascript')
     {{ HTML::script('js/credit.js'); }}
     <script>
-        $('#dropzone input').on('change', function(e) {
+        $('#bMail, #aMail, #aMailText').on('change', function () {
+            if ($('#aMail').val() == 'otro') {
+                $('#aMailText').show('slow');
+                $('#email').val($('#bMail').val() + '@' + $('#aMailText').val());
+            } else {
+                $('#aMailText').hide('slow');
+                $('#email').val($('#bMail').val() + '@' + $('#aMail').val());
+            }
+            console.log($('#email').val());
+        });
+        $('#dropzone input').on('change', function (e) {
             var file = this.files[0];
 
             if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
@@ -389,15 +421,15 @@
             if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
                 var reader = new FileReader(file);
                 reader.readAsDataURL(file);
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     var data = e.target.result,
                         $img = $('<img />').attr('src', data).fadeIn();
-                        $('#dropzone div').html($img);
-                    };
-                } else {
-                    var ext = file.name.split('.').pop();
-                    $('#dropzone div').html(ext);
-                }
-            });
+                    $('#dropzone div').html($img);
+                };
+            } else {
+                var ext = file.name.split('.').pop();
+                $('#dropzone div').html(ext);
+            }
+        });
     </script>
 @stop

@@ -54,6 +54,13 @@
             </table>
         </div>
 
+
+        <h2 style="margin-top: 30px">Datos adicionales</h2>
+        <ul class="Table-content" style="padding: 10px; text-align: left">
+            <li style="margin-bottom: 12px;"><b>EMail :</b> {{$user->email}}</li>
+            <li><b>Ciudad de residencia :</b> {{$user->residency_city}}</li>
+        </ul>
+
         <div class="input-content">
             <div class="material-input">
                 {{Form::text('data_monthly','',['id' => 'data_monthly'])}}

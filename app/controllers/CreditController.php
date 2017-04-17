@@ -60,7 +60,6 @@ class CreditController extends BaseController
             Input::get('last_name') . '.' .
             Input::get('second_last_name')
         ];
-
         $dataCredit = $user_name + Input::all();
         $fingerprint = Input::file('finger');
         $creditManager = new CreditManager(new CreditRequest(), $dataCredit);
