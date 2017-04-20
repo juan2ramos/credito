@@ -216,13 +216,148 @@
                     *{{$errors->first('phone')}}
                 </div>
             @endif
+            {{Form::hidden('address','',['id' => 'address'])}}
+            <div class="Address-format">
 
-            <div class="material-input">
-                {{Form::text('address','',['id' => 'address'])}}
+
                 {{Form::label('address','Dirección')}}
-                <span></span>
+                <span>los campos que no necesite los puede dejar en blanco</span>
+                <select>
+                    <option value="?" selected="selected"></option>
+                    <option label="Avenida calle" value="AC">AC</option>
+                    <option label="Avenida carrera" value="AK">AK</option>
+                    <option label="Calle" value="CL">CL</option>
+                    <option label="Carrera" value="KR">KR</option>
+                    <option label="Diagonal" value="DG">DG</option>
+                    <option label="Transversal" value="TV">TV</option>
+                </select>
+                <input type="text">
+                <select>
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="A" value="A">A</option>
+                    <option label="B" value="B">B</option>
+                    <option label="C" value="C">C</option>
+                    <option label="D" value="D">D</option>
+                    <option label="E" value="E">E</option>
+                    <option label="F" value="F">F</option>
+                    <option label="G" value="G">G</option>
+                    <option label="H" value="H">H</option>
+                    <option label="I" value="I">I</option>
+                    <option label="J" value="J">J</option>
+                    <option label="K" value="K">K</option>
+                    <option label="L" value="L">L</option>
+                    <option label="M" value="M">M</option>
+                    <option label="N" value="N">N</option>
+                    <option label="O" value="O">O</option>
+                    <option label="P" value="P">P</option>
+                    <option label="Q" value="Q">Q</option>
+                    <option label="R" value="R">R</option>
+                    <option label="S" value="S">S</option>
+                    <option label="T" value="T">T</option>
+                    <option label="U" value="U">U</option>
+                    <option label="V" value="V">V</option>
+                    <option label="W" value="W">W</option>
+                    <option label="X" value="X">X</option>
+                    <option label="Y" value="Y">Y</option>
+                    <option label="Z" value="Z">Z</option>
+                </select>
+                <select>
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="BIS" value="BIS">BIS</option>
+                </select>
+                <select>
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="A" value="A">A</option>
+                    <option label="B" value="B">B</option>
+                    <option label="C" value="C">C</option>
+                    <option label="D" value="D">D</option>
+                    <option label="E" value="E">E</option>
+                    <option label="F" value="F">F</option>
+                    <option label="G" value="G">G</option>
+                    <option label="H" value="H">H</option>
+                    <option label="I" value="I">I</option>
+                    <option label="J" value="J">J</option>
+                    <option label="K" value="K">K</option>
+                    <option label="L" value="L">L</option>
+                    <option label="M" value="M">M</option>
+                    <option label="N" value="N">N</option>
+                    <option label="O" value="O">O</option>
+                    <option label="P" value="P">P</option>
+                    <option label="Q" value="Q">Q</option>
+                    <option label="R" value="R">R</option>
+                    <option label="S" value="S">S</option>
+                    <option label="T" value="T">T</option>
+                    <option label="U" value="U">U</option>
+                    <option label="V" value="V">V</option>
+                    <option label="W" value="W">W</option>
+                    <option label="X" value="X">X</option>
+                    <option label="Y" value="Y">Y</option>
+                    <option label="Z" value="Z">Z</option>
+                </select>
+                <select>
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="SUR" value="SUR">SUR</option>
+                    <option label="ESTE" value="ESTE">ESTE</option>
+                </select>
+                #
+                <input type="text">
+                <select data-toggle="tooltip" data-placement="top" title="Letra vía general" ng-model="letraViaGen"
+                        ng-options="letra.desc for letra in letras track by letra.cod" ng-change="cambioDir()"
+                        class="ng-pristine ng-untouched ng-valid ng-empty">
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="A" value="A">A</option>
+                    <option label="B" value="B">B</option>
+                    <option label="C" value="C">C</option>
+                    <option label="D" value="D">D</option>
+                    <option label="E" value="E">E</option>
+                    <option label="F" value="F">F</option>
+                    <option label="G" value="G">G</option>
+                    <option label="H" value="H">H</option>
+                    <option label="I" value="I">I</option>
+                    <option label="J" value="J">J</option>
+                    <option label="K" value="K">K</option>
+                    <option label="L" value="L">L</option>
+                    <option label="M" value="M">M</option>
+                    <option label="N" value="N">N</option>
+                    <option label="O" value="O">O</option>
+                    <option label="P" value="P">P</option>
+                    <option label="Q" value="Q">Q</option>
+                    <option label="R" value="R">R</option>
+                    <option label="S" value="S">S</option>
+                    <option label="T" value="T">T</option>
+                    <option label="U" value="U">U</option>
+                    <option label="V" value="V">V</option>
+                    <option label="W" value="W">W</option>
+                    <option label="X" value="X">X</option>
+                    <option label="Y" value="Y">Y</option>
+                    <option label="Z" value="Z">Z</option>
+                </select>
+                <input type="text">
+                <select>
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="SUR" value="SUR">SUR</option>
+                    <option label="ESTE" value="ESTE">ESTE</option>
+                </select>
+                <select name="complemento" ng-model="complemento1"
+                        ng-options="comp.desc for comp in complemento track by comp.cod"
+                        class="ng-pristine ng-untouched ng-valid ng-empty">
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="APARTAMENTO" value="AP">APTO</option>
+                    <option label="BLOQUE" value="BLQ">BLQ</option>
+                    <option label="CASA" value="CA">CS</option>
+                    <option label="CONJUNTO" value="CONJ">CONJ</option>
+                    <option label="EDIFICIO" value="ED">ED</option>
+                    <option label="INTERIOR" value="IN">INT</option>
+                    <option label="MANZANA" value="MZ">MZ</option>
+                    <option label="OFICINA" value="OF">OF</option>
+                    <option label="TORRE" value="TRR">TRR</option>
+                    <option label="VEREDA" value="VDA">VEREDA</option>
+                    <option label="VIA" value="VIA">VIA</option>
+                    <option label="ZONA" value="ZN">ZN</option>
+                </select>
+                <input type="text" style="width: 100px">
+                <p id="addressShow"></p>
             </div>
-
             @if($errors->first('address'))
                 <div class="errors">
                     *{{$errors->first('address')}}
@@ -431,5 +566,13 @@
                 $('#dropzone div').html(ext);
             }
         });
+        $('.Address-format input,.Address-format select').on('change', function(){
+            var str = ""
+            $('.Address-format').children('input,select').each(function () {
+                str += $(this).val() + ' '
+            });
+            $('#addressShow').text(str);
+            $('#address').val(str);
+        })
     </script>
 @stop
