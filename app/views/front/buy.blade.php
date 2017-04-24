@@ -20,7 +20,7 @@
                     Compra desde la comodidad de tu casa, solamente seleccionas los productos y los añades a tu carrito de compras; en el momento de finalizar
                     la compra te identificas como emprendedora ingresando el e-mail que registraste en el formulario y la contraseña que te enviamos de acceso
                 </p>
-                <a href="http://emprendedoras.lilipink.com/" class="link">COMPRAR AHORA</a>
+                <a href="http://lilipink.com/shop" class="link">COMPRAR AHORA</a>
             </div>
         </article>
     </section>
