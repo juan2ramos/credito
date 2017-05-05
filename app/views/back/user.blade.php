@@ -28,6 +28,11 @@
     <section class="update-user u-shadow-5">
 
         <h1>Datos del usuario</h1>
+
+        <span style="padding: 10px 20px;color: white; background: #ba007c">
+            Usuario con {{($user->role_id == 4 )?'crédito lilipink': (($user->hasCredit == 1)?'crédito emprendedora':'crédito contado')}}
+        </span>
+
         @if(Auth::user()->roles_id>1)
             {{Form::open(array('url'=>'admin/Actualizar/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
         @else
@@ -62,16 +67,18 @@
                 Actualizar # tarjeta
             </button>
         @endif
+        @if($credits->first())
+            <?php
 
-        <?php
-        $responsible = ($credits->first()->responsible) ?
-            \credits\Entities\User::find($credits->first()->responsible) : 0;?>
+            $responsible = ($credits->first()->responsible) ?
+                \credits\Entities\User::find($credits->first()->responsible) : 0;?>
 
-        <p style="margin: 20px 0 0; color:#ba007d"><span>Este usuario solicito el crédito desde </span>
-            {{($credits->first()->priority)?'un punto de venta':'internet'}}
-            {{($responsible)?'y lo ingreso ' . $responsible->name . ' ' . $responsible->last_name .
-            ' Email: ' .  $responsible->email :  ''}}
-        </p>
+            <p style="margin: 20px 0 0; color:#ba007d"><span>Este usuario solicito el crédito desde </span>
+                {{($credits->first()->priority)?'un punto de venta':'internet'}}
+                {{($responsible)?'y lo ingreso ' . $responsible->name . ' ' . $responsible->last_name .
+                ' Email: ' .  $responsible->email :  ''}}
+            </p>
+        @endif
         <section class="User-section ">
 
             {{form::text('id', $user->id,array('class'=>'hidden'))}}
