@@ -27,7 +27,7 @@
 
     <section class="update-user u-shadow-5">
 
-        <h1>Datos del usuario</h1>:
+        <h1>Datos del usuario</h1>
 
         <span style="padding: 10px 20px;color: white; background: #ba007c; margin: 0 0 20px; display: inline-block">
             Usuario con {{($user->role_id == 4 )?'crédito lilipink': (($user->hasCredit == 1)?'crédito emprendedora':'crédito contado')}}
