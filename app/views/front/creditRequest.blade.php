@@ -224,10 +224,13 @@
                 <span>los campos que no necesite los puede dejar en blanco</span>
                 <select>
                     <option value="?" selected="selected"></option>
+                    <option label="Avenida" value="AV">AV</option>
                     <option label="Avenida calle" value="AC">AC</option>
+                    <option label="Autopista" value="AUTO">AUTO</option>
                     <option label="Avenida carrera" value="AK">AK</option>
                     <option label="Calle" value="CL">CL</option>
                     <option label="Carrera" value="KR">KR</option>
+                    <option label="Circunvalar" value="CIR">CIR</option>
                     <option label="Diagonal" value="DG">DG</option>
                     <option label="Transversal" value="TV">TV</option>
                 </select>
@@ -296,8 +299,9 @@
                 </select>
                 <select>
                     <option value="" class="" selected="selected">-</option>
-                    <option label="SUR" value="SUR">SUR</option>
-                    <option label="ESTE" value="ESTE">ESTE</option>
+                    <option label="SUR" value="S">S</option>
+                    <option label="ESTE" value="E">E</option>
+                    <option label="OCCIDENTE" value="OCCIDENTE">W</option>
                 </select>
                 #
                 <input type="text">
@@ -335,25 +339,31 @@
                 <input type="text">
                 <select>
                     <option value="" class="" selected="selected">-</option>
-                    <option label="SUR" value="SUR">SUR</option>
-                    <option label="ESTE" value="ESTE">ESTE</option>
+                    <option label="SUR" value="S">S</option>
+                    <option label="ESTE" value="E">E</option>
+                    <option label="OCCIDENTE" value="OCCIDENTE">W</option>
                 </select>
-                <select name="complemento" ng-model="complemento1"
-                        ng-options="comp.desc for comp in complemento track by comp.cod"
-                        class="ng-pristine ng-untouched ng-valid ng-empty">
+                <select >
                     <option value="" class="" selected="selected">-</option>
-                    <option label="APARTAMENTO" value="AP">APTO</option>
-                    <option label="BLOQUE" value="BLQ">BLQ</option>
-                    <option label="CASA" value="CA">CS</option>
+
                     <option label="CONJUNTO" value="CONJ">CONJ</option>
-                    <option label="EDIFICIO" value="ED">ED</option>
-                    <option label="INTERIOR" value="IN">INT</option>
                     <option label="MANZANA" value="MZ">MZ</option>
-                    <option label="OFICINA" value="OF">OF</option>
-                    <option label="TORRE" value="TRR">TRR</option>
                     <option label="VEREDA" value="VDA">VEREDA</option>
-                    <option label="VIA" value="VIA">VIA</option>
-                    <option label="ZONA" value="ZN">ZN</option>
+                </select>
+                <input type="text" style="width: 100px">
+                <select >
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="BLOQUE" value="BLQ">BLQ</option>
+                    <option label="CASA" value="CS">CS</option>
+                    <option label="EDIFICIO" value="ED">ED</option>
+                    <option label="INTERIOR" value="INT">INT</option>
+                    <option label="TORRE" value="TRR">TRR</option>
+                </select>
+                <input type="text" style="width: 100px">
+                <select >
+                    <option value="" class="" selected="selected">-</option>
+                    <option label="APTO" value="APTO">APTO</option>
+                    <option label="OFICINA" value="OFC">OFC</option>
                 </select>
                 <input type="text" style="width: 100px">
                 <p id="addressShow"></p>

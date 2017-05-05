@@ -63,6 +63,15 @@
             </button>
         @endif
 
+        <?php
+        $responsible = ($credits->first()->responsible) ?
+            \credits\Entities\User::find($credits->first()->responsible) : 0;?>
+
+        <p style="margin: 20px 0 0; color:#ba007d"><span>Este usuario solicito el crédito desde </span>
+            {{($credits->first()->priority)?'un punto de venta':'internet'}}
+            {{($responsible)?'y lo ingreso ' . $responsible->name . ' ' . $responsible->last_name .
+            ' Email: ' .  $responsible->email :  ''}}
+        </p>
         <section class="User-section ">
 
             {{form::text('id', $user->id,array('class'=>'hidden'))}}
@@ -253,6 +262,7 @@
                 <span></span>
             </div>
 
+
             @if($errors->first('location'))
                 <div class="errors">
                     *{{$errors->first('location')}}
@@ -272,8 +282,8 @@
                     @endforeach
                 @endif
 
-            @endforeach
 
+            @endforeach
 
         </section>
 
@@ -285,7 +295,6 @@
         @endif
 
         {{form::close()}}
-
         <div class="Table-content">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -327,7 +336,9 @@
                     <button class="u-button" style="cursor:pointer; width: 200px">Descargar paz y salvo</button>
                 </form>
             @else
-                <a href="{{route('ExtractPdf', $user->identification_card)}}" class="u-button" style="display:block; text-align: center; margin-top: 10px; cursor:pointer; width: 200px">Descargar Extracto</a>
+                <a href="{{route('ExtractPdf', $user->identification_card)}}" class="u-button"
+                   style="display:block; text-align: center; margin-top: 10px; cursor:pointer; width: 200px">Descargar
+                    Extracto</a>
             @endif
         </section>
         @if(isset($credits[0]))
@@ -363,7 +374,7 @@
         @endif
         @if(isset($credits[0]))
             {{Form::open(array('url'=>'admin/updateValueCredit/'.$user->id,'method'=>'POST','class'=>"User-form",'files'=>true))}}
-            <div class="material-input" style = "max-width: 300px; margin: 2rem auto;" >
+            <div class="material-input" style="max-width: 300px; margin: 2rem auto;">
 
                 {{Form::input('numeric','creditValue',$credits[0]->value,['class'=>' variableText1'])}}
                 {{Form::label('creditValue','Valor del crédito aprobado')}}
@@ -387,8 +398,8 @@
     {{ HTML::script('js/variables.js'); }}
     {{ HTML::script('js/credit.js'); }}
     <script>
-        $(function() {
-            $('#dropzone input').on('change', function(e) {
+        $(function () {
+            $('#dropzone input').on('change', function (e) {
                 var file = this.files[0];
 
                 if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
@@ -402,9 +413,9 @@
 
                     reader.readAsDataURL(file);
 
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         var data = e.target.result,
-                                $img = $('<img />').attr('src', data).fadeIn();
+                            $img = $('<img />').attr('src', data).fadeIn();
 
                         $('#dropzone div').html($img);
                     };
