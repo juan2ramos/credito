@@ -4,7 +4,7 @@
     @include('partial.submenu')
     <section class="Buy">
         <article class="tienda">
-            <figure><img src="{{asset('img/2.png')}}"></figure>
+            <figure><iframe width="430" height="254" src="https://www.youtube.com/embed/F9mDBFVWhgw" frameborder="0" allowfullscreen></iframe></figure>
             <div class="text">
                 <h3>TIENDAS LILI PINK EMPRENDEDORAS</h3>
                 <p>Una vez te llegue el e-mail de confirmación puedes ir a cualquiera de nuestras tiendas Lili Pink Emprendedoras, hacer compras y obtener el 25%
@@ -13,7 +13,7 @@
             </div>
         </article>
         <article class="tienda">
-            <figure><img src="{{asset('img/1.png')}}"></figure>
+            <figure><iframe width="430" height="254" src="https://www.youtube.com/embed/3bjXbDOHWks" frameborder="0" allowfullscreen></iframe></figure>
             <div class="text">
                 <h3>CATÁLOGO VIRTUAL</h3>
                 <p>
