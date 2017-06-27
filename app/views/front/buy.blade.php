@@ -11,6 +11,7 @@
                     de dcto por compras superiores a $300.000. </p>
                 <a href="http://creditoslilipink.com/img/tiendasemprendedoras.pdf" target="_blank" class="link">TIENDAS LILIPINK EMPRENDEDORAS</a>
             </div>
+
         </article>
         <article class="tienda">
             <figure><iframe width="430" height="254" src="https://www.youtube.com/embed/3bjXbDOHWks" frameborder="0" allowfullscreen></iframe></figure>
