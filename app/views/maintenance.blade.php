@@ -18,11 +18,10 @@
             line-height: 24px;
         }
         img {
-            max-width: 320px;
+            max-width: 800px;
             width: 100%;
         }
         div{
-            max-width: 420px;
             width: 100%;
             margin: auto;
             text-align: center;
@@ -36,10 +35,7 @@
 </head>
 <body>
 <div>
-    <img src="{{asset('img/lilipink_logo.svg')}}" alt="">
-    <p>Nuestro sistema de créditos se encuentra en mantenimiento, regresamos el 1 de Julio.
-    </p>
-    <a href="lilipink.com">www.lilipink.com</a>
+    <img src="{{asset('img/lilipink.jpeg')}}" alt="">
 </div>
 </body>
 </html>
