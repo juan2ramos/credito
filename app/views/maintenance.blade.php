@@ -37,7 +37,7 @@
 <body>
 <div>
     <img src="{{asset('img/lilipink_logo.svg')}}" alt="">
-    <p>Nuestro sistema de créditos se encuentra en mantenimiento, regresamos el 3 de Julio.
+    <p>Nuestro sistema de créditos se encuentra en mantenimiento, regresamos el 1 de Julio.
     </p>
     <a href="lilipink.com">www.lilipink.com</a>
 </div>
