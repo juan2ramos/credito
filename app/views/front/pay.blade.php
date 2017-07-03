@@ -25,11 +25,7 @@
                     registro y la contraseña que te enviamos <br>
                     EMPRENDEDORA CONTADO: <br>
                     Para hacerte el envio de tu compra, debes cancelar en: <br>
-                    * BANCOLOMBIA: <br>
-                    Formato recaudo empresarial a nombre de Innova Quality S.A.S. Cuenta de ahorros 16862920931, colocas en Referencia el número de cédula de la emprendedora
-                    <br>
-                    * EFECTY <br>
-                    Convenio 110064 <br>
+                  
                     * PAYU <br>
                     Realiza tu pago en línea: debito, crédito, baloto <br>
                     Una vez hagas el pago notificalo a emprendedoras@i-q.com.co o a nuestro whatsapp: 310 575 6438
