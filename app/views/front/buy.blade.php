@@ -16,7 +16,7 @@
         <article class="tienda">
             <figure><iframe width="430" height="254" src="https://www.youtube.com/embed/3bjXbDOHWks" frameborder="0" allowfullscreen></iframe></figure>
             <div class="text">
-                <h3>CATÁLOGO VIRTUAL</h3>
+                <h3> TIENDA VIRTUAL </h3>
                 <p>
                     Compra desde la comodidad de tu casa, solamente seleccionas los productos y los añades a tu carrito de compras; en el momento de finalizar
                     la compra te identificas como emprendedora ingresando el e-mail que registraste en el formulario y la contraseña que te enviamos de acceso
