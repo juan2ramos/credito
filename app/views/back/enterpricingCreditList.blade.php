@@ -14,10 +14,11 @@
     <h1>Usuarios Activos</h1>
     <div class="SearchBar" style="margin: 0 auto 20px;">
         <div class="search">
-            {{ Form::open(['route' => 'searchUsers', 'method' => 'POST']) }}
+            {{ Form::open(['route' => 'showEnterpricingCreditSearch', 'method' => 'POST']) }}
             <button class="icon-search"></button>
             {{Form::input('text','search','',['class' => 'search-input'])}}
             {{Form::close()}}
+
         </div>
     </div>
 

@@ -16,10 +16,22 @@ Route::get('emprendedoras-contado', [
     'uses' => 'EnterprisingController@enterpricingSimpleList'
 ]);
 
+Route::post('emprendedoras-contado-search', [
+    'before' => 'permissions:users',
+    'as' => 'showEnterpricingSimpleSearch',
+    'uses' => 'EnterprisingController@enterpricingSearchSimpleList'
+]);
+
 Route::get('emprendedoras-credito', [
     'before' => 'permissions:users',
     'as' => 'showEnterpricingCredit',
     'uses' => 'EnterprisingController@enterpricingCreditList'
+]);
+
+Route::post('emprendedoras-credito-search', [
+    'before' => 'permissions:users',
+    'as' => 'showEnterpricingCreditSearch',
+    'uses' => 'EnterprisingController@enterpricingSearchCreditList'
 ]);
 
 Route::get('eliminar-usuario/{id}', [
@@ -181,7 +193,7 @@ Route::get('showCreditRequest/{id}', [
     'uses' => 'CreditController@showCreditRequest'
 ]);
 
-Route::post('showCreditRequest/{id}', [
+Route::post('showxRequest/{id}', [
     'as' => 'acceptCredit',
     'uses' => 'CreditController@acceptCredit'
 ]);
