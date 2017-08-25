@@ -1,7 +1,7 @@
 @extends('layout/front')
 
 @section('content')
-    @include('partial.submenu')
+   
     <img src="{{asset('img/referidos.png')}}" alt="">
 
     <div class="Referred">
