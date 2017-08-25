@@ -213,4 +213,7 @@ class EnterprisingController extends Controller
 
         return $rules;
     }
+    public function referred(){
+        return View::make('front.referred');
+    }
 }

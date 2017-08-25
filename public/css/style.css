@@ -2873,3 +2873,36 @@ footer {
     padding: 10px;
     cursor: pointer;
 }
+.Referred h1{
+    text-align: left;
+    color: #ed028c;
+    font-size: 18px;
+    margin: 40px 0 20px;
+    font-weight: 600;
+}
+.Referred p{
+    font-size: 17px;
+    line-height: 1.5;
+}
+.Referred table{
+    margin: 0;
+    min-width: 100%;
+    border: 0;
+    box-shadow: none
+}
+.Referred thead{
+    background: #ed028c;
+    color: white;
+    font-size: 16px;
+}
+.Referred th{
+    border-top: 0;
+    padding: 8px;
+}
+.Referred td{
+    padding: 10px 10px 0;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #ed028c;
+}
+

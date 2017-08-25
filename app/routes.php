@@ -98,3 +98,4 @@ Route::get('magazine/', ['as' => 'magazine', 'uses' => 'EnterprisingController@m
 Route::get('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@getRegister']);
 Route::post('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@postRegister']);
 //Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
+Route::get('referidos/', ['as' => 'referred', 'uses' => 'EnterprisingController@referred']);
