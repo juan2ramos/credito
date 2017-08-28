@@ -18,11 +18,12 @@
 
             @foreach($sliders as $key =>$slider)
             
-            <a href="{{ ($key == 0) ?"http://www.creditoslilipink.com/referidos":( ($key == 1)?"https://www.youtube.com/watch?v=b2AkFRyohT8":"#") }}
-            " >
-                <img class="img-slider" src="sliders/{{$slider['files']}}"/>
-            </a>
-            
+            @if($key == 0)
+ -                    <a href="https://www.youtube.com/watch?v=b2AkFRyohT8" target="_blank"><img class="img-slider" src="sliders/{{$slider['files']}}"/></a>
+ +                    <a href="http://www.creditoslilipink.com/referidos" ><img class="img-slider" src="sliders/{{$slider['files']}}"/></a>
+                  @else
+                      <img class="img-slider" src="sliders/{{$slider['files']}}"/>
+                  @endif
            
               
             @endforeach
