@@ -19,9 +19,7 @@
             @foreach($sliders as $key =>$slider)
                 @if($key == 0)
                     <a href="http://www.creditoslilipink.com/referidos" ><img class="img-slider" src="sliders/{{$slider['files']}}"/></a>
-                @elseif($key == 1)
-                    <a href="https://www.youtube.com/watch?v=b2AkFRyohT8" target="_blank" ><img class="img-slider" src="sliders/{{$slider['files']}}"/></a>
-                @else    
+               @else    
                     <img class="img-slider" src="sliders/{{$slider['files']}}"/>
                 @endif
               
