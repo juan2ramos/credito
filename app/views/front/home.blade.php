@@ -17,15 +17,20 @@
         <div id="slider">
 
             @foreach($sliders as $key =>$slider)
-            
-            @if($key == 0)
- -                   
- +                    <a href="http://www.creditoslilipink.com/referidos" ><img class="img-slider" src="sliders/{{$slider['files']}}"/></a>
-                  @else
-                      <img class="img-slider" src="sliders/{{$slider['files']}}"/>
-                  @endif
-           
-              
+
+                @if($key == 0)
+                    <a href="http://www.creditoslilipink.com/referidos">
+                        <img class="img-slider" src="sliders/{{$slider['files']}}"/>
+                    </a>
+                @elseif($key == 1)
+                    <a href="https://www.youtube.com/watch?v=b2AkFRyohT8" target="_blank">
+                        <img class="img-slider" src="sliders/{{$slider['files']}}"/>
+                    </a>
+                @else
+                    <img class="img-slider" src="sliders/{{$slider['files']}}"/>
+                @endif
+
+
             @endforeach
             @foreach($sliders as $key => $slider)
                 @if($key == 0)
@@ -122,11 +127,14 @@
                                         @if(Auth::user()->user_state == 1)
                                             <p class="state-home" style="background: #008000 !important;">ACTIVO.</p>
                                         @elseif(Auth::user()->user_state == 2)
-                                            <p class="state-home" style="background: indianred !important;">RECHAZADO</p>
+                                            <p class="state-home" style="background: indianred !important;">
+                                                RECHAZADO</p>
                                         @elseif(Auth::user()->user_state == 0)
-                                            <p class="state-home" style="background: #c3c3c3 !important;">DESACTIVADO</p>
+                                            <p class="state-home" style="background: #c3c3c3 !important;">
+                                                DESACTIVADO</p>
                                         @else
-                                            <p class="state-home" style="background: #c3c3c3 !important;">EN ESPERA DE APROBACIÓN</p>
+                                            <p class="state-home" style="background: #c3c3c3 !important;">EN ESPERA DE
+                                                APROBACIÓN</p>
                                         @endif
                                     </div>
                                 @endif
@@ -137,7 +145,8 @@
                                 @if(Auth::user()->roles_id == 4)
                                     <a href="{{url('credito')}}" style="width: 100%">SOLICITAR NUEVAMENTE</a>
                                 @elseif(Auth::user()->roles_id == 5)
-                                    <a href="{{url('formulario-emprendedoras')}}" style="width: 100%">SOLICITAR NUEVAMENTE</a>
+                                    <a href="{{url('formulario-emprendedoras')}}" style="width: 100%">SOLICITAR
+                                        NUEVAMENTE</a>
                                 @endif
                             @endif
                         </section>
@@ -168,11 +177,11 @@
             </div>
         </div>
 
-       {{-- <div class="content-Request">
-            <a href="{{asset('credito')}}">
-                <img src="{{asset('img/footer2.jpg')}}">
-            </a>
-        </div>--}}
+        {{-- <div class="content-Request">
+             <a href="{{asset('credito')}}">
+                 <img src="{{asset('img/footer2.jpg')}}">
+             </a>
+         </div>--}}
     </div>
 @stop
 

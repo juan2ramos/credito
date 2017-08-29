@@ -1570,7 +1570,7 @@ button.icon-search {
     width: 100%;
 }
 
-#slider img:nth-child(1) {
+#slider a:nth-child(1) img {
     display: block;
 }
 
