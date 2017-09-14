@@ -22,7 +22,6 @@
                 <th>Estado</th>
                 <th>Region</th>
                 <th>Punto</th>
-                <th>E-mail</th>
                 <th>Revisar</th>
             </tr>
             </thead>
@@ -49,8 +48,7 @@
                              @endif
                          @endforeach
                      </td>
-                     <td>{{$user->name}}</td>
-                     <td>{{$user->email}}</td>
+                     <td>{{$user->pointname}}</td>
                      <td><a href="{{route('showCreditRequest', $user->id)}}" class="icon-folder-open"></a></td>
 
                  </tr>
@@ -66,8 +64,7 @@
                     <td> Pendiente por aprobar </td>
                     <td style="text-transform: capitalize;">{{$user->residency_city}}</td>
 
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>{{$user->pointname}}</td>
                     <td><a href="#" type="user" enable="{{route('admin.activate.user',$user->id)}}" disable="{{route('admin.destroy.user', $user->id)}}" route="{{route('getDataEnterpricing', $user->id)}}" class="icon-folder-open openPopup"></a></td>
                 </tr>
             @endforeach
