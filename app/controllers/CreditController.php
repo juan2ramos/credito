@@ -137,15 +137,19 @@ class CreditController extends BaseController
         if (Auth::user()->roles_id == 3)
             $showRequest = DB::table('creditRequest')
                 ->join('users', 'users.id', '=', 'creditRequest.user_id')
+                ->join('points', 'points.id', '=', 'creditRequest.point')
                 ->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `creditRequest`.`state`='' and users.location = " . Auth::user()->location)
                 ->get();
         else
             $showRequest = DB::table('creditRequest')
                 ->join('users', 'users.id', '=', 'creditRequest.user_id')
+                ->join('points', 'points.id', '=', 'creditRequest.point')
                 ->whereRaw("`creditRequest`.`created_at` >= '2015-11-15 00:00:00' and `creditRequest`.`state`=''")
                 ->get();
 
+
         foreach ($showRequest as $user) {
+           // $user->CreditRequest->point;
             if (isset($user->CreditRequest)) {
                 $date = $this->date($user->CreditRequest["created_at"]);
                 if ($date) {
@@ -153,6 +157,7 @@ class CreditController extends BaseController
                 }
             }
         }
+
         $simpleEnterpricings = User::whereRaw('roles_id = 5 and hasCredit = 0 and user_state is null')->get();
         return View::make('front.request', compact('showRequest', 'locations', 'simpleEnterpricings'));
     }
