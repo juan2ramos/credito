@@ -99,3 +99,9 @@ Route::get('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' =
 Route::post('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@postRegister']);
 //Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
 Route::get('referidos/', ['as' => 'referred', 'uses' => 'EnterprisingController@referred']);
+Route::get('mailing',function (){
+
+    \Illuminate\Support\Facades\Mail::send('emails.sendMailing', ['email' => 'email'], function ($message)  {
+        $message->to('juan2ramos@gmail.com', 'créditos lilipink')->subject('💸¿Quieres ganar $30,000 por recomendar nuestro crédito?💸 Dale clic aquí👈');
+    });
+});
