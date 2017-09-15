@@ -104,6 +104,6 @@ Route::get('mailing',function (){
     \Illuminate\Support\Facades\Mail::send('emails.sendMailing', ['email' => 'email'], function ($message)  {
         $message->from('no-reply@creditoslilipink.com', 'Créditos Lilipink');
 
-        $message->to('jonathan.s@lilipink.com', 'Créditos Lilipink')->subject('💸¿Quieres ganar $30,000 por recomendar nuestro crédito?💸 Dale clic aquí👈');
+        $message->to('monica.rodriguez@lilipink.com', 'Créditos Lilipink')->subject('💸¿Quieres ganar $30,000 por recomendar nuestro crédito?💸 Dale clic aquí👈');
     });
 });
