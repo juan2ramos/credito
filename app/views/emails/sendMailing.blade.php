@@ -28,7 +28,7 @@
     <tr>
         <td><a href="http://www.creditoslilipink.com/referidos" target="new"><img src="{{asset('img/tiendas-m.png')}}" width="600" height="64" /></a></td>
     </tr>
-    --
+    <div style="color: white">CréditosLilipink</div>
 </table>
 </body>
 </html>
