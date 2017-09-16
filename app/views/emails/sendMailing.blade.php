@@ -30,5 +30,6 @@
     </tr>
     <div style="color: white">CréditosLilipink</div>
 </table>
+    %mailing_list_unsubscribe_url%
 </body>
 </html>

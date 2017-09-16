@@ -102,8 +102,11 @@ Route::get('referidos/', ['as' => 'referred', 'uses' => 'EnterprisingController@
 Route::get('mailing',function (){
 
     \Illuminate\Support\Facades\Mail::send('emails.sendMailing', ['email' => 'email'], function ($message)  {
-        $message->from('no-reply@creditoslilipink.com', 'Créditos Lilipink');
+        $message->from('no-responder@creditoslilipink.com', 'Créditos Lilipink');
 
-        $message->to('juan2ramos@gmail.com', 'Créditos Lilipink')->subject('💸¿Quieres ganar $30,000 por recomendar nuestro crédito?💸 Dale clic aquí👈');
+        $message->to('test@send.creditoslilipink.com', 'Créditos Lilipink')->subject('💸¿Quieres ganar $30,000 por recomendar nuestro crédito?💸 Dale clic aquí👈');
+        $headers = $message->getHeaders();
+        $headers->addTextHeader('X-Mailgun-Variables', '{"msg_id": "campaña", "my_campaign_id": 1313}');
+        $headers->addTextHeader('X-Mailgun-Tag', 'test-tag');
     });
 });

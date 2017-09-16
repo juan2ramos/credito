@@ -15,8 +15,8 @@ return array(
 	*/
 
 	'mailgun' => array(
-		'domain' => 'pruebas@creditos.lilipink.com',
-		'secret' => '123456',
+		'domain' => 'no-responder@creditoslilipink.com',
+		'secret' => 'key-54cd0847629ed9d0ba9f2908b4d00910',
 	),
 
 	'mandrill' => array(
