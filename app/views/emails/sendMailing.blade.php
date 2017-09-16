@@ -30,6 +30,7 @@
     </tr>
     <div style="color: white">CréditosLilipink</div>
 </table>
-    %mailing_list_unsubscribe_url%
+    <div style="text-align: center;color: gray"><a href="%mailing_list_unsubscribe_url%">Anula la suscripción</a> si no quieres recibir más mensajes</div>
+
 </body>
 </html>
