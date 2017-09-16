@@ -103,7 +103,7 @@ Route::get('mailing',function (){
 
     \Illuminate\Support\Facades\Mail::send('emails.sendMailing', ['email' => 'email'], function ($message)  {
         $message->from('no-responder@creditoslilipink.com', 'Créditos Lilipink');
-        $message->to('mail@send.creditoslilipink.com', 'Créditos Lilipink')->subject('💸¿Quieres ganar $30,000 por recomendar nuestro crédito?💸 Dale clic aquí👈');
+        $message->to('test@send.creditoslilipink.com', 'Créditos Lilipink')->subject('💸¿Quieres ganar $30,000 por recomendar nuestro crédito?💸 Dale clic aquí👈');
         $headers = $message->getHeaders();
         $headers->addTextHeader('X-Mailgun-Tag', 'referred');
     });
