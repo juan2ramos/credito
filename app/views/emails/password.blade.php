@@ -48,7 +48,7 @@
             text-align:right;
             padding-top:20px;
             padding-right:20px;">Pink life S.A.S<br>
-        lilipimk.com<br>
+        lilipink.com<br>
         Bogotá, Colombia
     </div>
 
