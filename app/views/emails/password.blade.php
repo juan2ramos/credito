@@ -62,7 +62,7 @@
             font-size:16px;
             font-family:Arial, Helvetica, sans-serif;
             padding-bottom: 10px;">
-        Recientemente has solicitado una restauracion de contraseña da click copia el link http://creditoslilipink.com/{{$link}} para cambiar la contraseña, si no has solicitado la solicitud de contraseña haga caso omiso de este correo</div>
+        Recientemente has solicitado una restauracion de contraseña da click o copia el link http://creditoslilipink.com/{{$link}} para cambiar la contraseña, si no has solicitado la solicitud de contraseña haga caso omiso de este correo</div>
      
     
     <div id="texto3" style="color: #999;
