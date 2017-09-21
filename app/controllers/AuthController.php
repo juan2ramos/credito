@@ -30,7 +30,7 @@ class AuthController extends BaseController
         $userRepo = new UserRepo();
         $validator = $userRepo->passwordRestart(Input::get('email'));
         $data = ['link' => $validator['link']];
-         return Response::json(['success' => $validator['return'] , 'data' => $data] );
+        
         if($validator['return'])
         {
             Mail::send('emails.password', $data, function ($message) {
