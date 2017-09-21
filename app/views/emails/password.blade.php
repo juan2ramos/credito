@@ -67,6 +67,7 @@
             font-family:Arial, Helvetica, sans-serif;
             padding-bottom: 10px;">
         Recientemente has solicitado una restauracion de contraseña da click <a href="http://creditoslilipink.com/{{$link}}">Aqui</a> para cambiar la contraseña, si no has solicitado la solicitud de contraseña haga caso omiso de este correo</div>
+        copia el link http://creditoslilipink.com/{{$link}}
     <div id="redes" style="height:40px;
             font-family:Arial, Helvetica, sans-serif;
             color: #999;
