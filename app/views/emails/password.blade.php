@@ -118,23 +118,7 @@
 
 <center>
     <br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="canspamBarWrapper" style="background-color:#FFFFFF; border-top:1px solid #E5E5E5;">
-        <tr>
-            <td align="center" valign="top" style="padding-top:20px; padding-bottom:20px;">
-                <table border="0" cellpadding="0" cellspacing="0" id="canspamBar">
-                    <tr>
-                        <td align="center" valign="top" style="color:#606060; font-family:Helvetica, Arial, sans-serif; font-size:11px; line-height:150%; padding-right:20px; padding-bottom:5px; padding-left:20px; text-align:center;">
-                            Correo lista de suscripción Lilipink <a href="mailto:*|EMAIL|*" target="_blank" style="color:#404040 !important;">*|EMAIL|*</a>
-                            <br>
-                            <a href="*|ABOUT_LIST|*" target="_blank" style="color:#404040 !important;"><em></em></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="*|UNSUB|*" style="color:#404040 !important;">Darme de baja</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="*|UPDATE_PROFILE|*" style="color:#404040 !important;">Actualizar preferencias de suscripción</a>
-                            <br>
-                            *|LIST:ADDRESSLINE|*
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+    
     <style type="text/css">
         @media only screen and (max-width: 480px){
             table[id="canspamBar"] td{font-size:14px !important;}
