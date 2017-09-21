@@ -15,44 +15,13 @@
 
     <div id="logo1" style="height:55px;
             text-align:center;
-            margin-top:20px;"> <a href="http://lilipink.com/"><img src="http://lilipink.com/wp-content/uploads/2015/02/lilipink.png" target="_blank" width="480"></a></div>
+            margin-top:20px;"> <a href="http://lilipink.com/"><img src="http://lilipink.com/wp-content/uploads/2016/08/lili2.png" target="_blank" width="480"></a></div>
 
 
     <div id="menu" style="height:50px;
             margin:10px 0 0 0;">
 
-        <ul style="list-style:none;
-            border-top:#CCC solid 1px;
-            border-bottom:#CCC solid 1px;
-            text-align:center;">
-
-            <li style="display:inline-block;
-            margin:10px 30px 10px 30px;"><a style="color: #666;
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:12px;
-            text-decoration:none;" href="http://creditos.lilipink.com/" target="_blank">MI CREDITO</a></li><a style="color:#666;font-family:Arial,Helvetica,sans-serif;font-size:12px;text-decoration:none" href="http://lilipink.com/categoria-producto/brassier/" target="_blank">BRASSIER</a></li>
-            <li style="display:inline-block;
-            margin:10px 30px 10px 30px;"><a style="color: #666;
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:12px;
-            text-decoration:none;" href="http://lilipink.com/categoria-producto/panties/" target="_blank">PANTY</a></li>
-            <li style="display:inline-block;
-            margin:10px 30px 10px 30px;"><a style="color: #666;
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:12px;
-            text-decoration:none;" href="http://lilipink.com/categoria-producto/trajes-de-bano/" target="_blank">TRAJES DE BAÑO</a></li>
-
-            <li style="display:inline-block;
-            margin:10px 30px 10px 30px;"><a style="color: #666;
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:12px;
-            text-decoration:none;" href="http://lilipink.com/catalogo/" target="_blank">CATÁLOGO</a></li>
-            <li style="display:inline-block;
-            margin:10px 30px 10px 30px;"><a style="color: #666;
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:12px;
-            text-decoration:none;" href="http://lilipink.com/encuentranos/" target="_blank">ENCUÉNTRANOS</a></li>
-        </ul>
+        
 
     </div>
 
@@ -78,8 +47,8 @@
             font-size:12px;
             text-align:right;
             padding-top:20px;
-            padding-right:20px;">Innova Quality S.A.S<br>
-        tiendavirtual@innova-quality.com.co<br>
+            padding-right:20px;">Pink life S.A.S<br>
+        lilipimk.com<br>
         Bogotá, Colombia
     </div>
 
