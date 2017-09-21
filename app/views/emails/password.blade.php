@@ -56,50 +56,21 @@
 
     </div>
 
-    <div id="imagen1" style="height:385px;text-align:center;">
-        <a href="{{asset($link)}}">
-            <img  src="http://creditos.lilipink.com/img/password.jpg" width="800" alt="creditoslilipink">
-        </a>
-    </div>
+    
     <div id="textocre" style="color: #999;
             text-align:center;
             font-size:16px;
             font-family:Arial, Helvetica, sans-serif;
             padding-bottom: 10px;">
-        Recientemente has solicitado una restauracion de contraseña da click <a href="http://creditoslilipink.com/{{$link}}">Aqui</a> para cambiar la contraseña, si no has solicitado la solicitud de contraseña haga caso omiso de este correo</div>
-        copia el link http://creditoslilipink.com/{{$link}}
-    <div id="redes" style="height:40px;
-            font-family:Arial, Helvetica, sans-serif;
-            color: #999;
-            font-size:16px;
-            text-align:center;
-            padding:10px 0 5px 0;
-            background-color:#EDEDED;">
-        Siguenos en:
-
-        <a href="https://www.facebook.com/LiliPinkColombia" target="_blank"><img style="vertical-align:middle;
-            padding-left:15px;" src="http://lilipink.com/newsletter/diciembre/campana-05/files/logos-redes-04.png" width="35" alt="facebook"></a>
-
-        <a href="http://www.twitter.com/LILI_PINK_col" target="_blank"><img style="vertical-align:middle;
-            padding-left:15px;" src="http://lilipink.com/newsletter/diciembre/campana-05/files/logos-redes-05.png" width="35" alt="twitter"></a>
-
-        <a href="http://pinterest.com/lilipinkCol/?e_t_s=fullname&e_t=aa6f4bc889ae46b787b994acec4e3c1c&utm_source=sendgrid.com&utm_medium=email&utm_campaign=activity_aggregation" target="_blank"><img style="vertical-align:middle;
-            padding-left:15px;" src="http://lilipink.com/newsletter/diciembre/campana-05/files/logos-redes-06.png" width="35" alt="pinteres"></a>
-
-        <a href="https://www.youtube.com/user/tiendasintimasecret" target="_blank"><img style="vertical-align:middle;
-            padding-left:15px;" src="http://lilipink.com/newsletter/diciembre/campana-05/files/logos-redes-07.png" width="35" alt="youtube"></a>
-
-        <a href="http://instagram.com/intimasecret_lilipink" target="_blank"><img style="vertical-align:middle;
-            padding-left:15px;" src="http://lilipink.com/newsletter/diciembre/campana-05/files/logos-redes-08.png" width="35" alt="instagram"></a>
-
-    </div>
-
+        Recientemente has solicitado una restauracion de contraseña da click copia el link http://creditoslilipink.com/{{$link}} para cambiar la contraseña, si no has solicitado la solicitud de contraseña haga caso omiso de este correo</div>
+     
+    
     <div id="texto3" style="color: #999;
             text-align:center;
             font-size:12px;
             font-family:Arial, Helvetica, sans-serif;
             padding:15px 0 20px 0;">
-        <strong>© COPYRIGHT 2014 INTIMA SECRET LILI PINK  | Todos los derechos reservados</strong></div>
+       </div>
 
     <div id="texto4" style="height:130px;
             font-family:Arial, Helvetica, sans-serif;
