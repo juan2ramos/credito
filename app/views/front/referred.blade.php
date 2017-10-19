@@ -2,25 +2,9 @@
 
 @section('content')
    
-    <img src="{{asset('img/referidos.png')}}" alt="">
-
+   
     <div class="Referred">
-        <h1>TÉRMINOS Y CONDICIONES</h1>
-        <p>
-            * Válido desde el 28 de agosto hasta el 29 de septiembre de 2017 <br>
-            * Podrán participar los usuarios activos de créditos Lili Pink<br>
-            * Para ganar el bono de $30.000 la amiga referida debe inscribirse para ser un nuevo usuario de créditos<br>
-            Lili Pink y realizar una compra de $99.900<br>
-            * Los $30.000 son un bono que sera añadido al estado de cuenta del usuario del crédito Lili Pink, no es
-            canjeable por dinero en efectivo<br>
-            * El bono de los $30.000 servira para disminuir la deuda que tengas con crédito Lili Pink o en caso de estar
-            a paz y salvo puedes usarlos en una compra posterior cuya vigencia será hasta el 29 de septiembre del 2017 *
-            El máximo es de 10 referidos efectivos por cada usuario de crédito Lili Pink<br>
-            * No es válido en franquicias<br>
-            * No aplica promoción sobre promoción<br>
-            * No aplica para Créditos Emprendedoras Lili Pink<br>
-            * Válido en estas tiendas a nivel nacional:<br>
-        </p>
+      
         <table>
             <thead>
             <tr>
