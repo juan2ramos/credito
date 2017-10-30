@@ -9,9 +9,6 @@ class CreditManager extends BaseManager
     {
         $rules=[
             'identification_card'   => 'required|numeric|unique:users',
-            'date_expedition'       => 'required',
-            'instead_expedition'    => 'required',
-            'office_address'        => 'required',
             'monthly_income'        => 'required',
             'monthly_expenses'      => 'required',
             'name_reference'        => 'required',
@@ -25,7 +22,6 @@ class CreditManager extends BaseManager
             'last_name'             => 'required',
             'address'               => 'required',
             'residency_city'        => 'required',
-            'birth_city'            => 'required',
             'mobile_phone'          => 'numeric|required_if:phone,null|digits_between:6,11',
             'phone'                 => 'numeric|required_if:mobile_phone,null|digits_between:6,11',
             'document_type'         => 'required|numeric',
