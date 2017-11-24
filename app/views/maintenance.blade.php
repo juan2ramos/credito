@@ -35,7 +35,7 @@
 </head>
 <body>
 <div>
-    <img src="{{asset('img/lilipink.jpeg')}}" alt="">
+    <img src="{{asset('img/maintenance.jpg')}}" alt="">
 </div>
 </body>
 </html>
