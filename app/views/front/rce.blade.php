@@ -1,4 +1,4 @@
-
+@extends('layout/front')
 @section('content')
 
 <div  class="container is-text-center ">
