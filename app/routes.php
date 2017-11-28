@@ -113,7 +113,6 @@ Route::get('formulario-emprendedoras/', ['as' => 'enterprising', function(){
 }]);
 //Route::post('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@postRegister']);
 
-
 //Este ya estaba desactivado
 //Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
 Route::get('referidos/', ['as' => 'referred', 'uses' => 'EnterprisingController@referred']);
@@ -125,4 +124,7 @@ Route::get('mailing',function (){
         $headers = $message->getHeaders();
         $headers->addTextHeader('X-Mailgun-Tag', 'referred');
     });
+});
+Route::get('rce', function () {
+    return View::make('front.rce');
 });
