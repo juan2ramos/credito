@@ -91,4 +91,29 @@
 @stop
 @section('styles')
    <link rel="stylesheet prefetch" href="https://unpkg.com/inuit-css">
+   <style>
+   container{
+   	max-width: 1000px !important
+	}
+	.table-container{
+	margin:auto;
+	max-width: 100%;
+}
+
+table{
+	max-width: 80rem;
+	margin:auto
+}
+thead{
+	background: #dd277e;
+	color: white;
+	text-align: center
+}
+tbody{
+	text-align: center
+}
+tr:nth-child(2n){
+	background: #ffe1ed
+}
+   </style>
 @stop
