@@ -1,10 +1,9 @@
-@extends('layout/front')
 
 @section('content')
 
 <div  class="container is-text-center ">
 <header>
-<img src="{{asset('img/rce.jpg')}}">
+<img src="{{asset('img/rce.png')}}">
 <img src="" alt="">
 	</header>
 	<div class="table-container ">
