@@ -92,7 +92,7 @@
 @section('styles')
    <link rel="stylesheet prefetch" href="https://unpkg.com/inuit-css">
    <style>
-   container{
+   .container{
    	max-width: 1000px !important
 	}
 	.table-container{
@@ -101,7 +101,7 @@
 }
 
 table{
-	max-width: 80rem;
+	//max-width: 80rem;
 	margin:auto
 }
 thead{
