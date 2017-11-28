@@ -4,7 +4,8 @@
 
 <div  class="container is-text-center ">
 <header>
-<img src="https://lh3.googleusercontent.com/MhuSbkEqZBLCj92fbD-348RAT8wygIDfxeN658jmBszVfcN2snS93eI1718IAmW7ZM7r_jZLWr7uLv7pwQRuFIVUNXPpj-304yjtbjByVf7hxIntO5pTlcoJ39PC3vCaW5J22BcZNur3v0loSdtpmCHwA6i_Za9np935P2MkpMLlINVHm6XOlZ7UVcTRcbUgwgNMrXwzcDYKD8BtKCkyKXSgQ8DczKL8zXOB_NjJ_8yBYqnuOxYg7d9oMYyM4CgJqvUafIK4ofmUNeMevZ5mgDBmfVzOWQqUqrdZ4vHsxTvCIbJguD-gTDZ7CJBk7uhFe15AX7fMh21PRsHXnbCr2Rktp6jUClYLYMG2mq6_34R13Npztruv1X9lUZ5Ah5F3syuF4gmTrnOqu60TIhw__AHELjy88AeFqF-GZKL_MYWrjy6o0Ka04wu8x5QsC8KGGfFycXhlKuMALJ2ywDSnBC_DMM2YUhVMiOgo0173Lcd4_ROWfmztuVXoWwDKJVIEHwcboPx6BaqvcgOOnYQY34L5eHE0SEPB0mRaqJ6iNxd5k6ByJTWnWU6LpDBwmusWs_6dxD1uAuNcmf8f4ODRx3TekIUKeyygD1PKQnf_9t8=w800-h400-no" alt="">
+<img src="{{asset('img/rce.jpg')}}">
+<img src="" alt="">
 	</header>
 	<div class="table-container ">
 <table> 
@@ -98,6 +99,7 @@
 	.table-container{
 	margin:auto;
 	max-width: 100%;
+	margin-top: -1px;
 }
 
 table{
