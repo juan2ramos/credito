@@ -20,9 +20,10 @@
         <div class="wrap-content1">
 
         <?php $people = array(
+            "andres.zambrano@lilipink.com",
             "carmen.lopez@lilipink.com",
             "harvy.pachon@lilipink.com",
-            "Hernesto.rojas@lilipink.com",
+            "hernesto.rojas@lilipink.com",
             "jonathan.sogamoso@lilipink.com",
             "miguel.quijano@lilipink.com",
             "diego.bermudez@lilipink.com"
