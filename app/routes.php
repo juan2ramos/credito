@@ -90,31 +90,31 @@ Route::get('refresh/{pass}', function () {
         $message->to('juan2ramos@gmail.com', 'creditos lilipink')->subject('prueba');
     });
 });
-//Route::get('emprendedoras/', ['as' => 'enterprising', 'uses' => 'EnterprisingController@index']);
-Route::get('emprendedoras/', ['as' => 'enterprising', function(){
- return View::make('maintenance');
-}]);
-//Route::get('se_emprendedora/', ['as' => 'isEnterprising', 'uses' => 'EnterprisingController@isEnterprising']);
-Route::get('se_emprendedora/', ['as' => 'enterprising', function(){
- return View::make('maintenance');
-}]);
-//Route::get('donde_comprar/', ['as' => 'buy', 'uses' => 'EnterprisingController@buy']);
-Route::get('donde_comprar/', ['as' => 'enterprising', function(){
- return View::make('maintenance');
-}]);
-//Route::get('como_pagar/', ['as' => 'pay', 'uses' => 'EnterprisingController@pay']);
-Route::get('como_pagar/', ['as' => 'enterprising', function(){
- return View::make('maintenance');
-}]);
+Route::get('emprendedoras/', ['as' => 'enterprising', 'uses' => 'EnterprisingController@index']);
+//Route::get('emprendedoras/', ['as' => 'enterprising', function(){
+// return View::make('maintenance');
+//}]);
+Route::get('se_emprendedora/', ['as' => 'isEnterprising', 'uses' => 'EnterprisingController@isEnterprising']);
+//Route::get('se_emprendedora/', ['as' => 'enterprising', function(){
+// return View::make('maintenance');
+//}]);
+Route::get('donde_comprar/', ['as' => 'buy', 'uses' => 'EnterprisingController@buy']);
+//Route::get('donde_comprar/', ['as' => 'enterprising', function(){
+// return View::make('maintenance');
+//}]);
+Route::get('como_pagar/', ['as' => 'pay', 'uses' => 'EnterprisingController@pay']);
+//Route::get('como_pagar/', ['as' => 'enterprising', function(){
+// return View::make('maintenance');
+//}]);
 Route::get('magazine/', ['as' => 'magazine', 'uses' => 'EnterprisingController@magazine']);
-//Route::get('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@getRegister']);
-Route::get('formulario-emprendedoras/', ['as' => 'enterprising', function(){
- return View::make('maintenance');
-}]);
-//Route::post('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@postRegister']);
+Route::get('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@getRegister']);
+//Route::get('formulario-emprendedoras/', ['as' => 'enterprising', function(){
+// return View::make('maintenance');
+//}]);
+Route::post('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' => 'EnterprisingController@postRegister']);
 
 //Este ya estaba desactivado
-//Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
+Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
 Route::get('referidos/', ['as' => 'referred', 'uses' => 'EnterprisingController@referred']);
 Route::get('mailing',function (){
 

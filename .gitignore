@@ -18,4 +18,6 @@ Thumbs.db
 /public/sliders/*
 /public/exports/*
 /public/toUpload/*
+/public/art/*
+/public/art/
 /app/config/app.php
