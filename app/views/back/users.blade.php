@@ -18,7 +18,17 @@
             <a style="padding: 10px 15px;" class="u-button" href="{{route('searchUsersCard')}}">Usuarios que faltan por tarjeta</a>
         </div>
         <div class="wrap-content1">
-            @if(Auth::user()->roles_id == 1)
+
+        <?php $people = array(
+            "carmen.lopez@lilipink.com",
+            "harvy.pachon@lilipink.com",
+            "Hernesto.rojas@lilipink.com",
+            "jonathan.sogamoso@lilipink.com",
+            "miguel.quijano@lilipink.com",
+            "diego.bermudez@lilipink.com"
+            ) ?>
+
+        @if(Auth::user()->roles_id == 1 || in_array(Auth::user()->email, $people))
                 <a href="{{route('usersExcel')}}" class="icon-file-excel"></a>
             @endif
             <!--<a href="{route('usersPdf')}}" class="icon-file-pdf"></a>-->
