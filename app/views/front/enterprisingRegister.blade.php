@@ -238,9 +238,10 @@
                         <div>
                             <div style="margin: 0;" class="material-input">
                                 <select name="location" id="location" class="Credit-select">
-                                    @foreach($locations as $key => $location)
-                                        <option value="{{$key}}" @if(Input::old('location') == $key) selected @endif >{{$location}}</option>
-                                    @endforeach
+                                    <option value="3" @if(Input::old('location') == '3') selected @endif >Bogota - Cundinamarca</option>
+                                    {{-- @foreach($locations as $key => $location)
+                                         <option value="{{$key}}" @if(Input::old('location') == $key) selected @endif >{{$location}}</option>
+                                    @endforeach--}}
                                 </select>
                                 <span></span>
                             </div>
@@ -256,10 +257,11 @@
                     <section class="Credit-section">
                         <div style="margin: 0;" class="material-input">
                             <select class="Credit-select" name="point" id="shop">
-                                <option value="" selected="selected">seleccione un punto de venta</option>
+                                <option data-city="3" style="" value="43">Intima Lili Pink Toberín - Calle 164 No. 20-08</option>
+                                {{-- <option value="" selected="selected">seleccione un punto de venta</option>
                                 @foreach ($points as $point)
                                     <option data-city="{{$point['location_id']}}" style="display:none" value="{{$point['point_id']}}" @if(Input::old('point') == $point['point_id']) selected @endif >{{$point['point_name']}}</option>
-                                @endforeach
+                                @endforeach--}}
                             </select>
                             <span></span>
                         </div>

@@ -116,7 +116,7 @@ Route::post('formulario-emprendedoras', ['as' => 'enterprisingRegister', 'uses' 
 //Este ya estaba desactivado
 Route::post('formulario-emprendedoras/credit', ['as' => 'enterprisingCredit', 'uses' => 'EnterprisingController@creditRegister']);
 Route::get('referidos/', ['as' => 'referred', 'uses' => 'EnterprisingController@referred']);
-Route::get('mailing',function (){
+/*Route::get('mailing',function (){
 
     \Illuminate\Support\Facades\Mail::send('emails.sendMailing', ['email' => 'email'], function ($message)  {
         $message->from('no-responder@creditoslilipink.com', 'Créditos Lilipink');
@@ -124,7 +124,7 @@ Route::get('mailing',function (){
         $headers = $message->getHeaders();
         $headers->addTextHeader('X-Mailgun-Tag', 'referred');
     });
-});
+});*/
 Route::get('rce', function () {
     return View::make('front.rce');
 });

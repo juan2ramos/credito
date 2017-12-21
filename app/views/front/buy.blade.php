@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partial.submenu')
-    <section class="Buy">
+    <section class="Buy">{{--
         <article class="tienda">
             <figure><iframe width="430" height="254" src="https://www.youtube.com/embed/F9mDBFVWhgw" frameborder="0" allowfullscreen></iframe></figure>
             <div class="text">
@@ -12,9 +12,9 @@
                 <a href="http://creditoslilipink.com/img/tiendasemprendedoras.pdf" target="_blank" class="link">TIENDAS LILIPINK EMPRENDEDORAS</a>
             </div>
 
-        </article>
+        </article>--}}
         <article class="tienda">
-            <figure><iframe width="430" height="254" src="https://www.youtube.com/embed/3bjXbDOHWks" frameborder="0" allowfullscreen></iframe></figure>
+            <figure><iframe width="430" height="254" src="https://www.youtube.com/embed/K79fiOoymcQ" frameborder="0" allowfullscreen></iframe></figure>
             <div class="text">
                 <h3> TIENDA VIRTUAL </h3>
                 <p>
