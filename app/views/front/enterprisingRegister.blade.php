@@ -25,8 +25,9 @@
         </span>
 
         <article class="Container col-12">
-            <form action="{{route('enterprisingRegister')}}" method="POST" accept-charset="UTF-8" class="Credito-form" enctype="multipart/form-data">
-            <!--<span style="text-align:center; color:#b9007d; display: block; padding: 20px 5px">El crédito lilipink emprendedora, difiere tus pedidos y compras a una sola cuota - para pago a 15 días después de la fecha de facturación.</span>-->
+            <form action="{{route('enterprisingRegister')}}" method="POST" accept-charset="UTF-8" class="Credito-form"
+                  enctype="multipart/form-data">
+                <!--<span style="text-align:center; color:#b9007d; display: block; padding: 20px 5px">El crédito lilipink emprendedora, difiere tus pedidos y compras a una sola cuota - para pago a 15 días después de la fecha de facturación.</span>-->
                 <section class="Credit-section u-CreditSection">
                     <div class="material-input">
                         {{Form::text('name',Input::old('name'),['id' => 'name'])}}
@@ -72,7 +73,8 @@
 
                     @if($errors->first('identification_card'))
                         <div class="errors">
-                            *Ya estas registrada en creditos Lilipink, comunicate con emprendedoras@innova-quality.com.co
+                            *Ya estas registrada en creditos Lilipink, comunicate con
+                            emprendedoras@innova-quality.com.co
                         </div>
                     @endif
 
@@ -154,14 +156,17 @@
                     <div>
                         <label>
                             ¿Actualmente vendes por catálogo?
-                            <input type="radio" value="1" name="isWorking" id="isWorking" class="radio" @if(count($errors) && Input::old('isWorking') == 1) checked="checked" @endif >
+                            <input type="radio" value="1" name="isWorking" id="isWorking" class="radio"
+                                   @if(count($errors) && Input::old('isWorking') == 1) checked="checked" @endif >
                             <label for="isWorking">Si</label>
-                            <input type="radio" value="0" name="isWorking" id="isWorking" class="radio" @if(!count($errors) || Input::old('isWorking') == 0) checked="checked" @endif >
+                            <input type="radio" value="0" name="isWorking" id="isWorking" class="radio"
+                                   @if(!count($errors) || Input::old('isWorking') == 0) checked="checked" @endif >
                             <label for="isWorking">No</label>
                         </label>
                     </div>
 
-                    <div class="material-input whereIsWorking" @if(!count($errors) || Input::old('isWorking') == 0) style="display:none" @endif >
+                    <div class="material-input whereIsWorking"
+                         @if(!count($errors) || Input::old('isWorking') == 0) style="display:none" @endif >
                         {{Form::text('whereIsWorking', Input::old('whereIsWorking'),['id' => 'whereIsWorking'])}}
                         {{Form::label('whereIsWorking','¿Cuáles catálogos?')}}
                         <span></span>
@@ -238,7 +243,9 @@
                         <div>
                             <div style="margin: 0;" class="material-input">
                                 <select name="location" id="location" class="Credit-select">
-                                    <option value="3" @if(Input::old('location') == '3') selected @endif >Bogota - Cundinamarca</option>
+                                    <option value="3" @if(Input::old('location') == '3') selected @endif >Bogota -
+                                        Cundinamarca
+                                    </option>
                                     {{-- @foreach($locations as $key => $location)
                                          <option value="{{$key}}" @if(Input::old('location') == $key) selected @endif >{{$location}}</option>
                                     @endforeach--}}
@@ -257,7 +264,9 @@
                     <section class="Credit-section">
                         <div style="margin: 0;" class="material-input">
                             <select class="Credit-select" name="point" id="shop">
-                                <option data-city="3" style="" value="43">Intima Lili Pink Toberín - Calle 164 No. 20-08</option>
+                                <option data-city="3" style="" value="43">Intima Lili Pink Toberín - Calle 164 No.
+                                    20-08
+                                </option>
                                 {{-- <option value="" selected="selected">seleccione un punto de venta</option>
                                 @foreach ($points as $point)
                                     <option data-city="{{$point['location_id']}}" style="display:none" value="{{$point['point_id']}}" @if(Input::old('point') == $point['point_id']) selected @endif >{{$point['point_name']}}</option>
@@ -352,7 +361,7 @@
                     <div>
                         <div class="request-image" style="display: inline-block"></div>
                         <div style="display: inline-block;vertical-align: top">
-                            <div class="preload hidden "  >
+                            <div class="preload hidden ">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -373,22 +382,27 @@
                     <div class="label--checkbox">
                         <label>
                             {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-                            - Acepto las politicas de uso del sitio de Innova Quality SAS  {{ HTML::link(URL::to('img/usoSitio.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}<br>
+                            - Acepto las politicas de uso del sitio de Innova Quality
+                            SAS {{ HTML::link(URL::to('img/usoSitio.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}
+                            <br>
                         </label>
                         <label>
                             {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-                            - Acepto las politicas de privacidad de datos de la tarjeta recargable.  {{ HTML::link(URL::to('img/politicasTratamiento.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}
+                            - Acepto las politicas de privacidad de datos de la tarjeta
+                            recargable. {{ HTML::link(URL::to('img/politicasTratamiento.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}
                         </label>
                     </div>
                 </div>
                 <div id="backButton">
                     @if(Input::old('isCredit'))
-                        <a href="#" class="u-button" style="margin: auto; display: inline-block; text-align: center;" onclick="return false">VOLVER AL FORMULARIO DE CONTADO</a>
+                        <a href="#" class="u-button" style="margin: auto; display: inline-block; text-align: center;"
+                           onclick="return false">VOLVER AL FORMULARIO DE CONTADO</a>
                         <span style="display: block; text-align: center; padding: 10px 5px;">COMO EMPRENDEDORA DE CONTADO, EL PAGO DE LOS PEDIDOS SON ANTICIPADOS POR EFECTY O BANCOLOMBIA.</span>
                         <input type="hidden" id="isCredit" name="isCredit" value="true">
                     @else
-                        <a href="#" class="u-button" style="margin: auto; display: inline-block; text-align: center;" onclick="return false">SOLICITA AQUI CRÉDITO COMO EMPRENDEDORA - SIN CODEUDORES</a>
-                        <span style="display: block; text-align: center; padding: 10px 5px;">CON EL CRÉDITO EMPRENDEDORA TUS COMPRAS EN TIENDA O PEDIDOS EN LINEA SE DIFIEREN A 1 CUOTA PARA PAGO A LOS 15 DIAS EN NUESTRAS TIENDAS LILI PINK EMPRENDEDORAS.</span>
+                        {{--<a href="#" class="u-button" style="margin: auto; display: inline-block; text-align: center;"--}}
+                        {{--onclick="return false">SOLICITA AQUI CRÉDITO COMO EMPRENDEDORA - SIN CODEUDORES</a>--}}
+                        {{--<span style="display: block; text-align: center; padding: 10px 5px;">CON EL CRÉDITO EMPRENDEDORA TUS COMPRAS EN TIENDA O PEDIDOS EN LINEA SE DIFIEREN A 1 CUOTA PARA PAGO A LOS 15 DIAS EN NUESTRAS TIENDAS LILI PINK EMPRENDEDORAS.</span>--}}
                     @endif
                 </div>
                 <div id="sendButton">
@@ -410,17 +424,17 @@
 
     <script>
 
-        $('#backButton').on('click', 'a', function(){
+        $('#backButton').on('click', 'a', function () {
             var creditForm = $('#CreditEnterprisingForm'),
                 subtitle = $('#subtitle'),
                 backButton = $(this),
                 backButtonSpan = backButton.siblings('span'),
                 sendButton = $('#sendButton').children('button'),
                 sendButtonSpan = sendButton.siblings('span');
-                creditForm.toggleClass('hidden');
+            creditForm.toggleClass('hidden');
 
 
-            if(creditForm.hasClass('hidden')){
+            if (creditForm.hasClass('hidden')) {
                 subtitle.text('FORMULARIO DE CONTADO');
                 backButton.text('SOLICITA AQUI CRÉDITO COMO EMPRENDEDORA - SIN CODEUDORES');
                 backButtonSpan.text('CON EL CRÉDITO EMPRENDEDORA TUS COMPRAS EN TIENDA O PEDIDOS EN LINEA SE DIFIEREN A 1 CUOTA PARA PAGO A LOS 15 DIAS EN NUESTRAS TIENDAS LILI PINK EMPRENDEDORAS.');
@@ -436,26 +450,26 @@
                 creditForm.append('<input type="hidden" id="isCredit" name="isCredit" value="true">');
             }
 
-            $('html, body').animate({ scrollTop: 0 }, 500);
+            $('html, body').animate({scrollTop: 0}, 500);
         });
 
 
-        $('#location').on('change', function(){
+        $('#location').on('change', function () {
             var city = $(this).find(":selected").val();
             var options = $('#shop').children('option');
-            for(var i = 1; i < options.length; i++){
+            for (var i = 1; i < options.length; i++) {
                 var option = options.eq(i);
-                if(option.attr('data-city') == city){
+                if (option.attr('data-city') == city) {
                     option.show();
                 }
-                else{
+                else {
                     option.removeAttr('selected');
                     option.hide();
                 }
             }
             options.eq(0).attr('selected', 'selected');
         });
-        $('#dropzone input').on('change', function(e) {
+        $('#dropzone input').on('change', function (e) {
             var file = this.files[0];
 
             if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
@@ -466,9 +480,9 @@
             if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
                 var reader = new FileReader(file);
                 reader.readAsDataURL(file);
-                reader.onload = function(e) {
-                var data = e.target.result,
-                    $img = $('<img />').attr('src', data).fadeIn();
+                reader.onload = function (e) {
+                    var data = e.target.result,
+                        $img = $('<img />').attr('src', data).fadeIn();
                     $('#dropzone div').html($img);
                 };
             } else {
@@ -477,11 +491,11 @@
             }
         });
 
-        $('.close-notify').on('click', function(){
+        $('.close-notify').on('click', function () {
             $(this).parent().slideToggle();
         });
 
-        $('[name="isWorking"]').on('change', function(){
+        $('[name="isWorking"]').on('change', function () {
             var whereIsWorking = $(this).parent().parent().siblings('.whereIsWorking');
             $(this).val() > 0 ? whereIsWorking.show() : whereIsWorking.hide();
         });
