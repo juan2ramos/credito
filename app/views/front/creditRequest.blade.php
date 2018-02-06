@@ -445,7 +445,7 @@
 
         <div class="material-input">
             {{Form::text('phone_reference','',['id' => 'phone_reference'])}}
-            {{Form::label('phone_reference','Telefono')}}
+            {{Form::label('phone_reference','Celular')}}
             <span></span>
         </div>
 
@@ -471,7 +471,7 @@
 
         <div class="material-input">
             {{Form::text('phone_reference2','',['id' => 'phone_reference2'])}}
-            {{Form::label('phone_reference2','Telefono')}}
+            {{Form::label('phone_reference2','Celular')}}
             <span></span>
         </div>
 
