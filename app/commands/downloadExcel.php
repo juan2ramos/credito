@@ -104,11 +104,17 @@ class downloadExcel extends Command {
             $m->to('miguel.quijano@lilipink.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
         });
         Mail::send('emails.usersExcel', ['doc' => $doc], function ($m) use($route){
-            $m->to('diego.bermudez@lilipink.com ', 'Creditos Lilipink')->subject('Notificación Lilipink');
+            $m->to('diego.bermudez@lilipink.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+        });
+
+        Mail::send('emails.usersExcel', ['doc' => $doc], function ($m) use($route){
+            $m->to('andres.zambrano@lilipink.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
         });
 
 
-
+        Mail::send('emails.usersExcel', ['doc' => $doc], function ($m) use($route){
+            $m->to('claudia.rodriguez@lilipink.com', 'Creditos Lilipink')->subject('Notificación Lilipink');
+        });
 
 
 
