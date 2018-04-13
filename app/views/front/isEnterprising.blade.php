@@ -37,7 +37,7 @@
     </section>
     <div style="text-align: center; margin:10px 0 30px;line-height: 1.3;">
         <b>QUIERES MÁS INFORMACIÓN?</b> <br>
-        <a style="color: #000;" href="tel:0316702400">PBX: (571) 670 2400 Ext: 114</a>  <a style="color: #000;" href="tel:3105756438">// Whatsapp: 310 575 6438</a>  <br>
+        <a style="color: #000;" href="tel:0316702400">PBX: (571) 670 2400 Ext: 114</a>    <br>
         <a style="color: #000;" href="mailto:emprendedoras@i-q.com.co">emprendedoras@i-q.com.co</a> //Cra 19A No 196-23 Bogotá
     </div>
 @stop
