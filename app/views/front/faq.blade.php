@@ -8,9 +8,7 @@
                 <h3>CÓMO PUEDO OBTENER MI CRÉDITO LILI PINK</h3>
                 <p>Solo debes presentar la cédula original, dos referencias personales y tener buenos hábitos de pago; los cuales serán consultados y verificados en centrales de riesgo. NO NECESITAS CODEUDORES </p>
                 <h3>CUÁNDO RECIBO MI TARJETA LILI PINK</h3>
-                <p>Presentando la cédula original en la tienda en donde solicitaste el crédito o si lo hiciste por la
-                    página www.creditoslilipink.com, debes pedirla en la tienda que escogiste en el momento de la
-                    inscripción</p>
+                <p>Presentando la cédula original en la tienda en donde solicitaste el crédito o si lo hiciste por la página www.creditoslilipink.com, debes pedirla en la tienda que escogiste en el momento de la inscripción"</p>
                 <h3>CÓMO PUEDO INICIAR SESIÓN EN WWW.CREDITOSLILIPINK.COM</h3>
                 <p>Debes tener en cuenta lo siguiente:
                     <br>1. Tu usuario es el e-mail registrado en el momento de la solicitud del crédito
