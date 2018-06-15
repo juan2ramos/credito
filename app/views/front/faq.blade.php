@@ -24,7 +24,7 @@
                     <br>3. Solicitando la información en cualquier tienda Lili Pink
                 </p>
                 <h3>TIENE CUOTA DE UTILIZACIÓN O DE MANEJO</h3>
-                <p>No se hace cobro por concepto de cuota de manejo</p>
+                <p>No se hace cobro por concepto de cuota de manejo; las compras que realices con el crédito Lili Pink generaran un recargo administrativo del 20%</p>
             </div>
             <figure><img src="{{asset('img/solo_cedula.png')}}"></figure>
         </article>
