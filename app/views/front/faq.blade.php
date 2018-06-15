@@ -7,7 +7,7 @@
             <div class="text">
                 <h3>CÓMO PUEDO OBTENER MI CRÉDITO LILI PINK</h3>
                 <p>Solo debes presentar la cédula original, dos referencias personales y tener buenos hábitos de pago; los cuales serán consultados y verificados en centrales de riesgo. NO NECESITAS CODEUDORES </p>
-                <h3>CUÁNDO RECIBO MI TARJETA LILI PINK</h3>
+                <h3>CUÁNDO RECIBO MI CRÉDITO LILI PINK</h3>
                 <p>Presentando la cédula original en la tienda en donde solicitaste el crédito o si lo hiciste por la página www.creditoslilipink.com, debes pedirla en la tienda que escogiste en el momento de la inscripción"</p>
                 <h3>CÓMO PUEDO INICIAR SESIÓN EN WWW.CREDITOSLILIPINK.COM</h3>
                 <p>Debes tener en cuenta lo siguiente:
@@ -33,10 +33,6 @@
                 <p>Comunicate a la línea de servicio al cliente en bogotá 670 2400 ext: 208 - 133 </p>
                 <h3>ES POSIBLE CAMBIAR LAS FECHAS LIMITES DE PAGO DE MI CRÉDITO</h3>
                 <p>No. Las fechas del pago del crédito Lili Pink no pueden ser modificadas a solicitud del cliente</p>
-                <h3>QUÉ DEBO HACER SI MI TARJETA SE HA EXTRAVIADO O HA SIDO ROBADA</h3>
-                <p>Comunicate inmediatamente con la línea de servicio al cliente en bogotá 670 2400 ext: 208 - 133 o acércate a la tienda más cercana para reportar el hurto o perdida. </p>
-                <h3>COMO PUEDO VOLVER A ADQUIRIR MI TARJETA LILI PINK</h3>
-                <p>Solicítala al correo carterainnova@innova-quality.com.co con el asunto: REEXPEDICIÓN TARJETA LILI PINK C.C. -colocas tu número de cédula- y en el mensaje colocas tus nombres completos y datos de contacto </p>
                 <h3>SI PRESENTO RETRASO EN MIS CUOTAS</h3>
                 <p>Serás reportado a centrales de riesgo y de persistir o continuar la mora o ser superior a 90 días se realizará cobro jurídico. Recuerda que tener buenos hábitos de pago es su mejor carta de presentación ante el comercio y sector financiero</p>
                 <h3>CUÁNDO PUEDE ESTAR BLOQUEADO EL CRÉDITO</h3>
