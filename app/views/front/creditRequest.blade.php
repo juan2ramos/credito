@@ -540,6 +540,7 @@
     </section>
 @if($errors)
 __
+{{errors->all}}
         @foreach ($errors->all as $message):
        
        {{'sa'}}
