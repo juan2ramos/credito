@@ -546,6 +546,11 @@ __
        {{'sa'}}
         @endforeach
         @endif
+        @if($errors->has())
+   @foreach ($errors->all() as $error)
+      <div>{{ $error }}</div>
+  @endforeach
+@endif
 @stop
 
 @section('javascript')
