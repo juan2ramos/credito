@@ -538,9 +538,11 @@
 
         {{Form::close()}}
     </section>
-@if($errors)
+@if($errors
+__
         @foreach ($errors->all as $message):
         {{ $message}}
+        {{':'}}
         @endforeach
         @endif
 @stop
