@@ -538,17 +538,10 @@
 
         {{Form::close()}}
     </section>
-@if($errors)
-__
 
-        @foreach ($errors->all as $message):
-       
-       {{'sa'}}
-        @endforeach
-        @endif
         @if($errors->has())
-   @foreach ($errors->all() as $error)
-      <div>{{ $error }}</div>
+   @foreach ($errors->all() $key as $error)
+      <div>{{ $key . ': ' .$error }}</div>
   @endforeach
 @endif
 @stop
