@@ -538,7 +538,9 @@
 
         {{Form::close()}}
     </section>
-
+@if($errors)
+           {{$errors}}
+        @endif
 @stop
 
 @section('javascript')
