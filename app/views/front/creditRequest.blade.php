@@ -539,7 +539,7 @@
         {{Form::close()}}
     </section>
 @if($errors)
-           {{$errors}}
+           {{'___'}}
         @endif
 @stop
 
