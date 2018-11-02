@@ -541,7 +541,7 @@
 
         @if($errors->has())
    @foreach ($errors->all() $key as $error)
-      <div>{{ $key . ': ' .$error }}</div>
+     
   @endforeach
 @endif
 @stop
