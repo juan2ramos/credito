@@ -542,7 +542,7 @@
 __
         @foreach ($errors->all as $message):
         {{ $message}}
-        {{':'}}
+       
         @endforeach
         @endif
 @stop
