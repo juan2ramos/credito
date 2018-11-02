@@ -540,8 +540,8 @@
     </section>
 
         @if($errors->has())
-   @foreach ($errors->all() $key as $error)
-     
+   @foreach ($errors->all() as $key => $error)
+      <div>{{ $key . ': ' .$error }}</div>
   @endforeach
 @endif
 @stop
