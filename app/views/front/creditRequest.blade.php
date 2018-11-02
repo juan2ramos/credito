@@ -541,7 +541,7 @@
 @if($errors
 __
         @foreach ($errors->all as $message):
-        {{ $message}}
+       
        
         @endforeach
         @endif
