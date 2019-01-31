@@ -144,6 +144,7 @@ class downloadExcel extends Command {
 			$users[$key]['¿Empr. credito?'] = $credit && $user->roles_id == 5 ? 'Si' : ($user->roles_id == 5) ? 'No' : 'N/A';
 			$users[$key]['Nombre referido'] = $user->roles_id == 5 ? $user['referred_name'] : 'N/A';
 			$users[$key]['Cedula referido'] = $user->roles_id == 5 ? $user['referred_document'] : 'N/A';
+			$users[$key]['Prioridad'] = $credit ? $credit->priority : 'N/A';
 		}
 		return $users;
 	}
