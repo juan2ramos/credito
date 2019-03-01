@@ -13,6 +13,8 @@ return array(
 	| to have a conventional place to find your various credentials.
 	|
 	*/
+	
+	'mail' => [],
 
 	'mailgun' => array(
 		'domain' => 'no-responder@creditoslilipink.com',
