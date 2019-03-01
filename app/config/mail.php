@@ -1,12 +1,14 @@
+<?php
+
 return array(
     'driver' => 'smtp',
     'host' => 'smtp.gmail.com',
     'port' => 465,
-    'from' => array('address' => 'mymail@gmail.com', 'name' => 'Auth'),
+    'from' => array('address' => 'artico2digital@gmail.com', 'name' => 'Auth'),
     'encryption' => 'ssl',
-    'username' => 'mymail@gmail.com',
+    'username' => 'artico2digital@gmail.com',
     // 'username' => 'mymail',
-    'password' => 'mypass',
+    'password' => 'Artico2017&*&',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'pretend' => false
 );
