@@ -80,15 +80,15 @@ class CreditController extends BaseController
                 );
                 $data = Input::all() + ["link" => "solicitud"];
                 if (Input::get('email')) {
-                   // Mail::send('emails.verification', $data, function ($message) {
-                    //    $message->to(Input::get('email'), 'creditos lilipink')->subject('su solicitud de credito esta siendo procesada');
+                    Mail::send('emails.verification', $data, function ($message) {
+                        $message->to(Input::get('email'), 'creditos lilipink')->subject('su solicitud de credito esta siendo procesada');
 
-                    //});
+                    });
                 }
-              //  Mail::send('emails.requestMail', $data, function ($message) {
-             //       $message->to(Auth::user()->email, 'creditos lilipink')->subject('su solicitud de credito esta siendo procesada');
+              Mail::send('emails.requestMail', $data, function ($message) {
+                    $message->to(Auth::user()->email, 'creditos lilipink')->subject('su solicitud de credito esta siendo procesada');
 
-            //    });
+                });
             } else {
                 new LogRepo(
                     [
@@ -100,22 +100,22 @@ class CreditController extends BaseController
                 );
                 $data = ["link" => 1];
                 if (Input::get('email')) {
-               //     Mail::send('emails.verification', $data, function ($message) {
-               //         $message->to(Input::get('email'), 'creditos lilipink')->subject('su solicitud de credito esta siendo procesada');
+                   Mail::send('emails.verification', $data, function ($message) {
+                        $message->to(Input::get('email'), 'creditos lilipink')->subject('su solicitud de credito esta siendo procesada');
 
-                //    });
+                    });
                 }
             }
         }
 
         $messages = $message['message'];
-        $user = User::all()->last();
-        $user->hasCredit = 1;
-        if ($fingerprint) {
-            $user->fingerprint = sha1(time()) . $fingerprint->getClientOriginalName();
-            $fingerprint->move("users", sha1(time()) . $fingerprint->getClientOriginalName());
-        }
-        $user->save();
+       // $user = User::all()->last();
+       // $user->hasCredit = 1;
+        //if ($fingerprint) {
+          //  $user->fingerprint = sha1(time()) . $fingerprint->getClientOriginalName();
+            //$fingerprint->move("users", sha1(time()) . $fingerprint->getClientOriginalName());
+        //}
+        //$user->save();
         return View::make('front.sendCredit', compact('messages'));
     }
 
