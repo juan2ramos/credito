@@ -325,13 +325,13 @@ class CreditController extends BaseController
         if ($user->email) {
             $data = ["link" => 1];
             if ($user->roles_id == 4)
-               // Mail::send('emails.rejected', $data, function ($message) use ($user) {
-                 //   $message->to($user->email, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
-               // });
+               Mail::send('emails.rejected', $data, function ($message) use ($user) {
+                    $message->to($user->email, 'creditos lilipink')->subject('su solicitud de credito no fue aprobada');
+                });
             else
-                //Mail::send('emails.ECreditDelivery', ['email' => 'email'], function ($m) use ($user) {
-                //    $m->to($user->email, 'Creditos Lilipink')->subject('Credito emprendedora rechazado');
-                //});
+                Mail::send('emails.ECreditDelivery', ['email' => 'email'], function ($m) use ($user) {
+                    $m->to($user->email, 'Creditos Lilipink')->subject('Credito emprendedora rechazado');
+                });
         }
         return Redirect::route('request')->with(array('message' => "el credito no fue aprobado"));
     }
