@@ -21,9 +21,7 @@
                     <br>2. Llamando a la línea de servicio al cliente en bogotá 670 2400 ext: 208 - 133
                     <br>3. Solicitando la información en cualquier tienda Lili Pink
                 </p>
-                <h3>TIENE CUOTA DE UTILIZACIÓN O DE MANEJO</h3>
-                <p>No se hace cobro por concepto de cuota de manejo; las compras que realices con el crédito Lili Pink generaran un recargo administrativo del 20%</p>
-            </div>
+                 </div>
             <figure><img src="{{asset('img/solo_cedula.png')}}"></figure>
         </article>
         <article class="tienda faqs">
