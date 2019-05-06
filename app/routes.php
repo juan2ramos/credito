@@ -94,7 +94,7 @@ Route::get('emprendedoras/', ['as' => 'enterprising', 'uses' => 'EnterprisingCon
 //Route::get('emprendedoras/', ['as' => 'enterprising', function(){
 // return View::make('maintenance');
 //}]);
-Route::get('se_emprendedora/', ['as' => 'isEnterprising', 'uses' => 'EnterprisingController@isEnterprising']);
+Route::get('se_emprendedora/', ['as' => 'isEnterprising', 'uses' => 'EnterprisingController@creditRegister']);
 //Route::get('se_emprendedora/', ['as' => 'enterprising', function(){
 // return View::make('maintenance');
 //}]);
