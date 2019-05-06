@@ -39,6 +39,23 @@
 
         </article>
     </section>
+    <section>
+    <h3>Tripleta de Descuentos de Créditos Lili Pink</h3>
+
+     <p>La tripleta está conformada por tres descuentos individuales del 10, 15 y 20%, los cuales se adquieren una vez el cliente activa su crédito Lili Pink.
+ </p>
+     <h3>Restricciones:</h3>
+
+ <p>   • Descuentos válidos desde el día que se activa el crédito.
+ </p> <p>  • Aplica para todas las tiendas Lili Pink a nivel nacional // No aplica para compras en línea.
+ </p> <p>  • Aplica para todas las tiendas Yoi a nivel nacional.
+ </p> <p>  • Válido únicamente para compras con crédito Lili Pink.
+ </p> <p>  • Los descuentos se podrán aplicar a la compra de cualquier producto a excepción de las referencias vinculadas a alguna una promoción (No aplica promoción sobre promoción).
+ </p> <p>  • Descuentos no acumulables, cada descuento es válido por una factura, por lo tanto cada uno se podrá redimir una única vez.
+ </p> <p>  • Para hacer efectivo el descuento, el cliente debe presentar su cédula original en caja para confirmar la titularidad del crédito.
+ </p>  <p> • Los descuentos no son canjeables por dinero ni por bonos Lili Pink.
+ </p>
+    </section>
     <div style="text-align: center; margin:10px 0 30px;line-height: 1.3;">
         <b>QUIERES MÁS INFORMACIÓN?</b> <br>
         <a style="color: #000;" href="tel:0316702400">PBX: (571) 670 2400 Ext: 114</a> <br>
