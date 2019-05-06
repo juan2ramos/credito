@@ -90,7 +90,7 @@ Route::get('refresh/{pass}', function () {
         $message->to('juan2ramos@gmail.com', 'creditos lilipink')->subject('prueba');
     });
 });
-Route::get('emprendedoras/', ['as' => 'enterprising', 'uses' => 'EnterprisingController@index']);
+Route::get('emprendedoras/', ['as' => 'enterprising', 'uses' => 'EnterprisingController@creditRegister']);
 //Route::get('emprendedoras/', ['as' => 'enterprising', function(){
 // return View::make('maintenance');
 //}]);
