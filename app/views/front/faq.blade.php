@@ -54,7 +54,8 @@
  </p> <p>  • Descuentos no acumulables, cada descuento es válido por una factura, por lo tanto cada uno se podrá redimir una única vez.
  </p> <p>  • Para hacer efectivo el descuento, el cliente debe presentar su cédula original en caja para confirmar la titularidad del crédito.
  </p>  <p> • Los descuentos no son canjeables por dinero ni por bonos Lili Pink.
- </p>
+ </p> 
+ <br/> <br/>
     </section>
     <div style="text-align: center; margin:10px 0 30px;line-height: 1.3;">
         <b>QUIERES MÁS INFORMACIÓN?</b> <br>
