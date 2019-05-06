@@ -90,11 +90,11 @@ Route::get('refresh/{pass}', function () {
         $message->to('juan2ramos@gmail.com', 'creditos lilipink')->subject('prueba');
     });
 });
-Route::get('emprendedoras/', ['as' => 'enterprising', 'uses' => 'EnterprisingController@creditRegister']);
+Route::get('emprendedoras/', ['as' => 'enterprising', 'uses' => 'EnterprisingController@getRegister']);
 //Route::get('emprendedoras/', ['as' => 'enterprising', function(){
 // return View::make('maintenance');
 //}]);
-Route::get('se_emprendedora/', ['as' => 'isEnterprising', 'uses' => 'EnterprisingController@creditRegister']);
+Route::get('se_emprendedora/', ['as' => 'isEnterprising', 'uses' => 'EnterprisingController@getRegister']);
 //Route::get('se_emprendedora/', ['as' => 'enterprising', function(){
 // return View::make('maintenance');
 //}]);
