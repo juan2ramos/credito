@@ -523,11 +523,9 @@
         <div>
             <label class="label--checkbox">
                 {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-                - Acepto las politicas de uso del sitio de Innova Quality
-                SAS {{ HTML::link(URL::to('img/usoSitio.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}<br>
+                - Acepto las politicas de uso del sitio de PINK LIFE SAS {{ HTML::link(URL::to('img/politicas-creditos-lilipink.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}<br>
                 {{Form::checkbox('remember', 1, null, ['class' => 'checkbox','required'])}}
-                - Acepto las politicas de privacidad de datos de la tarjeta
-                recargable. {{ HTML::link(URL::to('img/politicasTratamiento.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}
+                - Acepto las politicas de privacidad de datos {{ HTML::link(URL::to('img/politicasTratamiento.pdf'), 'descargar',array('id'=>'','target'=>'_blank')) }}
             </label>
         </div>
 
